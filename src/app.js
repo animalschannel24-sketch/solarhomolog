@@ -6,16 +6,44 @@
 
 // ── Abertura / fechamento do modal ──────────────────────────────────────────
 function openApp(screen) {
-  document.getElementById('modal-overlay').classList.add('open');
-  document.getElementById('modal-app').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  renderScreen(screen || 'screen-welcome');
+  try {
+    const overlay = document.getElementById('modal-overlay');
+    const modal = document.getElementById('modal-app');
+    
+    if (!overlay || !modal) {
+      console.error('Modal elements not found', {overlay, modal});
+      return false;
+    }
+    
+    overlay.classList.add('open');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    renderScreen(screen || 'screen-welcome');
+    return false;
+  } catch(e) {
+    console.error('Error in openApp:', e);
+    return false;
+  }
 }
 
 function closeApp() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.getElementById('modal-app').classList.remove('open');
-  document.body.style.overflow = '';
+  try {
+    const overlay = document.getElementById('modal-overlay');
+    const modal = document.getElementById('modal-app');
+    
+    if (!overlay || !modal) {
+      console.error('Modal elements not found', {overlay, modal});
+      return false;
+    }
+    
+    overlay.classList.remove('open');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    return false;
+  } catch(e) {
+    console.error('Error in closeApp:', e);
+    return false;
+  }
 }
 
 function renderScreen(id) {
@@ -43,7 +71,11 @@ function renderScreen(id) {
   }
 }
 
-function go(id) { renderScreen(id); document.getElementById('modal-body').scrollTop = 0; }
+function go(id) {
+  renderScreen(id);
+  const body = document.getElementById('modal-body');
+  if (body) body.scrollTop = 0;
+}
 
 // ── TELA: Boas-vindas ────────────────────────────────────────────────────────
 function screenWelcome() {
@@ -424,6 +456,31 @@ function bindScreen(id) {
 }
 
 // ── Teclado: ESC fecha o modal ───────────────────────────────────────────────
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeApp(); });
+document.addEventListener('keydown', e => { 
+  if (e.key === 'Escape') closeApp(); 
+});
+
+// ── Inicialização e Event Listeners ──────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('SolarHomolog app initialized');
+  
+  // Delegar clicks no overlay para fechar modal
+  const overlay = document.getElementById('modal-overlay');
+  if (overlay) {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeApp();
+      }
+    });
+  }
+  
+  // Garantir que todos os buttons com onclick funcionem
+  document.addEventListener('click', (e) => {
+    // Log para debug
+    if (e.target.onclick) {
+      console.log('Button clicked:', e.target);
+    }
+  });
+});
 
   

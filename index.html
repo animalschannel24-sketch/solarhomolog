@@ -6,7 +6,7 @@
   <title>SolarHomolog — Homologação de Energia Solar</title>
   <meta name="description" content="Homologação de sistemas fotovoltaicos junto à concessionária. Análise gratuita de documentação, diagnóstico de UC e acompanhamento completo do processo." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀</text></svg>" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.10.0/tabler-icons.min.css" />
+  <link rel="stylesheet" href="assets/icons/tabler-icons.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -170,7 +170,7 @@ body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--w
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
 @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 .footer-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
-.footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+.footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; padding: 0; }
 .footer-link:hover { color: var(--solar); }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
 
@@ -526,9 +526,9 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
         </div>
         <div>
           <div class="footer-title">Serviços</div>
-          <a class="footer-link" href="#" onclick="openApp('screen-diagnostico')">Diagnóstico de UC</a>
-          <a class="footer-link" href="#" onclick="openApp('screen-legislacao')">Base de Legislação</a>
-          <a class="footer-link" href="#" onclick="openApp('screen-welcome')">Iniciar Homologação</a>
+          <button class="footer-link" onclick="openApp('screen-diagnostico')">Diagnóstico de UC</button>
+          <button class="footer-link" onclick="openApp('screen-legislacao')">Base de Legislação</button>
+          <button class="footer-link" onclick="openApp('screen-welcome')">Iniciar Homologação</button>
         </div>
         <div>
           <div class="footer-title">Legal</div>

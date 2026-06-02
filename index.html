@@ -378,7 +378,7 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
         <a href="#diagnostico">Diagnóstico UC</a>
         <a href="#contato">Contato</a>
       </nav>
-      <button class="btn btn-primary btn-sm" onclick="openApp('screen-welcome')">
+      <button class="btn btn-primary btn-sm" id="btn-iniciar">
         Iniciar agora
       </button>
     </div>
@@ -391,10 +391,10 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
       <h1 class="hero-title">Homologue seu sistema solar <span class="highlight">sem complicação</span></h1>
       <p class="hero-sub">Análise gratuita da documentação exigida pela concessionária. Diagnóstico automático da sua UC. Você só paga se quiser prosseguir.</p>
       <div class="hero-actions">
-        <button class="btn btn-solar btn-lg" onclick="openApp('screen-welcome')">
+        <button class="btn btn-solar btn-lg" id="btn-comecar">
           <i class="ti ti-solar-panel"></i> Começar gratuitamente
         </button>
-        <button class="btn btn-outline btn-lg" onclick="openApp('screen-diagnostico')">
+        <button class="btn btn-outline btn-lg" id="btn-verificar">
           <i class="ti ti-search"></i> Verificar minha UC
         </button>
       </div>
@@ -456,7 +456,7 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
           <div class="diag-item block"><i class="ti ti-x"></i> UC submedida ou ramal particular</div>
           <div class="diag-item block"><i class="ti ti-x"></i> UC com débito em aberto</div>
         </div>
-        <button class="btn btn-solar btn-lg" onclick="openApp('screen-diagnostico')">
+        <button class="btn btn-solar btn-lg" id="btn-verificar2">
           <i class="ti ti-bolt"></i> Verificar minha UC agora
         </button>
       </div>
@@ -477,7 +477,7 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
         <div class="leg-card abnt"><span class="leg-badge abnt">ABNT</span><strong>NBR 17193:2025</strong><p>Segurança contra incêndio — FDR obrigatório</p></div>
       </div>
       <div style="text-align:center;margin-top:1.5rem">
-        <button class="btn btn-outline" onclick="openApp('screen-legislacao')">
+        <button class="btn btn-outline" id="btn-legislacao">
           <i class="ti ti-book"></i> Ver base completa de legislação
         </button>
       </div>
@@ -503,7 +503,7 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
         </div>
       </div>
       <div style="text-align:center;margin-top:1.5rem">
-        <button class="btn btn-solar btn-lg" onclick="openApp('screen-welcome')">
+        <button class="btn btn-solar btn-lg" id="btn-comecar2">
           Começar agora — análise gratuita
         </button>
       </div>
@@ -1477,6 +1477,23 @@ function hl(text, q) {
   return text.replace(re, '<mark>$1</mark>');
 }
 
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var ids = {
+      'btn-iniciar': 'screen-welcome',
+      'btn-comecar': 'screen-welcome',
+      'btn-comecar2': 'screen-welcome',
+      'btn-verificar': 'screen-diagnostico',
+      'btn-verificar2': 'screen-diagnostico',
+      'btn-legislacao': 'screen-legislacao'
+    };
+    Object.keys(ids).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('click', function() { openApp(ids[id]); });
+    });
+  });
   </script>
 </body>
 </html>

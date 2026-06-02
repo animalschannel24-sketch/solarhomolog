@@ -9,7 +9,356 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.10.0/tabler-icons.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/style.css" />
+  <style>
+/* ============================================
+   SOLARHOMOLOG — ESTILOS PRINCIPAIS
+   ============================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-dark: #1a3a2a;
+  --green-mid: #255239;
+  --green-light: #e8f5e9;
+  --solar: #f5a623;
+  --solar-dark: #e09410;
+  --text: #1a1a1a;
+  --text-muted: #6b7280;
+  --border: rgba(0,0,0,0.1);
+  --bg: #f8faf8;
+  --white: #ffffff;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.14);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+/* --- UTILITIES --- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.container-sm { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* --- BUTTONS --- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 18px; border-radius: var(--radius); font-size: 14px; font-weight: 500;
+  cursor: pointer; border: 1px solid var(--border); background: var(--white);
+  color: var(--text); transition: all .15s; font-family: 'Inter', sans-serif;
+  text-decoration: none;
+}
+.btn:hover { background: var(--bg); }
+.btn-primary { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+.btn-primary:hover { background: var(--green-mid); }
+.btn-solar { background: var(--solar); color: #1a1a00; border-color: var(--solar); font-weight: 600; }
+.btn-solar:hover { background: var(--solar-dark); }
+.btn-outline { border-color: var(--green-dark); color: var(--green-dark); }
+.btn-outline:hover { background: var(--green-light); }
+.btn-sm { padding: 6px 14px; font-size: 13px; }
+.btn-lg { padding: 13px 24px; font-size: 15px; }
+.btn-block { width: 100%; justify-content: center; }
+
+/* --- HEADER --- */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: .85rem 1.5rem;
+  display: flex; align-items: center; gap: 1.5rem;
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-icon {
+  width: 38px; height: 38px; background: var(--green-dark); color: var(--solar);
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.logo-icon.small { width: 30px; height: 30px; font-size: 16px; border-radius: 7px; }
+.logo-name { font-size: 16px; font-weight: 600; color: var(--green-dark); }
+.logo-sub { font-size: 11px; color: var(--text-muted); }
+.nav-links { display: flex; gap: .25rem; margin-left: auto; }
+.nav-links a { padding: 6px 12px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 7px; transition: .15s; }
+.nav-links a:hover { color: var(--green-dark); background: var(--bg); }
+@media (max-width: 700px) { .nav-links { display: none; } }
+
+/* --- HERO --- */
+.hero {
+  background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+  color: #fff; padding: 5rem 1.5rem 4rem;
+}
+.hero-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.hero-badge {
+  display: inline-block; background: rgba(245,166,35,.18); color: var(--solar);
+  padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 500;
+  border: 1px solid rgba(245,166,35,.3); margin-bottom: 1.5rem;
+}
+.hero-title { font-size: clamp(28px, 5vw, 48px); font-weight: 600; line-height: 1.2; margin-bottom: 1rem; }
+.highlight { color: var(--solar); }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,.75); margin-bottom: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.hero-stats { display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+.stat { text-align: center; }
+.stat strong { display: block; font-size: 22px; font-weight: 600; color: var(--solar); }
+.stat span { font-size: 12px; color: rgba(255,255,255,.55); }
+.stat-div { width: 1px; height: 36px; background: rgba(255,255,255,.2); }
+
+/* --- SECTIONS --- */
+.section { padding: 5rem 0; }
+.section-dark { background: var(--green-dark); }
+.section-green { background: var(--green-dark); }
+.section-title { font-size: clamp(22px, 4vw, 32px); font-weight: 600; text-align: center; margin-bottom: .5rem; }
+.section-title.light { color: #fff; }
+.section-sub { text-align: center; color: var(--text-muted); font-size: 16px; margin-bottom: 2.5rem; }
+.section-sub.light { color: rgba(255,255,255,.65); }
+
+/* --- STEPS --- */
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.step-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 1.5rem; position: relative; transition: box-shadow .2s;
+}
+.step-card:hover { box-shadow: var(--shadow); }
+.step-num {
+  position: absolute; top: -14px; left: 1.25rem;
+  background: var(--solar); color: #1a1a00; width: 28px; height: 28px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600;
+}
+.step-icon { font-size: 28px; color: var(--green-dark); margin-bottom: .75rem; }
+.step-card h3 { font-size: 15px; font-weight: 600; margin-bottom: .4rem; }
+.step-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* --- DIAGNÓSTICO HERO --- */
+.diag-box { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); border-radius: var(--radius-lg); padding: 2rem; max-width: 580px; margin: 0 auto; text-align: center; }
+.diag-items { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.5rem; }
+.diag-item { display: flex; align-items: center; gap: 8px; font-size: 13px; padding: 8px 12px; border-radius: 8px; }
+.diag-item.ok { background: rgba(232,245,233,.12); color: #a5d6a7; }
+.diag-item.warn { background: rgba(255,248,225,.1); color: #ffe082; }
+.diag-item.block { background: rgba(252,228,236,.1); color: #f48fb1; }
+@media (max-width: 500px) { .diag-items { grid-template-columns: 1fr; } }
+
+/* --- LEGISLAÇÃO GRID --- */
+.leg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.leg-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; }
+.leg-card strong { display: block; font-size: 14px; margin: .3rem 0; color: var(--green-dark); }
+.leg-card p { font-size: 12px; color: var(--text-muted); }
+.leg-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 4px;
+  font-size: 10px; font-weight: 600; background: #e3f0fb; color: #0c447c;
+}
+.leg-badge.aneel { background: #e8f5e9; color: #1b5e20; }
+.leg-badge.abnt { background: #fff8e1; color: #e65100; }
+
+/* --- PREÇO --- */
+.price-box-hero {
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+  border-radius: var(--radius-lg); padding: 2rem; display: grid;
+  grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;
+}
+@media (max-width: 580px) { .price-box-hero { grid-template-columns: 1fr; } }
+.price-label { font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: .25rem; }
+.price-value { font-size: 36px; font-weight: 600; color: var(--solar); }
+.price-value span { font-size: 16px; font-weight: 400; }
+.price-detail { font-size: 12px; color: rgba(255,255,255,.45); margin-top: .25rem; }
+.pf-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,.85); margin-bottom: .6rem; }
+.pf-item i { color: var(--solar); }
+
+/* --- FOOTER --- */
+.footer { background: #111d16; padding: 3rem 0 1.5rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+.footer-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+.footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+.footer-link:hover { color: var(--solar); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
+
+/* --- MODAL --- */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 200; }
+.modal-app {
+  display: none; position: fixed; inset: 0; z-index: 201;
+  background: #f4f6f4; overflow-y: auto;
+}
+@media (min-width: 600px) {
+  .modal-app {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    inset: auto;
+    width: 500px;
+    max-height: 90vh;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow-y: auto;
+  }
+}
+.modal-overlay.open { display: block; }
+.modal-app.open { display: block; }
+.modal-header {
+  background: var(--green-dark); color: #fff; padding: .9rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 10;
+}
+.modal-close { background: none; border: none; color: rgba(255,255,255,.7); font-size: 22px; cursor: pointer; line-height: 1; padding: 2px; }
+.modal-close:hover { color: #fff; }
+.modal-body { padding: 1.25rem; }
+
+/* --- APP INTERNO (formulários, cards) --- */
+.app-card { background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: var(--radius); padding: 1.1rem; margin-bottom: .75rem; }
+.app-card-title { font-size: 14px; font-weight: 600; margin-bottom: .75rem; display: flex; align-items: center; gap: 8px; color: var(--green-dark); }
+.app-card-title i { color: var(--solar); font-size: 18px; }
+.app-label { font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 4px; }
+.app-input, .app-select, .app-textarea {
+  width: 100%; padding: 9px 12px; border-radius: 8px;
+  border: 1px solid rgba(0,0,0,.12); background: #fff;
+  font-size: 13px; color: var(--text); margin-bottom: 10px; font-family: 'Inter', sans-serif;
+}
+.app-input:focus, .app-select:focus, .app-textarea:focus { outline: none; border-color: var(--green-dark); }
+.app-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.app-h2 { font-size: 19px; font-weight: 600; margin-bottom: .2rem; color: var(--text); }
+.app-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5; }
+.step-bar { display: flex; gap: 5px; align-items: center; margin-bottom: 1.25rem; }
+.sdot { width: 7px; height: 7px; border-radius: 50%; background: #d1d5db; }
+.sdot.done { background: var(--solar); }
+.sdot.active { background: var(--green-dark); width: 20px; border-radius: 4px; }
+.slbl { font-size: 11px; color: var(--text-muted); margin-left: 4px; }
+.soc-btn {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 16px; border: 1px solid rgba(0,0,0,.12);
+  border-radius: var(--radius); background: #fff; cursor: pointer;
+  font-size: 14px; width: 100%; margin-bottom: 10px;
+  font-family: 'Inter', sans-serif; transition: background .15s;
+}
+.soc-btn:hover { background: var(--bg); }
+.soc-icon { width: 26px; height: 26px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+.si-g { background: #4285F4; color: #fff; }
+.si-a { background: #000; color: #fff; }
+.si-e { background: #EA4335; color: #fff; font-size: 11px; }
+.price-display {
+  background: var(--green-dark); color: #fff;
+  border-radius: var(--radius); padding: 1.1rem; margin: .75rem 0;
+}
+.pd-label { font-size: 12px; color: rgba(255,255,255,.55); }
+.pd-value { font-size: 28px; font-weight: 600; color: var(--solar); }
+.pd-detail { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 3px; }
+.info-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,.06); font-size: 13px; }
+.info-row:last-child { border-bottom: none; }
+.info-key { color: var(--text-muted); }
+.badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+.badge-green { background: #e8f5e9; color: #1b5e20; }
+.badge-amber { background: #fff8e1; color: #e65100; }
+.progress-steps { padding-left: 12px; }
+.ps-item { padding: 0 0 14px 16px; border-left: 2px solid #e5e7eb; position: relative; }
+.ps-item.done { border-left-color: var(--green-dark); }
+.ps-item.active { border-left-color: var(--solar); }
+.ps-item:last-child { padding-bottom: 0; border-left-color: transparent; }
+.ps-circle {
+  position: absolute; left: -9px; top: 0;
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid #e5e7eb; background: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 8px;
+}
+.ps-item.done .ps-circle { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+.ps-item.active .ps-circle { background: var(--solar); border-color: var(--solar); color: #1a1a00; }
+.ps-title { font-size: 13px; font-weight: 500; }
+.ps-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.tabs { display: flex; gap: 4px; margin-bottom: 1rem; background: #f3f4f6; padding: 4px; border-radius: 8px; }
+.tab { flex: 1; padding: 7px; font-size: 12px; text-align: center; border-radius: 6px; cursor: pointer; color: var(--text-muted); transition: all .15s; border: none; background: none; font-family: 'Inter', sans-serif; }
+.tab.active { background: #fff; color: var(--text); font-weight: 500; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.upload-area {
+  border: 1.5px dashed rgba(0,0,0,.15); border-radius: var(--radius);
+  padding: 1.5rem; text-align: center; cursor: pointer; transition: all .2s;
+  background: #f9fafb; margin-bottom: 10px;
+}
+.upload-area:hover, .upload-area.active-drop { border-color: var(--green-dark); background: #f0f7f4; }
+.upload-area.uploaded { border-color: var(--green-dark); background: #e8f5e9; border-style: solid; }
+.upload-icon { font-size: 32px; color: var(--text-muted); margin-bottom: 8px; }
+.upload-area.uploaded .upload-icon { color: #2e7d32; }
+.upload-lbl { font-size: 13px; color: var(--text-muted); }
+.upload-area.uploaded .upload-lbl { color: #1b5e20; font-weight: 500; }
+.prog-bar { height: 4px; background: #e5e7eb; border-radius: 2px; margin: 8px 0; }
+.prog-fill { height: 100%; background: var(--green-dark); border-radius: 2px; transition: width .3s; }
+.result-ok { background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: var(--radius); padding: 1rem; margin-bottom: .75rem; }
+.result-warn { background: #fff8e1; border: 1px solid #ffe082; border-radius: var(--radius); padding: 1rem; margin-bottom: .75rem; }
+.result-block { background: #fce4ec; border: 1px solid #f48fb1; border-radius: var(--radius); padding: 1rem; margin-bottom: .75rem; }
+.rt { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+.result-ok .rt { color: #1b5e20; }
+.result-warn .rt { color: #e65100; }
+.result-block .rt { color: #880e4f; }
+.rtxt { font-size: 13px; line-height: 1.65; }
+.result-ok .rtxt { color: #2e7d32; }
+.result-warn .rtxt { color: #bf360c; }
+.result-block .rtxt { color: #880e4f; }
+.alt-card { border: 1px solid rgba(0,0,0,.08); border-radius: 8px; padding: .8rem 1rem; margin-bottom: 8px; background: #fff; }
+.alt-title { font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 8px; margin-bottom: 3px; flex-wrap: wrap; }
+.alt-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+.alt-badge { font-size: 10px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
+.ab-green { background: #e8f5e9; color: #1b5e20; }
+.ab-amber { background: #fff8e1; color: #e65100; }
+.ab-blue { background: #e3f0fb; color: #0c447c; }
+.ab-purple { background: #ede7f6; color: #4527a0; }
+.sec-lbl { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin: .75rem 0 .4rem; }
+.spin { animation: sp 1s linear infinite; display: inline-block; }
+@keyframes sp { to { transform: rotate(360deg); } }
+.law-card { background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; cursor: pointer; }
+.law-card:hover { border-color: rgba(0,0,0,.18); }
+.law-card.open { border-color: var(--green-dark); }
+.law-head { display: flex; align-items: flex-start; gap: 10px; padding: .85rem 1rem; }
+.law-badge { display: inline-flex; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.lb-fed { background: #e3f0fb; color: #0c447c; }
+.lb-aneel { background: #e8f5e9; color: #1b5e20; }
+.lb-abnt { background: #fff8e1; color: #e65100; }
+.lb-est { background: #f3e5f5; color: #6a1b9a; }
+.lb-mun { background: #fce4ec; color: #880e4f; }
+.lb-conc { background: #e0f2f1; color: #00695c; }
+.law-info { flex: 1; min-width: 0; }
+.law-title { font-size: 13px; font-weight: 500; line-height: 1.4; }
+.law-sub-txt { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.law-arrow { color: var(--text-muted); font-size: 16px; transition: transform .2s; flex-shrink: 0; }
+.law-card.open .law-arrow { transform: rotate(180deg); }
+.law-body { display: none; padding: 0 1rem 1rem; border-top: 1px solid rgba(0,0,0,.06); }
+.law-card.open .law-body { display: block; }
+.law-text { font-size: 12px; color: var(--text-muted); line-height: 1.7; margin-top: .75rem; }
+.law-text strong { color: var(--text); }
+.law-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-top: .6rem; }
+.lpill { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text-muted); background: #f3f4f6; padding: 2px 7px; border-radius: 4px; }
+.law-link-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--green-dark); margin-top: .6rem; text-decoration: none; font-weight: 500; }
+.law-link-btn:hover { text-decoration: underline; }
+.search-wrap { display: flex; align-items: center; gap: 8px; background: #f3f4f6; border: 1px solid rgba(0,0,0,.1); border-radius: 8px; padding: 8px 12px; margin-bottom: .75rem; }
+.search-wrap i { color: var(--text-muted); font-size: 16px; }
+.search-wrap input { border: none; background: none; font-size: 13px; color: var(--text); flex: 1; outline: none; font-family: 'Inter', sans-serif; }
+.cat-bar { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; margin-bottom: .75rem; }
+.cat-bar::-webkit-scrollbar { display: none; }
+.catbtn { white-space: nowrap; padding: 4px 11px; border-radius: 20px; font-size: 12px; font-weight: 500; cursor: pointer; border: 1px solid rgba(0,0,0,.12); background: #fff; color: var(--text-muted); font-family: 'Inter', sans-serif; }
+.catbtn.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+.conc-select { width: 100%; padding: 8px 12px; border: 1px solid rgba(0,0,0,.12); border-radius: 8px; font-size: 13px; background: #fff; font-family: 'Inter', sans-serif; margin-bottom: .75rem; }
+.state-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 7px; margin-top: .6rem; }
+.state-card { background: #f9fafb; border: 1px solid rgba(0,0,0,.08); border-radius: 7px; padding: .6rem; cursor: pointer; transition: border-color .15s; }
+.state-card:hover { border-color: var(--green-dark); }
+.state-name { font-size: 12px; font-weight: 500; }
+.state-isencao { font-size: 10px; margin-top: 2px; }
+.si-full { color: #1b5e20; }
+.si-te { color: #0c447c; }
+mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
+.doc-item { display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid rgba(0,0,0,.08); border-radius: 8px; margin-bottom: 6px; }
+.doc-item.uploaded { border-color: var(--green-dark); }
+.doc-icon { width: 34px; height: 34px; background: #f3f4f6; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--text-muted); font-size: 17px; }
+.doc-item.uploaded .doc-icon { background: #e8f5e9; color: #2e7d32; }
+.doc-info { flex: 1; }
+.doc-name { font-size: 13px; font-weight: 500; }
+.doc-desc { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.doc-status { font-size: 11px; }
+.ds-ok { color: #2e7d32; }
+.ds-pend { color: var(--text-muted); }
+.up-btn { background: #f3f4f6; border: 1px dashed rgba(0,0,0,.15); border-radius: 6px; padding: 4px 10px; font-size: 11px; cursor: pointer; color: var(--text-muted); white-space: nowrap; font-family: 'Inter', sans-serif; }
+.up-btn:hover { background: #e5e7eb; }
+.ai-bubble { background: #f0f7f4; border: 1px solid #c8e6c9; border-radius: 10px; border-bottom-left-radius: 2px; padding: .75rem 1rem; margin-bottom: .75rem; font-size: 13px; line-height: 1.65; }
+
+</style>
 </head>
 <body>
 
@@ -215,8 +564,919 @@
     </div>
   </div>
 
-  <script src="src/app.js"></script>
-  <script src="src/diagnostico.js"></script>
-  <script src="src/legislacao.js"></script>
+  <script>
+/* ============================================
+   SOLARHOMOLOG — APP.JS
+   Fluxo principal: login → cadastro → docs → proposta → pagamento → tracking
+   ============================================ */
+
+// ── Abertura / fechamento do modal ──────────────────────────────────────────
+function openApp(screen) {
+  document.getElementById('modal-overlay').classList.add('open');
+  document.getElementById('modal-app').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderScreen(screen || 'screen-welcome');
+}
+
+function closeApp() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.getElementById('modal-app').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderScreen(id) {
+  const body = document.getElementById('modal-body');
+  const screens = {
+    'screen-welcome': screenWelcome,
+    'screen-login': screenLogin,
+    'screen-login-email': screenLoginEmail,
+    'screen-company': screenCompany,
+    'screen-docs': screenDocs,
+    'screen-quote': screenQuote,
+    'screen-payment': screenPayment,
+    'screen-tracking': screenTracking,
+    'screen-diagnostico': () => window.renderDiagnostico(body),
+    'screen-legislacao': () => window.renderLegislacao(body),
+  };
+  if (screens[id]) {
+    if (id === 'screen-diagnostico' || id === 'screen-legislacao') {
+      body.innerHTML = '';
+      screens[id]();
+    } else {
+      body.innerHTML = screens[id]();
+      bindScreen(id);
+    }
+  }
+}
+
+function go(id) { renderScreen(id); document.getElementById('modal-body').scrollTop = 0; }
+
+// ── TELA: Boas-vindas ────────────────────────────────────────────────────────
+function screenWelcome() {
+  return `
+  <h2 class="app-h2">Homologação solar simplificada</h2>
+  <p class="app-sub">Análise gratuita da documentação. Você só paga se quiser prosseguir.</p>
+  <div class="app-card" style="border-color:#f5a623;background:#fffbf0">
+    <div class="app-card-title"><i class="ti ti-gift"></i> Análise gratuita de documentos</div>
+    <p style="font-size:13px;color:#6b7280;line-height:1.6">Verificamos todos os documentos exigidos pela concessionária antes de qualquer cobrança. Você só paga se quiser prosseguir.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem">
+    <div class="app-card" style="margin-bottom:0">
+      <div style="font-size:22px;color:#1a3a2a;font-weight:600">R$ 800</div>
+      <div style="font-size:12px;color:#6b7280">por 10 kW de consumo</div>
+    </div>
+    <div class="app-card" style="margin-bottom:0">
+      <div style="font-size:22px;color:#1a3a2a;font-weight:600">72h</div>
+      <div style="font-size:12px;color:#6b7280">prazo médio de análise</div>
+    </div>
+  </div>
+  <button class="btn btn-primary btn-block" style="margin-bottom:10px" onclick="go('screen-login')">
+    <i class="ti ti-solar-panel"></i> Iniciar homologação gratuita
+  </button>
+  <button class="btn btn-block" style="margin-bottom:10px" onclick="go('screen-diagnostico')">
+    <i class="ti ti-bolt"></i> Verificar minha UC antes de começar
+  </button>
+  <button class="btn btn-block" onclick="go('screen-tracking')">
+    <i class="ti ti-search"></i> Acompanhar processo existente
+  </button>`;
+}
+
+// ── TELA: Login ──────────────────────────────────────────────────────────────
+function screenLogin() {
+  return `
+  <div class="step-bar"><div class="sdot active"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div><span class="slbl">Acesso à conta</span></div>
+  <h2 class="app-h2">Criar conta ou entrar</h2>
+  <p class="app-sub">Suas informações ficam seguras para acompanhar o processo.</p>
+  <button class="soc-btn" onclick="go('screen-company')">
+    <div class="soc-icon si-g">G</div><span>Continuar com Google</span>
+  </button>
+  <button class="soc-btn" onclick="go('screen-company')">
+    <div class="soc-icon si-a">🍎</div><span>Continuar com Apple</span>
+  </button>
+  <button class="soc-btn" onclick="go('screen-login-email')">
+    <div class="soc-icon si-e">@</div><span>Continuar com e-mail</span>
+  </button>
+  <p style="text-align:center;font-size:11px;color:#6b7280;margin-top:1rem;line-height:1.6">
+    Ao continuar, você concorda com os <a href="#" style="color:#1a3a2a">Termos de Uso</a> e <a href="#" style="color:#1a3a2a">Política de Privacidade</a>.
+  </p>`;
+}
+
+function screenLoginEmail() {
+  return `
+  <div class="step-bar"><div class="sdot active"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div><span class="slbl">Acesso por e-mail</span></div>
+  <h2 class="app-h2">Entrar com e-mail</h2>
+  <p class="app-sub">Informe seu e-mail para receber um link de acesso seguro.</p>
+  <label class="app-label">E-mail</label>
+  <input type="email" id="email-inp" class="app-input" placeholder="seu@email.com.br" />
+  <button class="btn btn-primary btn-block" style="margin-bottom:10px" onclick="sendEmailLink()">
+    <i class="ti ti-send"></i> Enviar link de acesso
+  </button>
+  <button class="btn btn-block" onclick="go('screen-login')">Voltar</button>`;
+}
+
+function sendEmailLink() {
+  const e = document.getElementById('email-inp').value;
+  if (!e || !e.includes('@')) { alert('Informe um e-mail válido.'); return; }
+  alert('Link enviado para ' + e + '!\nVerifique sua caixa de entrada.');
+  go('screen-company');
+}
+
+// ── TELA: Cadastro ───────────────────────────────────────────────────────────
+function screenCompany() {
+  return `
+  <div class="step-bar"><div class="sdot done"></div><div class="sdot active"></div><div class="sdot"></div><div class="sdot"></div><span class="slbl">Cadastro</span></div>
+  <h2 class="app-h2">Cadastro</h2>
+  <p class="app-sub">Preencha os dados exigidos pela concessionária.</p>
+  <div class="tabs">
+    <button class="tab active" id="tab-pj" onclick="switchTab('pj')">Pessoa Jurídica</button>
+    <button class="tab" id="tab-pf" onclick="switchTab('pf')">Pessoa Física</button>
+  </div>
+  <div id="tabpanel-pj" class="tab-panel active">
+    <div class="app-card">
+      <div class="app-card-title"><i class="ti ti-building"></i>Dados da empresa</div>
+      <label class="app-label">Razão Social *</label>
+      <input type="text" class="app-input" placeholder="Conforme CNPJ" />
+      <label class="app-label">CNPJ *</label>
+      <input type="text" class="app-input" id="cnpj-inp" placeholder="00.000.000/0000-00" oninput="maskCNPJ(this)" />
+      <label class="app-label">Nome do Representante Legal *</label>
+      <input type="text" class="app-input" placeholder="Conforme procuração" />
+      <label class="app-label">CPF do Representante *</label>
+      <input type="text" class="app-input" placeholder="000.000.000-00" />
+    </div>
+  </div>
+  <div id="tabpanel-pf" class="tab-panel">
+    <div class="app-card">
+      <div class="app-card-title"><i class="ti ti-user"></i>Dados pessoais</div>
+      <label class="app-label">Nome completo *</label>
+      <input type="text" class="app-input" placeholder="Conforme documento" />
+      <div class="app-row2">
+        <div><label class="app-label">CPF *</label><input type="text" class="app-input" placeholder="000.000.000-00" /></div>
+        <div><label class="app-label">RG *</label><input type="text" class="app-input" placeholder="00.000.000-0" /></div>
+      </div>
+      <label class="app-label">Data de nascimento *</label>
+      <input type="date" class="app-input" />
+    </div>
+  </div>
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-map-pin"></i>Endereço de instalação</div>
+    <label class="app-label">CEP *</label>
+    <input type="text" class="app-input" id="cep-inp" placeholder="00000-000" oninput="maskCEP(this)" />
+    <div class="app-row2">
+      <div><label class="app-label">Logradouro *</label><input type="text" class="app-input" placeholder="Rua, Av..." /></div>
+      <div><label class="app-label">Número *</label><input type="text" class="app-input" placeholder="123" /></div>
+    </div>
+    <div class="app-row2">
+      <div><label class="app-label">Cidade *</label><input type="text" class="app-input" /></div>
+      <div><label class="app-label">Estado *</label>
+        <select class="app-select">
+          <option value="">UF</option>
+          ${['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO'].map(u=>`<option>${u}</option>`).join('')}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-bolt"></i>Dados da concessionária</div>
+    <label class="app-label">Concessionária *</label>
+    <select class="app-select">
+      <option value="">Selecione</option>
+      ${['ENEL SP','ENEL RJ','CEMIG','COPEL','CELESC','CPFL Paulista','CPFL Piratininga','Light','Elektro','COELBA','CELPE','ENERGISA','Outra'].map(c=>`<option>${c}</option>`).join('')}
+    </select>
+    <label class="app-label">Número da instalação (UC) *</label>
+    <input type="text" class="app-input" placeholder="Conforme conta de energia" />
+    <label class="app-label">Número do medidor</label>
+    <input type="text" class="app-input" placeholder="Opcional" />
+  </div>
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-phone"></i>Contato</div>
+    <div class="app-row2">
+      <div><label class="app-label">WhatsApp *</label><input type="text" class="app-input" placeholder="(11) 99999-9999" /></div>
+      <div><label class="app-label">E-mail *</label><input type="text" class="app-input" placeholder="email@empresa.com" /></div>
+    </div>
+  </div>
+  <button class="btn btn-primary btn-block" onclick="go('screen-docs')">
+    <i class="ti ti-arrow-right"></i> Avançar para documentos
+  </button>`;
+}
+
+// ── TELA: Documentos ─────────────────────────────────────────────────────────
+let uploadedDocs = {};
+let totalUploaded = 0;
+
+const docList = [
+  {id:'conta', icon:'ti-file-invoice', name:'Conta de energia elétrica', desc:'Última fatura com número de instalação visível'},
+  {id:'procuracao', icon:'ti-file-text', name:'Procuração', desc:'Pública ou particular com firma reconhecida'},
+  {id:'planta', icon:'ti-blueprint', name:'Planta / Memorial descritivo', desc:'Projeto elétrico assinado por engenheiro (ART/RRT)'},
+  {id:'art', icon:'ti-certificate', name:'ART / RRT do engenheiro', desc:'Anotação de Responsabilidade Técnica — CREA/CAU'},
+  {id:'identidade', icon:'ti-id', name:'Documento de identidade', desc:'RG, CNH ou passaporte do responsável'},
+  {id:'contrato', icon:'ti-file-check', name:'Contrato social / CNPJ (PJ)', desc:'Ato constitutivo ou comprovante de CNPJ'},
+];
+
+function screenDocs() {
+  uploadedDocs = {}; totalUploaded = 0;
+  return `
+  <div class="step-bar"><div class="sdot done"></div><div class="sdot done"></div><div class="sdot active"></div><div class="sdot"></div><span class="slbl">Documentação</span></div>
+  <h2 class="app-h2">Envio de documentos</h2>
+  <p class="app-sub">Faça upload dos documentos. A análise é 100% gratuita.</p>
+  <div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:9px 13px;font-size:12px;color:#e65100;margin-bottom:.75rem;display:flex;gap:8px;align-items:flex-start">
+    <i class="ti ti-info-circle"></i><span>Você só decide se prossegue após ver o resultado da análise gratuita.</span>
+  </div>
+  <div id="doc-list">
+    ${docList.map(d => renderDocItem(d)).join('')}
+  </div>
+  <div id="analyze-area" style="display:none;margin-top:.75rem">
+    <button class="btn btn-solar btn-block" id="analyze-btn" onclick="runAnalysis()">
+      <i class="ti ti-sparkles"></i> Analisar documentos gratuitamente
+    </button>
+  </div>
+  <div id="analysis-result" style="display:none"></div>`;
+}
+
+function renderDocItem(d) {
+  const done = uploadedDocs[d.id];
+  return `<div class="doc-item${done?' uploaded':''}" id="doc-${d.id}">
+    <div class="doc-icon"><i class="ti ${d.icon}"></i></div>
+    <div class="doc-info">
+      <div class="doc-name">${d.name}</div>
+      <div class="doc-desc">${d.desc}</div>
+    </div>
+    <div style="text-align:right">
+      <div class="doc-status ${done?'ds-ok':'ds-pend'}" id="st-${d.id}">${done?'✓ Enviado':'Pendente'}</div>
+      <button class="up-btn" onclick="simUpload('${d.id}')">${done?'Reenviar':'Enviar'}</button>
+    </div>
+  </div>`;
+}
+
+function simUpload(id) {
+  if (uploadedDocs[id]) return;
+  uploadedDocs[id] = true; totalUploaded++;
+  const item = document.getElementById('doc-'+id);
+  const st = document.getElementById('st-'+id);
+  if (item) { item.classList.add('uploaded'); item.querySelector('.doc-icon i').className = 'ti ti-circle-check'; }
+  if (st) { st.textContent = '✓ Enviado'; st.className = 'doc-status ds-ok'; }
+  if (totalUploaded >= 3) document.getElementById('analyze-area').style.display = 'block';
+}
+
+function runAnalysis() {
+  const btn = document.getElementById('analyze-btn');
+  btn.innerHTML = '<i class="ti ti-loader spin"></i> Analisando com IA...';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('analyze-area').style.display = 'none';
+    const res = document.getElementById('analysis-result');
+    res.style.display = 'block';
+    res.innerHTML = `
+      <div class="result-ok"><div class="rt">✓ Documentação aprovada</div>
+        <div class="rtxt">Os documentos enviados estão em conformidade com os requisitos da concessionária. O processo está pronto para prosseguir.</div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="go('screen-quote')">
+        <i class="ti ti-arrow-right"></i> Ver proposta e prosseguir
+      </button>`;
+  }, 2500);
+}
+
+// ── TELA: Proposta ───────────────────────────────────────────────────────────
+function screenQuote() {
+  return `
+  <div class="step-bar"><div class="sdot done"></div><div class="sdot done"></div><div class="sdot done"></div><div class="sdot active"></div><span class="slbl">Proposta</span></div>
+  <h2 class="app-h2">Proposta de serviço</h2>
+  <p class="app-sub">Calculamos o valor com base na conta de energia.</p>
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-calculator"></i>Calculadora</div>
+    <label class="app-label">Consumo médio mensal (kWh)</label>
+    <input type="number" id="cons-inp" class="app-input" value="450" min="0" step="10" oninput="calcPrice()" />
+    <label class="app-label">ou potência do sistema (kW)</label>
+    <input type="number" id="kw-inp" class="app-input" value="8.2" min="0" step="0.1" oninput="calcPriceKw()" />
+  </div>
+  <div class="price-display">
+    <div class="pd-label">Valor total do serviço</div>
+    <div class="pd-value" id="price-disp">R$ 656,00</div>
+    <div class="pd-detail" id="price-det">8,2 kW × R$ 80,00/kW (base: R$ 800/10kW)</div>
+  </div>
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-list-check"></i>O que está incluído</div>
+    ${['Protocolo junto à concessionária','Acompanhamento até aprovação','Revisão completa de documentação','Comunicação com a concessionária','Notificações WhatsApp + e-mail'].map(i=>`<div class="info-row"><span class="info-key">${i}</span><span class="badge badge-green">Incluso</span></div>`).join('')}
+  </div>
+  <button class="btn btn-solar btn-block" style="margin-bottom:10px" onclick="go('screen-payment')">
+    <i class="ti ti-credit-card"></i> Aceitar proposta e pagar
+  </button>
+  <button class="btn btn-block" onclick="go('screen-docs')"><i class="ti ti-arrow-left"></i> Voltar</button>`;
+}
+
+function calcPrice() {
+  const c = parseFloat(document.getElementById('cons-inp').value)||0;
+  const kw = c/100;
+  document.getElementById('kw-inp').value = kw.toFixed(1);
+  updatePrice(kw);
+}
+function calcPriceKw() {
+  const kw = parseFloat(document.getElementById('kw-inp').value)||0;
+  document.getElementById('cons-inp').value = (kw*100).toFixed(0);
+  updatePrice(kw);
+}
+function updatePrice(kw) {
+  const total = kw * 80;
+  document.getElementById('price-disp').textContent = 'R$ ' + total.toLocaleString('pt-BR',{minimumFractionDigits:2});
+  document.getElementById('price-det').textContent = kw.toFixed(1)+' kW × R$ 80,00/kW (base: R$ 800/10kW)';
+}
+
+// ── TELA: Pagamento ──────────────────────────────────────────────────────────
+function screenPayment() {
+  return `
+  <h2 class="app-h2">Pagamento</h2>
+  <p class="app-sub">Escolha a forma de pagamento para iniciar a homologação.</p>
+  <div class="app-card" style="border-color:#f5a623">
+    <div class="app-card-title">Resumo</div>
+    <div class="info-row"><span class="info-key">Serviço</span><span>Homologação solar</span></div>
+    <div class="info-row"><span class="info-key"><strong>Total</strong></span><span style="color:#1a3a2a;font-size:16px;font-weight:600">R$ 656,00</span></div>
+  </div>
+  <div class="tabs">
+    <button class="tab active" id="ptab-pix" onclick="switchPayTab('pix')">PIX</button>
+    <button class="tab" id="ptab-card" onclick="switchPayTab('card')">Cartão</button>
+    <button class="tab" id="ptab-boleto" onclick="switchPayTab('boleto')">Boleto</button>
+  </div>
+  <div id="ppanel-pix" class="tab-panel active">
+    <div class="app-card" style="text-align:center">
+      <div style="width:140px;height:140px;background:#f3f4f6;border-radius:8px;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center">
+        <i class="ti ti-qrcode" style="font-size:72px;color:#9ca3af"></i>
+      </div>
+      <p style="font-size:12px;color:#6b7280">QR Code gerado no pagamento real</p>
+      <button class="btn btn-sm" style="margin-top:10px"><i class="ti ti-copy"></i> Copiar chave PIX</button>
+    </div>
+  </div>
+  <div id="ppanel-card" class="tab-panel">
+    <div class="app-card">
+      <label class="app-label">Número do cartão</label>
+      <input type="text" class="app-input" placeholder="0000 0000 0000 0000" />
+      <div class="app-row2">
+        <div><label class="app-label">Validade</label><input type="text" class="app-input" placeholder="MM/AA" /></div>
+        <div><label class="app-label">CVV</label><input type="text" class="app-input" placeholder="000" /></div>
+      </div>
+      <label class="app-label">Nome no cartão</label>
+      <input type="text" class="app-input" />
+      <label class="app-label">Parcelamento</label>
+      <select class="app-select"><option>À vista</option><option>2x sem juros</option><option>3x sem juros</option></select>
+    </div>
+  </div>
+  <div id="ppanel-boleto" class="tab-panel">
+    <div class="app-card" style="text-align:center">
+      <i class="ti ti-barcode" style="font-size:48px;color:#9ca3af"></i>
+      <p style="font-size:12px;color:#6b7280;margin-top:10px">Vence em 3 dias úteis. Processo inicia após confirmação.</p>
+      <button class="btn btn-sm" style="margin-top:10px"><i class="ti ti-download"></i> Gerar boleto</button>
+    </div>
+  </div>
+  <button class="btn btn-primary btn-block" style="margin-top:1rem" onclick="go('screen-tracking')">
+    <i class="ti ti-check"></i> Confirmar pagamento
+  </button>`;
+}
+
+// ── TELA: Acompanhamento ─────────────────────────────────────────────────────
+function screenTracking() {
+  return `
+  <h2 class="app-h2">Acompanhar processo</h2>
+  <p class="app-sub">Protocolo <strong>#SH-2025-0842</strong> · <span class="badge badge-amber">Em andamento</span></p>
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-progress"></i>Etapas do processo</div>
+    <div class="progress-steps">
+      ${[
+        {done:true, title:'Documentação recebida', sub:'12/06/2025 — 6 documentos aprovados'},
+        {done:true, title:'Pagamento confirmado', sub:'12/06/2025 — R$ 656,00 via PIX'},
+        {done:true, title:'Processo protocolado', sub:'13/06/2025 — Protocolo ENEL: 2025061300482'},
+        {active:true, title:'Análise pela concessionária', sub:'Em análise — prazo: 18/06/2025'},
+        {title:'Aprovação e parecer', sub:'Aguardando'},
+        {title:'Vistoria (se necessária)', sub:'Aguardando'},
+        {title:'Homologação concluída', sub:'Aguardando'},
+      ].map(s=>`<div class="ps-item${s.done?' done':s.active?' active':''}">
+        <div class="ps-circle">${s.done?'<i class="ti ti-check" style="font-size:8px"></i>':s.active?'•':''}</div>
+        <div class="ps-title">${s.title}</div>
+        <div class="ps-sub">${s.sub}</div>
+      </div>`).join('')}
+    </div>
+  </div>
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-bell"></i>Notificações</div>
+    <div class="info-row"><span class="info-key">WhatsApp</span><span class="badge badge-green">Ativo</span></div>
+    <div class="info-row"><span class="info-key">E-mail</span><span class="badge badge-green">Ativo</span></div>
+  </div>
+  <button class="btn btn-primary btn-block" onclick="go('screen-welcome')"><i class="ti ti-home"></i> Voltar ao início</button>`;
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+function switchTab(t) {
+  ['pj','pf'].forEach(x => {
+    document.getElementById('tab-'+x)?.classList.toggle('active', x===t);
+    document.getElementById('tabpanel-'+x)?.classList.toggle('active', x===t);
+  });
+}
+function switchPayTab(t) {
+  ['pix','card','boleto'].forEach(x => {
+    document.getElementById('ptab-'+x)?.classList.toggle('active', x===t);
+    document.getElementById('ppanel-'+x)?.classList.toggle('active', x===t);
+  });
+}
+function maskCNPJ(el) {
+  let v = el.value.replace(/\D/g,'').slice(0,14);
+  v = v.replace(/^(\d{2})(\d)/,'$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3')
+       .replace(/\.(\d{3})(\d)/,'.$1/$2').replace(/(\d{4})(\d)/,'$1-$2');
+  el.value = v;
+}
+function maskCEP(el) {
+  let v = el.value.replace(/\D/g,'').slice(0,8);
+  if (v.length > 5) v = v.slice(0,5)+'-'+v.slice(5);
+  el.value = v;
+}
+function bindScreen(id) {
+  // re-bind de eventos dinâmicos se necessário
+}
+
+// ── Teclado: ESC fecha o modal ───────────────────────────────────────────────
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeApp(); });
+
+  </script>
+  <script>
+/* ============================================
+   SOLARHOMOLOG — DIAGNOSTICO.JS
+   ============================================ */
+
+const concRisks = {
+  cpfl:{name:'CPFL Paulista / Piratininga',risk:'alto',regioes:'Interior de SP (Campinas, Ribeirão, Sorocaba)',nota:'CPFL lidera rejeições por inversão de fluxo desde out/2024, inclusive em sistemas ≤7,5 kW.'},
+  rge:{name:'RGE (RS)',risk:'alto',regioes:'Caxias do Sul, Novo Hamburgo, Santa Maria',nota:'RGE tem os maiores índices de reprovação por inversão de fluxo do país.'},
+  cemig:{name:'CEMIG (MG)',risk:'medio',regioes:'Sul de Minas, Triângulo Mineiro',nota:'Casos crescentes de negativa sem apresentação do estudo completo.'},
+  enel_sp:{name:'ENEL SP',risk:'baixo',regioes:'Grande São Paulo',nota:'Taxas menores de reprovação. Processo ágil pelo portal.'},
+  enel_rj:{name:'ENEL RJ',risk:'baixo',regioes:'Região metropolitana RJ',nota:'Processo regular, poucos registros de negativas.'},
+  copel:{name:'COPEL (PR)',risk:'medio',regioes:'Interior do Paraná',nota:'Casos pontuais de inversão de fluxo.'},
+  celesc:{name:'CELESC (SC)',risk:'baixo',regioes:'Santa Catarina em geral',nota:'Processo relativamente tranquilo.'},
+  light:{name:'Light (RJ)',risk:'baixo',regioes:'Capital e região metropolitana RJ',nota:'Processo regular via Agência Light online.'},
+  elektro:{name:'Elektro (SP/MS)',risk:'medio',regioes:'Interior de SP e MS',nota:'Casos isolados em regiões de alta penetração.'},
+  coelba:{name:'COELBA (BA)',risk:'baixo',regioes:'Bahia em geral',nota:'Poucas negativas registradas.'},
+  energisa:{name:'Energisa',risk:'medio',regioes:'Diversas regiões',nota:'Varia por área de concessão.'},
+  outro:{name:'Concessionária',risk:'indefinido',regioes:'—',nota:'Verifique o histórico específico desta concessionária.'},
+};
+
+const sitObs = {
+  normal:{ok:true,bloq:false,msg:''},
+  ramal_part:{ok:false,bloq:true,msg:'<strong>UC com ramal particular / rede privada:</strong> a concessionária não acessa o ponto de medição diretamente, impedindo a troca do medidor bidirecional, etapa obrigatória da homologação.'},
+  submedida:{ok:false,bloq:true,msg:'<strong>UC submedida de outra UC principal:</strong> o medidor é derivado de outra instalação. A concessionária exige medição própria com ramal individual para homologar GD.'},
+  compartilhada:{ok:false,bloq:false,msg:'<strong>UC em condomínio sem medidor individual:</strong> o processo padrão é bloqueado, mas há alternativa via EMUC (Empreendimento com Múltiplas UCs).'},
+  rural_sem_uc:{ok:false,bloq:false,msg:'<strong>Imóvel rural sem UC formal:</strong> necessário regularizar o ponto de fornecimento junto à distribuidora antes de homologar.'},
+  aluguel:{ok:false,bloq:false,msg:'<strong>Imóvel alugado — titular diferente do solicitante:</strong> a homologação exige autorização formal do proprietário (procuração pública + aditivo de locação).'},
+  debito:{ok:false,bloq:true,msg:'<strong>UC com débito em aberto:</strong> a distribuidora não processa pedidos de GD enquanto houver pendência financeira no cadastro.'},
+  irregular:{ok:false,bloq:true,msg:'<strong>UC em situação irregular:</strong> regularização obrigatória antes de qualquer solicitação junto à concessionária.'},
+};
+
+window.renderDiagnostico = function(container) {
+  container.innerHTML = buildDiagScreen1();
+};
+
+function buildDiagScreen1() {
+  return `
+  <div class="step-bar"><div class="sdot active"></div><div class="sdot"></div><div class="sdot"></div><span class="slbl">Verificar minha UC</span></div>
+  <h2 class="app-h2">Diagnóstico de viabilidade</h2>
+  <p class="app-sub">Identifique impedimentos antes de instalar o sistema solar.</p>
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-file-invoice"></i>Envie a conta de luz</div>
+    <div class="upload-area" id="diag-upload" onclick="diagSimUpload()">
+      <div class="upload-icon" id="du-icon"><i class="ti ti-cloud-upload"></i></div>
+      <div class="upload-lbl" id="du-lbl">Toque para enviar a conta (PDF, foto ou imagem)</div>
+      <div style="font-size:11px;color:#6b7280;margin-top:4px">A IA extrai os dados automaticamente</div>
+    </div>
+    <div id="du-prog" style="display:none"><div class="prog-bar"><div class="prog-fill" id="du-pf" style="width:0%"></div></div></div>
+  </div>
+  <div class="app-card" id="diag-manual">
+    <div class="app-card-title"><i class="ti ti-keyboard"></i>Ou preencha manualmente</div>
+    <label class="app-label">Número da UC *</label>
+    <input type="text" id="d-uc" class="app-input" placeholder="Ex.: 7010482930" />
+    <label class="app-label">Concessionária *</label>
+    <select id="d-conc" class="app-select">
+      <option value="">— Selecione —</option>
+      <option value="enel_sp">ENEL SP</option>
+      <option value="enel_rj">ENEL RJ</option>
+      <option value="cemig">CEMIG (MG)</option>
+      <option value="cpfl">CPFL Paulista / Piratininga</option>
+      <option value="rge">RGE (RS)</option>
+      <option value="copel">COPEL (PR)</option>
+      <option value="celesc">CELESC (SC)</option>
+      <option value="light">Light (RJ)</option>
+      <option value="elektro">Elektro (SP/MS)</option>
+      <option value="coelba">COELBA (BA)</option>
+      <option value="energisa">Energisa</option>
+      <option value="outro">Outra</option>
+    </select>
+    <div class="app-row2">
+      <div>
+        <label class="app-label">Consumo médio (kWh/mês)</label>
+        <input type="number" id="d-cons" class="app-input" placeholder="Ex.: 450" />
+      </div>
+      <div>
+        <label class="app-label">Potência a instalar (kWp)</label>
+        <input type="number" id="d-kw" class="app-input" placeholder="Ex.: 8.2" step="0.1" />
+      </div>
+    </div>
+    <label class="app-label">Situação da UC *</label>
+    <select id="d-sit" class="app-select">
+      <option value="">Selecione</option>
+      <option value="normal">Regular — em nome do titular</option>
+      <option value="ramal_part">Ramal particular / rede privada</option>
+      <option value="submedida">Submedida de outra UC</option>
+      <option value="compartilhada">Condomínio sem medidor individual</option>
+      <option value="rural_sem_uc">Imóvel rural sem UC formal</option>
+      <option value="aluguel">Imóvel alugado (titular ≠ solicitante)</option>
+      <option value="debito">UC com débito em aberto</option>
+      <option value="irregular">UC em situação irregular</option>
+    </select>
+  </div>
+  <button class="btn btn-solar btn-block" onclick="runDiag()">
+    <i class="ti ti-sparkles"></i> Analisar viabilidade com IA
+  </button>`;
+}
+
+function diagSimUpload() {
+  const box = document.getElementById('diag-upload');
+  const icon = document.getElementById('du-icon');
+  const lbl = document.getElementById('du-lbl');
+  const pw = document.getElementById('du-prog');
+  const pf = document.getElementById('du-pf');
+  if (!box || box.classList.contains('uploaded')) return;
+  pw.style.display = 'block';
+  let p = 0;
+  const iv = setInterval(() => {
+    p += Math.random() * 20 + 8;
+    if (p > 100) p = 100;
+    pf.style.width = p + '%';
+    if (p >= 100) {
+      clearInterval(iv);
+      box.classList.add('uploaded');
+      icon.innerHTML = '<i class="ti ti-circle-check"></i>';
+      lbl.textContent = 'conta_energia.pdf — dados extraídos';
+      pw.style.display = 'none';
+      document.getElementById('d-uc').value = '7010482930';
+      document.getElementById('d-conc').value = 'cpfl';
+      document.getElementById('d-cons').value = '620';
+      document.getElementById('d-kw').value = '12.4';
+      document.getElementById('d-sit').value = 'normal';
+    }
+  }, 120);
+}
+
+function runDiag() {
+  const conc = document.getElementById('d-conc').value;
+  const sit  = document.getElementById('d-sit').value;
+  const kw   = parseFloat(document.getElementById('d-kw').value) || 8;
+  const cons = parseFloat(document.getElementById('d-cons').value) || 400;
+  const uc   = document.getElementById('d-uc').value || '—';
+  if (!conc || !sit) { alert('Preencha ao menos a concessionária e a situação da UC.'); return; }
+
+  const body = document.getElementById('modal-body');
+  body.innerHTML = buildDiagLoading();
+  let p = 0;
+  const steps = ['Lendo UC...','Verificando concessionária...','Consultando restrições da região...','Analisando inversão de fluxo...','Gerando diagnóstico...'];
+  let i = 0;
+  const iv = setInterval(() => {
+    p += 20; if (p > 100) p = 100;
+    const pf = document.getElementById('dl-pf');
+    const st = document.getElementById('dl-st');
+    if (pf) pf.style.width = p + '%';
+    if (st) st.textContent = steps[Math.min(i, steps.length-1)];
+    i++;
+    if (p >= 100) { clearInterval(iv); setTimeout(() => body.innerHTML = buildDiagResult(conc, sit, kw, cons, uc), 400); }
+  }, 500);
+}
+
+function buildDiagLoading() {
+  return `<div style="text-align:center;padding:3rem 1rem">
+    <div style="font-size:48px;color:#f5a623;margin-bottom:1rem"><i class="ti ti-loader spin"></i></div>
+    <div style="font-size:16px;font-weight:600;margin-bottom:.4rem">Analisando sua UC...</div>
+    <div style="font-size:13px;color:#6b7280">Verificando concessionária e restrições</div>
+    <div class="prog-bar" style="margin:1.5rem auto;max-width:280px">
+      <div class="prog-fill" id="dl-pf" style="width:0%"></div>
+    </div>
+    <div style="font-size:12px;color:#6b7280" id="dl-st">Lendo UC...</div>
+  </div>`;
+}
+
+function buildDiagResult(conc, sit, kw, cons, uc) {
+  const cr  = concRisks[conc] || concRisks['outro'];
+  const sob = sitObs[sit] || {ok:true,bloq:false,msg:''};
+  const ratio = cons > 0 ? (kw * 100) / cons : 1;
+  const ft = kw <= 7.5;
+  let status = 'ok';
+  let motivos = [];
+
+  if (!sob.ok) {
+    if (sob.bloq) { status = 'block'; motivos.push({t:'block', m: sob.msg}); }
+    else { if (status!=='block') status='warn'; motivos.push({t:'warn', m: sob.msg}); }
+  }
+  if (cr.risk === 'alto' && !ft) {
+    if (status!=='block') status='block';
+    motivos.push({t:'block', m:`<strong>Alto risco — inversão de fluxo (${cr.name}):</strong> regiões afetadas: ${cr.regioes}. ${cr.nota}`});
+  } else if (cr.risk === 'alto' && ft) {
+    if (status!=='block') status='warn';
+    motivos.push({t:'warn', m:`<strong>Atenção — Fast Track (${kw} kWp ≤ 7,5 kW):</strong> deveria dispensar análise de inversão de fluxo (REN 1.098/2024), mas ${cr.name} ainda reprova projetos nessa faixa ilegalmente.`});
+  } else if (cr.risk === 'medio') {
+    if (status==='ok') status='warn';
+    motivos.push({t:'warn', m:`<strong>Risco moderado (${cr.name}):</strong> ${cr.nota}`});
+  }
+  if (ratio > 120) {
+    if (status==='ok') status='warn';
+    motivos.push({t:'warn', m:`<strong>Sistema superdimensionado (${ratio.toFixed(0)}% do consumo):</strong> potência muito acima do consumo aumenta risco de reprovação. Recomenda-se ajustar para ≤110%.`});
+  }
+
+  const titles = {ok:'✓ UC viável para homologação direta', warn:'⚠ Atenção — homologação possível com condições', block:'✗ Homologação direta bloqueada — veja alternativas'};
+  const texts = {
+    ok:`A UC <strong>${uc}</strong> não apresenta impedimentos. ${cr.name} tem histórico favorável.`,
+    warn:`A UC apresenta pontos de atenção que podem gerar atrasos ou exigir adaptações técnicas.`,
+    block:`A UC apresenta impedimentos para o processo padrão. Veja os caminhos alternativos abaixo.`,
+  };
+
+  let html = `<div class="step-bar"><div class="sdot done"></div><div class="sdot done"></div><div class="sdot active"></div><span class="slbl">Diagnóstico</span></div>`;
+
+  html += `<div class="app-card">
+    <div class="app-card-title"><i class="ti ti-bolt"></i>UC identificada</div>
+    <div class="info-row"><span class="info-key">Número da UC</span><span style="font-weight:500">${uc}</span></div>
+    <div class="info-row"><span class="info-key">Concessionária</span><span style="font-weight:500">${cr.name}</span></div>
+    <div class="info-row"><span class="info-key">Consumo médio</span><span style="font-weight:500">${cons} kWh/mês</span></div>
+    <div class="info-row"><span class="info-key">Sistema solar</span><span style="font-weight:500">${kw} kWp</span></div>
+  </div>`;
+
+  html += `<div class="result-${status}"><div class="rt">${titles[status]}</div><div class="rtxt">${texts[status]}</div></div>`;
+
+  if (motivos.length) {
+    html += `<div class="sec-lbl">Motivos identificados</div>`;
+    motivos.forEach(m => { html += `<div class="result-${m.t}" style="margin-bottom:7px"><div class="rtxt">${m.m}</div></div>`; });
+  }
+
+  html += `<div class="sec-lbl">Alternativas disponíveis</div>`;
+
+  if (sit === 'submedida' || sit === 'ramal_part')
+    html += altC('Regularizar ponto de entrega junto à concessionária','Solicitar individualização da UC com ramal e medidor próprio. Após regularização, o processo padrão é viável.','Pré-requisito','ab-amber','ti-plug-connected');
+  if (sit === 'compartilhada')
+    html += altC('EMUC — área comum do condomínio','Sistema instalado em área comum com medidor exclusivo. Créditos rateados entre condôminos. Exige aprovação em assembleia.','Viável','ab-green','ti-building-community');
+  if (sit === 'aluguel')
+    html += altC('Procuração do proprietário + aditivo contratual','Locatário pode homologar com autorização formal do proprietário (procuração pública + aditivo de locação).','Documentação adicional','ab-amber','ti-writing');
+  if (sit === 'debito' || sit === 'irregular')
+    html += altC('Regularizar a UC antes de tudo','Quitar débitos e regularizar o cadastro. Após isso o processo padrão é viável.','Obrigatório','ab-amber','ti-file-check');
+  if (sit === 'rural_sem_uc') {
+    html += altC('Solicitar ligação rural gratuita','Distribuidoras são obrigadas a conectar imóveis rurais com carga < 50 kW sem custo (RN 1.000/2021 + Dec. 7.520/2011).','Gratuito por lei','ab-green','ti-home');
+    html += altC('Sistema off-grid com baterias','Solução independente da rede. Sem homologação necessária, sem créditos de energia.','Sem compensação','ab-blue','ti-battery-charging');
+  }
+  if (cr.risk === 'alto' || cr.risk === 'medio') {
+    html += altC('Grid Zero — inversor com controle de exportação (EPM)','Configurar inversor para não injetar na rede. Dispensa inversão de fluxo (REN 1.098/2024). Sem créditos futuros.','Aprovação mais rápida','ab-green','ti-solar-panel');
+    html += altC('Sistema híbrido com baterias','Armazenar excedente em vez de injetar. Incentivado pelo REIDI (Lei 15.269/2025 — R$ 1bi/ano até 2030).','Custo maior / incentivo fiscal','ab-blue','ti-battery-4');
+    html += altC('Recurso administrativo na ANEEL','Negativa sem estudo de inversão de fluxo é ilegal (RN 1.000/2021 art.73). Contestar pela Ouvidoria ANEEL ou Procon.','Direito do consumidor','ab-purple','ti-scale');
+    if (kw > 7.5) html += altC('Redimensionar para fast track (≤ 7,5 kW)','Sistemas ≤ 7,5 kW em autoconsumo local têm direito ao fast track, dispensando análise de inversão de fluxo.','Se potência > 7,5 kW','ab-amber','ti-arrows-minimize');
+  }
+  html += altC('Geração compartilhada — consórcio','Unir-se a outros consumidores em cooperativa para instalar em área sem restrição. Créditos distribuídos proporcionalmente.','Para qualquer caso','ab-green','ti-users-group');
+
+  html += `<div class="ai-bubble"><strong>Recomendação da IA:</strong> ${
+    status==='ok' ? 'Sua UC está apta. Você pode iniciar o processo de homologação agora.' :
+    status==='warn' ? 'Nossa equipe pode preparar o processo considerando as adaptações necessárias para maximizar as chances de aprovação.' :
+    'A homologação direta está bloqueada, mas há caminhos viáveis. Nossa equipe orienta qual é o melhor para o seu caso, sem custo adicional.'
+  }</div>`;
+
+  if (status === 'ok') {
+    html += `<button class="btn btn-solar btn-block" style="margin-bottom:8px" onclick="go('screen-login')"><i class="ti ti-arrow-right"></i> Iniciar homologação agora</button>`;
+  } else {
+    html += `<button class="btn btn-solar btn-block" style="margin-bottom:8px" onclick="go('screen-login')"><i class="ti ti-message-circle"></i> Falar com nossa equipe sobre as alternativas</button>`;
+  }
+  html += `<button class="btn btn-block" onclick="window.renderDiagnostico(document.getElementById('modal-body'))"><i class="ti ti-refresh"></i> Analisar outra UC</button>`;
+
+  return html;
+}
+
+function altC(title, desc, badge, bc, icon) {
+  return `<div class="alt-card">
+    <div class="alt-title"><i class="ti ${icon}" style="font-size:15px;color:#1a3a2a"></i>${title}<span class="alt-badge ${bc}">${badge}</span></div>
+    <div class="alt-desc">${desc}</div>
+  </div>`;
+}
+
+  </script>
+  <script>
+/* ============================================
+   SOLARHOMOLOG — LEGISLACAO.JS
+   ============================================ */
+
+const laws = [
+  {id:1,cat:'federal',badge:'lb-fed',label:'Federal',title:'Lei 14.300/2022 — Marco Legal da Micro e Minigeração Distribuída',sub:'Sancionada jan 2022 · Vigente',tags:['microgeração','minigeração','fio b','compensação','gd'],
+   text:`<strong>O que é:</strong> Marco Legal da Micro e Minigeração Distribuída. Regula o Sistema de Compensação de Energia (SCEE).<br><br>
+• <strong>Microgeração:</strong> até 75 kW instalados.<br>
+• <strong>Minigeração:</strong> 75 kW a 5 MW (solar) ou até 3 MW (outras fontes).<br>
+• <strong>GD I</strong> (antes de 7/1/2023): regras antigas até 2045.<br>
+• <strong>GD II</strong> (após 7/1/2023): Fio B progressivo — 15% (2023) → 30% (2024) → 45% (2025) → 60% (2026) → 100% (2029).<br>
+• Créditos não utilizados expiram em 60 meses.<br>
+• Distribuidoras têm 30 dias para emitir orçamento de conexão.`,
+   url:'https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm',
+   pills:['GD I e GD II','Fio B escalável','Crédito 60 meses','SCEE']},
+
+  {id:2,cat:'federal',badge:'lb-fed',label:'Federal',title:'Lei 15.269/2025 — Reforma do Setor Elétrico',sub:'Sancionada nov 2025 · Vigente',tags:['reforma','setor elétrico','armazenamento','reidi'],
+   text:`<strong>O que é:</strong> Ampla reforma do setor elétrico brasileiro com impactos na GD.<br><br>
+• Alterações nas regras de tarifação de distribuidoras.<br>
+• Incentivos ao armazenamento de energia (REIDI: R$ 1 bilhão/ano até 2030).<br>
+• Respaldo legal para soluções híbridas e off-grid.<br>
+• Revisão dos procedimentos de conexão à rede.`,
+   url:'https://www.planalto.gov.br',pills:['Reforma 2025','REIDI armazenamento','Híbrido e off-grid']},
+
+  {id:3,cat:'aneel',badge:'lb-aneel',label:'ANEEL',title:'REN ANEEL nº 1.000/2021 — Regras de Distribuição',sub:'7 dez 2021 · Atualizada pela REN 1.098/2024',tags:['distribuição','conexão','prazo','orçamento','formulários'],
+   text:`<strong>O que é:</strong> Norma-mãe da distribuição elétrica no Brasil. Substituiu a REN 482/2012 e 687/2015.<br><br>
+• <strong>Prazo microGD:</strong> 15 dias para emissão do orçamento (sem obras na rede).<br>
+• <strong>Prazo miniGD:</strong> 30 dias para emissão do orçamento.<br>
+• Art. 73: estudo de inversão de fluxo obrigatório com apresentação de alternativas.<br>
+• Art. 83: regras de transição para processos já protocolados.<br>
+• Define as 8 etapas do processo de homologação.`,
+   url:'https://www2.aneel.gov.br/cedoc/ren20211000.html',
+   pills:['15d microGD','30d miniGD','Art. 73 inversão de fluxo','Art. 83 transição']},
+
+  {id:4,cat:'aneel',badge:'lb-aneel',label:'ANEEL',title:'REN ANEEL nº 1.098/2024 — Fast Track e Inversão de Fluxo',sub:'23 jul 2024 · D.O. 31 jul 2024',tags:['fast track','inversão de fluxo','7,5 kw','autoconsumo','mcmv'],
+   text:`<strong>O que é:</strong> Altera a REN 1.000/2021 e simplifica a análise de inversão de fluxo.<br><br>
+<strong>3 casos de dispensa da análise:</strong><br>
+1. <strong>Grid zero:</strong> sistema não injeta energia na rede.<br>
+2. <strong>Consumo compatível:</strong> potência gerada ≤ consumo médio no período de geração.<br>
+3. <strong>Fast track:</strong> microgeração ≤ 7,5 kW em autoconsumo local — dispensa automática.`,
+   url:'https://www2.aneel.gov.br/cedoc/ren20241098.html',
+   pills:['Fast track ≤7,5kW','Grid zero','Autoconsumo local','MCMV solar']},
+
+  {id:5,cat:'abnt',badge:'lb-abnt',label:'ABNT',title:'ABNT NBR 16690:2019 — Instalações de Arranjos Fotovoltaicos',sub:'2019 · Norma principal de projeto · Exigida pelas concessionárias',tags:['projeto','instalação','segurança','inversores','cabos','proteção'],
+   text:`<strong>O que é:</strong> Principal norma técnica para projetos FV. Complementa a NBR 5410.<br><br>
+• Requisitos do arranjo fotovoltaico (até os dispositivos de conversão).<br>
+• Dimensionamento de cabos, proteções e fusíveis CC.<br>
+• Dispositivos de seccionamento (SPDs).<br>
+• Segurança contra choques, sobretensão e incêndio.<br>
+• Exigida no memorial descritivo do projeto pelas concessionárias.`,
+   url:'https://www.abnt.org.br',pills:['Projeto FV','Proteções CC','Memorial descritivo']},
+
+  {id:6,cat:'abnt',badge:'lb-abnt',label:'ABNT',title:'ABNT NBR 17193:2025 — Segurança contra Incêndio em FV',sub:'2025 · Nova norma obrigatória',tags:['incêndio','fdr','segurança','edificações','2025'],
+   text:`<strong>O que é:</strong> Nova norma (2025) com critérios obrigatórios de segurança contra incêndio em instalações FV.<br><br>
+• <strong>FDR obrigatório:</strong> Fire Danger Reducer em todos os sistemas em edificações.<br>
+• Análise de risco por tipo de uso (residencial, comercial, industrial).<br>
+• Sinalização com placas reflexivas nos pontos de controle.<br>
+• Materiais e layout não podem propagar incêndio.`,
+   url:'https://www.abnt.org.br',pills:['FDR obrigatório','Nova 2025','Todos os tipos de edificação']},
+
+  {id:7,cat:'abnt',badge:'lb-abnt',label:'ABNT / MTE',title:'NR-10 — Segurança em Instalações Elétricas',sub:'Ministério do Trabalho · Atualizada',tags:['segurança','instaladores','nr','habilitação','epi'],
+   text:`<strong>O que é:</strong> Norma que regula a segurança dos profissionais em instalações elétricas, incluindo sistemas fotovoltaicos.<br><br>
+• Habilitação e qualificação obrigatória dos instaladores solares.<br>
+• EPI adequado em serviços elétricos.<br>
+• Procedimentos de bloqueio e desenergização.`,
+   url:'https://www.gov.br/trabalho-e-emprego',pills:['Habilitação instaladores','EPI','Bloqueio/desenergização']},
+
+  {id:8,cat:'estadual',badge:'lb-est',label:'Estadual',title:'Legislação estadual de ICMS — todos os estados (Convênio ICMS 16/2015)',sub:'CONFAZ 2015 · Todos os estados e DF aderiram',tags:['icms','isenção','estados','confaz','convênio'],
+   text:`<strong>Base:</strong> Convênio ICMS 16/2015 do CONFAZ possibilita isenção de ICMS sobre energia fornecida pelas distribuidoras a consumidores com sistemas solares.<br><br>
+• <strong>SP:</strong> isenção TE+TUSD vigente até dez/2026 (Decreto 69.827/2024).<br>
+• <strong>MG:</strong> isenção TE+TUSD vigente até 2032 (Decreto 48.506/2022 — Programa Sol de Minas).<br>
+• Demais estados: maioria com isenção TE+TUSD ou apenas TE.`,
+   isEstados:true,
+   url:'https://www.confaz.fazenda.gov.br',pills:['Convênio ICMS 16/2015','Todos os estados','TE+TUSD ou só TE']},
+
+  {id:9,cat:'municipal',badge:'lb-mun',label:'Municipal',title:'Descontos de IPTU para imóveis com sistema solar',sub:'Varia por município',tags:['iptu','desconto','prefeitura','município'],
+   text:`Diversas prefeituras concedem descontos no IPTU para imóveis com sistemas FV:<br><br>
+• <strong>São Paulo (SP):</strong> até 5% de desconto no IPTU.<br>
+• <strong>Curitiba (PR):</strong> desconto progressivo por potência instalada.<br>
+• <strong>Belo Horizonte (MG):</strong> isenção parcial do IPTU.<br>
+• <strong>Porto Alegre (RS):</strong> redução via programa de energia renovável.<br><br>
+<em>Consulte a Secretaria de Finanças do seu município.</em>`,
+   url:'',pills:['Varia por cidade','Até 5% desconto','Secretaria de Finanças']},
+
+  {id:10,cat:'concessionaria',badge:'lb-conc',label:'Concessionária',title:'Prazos legais de resposta das concessionárias',sub:'REN 1.000/2021 + REN 1.098/2024',tags:['prazo','resposta','orçamento','dias','vistoria'],
+   text:`<strong>Prazos máximos legais:</strong><br><br>
+• <strong>15 dias úteis:</strong> orçamento de conexão para microGD em BT sem obras na rede.<br>
+• <strong>30 dias úteis:</strong> orçamento para miniGD ou quando necessário estudo de rede.<br>
+• <strong>30 dias:</strong> após aceite do orçamento → vistoria e troca do medidor.<br>
+• <strong>Descumprimento:</strong> registre reclamação na ANEEL (aneel.gov.br/ouvidoria).`,
+   url:'https://www.aneel.gov.br/ouvidoria',pills:['15d BT sem obras','30d com estudo','30d vistoria/medidor']},
+
+  {id:11,cat:'concessionaria',badge:'lb-conc',label:'Concessionária',title:'Portais de GD das principais concessionárias',sub:'Links oficiais para protocolamento',tags:['portal','enel','cemig','cpfl','copel','celesc','light','elektro'],
+   isConcessionaria:true,
+   text:'Selecione a concessionária para ver o link do portal:',
+   url:'',pills:[]},
+];
+
+const estados = [
+  {uf:'AC',nome:'Acre',isencao:'TE+TUSD',t:'si-full'},{uf:'AL',nome:'Alagoas',isencao:'TE+TUSD',t:'si-full'},
+  {uf:'AM',nome:'Amazonas',isencao:'TE+TUSD',t:'si-full'},{uf:'BA',nome:'Bahia',isencao:'TE+TUSD',t:'si-full'},
+  {uf:'CE',nome:'Ceará',isencao:'TE+TUSD',t:'si-full'},{uf:'DF',nome:'DF',isencao:'TE+TUSD',t:'si-full'},
+  {uf:'ES',nome:'Espírito Santo',isencao:'TE+TUSD',t:'si-full'},{uf:'GO',nome:'Goiás',isencao:'TE+TUSD',t:'si-full'},
+  {uf:'MA',nome:'Maranhão',isencao:'Só TE',t:'si-te'},{uf:'MG',nome:'Minas Gerais',isencao:'TE+TUSD/2032',t:'si-full'},
+  {uf:'MS',nome:'Mato G. Sul',isencao:'TE+TUSD',t:'si-full'},{uf:'MT',nome:'Mato Grosso',isencao:'TE+TUSD',t:'si-full'},
+  {uf:'PA',nome:'Pará',isencao:'TE+TUSD',t:'si-full'},{uf:'PB',nome:'Paraíba',isencao:'TE+TUSD',t:'si-full'},
+  {uf:'PE',nome:'Pernambuco',isencao:'TE+TUSD',t:'si-full'},{uf:'PI',nome:'Piauí',isencao:'Só TE',t:'si-te'},
+  {uf:'PR',nome:'Paraná',isencao:'TE+TUSD',t:'si-full'},{uf:'RJ',nome:'Rio de Janeiro',isencao:'TE+TUSD',t:'si-full'},
+  {uf:'RN',nome:'Rio G. Norte',isencao:'TE+TUSD',t:'si-full'},{uf:'RO',nome:'Rondônia',isencao:'TE+TUSD',t:'si-full'},
+  {uf:'RR',nome:'Roraima',isencao:'TE+TUSD',t:'si-full'},{uf:'RS',nome:'Rio G. Sul',isencao:'TE+TUSD',t:'si-full'},
+  {uf:'SC',nome:'Santa Catarina',isencao:'TE+TUSD',t:'si-full'},{uf:'SE',nome:'Sergipe',isencao:'Só TE',t:'si-te'},
+  {uf:'SP',nome:'São Paulo',isencao:'TE+TUSD/2026',t:'si-full'},{uf:'TO',nome:'Tocantins',isencao:'TE+TUSD',t:'si-full'},
+];
+
+const concs = [
+  {n:'ENEL SP',url:'https://www.enel.com.br/pt-cesp/para_voce/GD_solar.html'},
+  {n:'ENEL RJ',url:'https://www.enel.com.br/pt-rj/para_voce/GD_solar.html'},
+  {n:'CEMIG (MG)',url:'https://www.cemig.com.br/mini-e-microgeracao-distribuida/'},
+  {n:'COPEL (PR)',url:'https://www.copel.com/energia-solar'},
+  {n:'CPFL Paulista',url:'https://www.cpfl.com.br/energia-solar'},
+  {n:'Light (RJ)',url:'https://agencia.light.com.br'},
+  {n:'Elektro (SP/MS)',url:'https://agencia.elektro.com.br'},
+  {n:'CELESC (SC)',url:'https://www.celesc.com.br/geracao-distribuida'},
+  {n:'COELBA (BA)',url:'https://www.coelba.com.br'},
+];
+
+let legOpenId = null;
+let legCat = 'all';
+
+window.renderLegislacao = function(container) {
+  container.innerHTML = buildLegScreen();
+  bindLeg();
+};
+
+function buildLegScreen() {
+  return `
+  <h2 class="app-h2" style="margin-bottom:.25rem">Base de Legislação</h2>
+  <p class="app-sub">Federal · ANEEL · ABNT · Estadual · Municipal · Concessionárias</p>
+  <div class="search-wrap">
+    <i class="ti ti-search"></i>
+    <input type="text" id="leg-search" placeholder="Buscar lei, resolução, norma..." oninput="legFilter()" />
+  </div>
+  <div class="cat-bar" id="leg-cats">
+    <button class="catbtn active" onclick="legCatSet('all',this)">Todas</button>
+    <button class="catbtn" onclick="legCatSet('federal',this)">Federal</button>
+    <button class="catbtn" onclick="legCatSet('aneel',this)">ANEEL</button>
+    <button class="catbtn" onclick="legCatSet('abnt',this)">ABNT/NBR</button>
+    <button class="catbtn" onclick="legCatSet('estadual',this)">Estadual</button>
+    <button class="catbtn" onclick="legCatSet('municipal',this)">Municipal</button>
+    <button class="catbtn" onclick="legCatSet('concessionaria',this)">Concessionárias</button>
+  </div>
+  <div id="leg-list"></div>`;
+}
+
+function bindLeg() {
+  legRender();
+}
+
+function legCatSet(cat, btn) {
+  legCat = cat;
+  document.querySelectorAll('.catbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('leg-search').value = '';
+  legRender();
+}
+
+function legFilter() { legRender(); }
+
+function legRender() {
+  const q = (document.getElementById('leg-search')?.value || '').toLowerCase().trim();
+  const filtered = laws.filter(l => {
+    if (legCat !== 'all' && l.cat !== legCat) return false;
+    if (!q) return true;
+    return l.title.toLowerCase().includes(q) || (l.tags||[]).some(t=>t.includes(q)) || (l.text||'').toLowerCase().includes(q);
+  });
+  const list = document.getElementById('leg-list');
+  if (!list) return;
+  if (!filtered.length) { list.innerHTML = `<div style="text-align:center;padding:2rem;color:#6b7280;font-size:13px"><i class="ti ti-search-off" style="font-size:28px;display:block;margin-bottom:8px"></i>Nenhum resultado.</div>`; return; }
+  list.innerHTML = filtered.map(l => legCard(l, q)).join('');
+}
+
+function legCard(l, q) {
+  const open = legOpenId === l.id;
+  let body = '';
+  if (open) {
+    body = `<div class="law-body"><div class="law-text">${hl(l.text, q)}`;
+    if (l.isEstados) {
+      body += `<div class="state-grid" style="margin-top:.6rem">`;
+      estados.forEach(e => { body += `<div class="state-card"><div class="state-name">${e.uf} — ${e.nome}</div><div class="state-isencao ${e.t}">Isenção: ${e.isencao}</div></div>`; });
+      body += `</div><div style="font-size:10px;color:#6b7280;margin-top:6px">🟢 TE+TUSD = total &nbsp;|&nbsp; 🔵 Só TE = parcial</div>`;
+    }
+    if (l.isConcessionaria) {
+      body += `<select class="conc-select" onchange="showConc(this.value)"><option value="">— Selecione —</option>${concs.map(c=>`<option value="${c.url}">${c.n}</option>`).join('')}</select><div id="conc-link"></div>`;
+    }
+    body += `</div>`;
+    if (l.pills?.length) { body += `<div class="law-pills">${l.pills.map(p=>`<span class="lpill"><i class="ti ti-tag" style="font-size:11px"></i>${p}</span>`).join('')}</div>`; }
+    if (l.url) { body += `<a class="law-link-btn" href="${l.url}" target="_blank"><i class="ti ti-external-link"></i> Documento oficial</a>`; }
+    body += `</div>`;
+  }
+  return `<div class="law-card${open?' open':''}" id="lc${l.id}">
+    <div class="law-head" onclick="legToggle(${l.id})">
+      <span class="law-badge ${l.badge}">${l.label}</span>
+      <div class="law-info"><div class="law-title">${hl(l.title,q)}</div><div class="law-sub-txt">${l.sub}</div></div>
+      <i class="ti ti-chevron-down law-arrow"></i>
+    </div>${body}</div>`;
+}
+
+function legToggle(id) {
+  legOpenId = legOpenId === id ? null : id;
+  legRender();
+  if (legOpenId) { setTimeout(() => { document.getElementById('lc'+id)?.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 60); }
+}
+
+function showConc(url) {
+  const div = document.getElementById('conc-link');
+  if (!div || !url) return;
+  div.innerHTML = `<a class="law-link-btn" href="${url}" target="_blank"><i class="ti ti-external-link"></i> Abrir portal da concessionária</a>`;
+}
+
+function hl(text, q) {
+  if (!q || q.length < 2) return text;
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
+
+  </script>
 </body>
 </html>

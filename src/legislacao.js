@@ -1,3 +1,4 @@
+
 /* ============================================
    SOLARHOMOLOG — LEGISLACAO.JS
    ============================================ */
@@ -222,3 +223,5 @@ function hl(text, q) {
   const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
   return text.replace(re, '<mark>$1</mark>');
 }
+
+  

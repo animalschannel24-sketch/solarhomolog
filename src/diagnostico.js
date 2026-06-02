@@ -1,3 +1,4 @@
+
 /* ============================================
    SOLARHOMOLOG — DIAGNOSTICO.JS
    ============================================ */
@@ -253,3 +254,5 @@ function altC(title, desc, badge, bc, icon) {
     <div class="alt-desc">${desc}</div>
   </div>`;
 }
+
+  

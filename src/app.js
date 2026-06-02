@@ -1,3 +1,4 @@
+
 /* ============================================
    SOLARHOMOLOG — APP.JS
    Fluxo principal: login → cadastro → docs → proposta → pagamento → tracking
@@ -424,3 +425,5 @@ function bindScreen(id) {
 
 // ── Teclado: ESC fecha o modal ───────────────────────────────────────────────
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeApp(); });
+
+  

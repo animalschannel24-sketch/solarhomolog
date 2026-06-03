@@ -401,9 +401,44 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
 }
 .calc-obs { font-size: 11px; color: rgba(26,26,0,.55); margin-top: .6rem; line-height: 1.5; }
 
+/* --- PIX PAGAMENTO --- */
+.btn-pix { background: #00a859; color: #fff; border-color: #008c4a; font-size: 14px; font-weight: 600; margin-top: .6rem; }
+.btn-pix:hover { background: #008c4a; }
+.btn-pix:disabled { opacity: .6; cursor: default; }
+.pix-box {
+  background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.7);
+  border-radius: 10px; padding: 1rem; text-align: center; margin-top: .75rem;
+}
+.pix-loading { padding: .75rem 0; color: #1a1a00; font-size: 13px; }
+.pix-loading-icon { font-size: 26px; display: block; margin-bottom: 6px; }
+.pix-hint { font-size: 12px; color: rgba(26,26,0,.65); margin-bottom: .75rem; }
+.pix-qr-img { width: 180px; height: 180px; border-radius: 8px; border: 3px solid rgba(0,0,0,.12); margin: 0 auto .75rem; display: block; }
+.pix-code-row {
+  background: rgba(255,255,255,.75); border: 1px solid rgba(0,0,0,.15);
+  border-radius: 8px; padding: .5rem .75rem; margin-bottom: .75rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.pix-code-txt { font-size: 10px; font-family: monospace; color: #1a1a1a; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pix-copy-btn {
+  background: #1b5e20; color: #fff; border: none; border-radius: 6px;
+  padding: 5px 10px; font-size: 11px; font-weight: 600; cursor: pointer; white-space: nowrap;
+  font-family: 'Inter', sans-serif; transition: background .15s; flex-shrink: 0;
+}
+.pix-copy-btn:hover { background: #145214; }
+.pix-waiting { font-size: 12px; color: rgba(26,26,0,.6); margin-bottom: .4rem; }
+.pix-success {
+  background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 8px;
+  padding: 1rem; color: #1b5e20; font-size: 14px; font-weight: 600;
+}
+.pix-success-sub { font-weight: 400; font-size: 12px; color: #2e7d32; display: block; margin-top: 4px; }
+.pix-err { color: #880e4f; font-size: 13px; padding: .4rem 0; }
+.pix-fine-print { font-size: 10px; color: rgba(26,26,0,.45); margin-top: .6rem; }
+
 </style>
 
 <script>
+  let vtTotal = 0, vtKm = 0, _vtPixCode = '', vtPixId = null, vtPixPoller = null;
+
   async function calcularVT() {
     const inp  = document.getElementById('vt-dest-input');
     const dest = inp ? inp.value.trim() : '';
@@ -414,6 +449,14 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
     btn.disabled = true;
     btn.textContent = 'Calculando…';
     box.style.display = 'none';
+
+    // reset PIX ao recalcular
+    const pixBox = document.getElementById('vt-pix-box');
+    if (pixBox) pixBox.style.display = 'none';
+    const pixBtn = document.getElementById('vt-pix-btn');
+    if (pixBtn) { pixBtn.disabled = false; pixBtn.textContent = '💳 Pagar via PIX'; }
+    if (vtPixPoller) { clearInterval(vtPixPoller); vtPixPoller = null; }
+    vtPixId = null; _vtPixCode = ''; vtTotal = 0; vtKm = 0;
 
     try {
       const resp = await fetch('/api/distancia?dest=' + encodeURIComponent(dest));
@@ -428,6 +471,8 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
       document.getElementById('vt-r-km').textContent   = km + ' km';
       document.getElementById('vt-r-desl').textContent = fmt(desl);
       document.getElementById('vt-r-tot').textContent  = fmt(tot);
+      vtTotal = tot;
+      vtKm    = km;
       box.style.display = 'block';
     } catch {
       alert('Não foi possível calcular a distância. Verifique o endereço digitado.');
@@ -435,6 +480,98 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
       btn.disabled = false;
       btn.textContent = 'Calcular';
     }
+  }
+
+  async function pagarPIX() {
+    if (!vtTotal) return;
+    const box     = document.getElementById('vt-pix-box');
+    const loading = document.getElementById('vt-pix-loading');
+    const dataDiv = document.getElementById('vt-pix-data');
+    const errDiv  = document.getElementById('vt-pix-err');
+    const btn     = document.getElementById('vt-pix-btn');
+
+    btn.disabled = true;
+    btn.textContent = 'Gerando PIX…';
+    box.style.display = 'block';
+    loading.style.display = 'block';
+    dataDiv.style.display = 'none';
+    errDiv.style.display = 'none';
+    document.getElementById('vt-pix-success').style.display = 'none';
+    document.getElementById('vt-pix-waiting').style.display = 'none';
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    try {
+      const r = await fetch('/api/pagamento', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ total: vtTotal, km: vtKm }),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || 'Erro ao gerar pagamento');
+      if (!d.qr_code) throw new Error('QR Code não disponível');
+
+      vtPixId    = d.id;
+      _vtPixCode = d.qr_code;
+
+      const img = document.getElementById('vt-pix-qr-img');
+      img.src = d.qr_code_base64
+        ? 'data:image/png;base64,' + d.qr_code_base64
+        : 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(d.qr_code);
+
+      document.getElementById('vt-pix-code-txt').textContent = d.qr_code;
+      loading.style.display = 'none';
+      document.getElementById('vt-pix-waiting').style.display = 'block';
+      dataDiv.style.display = 'block';
+      btn.textContent = '✓ PIX gerado';
+
+      if (vtPixPoller) clearInterval(vtPixPoller);
+      vtPixPoller = setInterval(verificarPIX, 5000);
+    } catch (err) {
+      loading.style.display = 'none';
+      errDiv.textContent = err.message;
+      errDiv.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = '💳 Pagar via PIX';
+    }
+  }
+
+  async function verificarPIX() {
+    if (!vtPixId) return;
+    try {
+      const r = await fetch('/api/pagamento?id=' + vtPixId);
+      const d = await r.json();
+      if (d.status === 'approved') {
+        clearInterval(vtPixPoller);
+        vtPixPoller = null;
+        document.getElementById('vt-pix-waiting').style.display = 'none';
+        document.getElementById('vt-pix-success').style.display = 'block';
+        document.getElementById('vt-pix-btn').style.display = 'none';
+      } else if (d.status === 'cancelled' || d.status === 'rejected') {
+        clearInterval(vtPixPoller);
+        vtPixPoller = null;
+        document.getElementById('vt-pix-waiting').textContent = 'Pagamento não confirmado. Tente novamente.';
+      }
+    } catch { /* ignora erros de rede no poll */ }
+  }
+
+  function copiarPIX() {
+    if (!_vtPixCode) return;
+    const btn = document.getElementById('vt-pix-copy-btn');
+    navigator.clipboard.writeText(_vtPixCode).then(() => {
+      btn.textContent = 'Copiado!';
+      setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = _vtPixCode;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = 'Copiado!';
+      setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
+    });
   }
 </script>
 </head>
@@ -478,6 +615,30 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
           <div class="calc-row"><span>Visita técnica:</span><strong>R$ 350,00</strong></div>
           <div class="calc-row total"><span>Total estimado:</span><strong id="vt-r-tot">—</strong></div>
           <p class="calc-obs">★ O valor da visita é integralmente descontado caso você opte pela homologação completa.</p>
+          <button id="vt-pix-btn" class="btn btn-pix btn-block" onclick="pagarPIX()">💳 Pagar via PIX</button>
+        </div>
+
+        <!-- PIX: QR Code e copia-e-cola -->
+        <div id="vt-pix-box" class="pix-box" style="display:none;">
+          <div id="vt-pix-loading" class="pix-loading">
+            <span class="pix-loading-icon spin">⏳</span>
+            Gerando seu código PIX…
+          </div>
+          <div id="vt-pix-data" style="display:none;">
+            <p class="pix-hint">Escaneie o QR Code ou use o código copia-e-cola</p>
+            <img id="vt-pix-qr-img" class="pix-qr-img" src="" alt="QR Code PIX" />
+            <div class="pix-code-row">
+              <span id="vt-pix-code-txt" class="pix-code-txt"></span>
+              <button id="vt-pix-copy-btn" class="pix-copy-btn" onclick="copiarPIX()">Copiar</button>
+            </div>
+            <div id="vt-pix-waiting" class="pix-waiting" style="display:none;">⏳ Aguardando confirmação do pagamento…</div>
+            <div id="vt-pix-success" class="pix-success" style="display:none;">
+              ✅ Pagamento confirmado!
+              <span class="pix-success-sub">Entraremos em contato em breve para agendar sua visita técnica.</span>
+            </div>
+            <p class="pix-fine-print">O PIX expira em 30 minutos. Confirmação automática após o pagamento.</p>
+          </div>
+          <div id="vt-pix-err" class="pix-err" style="display:none;"></div>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SolarHomolog — Homologação de Energia Solar</title>
-  <meta name="description" content="Homologação de sistemas fotovoltaicos junto à concessionária. Análise gratuita de documentação, diagnóstico de UC e acompanhamento completo do processo." />
+  <meta name="description" content="Homologação de sistemas fotovoltaicos junto à concessionária. Diagnóstico de UC e acompanhamento completo do processo de homologação." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀</text></svg>" />
   <link rel="stylesheet" href="assets/icons/tabler-icons.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -389,10 +389,10 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
     <div class="hero-inner">
       <div class="hero-badge">🇧🇷 Conforme REN ANEEL 1.000/2021 e Lei 14.300/2022</div>
       <h1 class="hero-title">Homologue seu sistema solar <span class="highlight">sem complicação</span></h1>
-      <p class="hero-sub">Análise gratuita da documentação exigida pela concessionária. Diagnóstico automático da sua UC. Você só paga se quiser prosseguir.</p>
+      <p class="hero-sub">Diagnóstico automático da sua unidade consumidora. Documentação revisada por especialistas. Você só paga se quiser prosseguir.</p>
       <div class="hero-actions">
         <button class="btn btn-solar btn-lg" onclick="openApp('screen-welcome')">
-          <i class="ti ti-solar-panel"></i> Começar gratuitamente
+          <i class="ti ti-solar-panel"></i> Iniciar homologação
         </button>
         <button class="btn btn-outline btn-lg" onclick="openApp('screen-diagnostico')">
           <i class="ti ti-search"></i> Verificar minha UC
@@ -421,8 +421,8 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
         <div class="step-card">
           <div class="step-num">2</div>
           <div class="step-icon"><i class="ti ti-sparkles"></i></div>
-          <h3>Análise gratuita de documentos</h3>
-          <p>Verificamos procuração, planta, ART, conta e demais documentos exigidos. Sem cobrança nesta etapa.</p>
+          <h3>Análise de documentos</h3>
+          <p>Verificamos procuração, planta, ART, conta e demais documentos exigidos pela concessionária.</p>
         </div>
         <div class="step-card">
           <div class="step-num">3</div>
@@ -443,7 +443,7 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
   <!-- DIAGNÓSTICO UC -->
   <section class="section section-dark" id="diagnostico">
     <div class="container">
-      <h2 class="section-title light">Diagnóstico gratuito da sua UC</h2>
+      <h2 class="section-title light">Diagnóstico da sua UC</h2>
       <p class="section-sub light">Saiba antes de instalar se a sua unidade consumidora tem restrições para homologação</p>
       <div class="diag-box">
         <div class="diag-items">
@@ -500,9 +500,15 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
           <div class="pf-item"><i class="ti ti-check"></i> Notificações WhatsApp + e-mail</div>
         </div>
       </div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:1rem 1.25rem;margin-top:1rem">
+        <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:.5rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em">Visita técnica (quando necessária)</div>
+        <div class="pf-item"><i class="ti ti-map-pin"></i> Deslocamento: R$ 1,50/km rodado</div>
+        <div class="pf-item"><i class="ti ti-tool"></i> Visita técnica: R$ 350,00</div>
+        <p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:.5rem;line-height:1.5">O valor da visita técnica é integralmente descontado do serviço de homologação caso o cliente opte por prosseguir.</p>
+      </div>
       <div style="text-align:center;margin-top:1.5rem">
         <button class="btn btn-solar btn-lg" onclick="openApp('screen-welcome')">
-          Começar agora — análise gratuita
+          Começar agora
         </button>
       </div>
     </div>

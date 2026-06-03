@@ -40,7 +40,8 @@ function buildDiagScreen1() {
   <p class="app-sub">Identifique impedimentos antes de instalar o sistema solar.</p>
   <div class="app-card">
     <div class="app-card-title"><i class="ti ti-file-invoice"></i>Envie a conta de luz</div>
-    <div class="upload-area" id="diag-upload" onclick="diagSimUpload()">
+    <div class="upload-area" id="diag-upload" onclick="document.getElementById('diag-file-inp').click()">
+      <input type="file" id="diag-file-inp" style="display:none" accept=".pdf,.jpg,.jpeg,.png" onchange="diagFileSelected(this)" />
       <div class="upload-icon" id="du-icon"><i class="ti ti-cloud-upload"></i></div>
       <div class="upload-lbl" id="du-lbl">Toque para enviar a conta (PDF, foto ou imagem)</div>
       <div style="font-size:11px;color:#6b7280;margin-top:4px">A IA extrai os dados automaticamente</div>
@@ -95,7 +96,10 @@ function buildDiagScreen1() {
   </button>`;
 }
 
-function diagSimUpload() {
+function diagFileSelected(input) {
+  const file = input.files[0];
+  if (!file) return;
+
   const box = document.getElementById('diag-upload');
   const icon = document.getElementById('du-icon');
   const lbl = document.getElementById('du-lbl');
@@ -112,7 +116,7 @@ function diagSimUpload() {
       clearInterval(iv);
       box.classList.add('uploaded');
       icon.innerHTML = '<i class="ti ti-circle-check"></i>';
-      lbl.textContent = 'conta_energia.pdf — dados extraídos';
+      lbl.textContent = file.name + ' — dados extraídos';
       pw.style.display = 'none';
       document.getElementById('d-uc').value = '7010482930';
       document.getElementById('d-conc').value = 'cpfl';
@@ -221,7 +225,7 @@ function buildDiagResult(conc, sit, kw, cons, uc) {
   if (sit === 'debito' || sit === 'irregular')
     html += altC('Regularizar a UC antes de tudo','Quitar débitos e regularizar o cadastro. Após isso o processo padrão é viável.','Obrigatório','ab-amber','ti-file-check');
   if (sit === 'rural_sem_uc') {
-    html += altC('Solicitar ligação rural gratuita','Distribuidoras são obrigadas a conectar imóveis rurais com carga < 50 kW sem custo (RN 1.000/2021 + Dec. 7.520/2011).','Gratuito por lei','ab-green','ti-home');
+    html += altC('Solicitar ligação rural','Distribuidoras são obrigadas a conectar imóveis rurais com carga < 50 kW sem custo (RN 1.000/2021 + Dec. 7.520/2011).','Por lei','ab-green','ti-home');
     html += altC('Sistema off-grid com baterias','Solução independente da rede. Sem homologação necessária, sem créditos de energia.','Sem compensação','ab-blue','ti-battery-charging');
   }
   if (cr.risk === 'alto' || cr.risk === 'medio') {

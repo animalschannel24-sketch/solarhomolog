@@ -81,9 +81,9 @@ function go(id) {
 function screenWelcome() {
   return `
   <h2 class="app-h2">Homologação solar simplificada</h2>
-  <p class="app-sub">Análise gratuita da documentação. Você só paga se quiser prosseguir.</p>
+  <p class="app-sub">Documentação revisada por especialistas. Você só paga se quiser prosseguir.</p>
   <div class="app-card" style="border-color:#f5a623;background:#fffbf0">
-    <div class="app-card-title"><i class="ti ti-gift"></i> Análise gratuita de documentos</div>
+    <div class="app-card-title"><i class="ti ti-file-check"></i> Análise de documentos</div>
     <p style="font-size:13px;color:#6b7280;line-height:1.6">Verificamos todos os documentos exigidos pela concessionária antes de qualquer cobrança. Você só paga se quiser prosseguir.</p>
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem">
@@ -97,7 +97,7 @@ function screenWelcome() {
     </div>
   </div>
   <button class="btn btn-primary btn-block" style="margin-bottom:10px" onclick="go('screen-login')">
-    <i class="ti ti-solar-panel"></i> Iniciar homologação gratuita
+    <i class="ti ti-solar-panel"></i> Iniciar homologação
   </button>
   <button class="btn btn-block" style="margin-bottom:10px" onclick="go('screen-diagnostico')">
     <i class="ti ti-bolt"></i> Verificar minha UC antes de começar
@@ -161,26 +161,26 @@ function screenCompany() {
     <div class="app-card">
       <div class="app-card-title"><i class="ti ti-building"></i>Dados da empresa</div>
       <label class="app-label">Razão Social *</label>
-      <input type="text" class="app-input" placeholder="Conforme CNPJ" />
+      <input type="text" id="pj-razao" class="app-input" placeholder="Conforme CNPJ" />
       <label class="app-label">CNPJ *</label>
       <input type="text" class="app-input" id="cnpj-inp" placeholder="00.000.000/0000-00" oninput="maskCNPJ(this)" />
       <label class="app-label">Nome do Representante Legal *</label>
-      <input type="text" class="app-input" placeholder="Conforme procuração" />
+      <input type="text" id="pj-rep-nome" class="app-input" placeholder="Conforme procuração" />
       <label class="app-label">CPF do Representante *</label>
-      <input type="text" class="app-input" placeholder="000.000.000-00" />
+      <input type="text" id="pj-rep-cpf" class="app-input" placeholder="000.000.000-00" />
     </div>
   </div>
   <div id="tabpanel-pf" class="tab-panel">
     <div class="app-card">
       <div class="app-card-title"><i class="ti ti-user"></i>Dados pessoais</div>
       <label class="app-label">Nome completo *</label>
-      <input type="text" class="app-input" placeholder="Conforme documento" />
+      <input type="text" id="pf-nome" class="app-input" placeholder="Conforme documento" />
       <div class="app-row2">
-        <div><label class="app-label">CPF *</label><input type="text" class="app-input" placeholder="000.000.000-00" /></div>
-        <div><label class="app-label">RG *</label><input type="text" class="app-input" placeholder="00.000.000-0" /></div>
+        <div><label class="app-label">CPF *</label><input type="text" id="pf-cpf" class="app-input" placeholder="000.000.000-00" /></div>
+        <div><label class="app-label">RG *</label><input type="text" id="pf-rg" class="app-input" placeholder="00.000.000-0" /></div>
       </div>
       <label class="app-label">Data de nascimento *</label>
-      <input type="date" class="app-input" />
+      <input type="date" id="pf-nasc" class="app-input" />
     </div>
   </div>
   <div class="app-card">
@@ -188,13 +188,13 @@ function screenCompany() {
     <label class="app-label">CEP *</label>
     <input type="text" class="app-input" id="cep-inp" placeholder="00000-000" oninput="maskCEP(this)" />
     <div class="app-row2">
-      <div><label class="app-label">Logradouro *</label><input type="text" class="app-input" placeholder="Rua, Av..." /></div>
-      <div><label class="app-label">Número *</label><input type="text" class="app-input" placeholder="123" /></div>
+      <div><label class="app-label">Logradouro *</label><input type="text" id="addr-logr" class="app-input" placeholder="Rua, Av..." /></div>
+      <div><label class="app-label">Número *</label><input type="text" id="addr-num" class="app-input" placeholder="123" /></div>
     </div>
     <div class="app-row2">
-      <div><label class="app-label">Cidade *</label><input type="text" class="app-input" /></div>
+      <div><label class="app-label">Cidade *</label><input type="text" id="addr-cidade" class="app-input" /></div>
       <div><label class="app-label">Estado *</label>
-        <select class="app-select">
+        <select id="addr-estado" class="app-select">
           <option value="">UF</option>
           ${['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO'].map(u=>`<option>${u}</option>`).join('')}
         </select>
@@ -204,25 +204,72 @@ function screenCompany() {
   <div class="app-card">
     <div class="app-card-title"><i class="ti ti-bolt"></i>Dados da concessionária</div>
     <label class="app-label">Concessionária *</label>
-    <select class="app-select">
+    <select id="conc-sel" class="app-select">
       <option value="">Selecione</option>
       ${['ENEL SP','ENEL RJ','CEMIG','COPEL','CELESC','CPFL Paulista','CPFL Piratininga','Light','Elektro','COELBA','CELPE','ENERGISA','Outra'].map(c=>`<option>${c}</option>`).join('')}
     </select>
     <label class="app-label">Número da instalação (UC) *</label>
-    <input type="text" class="app-input" placeholder="Conforme conta de energia" />
+    <input type="text" id="uc-inp" class="app-input" placeholder="Conforme conta de energia" />
     <label class="app-label">Número do medidor</label>
     <input type="text" class="app-input" placeholder="Opcional" />
   </div>
   <div class="app-card">
     <div class="app-card-title"><i class="ti ti-phone"></i>Contato</div>
     <div class="app-row2">
-      <div><label class="app-label">WhatsApp *</label><input type="text" class="app-input" placeholder="(11) 99999-9999" /></div>
-      <div><label class="app-label">E-mail *</label><input type="text" class="app-input" placeholder="email@empresa.com" /></div>
+      <div><label class="app-label">WhatsApp *</label><input type="text" id="cont-whats" class="app-input" placeholder="(11) 99999-9999" /></div>
+      <div><label class="app-label">E-mail *</label><input type="text" id="cont-email" class="app-input" placeholder="email@empresa.com" /></div>
     </div>
   </div>
-  <button class="btn btn-primary btn-block" onclick="go('screen-docs')">
+  <button class="btn btn-primary btn-block" onclick="validateAndGoToDocs()">
     <i class="ti ti-arrow-right"></i> Avançar para documentos
   </button>`;
+}
+
+function validateAndGoToDocs() {
+  const isPJ = document.getElementById('tab-pj').classList.contains('active');
+  const fields = [];
+
+  if (isPJ) {
+    fields.push(['pj-razao', 'Razão Social']);
+    fields.push(['cnpj-inp', 'CNPJ']);
+    fields.push(['pj-rep-nome', 'Nome do Representante Legal']);
+    fields.push(['pj-rep-cpf', 'CPF do Representante']);
+  } else {
+    fields.push(['pf-nome', 'Nome completo']);
+    fields.push(['pf-cpf', 'CPF']);
+    fields.push(['pf-rg', 'RG']);
+    fields.push(['pf-nasc', 'Data de nascimento']);
+  }
+
+  fields.push(
+    ['cep-inp',      'CEP'],
+    ['addr-logr',    'Logradouro'],
+    ['addr-num',     'Número'],
+    ['addr-cidade',  'Cidade'],
+    ['addr-estado',  'Estado'],
+    ['conc-sel',     'Concessionária'],
+    ['uc-inp',       'Número da instalação (UC)'],
+    ['cont-whats',   'WhatsApp'],
+    ['cont-email',   'E-mail'],
+  );
+
+  for (const [id, label] of fields) {
+    const el = document.getElementById(id);
+    if (!el || !el.value.trim()) {
+      el?.focus();
+      alert(`Preencha o campo obrigatório: ${label}`);
+      return;
+    }
+  }
+
+  const email = document.getElementById('cont-email').value;
+  if (!email.includes('@')) {
+    document.getElementById('cont-email').focus();
+    alert('Informe um e-mail válido.');
+    return;
+  }
+
+  go('screen-docs');
 }
 
 // ── TELA: Documentos ─────────────────────────────────────────────────────────
@@ -247,16 +294,16 @@ function screenDocs() {
   return `
   <div class="step-bar"><div class="sdot done"></div><div class="sdot done"></div><div class="sdot active"></div><div class="sdot"></div><span class="slbl">Documentação</span></div>
   <h2 class="app-h2">Envio de documentos</h2>
-  <p class="app-sub">Faça upload dos documentos. A análise é 100% gratuita.</p>
+  <p class="app-sub">Faça upload dos documentos para análise pela nossa equipe.</p>
   <div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:9px 13px;font-size:12px;color:#e65100;margin-bottom:.75rem;display:flex;gap:8px;align-items:flex-start">
-    <i class="ti ti-info-circle"></i><span>Você só decide se prossegue após ver o resultado da análise gratuita.</span>
+    <i class="ti ti-info-circle"></i><span>Você só decide se prossegue após ver o resultado da análise.</span>
   </div>
   <div id="doc-list">
     ${docList.map(d => renderDocItem(d)).join('')}
   </div>
   <div id="analyze-area" style="display:none;margin-top:.75rem">
     <button class="btn btn-solar btn-block" id="analyze-btn" onclick="runAnalysis()">
-      <i class="ti ti-sparkles"></i> Analisar documentos gratuitamente
+      <i class="ti ti-sparkles"></i> Analisar documentos
     </button>
   </div>
   <div id="analysis-result" style="display:none"></div>`;

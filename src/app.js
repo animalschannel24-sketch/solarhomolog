@@ -228,6 +228,7 @@ function screenCompany() {
 // ── TELA: Documentos ─────────────────────────────────────────────────────────
 let uploadedDocs = {};
 let totalUploaded = 0;
+let sessionProtocolo = '';
 
 const docList = [
   {id:'conta', icon:'ti-file-invoice', name:'Conta de energia elétrica', desc:'Última fatura com número de instalação visível'},
@@ -240,6 +241,9 @@ const docList = [
 
 function screenDocs() {
   uploadedDocs = {}; totalUploaded = 0;
+  if (!sessionProtocolo) {
+    sessionProtocolo = 'SH-' + Date.now().toString(36).toUpperCase();
+  }
   return `
   <div class="step-bar"><div class="sdot done"></div><div class="sdot done"></div><div class="sdot active"></div><div class="sdot"></div><span class="slbl">Documentação</span></div>
   <h2 class="app-h2">Envio de documentos</h2>
@@ -261,26 +265,54 @@ function screenDocs() {
 function renderDocItem(d) {
   const done = uploadedDocs[d.id];
   return `<div class="doc-item${done?' uploaded':''}" id="doc-${d.id}">
-    <div class="doc-icon"><i class="ti ${d.icon}"></i></div>
+    <div class="doc-icon"><i class="ti ${done?'ti-circle-check':d.icon}"></i></div>
     <div class="doc-info">
       <div class="doc-name">${d.name}</div>
       <div class="doc-desc">${d.desc}</div>
     </div>
     <div style="text-align:right">
       <div class="doc-status ${done?'ds-ok':'ds-pend'}" id="st-${d.id}">${done?'✓ Enviado':'Pendente'}</div>
-      <button class="up-btn" onclick="simUpload('${d.id}')">${done?'Reenviar':'Enviar'}</button>
+      <input type="file" id="file-${d.id}" style="display:none" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" onchange="doUpload('${d.id}', this)" />
+      <button class="up-btn" id="btn-${d.id}" onclick="document.getElementById('file-${d.id}').click()">${done?'Reenviar':'Enviar'}</button>
     </div>
   </div>`;
 }
 
-function simUpload(id) {
-  if (uploadedDocs[id]) return;
-  uploadedDocs[id] = true; totalUploaded++;
-  const item = document.getElementById('doc-'+id);
-  const st = document.getElementById('st-'+id);
-  if (item) { item.classList.add('uploaded'); item.querySelector('.doc-icon i').className = 'ti ti-circle-check'; }
-  if (st) { st.textContent = '✓ Enviado'; st.className = 'doc-status ds-ok'; }
-  if (totalUploaded >= 3) document.getElementById('analyze-area').style.display = 'block';
+async function doUpload(id, input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  const item = document.getElementById('doc-' + id);
+  const st   = document.getElementById('st-' + id);
+  const btn  = document.getElementById('btn-' + id);
+
+  if (st)  { st.textContent = 'Enviando...'; st.className = 'doc-status ds-pend'; }
+  if (btn) { btn.disabled = true; btn.textContent = '...'; }
+
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('protocolo', sessionProtocolo);
+  formData.append('tipo_doc', id);
+
+  try {
+    const resp = await fetch('/api/upload', { method: 'POST', body: formData });
+    const data = await resp.json();
+
+    if (!resp.ok || !data.ok) throw new Error(data.error || 'Erro no servidor');
+
+    if (!uploadedDocs[id]) { uploadedDocs[id] = true; totalUploaded++; }
+    if (item) { item.classList.add('uploaded'); item.querySelector('.doc-icon i').className = 'ti ti-circle-check'; }
+    if (st)  { st.textContent = '✓ Enviado'; st.className = 'doc-status ds-ok'; }
+    if (btn) { btn.disabled = false; btn.textContent = 'Reenviar'; }
+    if (totalUploaded >= 3) document.getElementById('analyze-area').style.display = 'block';
+
+  } catch (err) {
+    if (st)  { st.textContent = 'Erro ao enviar'; st.className = 'doc-status ds-pend'; }
+    if (btn) { btn.disabled = false; btn.textContent = 'Tentar novamente'; }
+    alert('Falha no upload: ' + err.message);
+  } finally {
+    input.value = '';
+  }
 }
 
 function runAnalysis() {

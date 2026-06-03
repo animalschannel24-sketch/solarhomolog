@@ -175,17 +175,17 @@ body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--w
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
 
 /* --- MODAL --- */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 200; }
+.modal-overlay { display: none; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0,0,0,.5); z-index: 200; }
 .modal-app {
-  display: none; position: fixed; inset: 0; z-index: 201;
+  display: none; position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 201;
   background: #f4f6f4; overflow-y: auto;
 }
 @media (min-width: 600px) {
   .modal-app {
-    position: fixed;
-    inset: auto;
     top: 50%;
     left: 50%;
+    right: auto;
+    bottom: auto;
     transform: translate(-50%, -50%);
     width: 500px;
     max-height: 90vh;

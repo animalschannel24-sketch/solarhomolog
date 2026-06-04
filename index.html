@@ -434,16 +434,17 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
 .pix-err { color: #880e4f; font-size: 13px; padding: .4rem 0; }
 .pix-fine-print { font-size: 10px; color: rgba(26,26,0,.45); margin-top: .6rem; }
 
-.calc-input-wrap { position: relative; flex: 1; }
+.calc-input-wrap { position: relative; flex: 1; overflow: visible; }
+.calc-form { overflow: visible; }
 .vt-suggestions {
   display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0;
-  background: #fff; border: 1px solid rgba(0,0,0,.14); border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0,0,0,.14); z-index: 1000;
+  background: #fff; border: 1px solid rgba(0,0,0,.18); border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18); z-index: 9999;
   max-height: 220px; overflow-y: auto;
 }
 .vt-suggestions.open { display: block; }
 .vt-sug-item {
-  padding: 9px 13px; font-size: 13px; cursor: pointer; color: #1a1a1a; line-height: 1.4;
+  padding: 10px 14px; font-size: 13px; cursor: pointer; color: #1a1a1a; line-height: 1.4;
   border-bottom: 1px solid rgba(0,0,0,.06);
 }
 .vt-sug-item:last-child { border-bottom: none; }
@@ -573,83 +574,75 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
   }
 
   // — Autocomplete de endereço via servidor —
-  let _sugTimer = null, _sugActive = -1;
+  var _sugTimer = null, _sugActive = -1;
 
   function vtShowSuggestions(predictions) {
-    const box = document.getElementById('vt-suggestions');
-    if (!box) return;
+    var box = document.getElementById('vt-suggestions');
+    if (!box) { console.warn('[sug] #vt-suggestions não encontrado'); return; }
     box.innerHTML = '';
     _sugActive = -1;
     if (!predictions.length) { box.classList.remove('open'); return; }
-    predictions.forEach(p => {
-      const el = document.createElement('div');
+    predictions.forEach(function(p) {
+      var el = document.createElement('div');
       el.className = 'vt-sug-item';
       el.textContent = p.description;
-      el.addEventListener('mousedown', e => { e.preventDefault(); vtSelectSuggestion(p.description); });
+      el.addEventListener('mousedown', function(e) { e.preventDefault(); vtSelectSuggestion(p.description); });
       box.appendChild(el);
     });
     box.classList.add('open');
+    console.log('[sug] dropdown aberto com', predictions.length, 'sugestões');
   }
 
   function vtSelectSuggestion(desc) {
-    const inp = document.getElementById('vt-dest-input');
+    var inp = document.getElementById('vt-dest-input');
     if (inp) inp.value = desc;
-    const box = document.getElementById('vt-suggestions');
+    var box = document.getElementById('vt-suggestions');
     if (box) box.classList.remove('open');
     _sugActive = -1;
   }
 
   function vtHideSuggestions() {
-    const box = document.getElementById('vt-suggestions');
+    var box = document.getElementById('vt-suggestions');
     if (box) box.classList.remove('open');
     _sugActive = -1;
   }
 
-  async function vtFetchSuggestions(q) {
+  function vtOnInput(val) {
+    clearTimeout(_sugTimer);
+    var q = (val || '').trim();
     if (q.length < 3) { vtHideSuggestions(); return; }
-    try {
-      const r = await fetch('/api/places?q=' + encodeURIComponent(q));
-      const data = await r.json();
-      console.log('[places] status HTTP:', r.status, '| resposta:', JSON.stringify(data));
-      if (!r.ok) { console.warn('[places] Erro HTTP:', r.status, data); return; }
-      if (data._debug) console.warn('[places] Google retornou:', data._debug);
-      vtShowSuggestions(data.predictions || []);
-    } catch (e) {
-      console.error('[places] Falha no fetch:', e);
-    }
+    _sugTimer = setTimeout(function() {
+      fetch('/api/places?q=' + encodeURIComponent(q))
+        .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, status: r.status, data: d }; }); })
+        .then(function(res) {
+          console.log('[places] HTTP', res.status, res.data);
+          if (!res.ok) return;
+          if (res.data._debug) console.warn('[places] Google:', res.data._debug);
+          vtShowSuggestions(res.data.predictions || []);
+        })
+        .catch(function(e) { console.error('[places] fetch erro:', e); });
+    }, 300);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const inp = document.getElementById('vt-dest-input');
-    if (!inp) return;
-
-    inp.addEventListener('input', () => {
-      clearTimeout(_sugTimer);
-      _sugTimer = setTimeout(() => vtFetchSuggestions(inp.value.trim()), 300);
-    });
-
-    inp.addEventListener('keydown', e => {
-      const box = document.getElementById('vt-suggestions');
-      if (!box || !box.classList.contains('open')) return;
-      const items = box.querySelectorAll('.vt-sug-item');
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        _sugActive = Math.min(_sugActive + 1, items.length - 1);
-        items.forEach((el, i) => el.classList.toggle('vt-active', i === _sugActive));
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        _sugActive = Math.max(_sugActive - 1, 0);
-        items.forEach((el, i) => el.classList.toggle('vt-active', i === _sugActive));
-      } else if (e.key === 'Enter' && _sugActive >= 0) {
-        e.preventDefault();
-        vtSelectSuggestion(items[_sugActive].textContent);
-      } else if (e.key === 'Escape') {
-        vtHideSuggestions();
-      }
-    });
-
-    inp.addEventListener('blur', () => { setTimeout(vtHideSuggestions, 150); });
-  });
+  function vtOnKeydown(e) {
+    var box = document.getElementById('vt-suggestions');
+    if (!box || !box.classList.contains('open')) return;
+    var items = box.querySelectorAll('.vt-sug-item');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      _sugActive = Math.min(_sugActive + 1, items.length - 1);
+      items.forEach(function(el, i) { el.classList.toggle('vt-active', i === _sugActive); });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      _sugActive = Math.max(_sugActive - 1, 0);
+      items.forEach(function(el, i) { el.classList.toggle('vt-active', i === _sugActive); });
+    } else if (e.key === 'Enter' && _sugActive >= 0) {
+      e.preventDefault();
+      vtSelectSuggestion(items[_sugActive].textContent);
+    } else if (e.key === 'Escape') {
+      vtHideSuggestions();
+    }
+  }
 
   function copiarPIX() {
     if (!_vtPixCode) return;
@@ -705,7 +698,10 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
         <label class="calc-label" for="vt-dest-input">Endereço do imóvel / instalação</label>
         <div class="calc-input-row">
           <div class="calc-input-wrap">
-            <input type="text" id="vt-dest-input" class="calc-input" placeholder="Ex: Rua das Flores, 100, São Paulo – SP" autocomplete="off" />
+            <input type="text" id="vt-dest-input" class="calc-input" placeholder="Ex: Rua das Flores, 100, São Paulo – SP" autocomplete="off"
+              oninput="vtOnInput(this.value)"
+              onkeydown="vtOnKeydown(event)"
+              onblur="setTimeout(vtHideSuggestions, 150)" />
             <div id="vt-suggestions" class="vt-suggestions"></div>
           </div>
           <button id="vt-calc-btn" class="btn btn-primary" onclick="calcularVT()">Calcular</button>

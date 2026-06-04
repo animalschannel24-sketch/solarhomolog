@@ -460,9 +460,11 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
 
     try {
       const resp = await fetch('/api/distancia?dest=' + encodeURIComponent(dest));
-      if (!resp.ok) throw new Error('Erro na requisição');
       const data = await resp.json();
-      if (data.status !== 'OK' || data.rows[0].elements[0].status !== 'OK') throw new Error('Endereço não encontrado');
+      console.log('[calcularVT] status HTTP:', resp.status, '| resposta:', JSON.stringify(data));
+      if (!resp.ok) throw new Error(data.error || ('HTTP ' + resp.status + (data.detail ? ': ' + data.detail : '')));
+      if (data.status !== 'OK') throw new Error('Google Maps status: ' + data.status + (data.error_message ? ' — ' + data.error_message : ''));
+      if (data.rows[0].elements[0].status !== 'OK') throw new Error('Endereço não encontrado (elemento: ' + data.rows[0].elements[0].status + ')');
 
       const km   = Math.ceil(data.rows[0].elements[0].distance.value / 1000);
       const desl = km * 1.50;
@@ -474,8 +476,9 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
       vtTotal = tot;
       vtKm    = km;
       box.style.display = 'block';
-    } catch {
-      alert('Não foi possível calcular a distância. Verifique o endereço digitado.');
+    } catch (err) {
+      console.error('[calcularVT] Erro:', err);
+      alert('Não foi possível calcular a distância.\n\nDetalhe: ' + err.message);
     } finally {
       btn.disabled = false;
       btn.textContent = 'Calcular';

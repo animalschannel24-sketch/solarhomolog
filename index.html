@@ -438,6 +438,7 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
 
 <script>
   let vtTotal = 0, vtKm = 0, _vtPixCode = '', vtPixId = null, vtPixPoller = null;
+  let vtLat = null, vtLng = null;
 
   async function calcularVT() {
     const inp  = document.getElementById('vt-dest-input');
@@ -459,7 +460,10 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
     vtPixId = null; _vtPixCode = ''; vtTotal = 0; vtKm = 0;
 
     try {
-      const resp = await fetch('/api/distancia?dest=' + encodeURIComponent(dest));
+      const apiUrl = (vtLat !== null && vtLng !== null)
+        ? '/api/distancia?lat=' + encodeURIComponent(vtLat) + '&lng=' + encodeURIComponent(vtLng)
+        : '/api/distancia?dest=' + encodeURIComponent(dest);
+      const resp = await fetch(apiUrl);
       const data = await resp.json();
       console.log('[calcularVT] status HTTP:', resp.status, '| resposta:', JSON.stringify(data));
       if (!resp.ok) throw new Error(data.error || ('HTTP ' + resp.status + (data.detail ? ': ' + data.detail : '')));
@@ -557,6 +561,41 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
     } catch { /* ignora erros de rede no poll */ }
   }
 
+  async function initPlacesAutocomplete() {
+    try {
+      const r = await fetch('/api/maps-key');
+      if (!r.ok) return;
+      const { key } = await r.json();
+
+      const script = document.createElement('script');
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + key + '&libraries=places&language=pt-BR';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        const inp = document.getElementById('vt-dest-input');
+        if (!inp || !window.google) return;
+        const ac = new google.maps.places.Autocomplete(inp, {
+          componentRestrictions: { country: 'br' },
+          fields: ['geometry', 'formatted_address'],
+          types: ['address'],
+        });
+        ac.addListener('place_changed', () => {
+          const place = ac.getPlace();
+          if (place.geometry && place.geometry.location) {
+            vtLat = place.geometry.location.lat();
+            vtLng = place.geometry.location.lng();
+          } else {
+            vtLat = null; vtLng = null;
+          }
+        });
+        inp.addEventListener('input', () => { vtLat = null; vtLng = null; });
+      };
+      document.head.appendChild(script);
+    } catch (e) {
+      console.warn('[Places] Autocomplete não iniciado:', e);
+    }
+  }
+
   function copiarPIX() {
     if (!_vtPixCode) return;
     const btn = document.getElementById('vt-pix-copy-btn');
@@ -576,6 +615,8 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
       setTimeout(() => { btn.textContent = 'Copiar'; }, 2000);
     });
   }
+
+  document.addEventListener('DOMContentLoaded', initPlacesAutocomplete);
 </script>
 </head>
 <body>

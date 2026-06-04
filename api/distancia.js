@@ -1,8 +1,10 @@
 const ORIGIN = 'Rua Taipu 417, Santana de Parnaíba, SP, Brasil';
 
 module.exports = async (req, res) => {
-  const dest = (req.query.dest || '').trim();
-  if (!dest) return res.status(400).json({ error: 'Parâmetro dest obrigatório' });
+  const lat  = (req.query.lat || '').trim();
+  const lng  = (req.query.lng || '').trim();
+  const dest = (lat && lng) ? `${lat},${lng}` : (req.query.dest || '').trim();
+  if (!dest) return res.status(400).json({ error: 'Parâmetro dest ou lat+lng obrigatório' });
 
   const key = process.env.GOOGLE_MAPS_KEY;
   console.log('[distancia] GOOGLE_MAPS_KEY presente:', !!key, '| primeiros 6 chars:', key ? key.slice(0, 6) : 'N/A');

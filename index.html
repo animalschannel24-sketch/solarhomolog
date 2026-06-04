@@ -434,6 +434,20 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
 .pix-err { color: #880e4f; font-size: 13px; padding: .4rem 0; }
 .pix-fine-print { font-size: 10px; color: rgba(26,26,0,.45); margin-top: .6rem; }
 
+.calc-input-wrap { position: relative; flex: 1; }
+.vt-suggestions {
+  display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+  background: #fff; border: 1px solid rgba(0,0,0,.14); border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.14); z-index: 1000;
+  max-height: 220px; overflow-y: auto;
+}
+.vt-suggestions.open { display: block; }
+.vt-sug-item {
+  padding: 9px 13px; font-size: 13px; cursor: pointer; color: #1a1a1a; line-height: 1.4;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.vt-sug-item:last-child { border-bottom: none; }
+.vt-sug-item:hover, .vt-sug-item.vt-active { background: #f0faf0; }
 
 </style>
 
@@ -558,6 +572,81 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
     } catch { /* ignora erros de rede no poll */ }
   }
 
+  // — Autocomplete de endereço via servidor —
+  let _sugTimer = null, _sugActive = -1;
+
+  function vtShowSuggestions(predictions) {
+    const box = document.getElementById('vt-suggestions');
+    if (!box) return;
+    box.innerHTML = '';
+    _sugActive = -1;
+    if (!predictions.length) { box.classList.remove('open'); return; }
+    predictions.forEach(p => {
+      const el = document.createElement('div');
+      el.className = 'vt-sug-item';
+      el.textContent = p.description;
+      el.addEventListener('mousedown', e => { e.preventDefault(); vtSelectSuggestion(p.description); });
+      box.appendChild(el);
+    });
+    box.classList.add('open');
+  }
+
+  function vtSelectSuggestion(desc) {
+    const inp = document.getElementById('vt-dest-input');
+    if (inp) inp.value = desc;
+    const box = document.getElementById('vt-suggestions');
+    if (box) box.classList.remove('open');
+    _sugActive = -1;
+  }
+
+  function vtHideSuggestions() {
+    const box = document.getElementById('vt-suggestions');
+    if (box) box.classList.remove('open');
+    _sugActive = -1;
+  }
+
+  async function vtFetchSuggestions(q) {
+    if (q.length < 3) { vtHideSuggestions(); return; }
+    try {
+      const r = await fetch('/api/autocomplete?q=' + encodeURIComponent(q));
+      if (!r.ok) return;
+      const { predictions } = await r.json();
+      vtShowSuggestions(predictions || []);
+    } catch { /* ignora erros de rede */ }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const inp = document.getElementById('vt-dest-input');
+    if (!inp) return;
+
+    inp.addEventListener('input', () => {
+      clearTimeout(_sugTimer);
+      _sugTimer = setTimeout(() => vtFetchSuggestions(inp.value.trim()), 300);
+    });
+
+    inp.addEventListener('keydown', e => {
+      const box = document.getElementById('vt-suggestions');
+      if (!box || !box.classList.contains('open')) return;
+      const items = box.querySelectorAll('.vt-sug-item');
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        _sugActive = Math.min(_sugActive + 1, items.length - 1);
+        items.forEach((el, i) => el.classList.toggle('vt-active', i === _sugActive));
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        _sugActive = Math.max(_sugActive - 1, 0);
+        items.forEach((el, i) => el.classList.toggle('vt-active', i === _sugActive));
+      } else if (e.key === 'Enter' && _sugActive >= 0) {
+        e.preventDefault();
+        vtSelectSuggestion(items[_sugActive].textContent);
+      } else if (e.key === 'Escape') {
+        vtHideSuggestions();
+      }
+    });
+
+    inp.addEventListener('blur', () => { setTimeout(vtHideSuggestions, 150); });
+  });
+
   function copiarPIX() {
     if (!_vtPixCode) return;
     const btn = document.getElementById('vt-pix-copy-btn');
@@ -611,7 +700,10 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
       <div class="calc-form">
         <label class="calc-label" for="vt-dest-input">Endereço do imóvel / instalação</label>
         <div class="calc-input-row">
-          <input type="text" id="vt-dest-input" class="calc-input" placeholder="Ex: Rua das Flores, 100, São Paulo – SP" autocomplete="off" />
+          <div class="calc-input-wrap">
+            <input type="text" id="vt-dest-input" class="calc-input" placeholder="Ex: Rua das Flores, 100, São Paulo – SP" autocomplete="off" />
+            <div id="vt-suggestions" class="vt-suggestions"></div>
+          </div>
           <button id="vt-calc-btn" class="btn btn-primary" onclick="calcularVT()">Calcular</button>
         </div>
         <div class="calc-result" id="vt-result">

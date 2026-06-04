@@ -434,18 +434,11 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
 .pix-err { color: #880e4f; font-size: 13px; padding: .4rem 0; }
 .pix-fine-print { font-size: 10px; color: rgba(26,26,0,.45); margin-top: .6rem; }
 
-/* Google Places Autocomplete */
-.pac-container { z-index: 10000 !important; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.15); }
-.pac-item { font-family: inherit; font-size: 13px; padding: 6px 12px; cursor: pointer; }
-.pac-item:hover { background: #f0faf0; }
-/* Impede overlay de erro do Google Maps de bloquear a página */
-.gm-err-container, .gm-style-cc { display: none !important; }
 
 </style>
 
 <script>
   let vtTotal = 0, vtKm = 0, _vtPixCode = '', vtPixId = null, vtPixPoller = null;
-  let vtLat = null, vtLng = null;
 
   async function calcularVT() {
     const inp  = document.getElementById('vt-dest-input');
@@ -467,10 +460,7 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
     vtPixId = null; _vtPixCode = ''; vtTotal = 0; vtKm = 0;
 
     try {
-      const apiUrl = (vtLat !== null && vtLng !== null)
-        ? '/api/distancia?lat=' + encodeURIComponent(vtLat) + '&lng=' + encodeURIComponent(vtLng)
-        : '/api/distancia?dest=' + encodeURIComponent(dest);
-      const resp = await fetch(apiUrl);
+      const resp = await fetch('/api/distancia?dest=' + encodeURIComponent(dest));
       const data = await resp.json();
       console.log('[calcularVT] status HTTP:', resp.status, '| resposta:', JSON.stringify(data));
       if (!resp.ok) throw new Error(data.error || ('HTTP ' + resp.status + (data.detail ? ': ' + data.detail : '')));
@@ -568,64 +558,6 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
     } catch { /* ignora erros de rede no poll */ }
   }
 
-  async function initPlacesAutocomplete() {
-    const inp = document.getElementById('vt-dest-input');
-    if (!inp) return;
-
-    let key;
-    try {
-      const r = await fetch('/api/maps-key');
-      console.log('[Places] maps-key status:', r.status);
-      if (!r.ok) { console.warn('[Places] Endpoint retornou', r.status); return; }
-      const json = await r.json();
-      key = json && json.key;
-      if (!key) { console.warn('[Places] Chave ausente na resposta:', JSON.stringify(json)); return; }
-      console.log('[Places] Chave obtida, carregando Maps JS API…');
-    } catch (e) {
-      console.warn('[Places] Falha ao obter chave:', e);
-      return;
-    }
-
-    try {
-      await new Promise((resolve, reject) => {
-        const s = document.createElement('script');
-        s.src = 'https://maps.googleapis.com/maps/api/js?key=' + key + '&libraries=places&language=pt-BR';
-        s.async = true;
-        s.onload  = resolve;
-        s.onerror = (err) => { console.error('[Places] Falha ao carregar Maps JS:', err); reject(err); };
-        document.head.appendChild(s);
-      });
-    } catch (e) {
-      console.warn('[Places] Maps JS não carregou:', e);
-      return;
-    }
-
-    try {
-      if (!window.google || !window.google.maps || !window.google.maps.places) {
-        console.warn('[Places] google.maps.places não disponível após carregamento');
-        return;
-      }
-      const ac = new google.maps.places.Autocomplete(inp, {
-        componentRestrictions: { country: 'br' },
-        fields: ['geometry', 'formatted_address'],
-        types: ['address'],
-      });
-      ac.addListener('place_changed', () => {
-        const place = ac.getPlace();
-        if (place.geometry && place.geometry.location) {
-          vtLat = place.geometry.location.lat();
-          vtLng = place.geometry.location.lng();
-        } else {
-          vtLat = null; vtLng = null;
-        }
-      });
-      inp.addEventListener('input', () => { vtLat = null; vtLng = null; });
-      console.log('[Places] Autocomplete inicializado.');
-    } catch (e) {
-      console.warn('[Places] Erro ao inicializar Autocomplete:', e);
-    }
-  }
-
   function copiarPIX() {
     if (!_vtPixCode) return;
     const btn = document.getElementById('vt-pix-copy-btn');
@@ -646,7 +578,6 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
     });
   }
 
-  document.addEventListener('DOMContentLoaded', initPlacesAutocomplete);
 </script>
 </head>
 <body>

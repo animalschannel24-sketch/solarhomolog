@@ -608,11 +608,15 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
   async function vtFetchSuggestions(q) {
     if (q.length < 3) { vtHideSuggestions(); return; }
     try {
-      const r = await fetch('/api/autocomplete?q=' + encodeURIComponent(q));
-      if (!r.ok) return;
-      const { predictions } = await r.json();
-      vtShowSuggestions(predictions || []);
-    } catch { /* ignora erros de rede */ }
+      const r = await fetch('/api/places?q=' + encodeURIComponent(q));
+      const data = await r.json();
+      console.log('[places] status HTTP:', r.status, '| resposta:', JSON.stringify(data));
+      if (!r.ok) { console.warn('[places] Erro HTTP:', r.status, data); return; }
+      if (data._debug) console.warn('[places] Google retornou:', data._debug);
+      vtShowSuggestions(data.predictions || []);
+    } catch (e) {
+      console.error('[places] Falha no fetch:', e);
+    }
   }
 
   document.addEventListener('DOMContentLoaded', () => {

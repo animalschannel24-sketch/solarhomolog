@@ -167,7 +167,7 @@ function screenCompany() {
       <label class="app-label">Nome do Representante Legal *</label>
       <input type="text" id="pj-rep-nome" class="app-input" placeholder="Conforme procuração" />
       <label class="app-label">CPF do Representante *</label>
-      <input type="text" id="pj-rep-cpf" class="app-input" placeholder="000.000.000-00" />
+      <input type="text" id="pj-rep-cpf" class="app-input" placeholder="000.000.000-00" oninput="maskCPF(this)" />
     </div>
   </div>
   <div id="tabpanel-pf" class="tab-panel">
@@ -176,7 +176,7 @@ function screenCompany() {
       <label class="app-label">Nome completo *</label>
       <input type="text" id="pf-nome" class="app-input" placeholder="Conforme documento" />
       <div class="app-row2">
-        <div><label class="app-label">CPF *</label><input type="text" id="pf-cpf" class="app-input" placeholder="000.000.000-00" /></div>
+        <div><label class="app-label">CPF *</label><input type="text" id="pf-cpf" class="app-input" placeholder="000.000.000-00" oninput="maskCPF(this)" /></div>
         <div><label class="app-label">RG *</label><input type="text" id="pf-rg" class="app-input" placeholder="00.000.000-0" /></div>
       </div>
       <label class="app-label">Data de nascimento *</label>
@@ -209,7 +209,7 @@ function screenCompany() {
       ${['ENEL SP','ENEL RJ','CEMIG','COPEL','CELESC','CPFL Paulista','CPFL Piratininga','Light','Elektro','COELBA','CELPE','ENERGISA','Outra'].map(c=>`<option>${c}</option>`).join('')}
     </select>
     <label class="app-label">Número da instalação (UC) *</label>
-    <input type="text" id="uc-inp" class="app-input" placeholder="Conforme conta de energia" />
+    <input type="text" id="uc-inp" class="app-input" placeholder="Conforme conta de energia" oninput="maskUC(this)" />
     <label class="app-label">Número do medidor</label>
     <input type="text" class="app-input" placeholder="Opcional" />
   </div>
@@ -562,10 +562,36 @@ function maskCNPJ(el) {
        .replace(/\.(\d{3})(\d)/,'.$1/$2').replace(/(\d{4})(\d)/,'$1-$2');
   el.value = v;
 }
-function maskCEP(el) {
-  let v = el.value.replace(/\D/g,'').slice(0,8);
-  if (v.length > 5) v = v.slice(0,5)+'-'+v.slice(5);
+function maskCPF(el) {
+  let v = el.value.replace(/\D/g,'').slice(0, 11);
+  v = v.replace(/^(\d{3})(\d)/, '$1.$2')
+       .replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3')
+       .replace(/\.(\d{3})(\d)/, '.$1-$2');
   el.value = v;
+}
+function maskUC(el) {
+  el.value = el.value.replace(/\D/g, '').slice(0, 15);
+}
+function maskCEP(el) {
+  let v = el.value.replace(/\D/g, '').slice(0, 8);
+  if (v.length > 5) v = v.slice(0, 5) + '-' + v.slice(5);
+  el.value = v;
+  if (v.replace('-', '').length === 8) buscarCEP(v.replace('-', ''));
+}
+async function buscarCEP(cep) {
+  try {
+    const r = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    if (!r.ok) return;
+    const d = await r.json();
+    if (d.erro) return;
+    const logr = document.getElementById('addr-logr');
+    const cidade = document.getElementById('addr-cidade');
+    const estado = document.getElementById('addr-estado');
+    if (logr && d.logradouro) logr.value = d.logradouro;
+    if (cidade && d.localidade) cidade.value = d.localidade;
+    if (estado && d.uf) estado.value = d.uf;
+    document.getElementById('addr-num')?.focus();
+  } catch { /* ignora erro de rede */ }
 }
 function bindScreen(id) {
   // re-bind de eventos dinâmicos se necessário

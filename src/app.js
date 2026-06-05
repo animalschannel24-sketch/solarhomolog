@@ -225,7 +225,7 @@ function screenCompany() {
   </button>`;
 }
 
-function validateAndGoToDocs() {
+async function validateAndGoToDocs() {
   const isPJ = document.getElementById('tab-pj').classList.contains('active');
   const fields = [];
 
@@ -269,6 +269,45 @@ function validateAndGoToDocs() {
     return;
   }
 
+  const btn = document.querySelector('#modal-body button.btn-primary');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader spin"></i> Salvando...'; }
+
+  const observacoes = isPJ
+    ? `Rep: ${document.getElementById('pj-rep-nome').value} | CPF Rep: ${document.getElementById('pj-rep-cpf').value}`
+    : `RG: ${document.getElementById('pf-rg').value} | Nasc: ${document.getElementById('pf-nasc').value}`;
+
+  const payload = {
+    tipo_pessoa: isPJ ? 'pj' : 'pf',
+    nome_cliente: isPJ ? document.getElementById('pj-razao').value.trim() : document.getElementById('pf-nome').value.trim(),
+    cpf_cnpj: isPJ ? document.getElementById('cnpj-inp').value.trim() : document.getElementById('pf-cpf').value.trim(),
+    email_cliente: document.getElementById('cont-email').value.trim(),
+    telefone: document.getElementById('cont-whats').value.trim(),
+    uc: document.getElementById('uc-inp').value.trim(),
+    concessionaria: document.getElementById('conc-sel').value.trim(),
+    cep: document.getElementById('cep-inp').value.trim(),
+    logradouro: document.getElementById('addr-logr').value.trim(),
+    numero: document.getElementById('addr-num').value.trim(),
+    cidade: document.getElementById('addr-cidade').value.trim(),
+    estado: document.getElementById('addr-estado').value.trim(),
+    observacoes,
+  };
+
+  try {
+    const resp = await fetch('/api/processos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error || 'Erro ao salvar cadastro');
+    sessionProtocolo = data.protocolo;
+    sessionProcessoId = data.id;
+  } catch (err) {
+    if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-arrow-right"></i> Avançar para documentos'; }
+    alert('Não foi possível salvar o cadastro: ' + err.message);
+    return;
+  }
+
   go('screen-docs');
 }
 
@@ -276,6 +315,7 @@ function validateAndGoToDocs() {
 let uploadedDocs = {};
 let totalUploaded = 0;
 let sessionProtocolo = '';
+let sessionProcessoId = '';
 
 const docList = [
   {id:'conta', icon:'ti-file-invoice', name:'Conta de energia elétrica', desc:'Última fatura com número de instalação visível'},
@@ -288,9 +328,6 @@ const docList = [
 
 function screenDocs() {
   uploadedDocs = {}; totalUploaded = 0;
-  if (!sessionProtocolo) {
-    sessionProtocolo = 'SH-' + Date.now().toString(36).toUpperCase();
-  }
   return `
   <div class="step-bar"><div class="sdot done"></div><div class="sdot done"></div><div class="sdot active"></div><div class="sdot"></div><span class="slbl">Documentação</span></div>
   <h2 class="app-h2">Envio de documentos</h2>

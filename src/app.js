@@ -4,6 +4,33 @@
    Fluxo principal: login → cadastro → docs → proposta → pagamento → tracking
    ============================================ */
 
+// ── Supabase Auth ────────────────────────────────────────────────────────────
+let _supabaseClient = null;
+
+async function initSupabase() {
+  if (_supabaseClient) return _supabaseClient;
+  try {
+    const resp = await fetch('/api/config');
+    if (!resp.ok) throw new Error('Config indisponível');
+    const { url, anon_key } = await resp.json();
+    _supabaseClient = window.supabase.createClient(url, anon_key);
+    return _supabaseClient;
+  } catch (e) {
+    console.error('Supabase init error:', e);
+    return null;
+  }
+}
+
+async function loginWithGoogle() {
+  const client = await initSupabase();
+  if (!client) { alert('Serviço de autenticação indisponível. Tente novamente.'); return; }
+  const { error } = await client.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: window.location.origin + window.location.pathname },
+  });
+  if (error) alert('Erro ao iniciar login com Google: ' + error.message);
+}
+
 // ── Abertura / fechamento do modal ──────────────────────────────────────────
 function openApp(screen) {
   try {
@@ -113,17 +140,14 @@ function screenLogin() {
   <div class="step-bar"><div class="sdot active"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div><span class="slbl">Acesso à conta</span></div>
   <h2 class="app-h2">Criar conta ou entrar</h2>
   <p class="app-sub">Suas informações ficam seguras para acompanhar o processo.</p>
-  <button class="soc-btn" onclick="go('screen-company')">
+  <button class="soc-btn" onclick="loginWithGoogle()">
     <div class="soc-icon si-g">G</div><span>Continuar com Google</span>
-  </button>
-  <button class="soc-btn" onclick="go('screen-company')">
-    <div class="soc-icon si-a">🍎</div><span>Continuar com Apple</span>
   </button>
   <button class="soc-btn" onclick="go('screen-login-email')">
     <div class="soc-icon si-e">@</div><span>Continuar com e-mail</span>
   </button>
   <p style="text-align:center;font-size:11px;color:#6b7280;margin-top:1rem;line-height:1.6">
-    Ao continuar, você concorda com os <a href="#" style="color:#1a3a2a">Termos de Uso</a> e <a href="#" style="color:#1a3a2a">Política de Privacidade</a>.
+    Ao continuar, você concorda com os <a href="termos.html" style="color:#1a3a2a">Termos de Uso</a> e <a href="privacidade.html" style="color:#1a3a2a">Política de Privacidade</a>.
   </p>`;
 }
 
@@ -140,11 +164,42 @@ function screenLoginEmail() {
   <button class="btn btn-block" onclick="go('screen-login')">Voltar</button>`;
 }
 
-function sendEmailLink() {
-  const e = document.getElementById('email-inp').value;
+async function sendEmailLink() {
+  const e = document.getElementById('email-inp')?.value?.trim() || '';
   if (!e || !e.includes('@')) { alert('Informe um e-mail válido.'); return; }
-  alert('Link enviado para ' + e + '!\nVerifique sua caixa de entrada.');
-  go('screen-company');
+
+  const btn = document.querySelector('#modal-body button.btn-primary');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader spin"></i> Enviando...'; }
+
+  const client = await initSupabase();
+  if (!client) {
+    if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-send"></i> Enviar link de acesso'; }
+    alert('Serviço de autenticação indisponível. Tente novamente.');
+    return;
+  }
+
+  const { error } = await client.auth.signInWithOtp({
+    email: e,
+    options: { emailRedirectTo: window.location.origin + window.location.pathname },
+  });
+
+  if (error) {
+    if (btn) { btn.disabled = false; btn.innerHTML = '<i class="ti ti-send"></i> Enviar link de acesso'; }
+    alert('Erro ao enviar e-mail: ' + error.message);
+    return;
+  }
+
+  const body = document.getElementById('modal-body');
+  if (body) {
+    body.innerHTML = `
+      <div style="text-align:center;padding:1.5rem 0">
+        <div style="font-size:52px;margin-bottom:1rem">📧</div>
+        <h2 class="app-h2">Verifique seu e-mail</h2>
+        <p class="app-sub">Enviamos um link de acesso para <strong>${e}</strong>.<br>Clique no link para entrar — ele expira em 1 hora.</p>
+        <p style="font-size:11px;color:#6b7280;margin-top:.75rem">Não recebeu? Verifique a pasta de spam.</p>
+        <button class="btn btn-block" style="margin-top:1.25rem" onclick="go('screen-login')">Voltar</button>
+      </div>`;
+  }
 }
 
 // ── TELA: Cadastro ───────────────────────────────────────────────────────────
@@ -603,26 +658,35 @@ document.addEventListener('keydown', e => {
 });
 
 // ── Inicialização e Event Listeners ──────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   console.log('SolarHomolog app initialized');
-  
-  // Delegar clicks no overlay para fechar modal
+
   const overlay = document.getElementById('modal-overlay');
   if (overlay) {
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) {
-        closeApp();
-      }
-    });
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeApp(); });
   }
-  
-  // Garantir que todos os buttons com onclick funcionem
-  document.addEventListener('click', (e) => {
-    // Log para debug
-    if (e.target.onclick) {
-      console.log('Button clicked:', e.target);
+
+  // Detecta callback de OAuth (Google) ou magic link (e-mail)
+  const hash = window.location.hash;
+  const params = new URLSearchParams(window.location.search);
+  const isAuthCallback = hash.includes('access_token') ||
+                         hash.includes('error_code') ||
+                         params.has('code');
+
+  if (isAuthCallback) {
+    try {
+      const client = await initSupabase();
+      if (client) {
+        const { data: { session } } = await client.auth.getSession();
+        if (session) {
+          history.replaceState(null, '', window.location.pathname);
+          openApp('screen-company');
+        }
+      }
+    } catch (e) {
+      console.error('Auth callback error:', e);
     }
-  });
+  }
 });
 
   

@@ -482,7 +482,7 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
       if (data.status !== 'OK') throw new Error('Google Maps status: ' + data.status + (data.error_message ? ' — ' + data.error_message : ''));
       if (data.rows[0].elements[0].status !== 'OK') throw new Error('Endereço não encontrado (elemento: ' + data.rows[0].elements[0].status + ')');
 
-      const km   = Math.ceil(data.rows[0].elements[0].distance.value / 1000);
+      const km   = Math.round(data.rows[0].elements[0].distance.value / 100) / 10;
       const desl = km * 1.50;
       const tot  = desl + 350;
       const fmt  = v => 'R$ ' + v.toFixed(2).replace('.', ',');

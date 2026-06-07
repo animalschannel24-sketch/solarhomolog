@@ -69,7 +69,8 @@ module.exports = async (req, res) => {
       }),
       headers: { Prefer: 'return=representation' },
     });
-    const data = await r.json();
+    let data;
+    try { data = await r.json(); } catch { data = []; }
     return { ok: r.ok, status: r.status, data };
   }
 
@@ -86,6 +87,9 @@ module.exports = async (req, res) => {
     }
 
     const row = Array.isArray(data) ? data[0] : data;
+    if (!row || !row.id) {
+      return res.status(500).json({ error: 'Processo criado mas o banco não retornou os dados. Verifique as políticas RLS do Supabase.' });
+    }
     return res.status(200).json({ protocolo: row.protocolo, id: row.id });
   } catch (e) {
     return res.status(500).json({ error: e.message });

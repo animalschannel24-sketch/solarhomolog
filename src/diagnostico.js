@@ -53,7 +53,7 @@ function buildDiagScreen1() {
     <label class="app-label">Número da UC *</label>
     <input type="text" id="d-uc" class="app-input" placeholder="Ex.: 7010482930" />
     <label class="app-label">Concessionária *</label>
-    <select id="d-conc" class="app-select">
+    <select id="d-conc" class="app-select" onchange="this.dataset.touched='1'">
       <option value="">— Selecione —</option>
       <option value="enel_sp">ENEL SP</option>
       <option value="enel_rj">ENEL RJ</option>
@@ -79,7 +79,7 @@ function buildDiagScreen1() {
       </div>
     </div>
     <label class="app-label">Situação da UC *</label>
-    <select id="d-sit" class="app-select">
+    <select id="d-sit" class="app-select" onchange="this.dataset.touched='1'">
       <option value="">Selecione</option>
       <option value="normal">Regular — em nome do titular</option>
       <option value="ramal_part">Ramal particular / rede privada</option>
@@ -118,11 +118,13 @@ function diagFileSelected(input) {
       icon.innerHTML = '<i class="ti ti-circle-check"></i>';
       lbl.textContent = file.name + ' — dados extraídos';
       pw.style.display = 'none';
-      document.getElementById('d-uc').value = '7010482930';
-      document.getElementById('d-conc').value = 'cpfl';
-      document.getElementById('d-cons').value = '620';
-      document.getElementById('d-kw').value = '12.4';
-      document.getElementById('d-sit').value = 'normal';
+      // Preenche apenas campos vazios — não sobrescreve o que o usuário já digitou
+      const setIfEmpty = (id, val) => { const el = document.getElementById(id); if (el && !el.value && !el.dataset.touched) el.value = val; };
+      setIfEmpty('d-uc', '7010482930');
+      setIfEmpty('d-conc', 'cpfl');
+      setIfEmpty('d-cons', '620');
+      setIfEmpty('d-kw', '12.4');
+      setIfEmpty('d-sit', 'normal');
     }
   }, 120);
 }
@@ -130,10 +132,13 @@ function diagFileSelected(input) {
 function runDiag() {
   const conc = document.getElementById('d-conc').value;
   const sit  = document.getElementById('d-sit').value;
-  const kw   = parseFloat(document.getElementById('d-kw').value) || 8;
+  const kwStr = document.getElementById('d-kw').value.trim();
   const cons = parseFloat(document.getElementById('d-cons').value) || 400;
   const uc   = document.getElementById('d-uc').value || '—';
   if (!conc || !sit) { alert('Preencha ao menos a concessionária e a situação da UC.'); return; }
+  if (!kwStr) { alert('Informe a potência do sistema solar a instalar (kWp) — campo obrigatório.'); document.getElementById('d-kw').focus(); return; }
+  const kw = parseFloat(kwStr);
+  if (!kw || kw <= 0) { alert('Informe uma potência válida (ex: 8.2 kWp).'); document.getElementById('d-kw').focus(); return; }
 
   const body = document.getElementById('modal-body');
   body.innerHTML = buildDiagLoading();
@@ -185,7 +190,7 @@ function buildDiagResult(conc, sit, kw, cons, uc) {
     if (status==='ok') status='warn';
     motivos.push({t:'warn', m:`<strong>Risco moderado (${cr.name}):</strong> ${cr.nota}`});
   }
-  if (ratio > 120) {
+  if (ratio > 1.2) {
     if (status==='ok') status='warn';
     motivos.push({t:'warn', m:`<strong>Sistema superdimensionado (${ratio.toFixed(0)}% do consumo):</strong> potência muito acima do consumo aumenta risco de reprovação. Recomenda-se ajustar para ≤110%.`});
   }
@@ -245,7 +250,7 @@ function buildDiagResult(conc, sit, kw, cons, uc) {
   if (status === 'ok') {
     html += `<button class="btn btn-solar btn-block" style="margin-bottom:8px" onclick="go('screen-login')"><i class="ti ti-arrow-right"></i> Iniciar homologação agora</button>`;
   } else {
-    html += `<button class="btn btn-solar btn-block" style="margin-bottom:8px" onclick="go('screen-login')"><i class="ti ti-message-circle"></i> Falar com nossa equipe sobre as alternativas</button>`;
+    html += `<button class="btn btn-solar btn-block" style="margin-bottom:8px" onclick="window.open('https://wa.me/5511992071648?text=' + encodeURIComponent('Olá! Preciso de ajuda com a homologação da minha UC. Gostaria de falar com um especialista.'), '_blank')"><i class="ti ti-brand-whatsapp"></i> Falar com especialista</button>`;
   }
   html += `<button class="btn btn-block" onclick="window.renderDiagnostico(document.getElementById('modal-body'))"><i class="ti ti-refresh"></i> Analisar outra UC</button>`;
 

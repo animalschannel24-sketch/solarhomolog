@@ -264,7 +264,7 @@ function screenCompany() {
       ${['ENEL SP','ENEL RJ','CEMIG','COPEL','CELESC','CPFL Paulista','CPFL Piratininga','Light','Elektro','COELBA','CELPE','ENERGISA','Outra'].map(c=>`<option>${c}</option>`).join('')}
     </select>
     <label class="app-label">Número da instalação (UC) *</label>
-    <input type="text" id="uc-inp" class="app-input" placeholder="Conforme conta de energia" oninput="maskUC(this)" />
+    <input type="text" id="uc-inp" class="app-input" placeholder="Conforme conta de energia" />
     <label class="app-label">Número do medidor</label>
     <input type="text" class="app-input" placeholder="Opcional" />
   </div>
@@ -393,12 +393,9 @@ function screenDocs() {
   <div id="doc-list">
     ${docList.map(d => renderDocItem(d)).join('')}
   </div>
-  <div id="analyze-area" style="display:none;margin-top:.75rem">
-    <button class="btn btn-solar btn-block" id="analyze-btn" onclick="runAnalysis()">
-      <i class="ti ti-sparkles"></i> Analisar documentos
-    </button>
-  </div>
-  <div id="analysis-result" style="display:none"></div>`;
+  <div id="conta-msg" style="display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:10px 14px;font-size:13px;color:#166534;margin-top:.75rem">
+    <i class="ti ti-circle-check"></i> Conta de energia recebida com sucesso.
+  </div>`;
 }
 
 function renderDocItem(d) {
@@ -443,7 +440,7 @@ async function doUpload(id, input) {
     if (item) { item.classList.add('uploaded'); item.querySelector('.doc-icon i').className = 'ti ti-circle-check'; }
     if (st)  { st.textContent = '✓ Enviado'; st.className = 'doc-status ds-ok'; }
     if (btn) { btn.disabled = false; btn.textContent = 'Reenviar'; }
-    if (totalUploaded >= 3) document.getElementById('analyze-area').style.display = 'block';
+    if (id === 'conta') { const msg = document.getElementById('conta-msg'); if (msg) msg.style.display = 'block'; }
 
   } catch (err) {
     if (st)  { st.textContent = 'Erro ao enviar'; st.className = 'doc-status ds-pend'; }
@@ -454,23 +451,6 @@ async function doUpload(id, input) {
   }
 }
 
-function runAnalysis() {
-  const btn = document.getElementById('analyze-btn');
-  btn.innerHTML = '<i class="ti ti-loader spin"></i> Analisando com IA...';
-  btn.disabled = true;
-  setTimeout(() => {
-    document.getElementById('analyze-area').style.display = 'none';
-    const res = document.getElementById('analysis-result');
-    res.style.display = 'block';
-    res.innerHTML = `
-      <div class="result-ok"><div class="rt">✓ Documentação aprovada</div>
-        <div class="rtxt">Os documentos enviados estão em conformidade com os requisitos da concessionária. O processo está pronto para prosseguir.</div>
-      </div>
-      <button class="btn btn-primary btn-block" onclick="go('screen-quote')">
-        <i class="ti ti-arrow-right"></i> Ver proposta e prosseguir
-      </button>`;
-  }, 2500);
-}
 
 // ── TELA: Proposta ───────────────────────────────────────────────────────────
 function screenQuote() {

@@ -124,7 +124,7 @@ function screenWelcome() {
     </div>
   </div>
   <button class="btn btn-primary btn-block" style="margin-bottom:10px" onclick="go('screen-login')">
-    <i class="ti ti-solar-panel"></i> Iniciar homologação
+    <i class="ti ti-solar-panel"></i> Processo de Homologação
   </button>
   <button class="btn btn-block" style="margin-bottom:10px" onclick="go('screen-diagnostico')">
     <i class="ti ti-bolt"></i> Verificar minha UC antes de começar
@@ -372,58 +372,107 @@ let totalUploaded = 0;
 let sessionProtocolo = '';
 let sessionProcessoId = '';
 
-const docList = [
-  {id:'conta', icon:'ti-file-invoice', name:'Conta de energia elétrica', desc:'Última fatura com número de instalação visível'},
-  {id:'procuracao', icon:'ti-file-text', name:'Procuração', desc:'Pública ou particular com firma reconhecida'},
-  {id:'planta', icon:'ti-blueprint', name:'Planta / Memorial descritivo', desc:'Projeto elétrico assinado por engenheiro (ART/RRT)'},
-  {id:'art', icon:'ti-certificate', name:'ART / RRT do engenheiro', desc:'Anotação de Responsabilidade Técnica — CREA/CAU'},
-  {id:'identidade', icon:'ti-id', name:'Documento de identidade', desc:'RG, CNH ou passaporte do responsável'},
-  {id:'contrato', icon:'ti-file-check', name:'Contrato social / CNPJ (PJ)', desc:'Ato constitutivo ou comprovante de CNPJ'},
-];
-
 function screenDocs() {
   uploadedDocs = {}; totalUploaded = 0;
   return `
   <div class="step-bar"><div class="sdot done"></div><div class="sdot done"></div><div class="sdot active"></div><div class="sdot"></div><span class="slbl">Documentação</span></div>
-  <h2 class="app-h2">Envio de documentos</h2>
-  <p class="app-sub">Faça upload dos documentos para análise pela nossa equipe.</p>
-  <div style="background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:9px 13px;font-size:12px;color:#e65100;margin-bottom:.75rem;display:flex;gap:8px;align-items:flex-start">
-    <i class="ti ti-info-circle"></i><span>Você só decide se prossegue após ver o resultado da análise.</span>
+  <h2 class="app-h2">Documentos do Processo</h2>
+  <p class="app-sub">Reúna os documentos abaixo para iniciar a homologação.</p>
+
+  <!-- QUADRO PADRÃO -->
+  <div style="background:#fff3cd;border:2px solid #ffc107;border-radius:10px;padding:1rem 1.1rem;margin-bottom:1rem">
+    <div style="font-size:13px;font-weight:700;color:#856404;margin-bottom:.6rem;display:flex;align-items:flex-start;gap:8px">
+      <span style="font-size:18px;flex-shrink:0">⚠️</span>
+      <span>Requisitos do Quadro Padrão — <strong>Responsabilidade Exclusiva do Proprietário</strong></span>
+    </div>
+    <p style="font-size:12px;color:#664d03;margin-bottom:.75rem;line-height:1.6">Antes da visita técnica, o proprietário do imóvel deve verificar e adequar o quadro padrão nos seguintes itens:</p>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:.75rem">
+      <div style="background:rgba(255,255,255,.6);border-radius:7px;padding:.55rem .8rem;font-size:12px;color:#3d2d00;line-height:1.55">
+        <strong>DPS — Dispositivo de Proteção contra Surtos:</strong> proteção obrigatória contra raios e variações da rede elétrica.
+      </div>
+      <div style="background:rgba(255,255,255,.6);border-radius:7px;padding:.55rem .8rem;font-size:12px;color:#3d2d00;line-height:1.55">
+        <strong>Bitola do Cabeamento:</strong> deve estar adequada à potência do sistema solar instalado.
+      </div>
+      <div style="background:rgba(255,255,255,.6);border-radius:7px;padding:.55rem .8rem;font-size:12px;color:#3d2d00;line-height:1.55">
+        <strong>Dispositivo de Proteção:</strong> disjuntor ou fusível do ramal devidamente dimensionado para o sistema.
+      </div>
+      <div style="background:rgba(255,255,255,.6);border-radius:7px;padding:.55rem .8rem;font-size:12px;color:#3d2d00;line-height:1.55">
+        <strong>Tipo de Ramal:</strong> informar à SolarHomolog se o ramal é aéreo ou subterrâneo.
+      </div>
+    </div>
+    <div style="font-size:12px;font-weight:700;color:#842029;background:#f8d7da;border-radius:6px;padding:.5rem .75rem;line-height:1.55">
+      ⚠️ Estes itens são de <strong>RESPONSABILIDADE EXCLUSIVA DO PROPRIETÁRIO DO IMÓVEL</strong>. A SolarHomolog não se responsabiliza por inadequações no quadro padrão que impeçam ou atrasem a homologação.
+    </div>
   </div>
-  <div id="doc-list">
-    ${docList.map(d => renderDocItem(d)).join('')}
+
+  <!-- 1. UC -->
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-bolt"></i> 1. Unidade Consumidora (UC)</div>
+    <label class="app-label">Número da UC</label>
+    <input type="text" id="uc-doc-inp" class="app-input" placeholder="Conforme conta de energia" oninput="maskUC(this)" />
+    <label class="app-label">Conta de energia</label>
+    <div class="upload-area" id="ua-conta" onclick="document.getElementById('file-conta-doc').click()">
+      <div class="upload-icon"><i class="ti ti-file-invoice"></i></div>
+      <div class="upload-lbl">Clique para enviar a conta de energia<br><span style="font-size:11px">PDF, JPG ou PNG</span></div>
+    </div>
+    <input type="file" id="file-conta-doc" style="display:none" accept=".pdf,.jpg,.jpeg,.png" onchange="doUploadNew('conta', this, 'ua-conta', 'st-conta')" />
+    <div id="st-conta" style="display:none;font-size:12px;color:#2e7d32;margin-top:2px"><i class="ti ti-circle-check"></i> Arquivo enviado com sucesso</div>
   </div>
-  <div id="conta-msg" style="display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:10px 14px;font-size:13px;color:#166534;margin-top:.75rem">
-    <i class="ti ti-circle-check"></i> Conta de energia recebida com sucesso.
-  </div>`;
+
+  <!-- 2. PROCURAÇÃO -->
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-file-text"></i> 2. Procuração</div>
+    <p style="font-size:12px;color:#6b7280;margin-bottom:.75rem;line-height:1.6">Procuração autorizando a SolarHomolog (João Carlos Chaves Assessoria Ltda, CNPJ 48.979.472/0001-64) a realizar todos os atos necessários junto à concessionária para homologação do sistema fotovoltaico.</p>
+    <a href="procuracao-modelo.html" target="_blank" class="btn btn-outline btn-sm" style="margin-bottom:.75rem;display:inline-flex">
+      <i class="ti ti-download"></i> Baixar modelo
+    </a>
+    <label class="app-label" style="margin-top:.5rem">Procuração assinada (upload)</label>
+    <div class="upload-area" id="ua-procuracao" onclick="document.getElementById('file-procuracao-doc').click()">
+      <div class="upload-icon"><i class="ti ti-file-text"></i></div>
+      <div class="upload-lbl">Clique para enviar a procuração assinada<br><span style="font-size:11px">PDF, JPG, PNG, DOC ou DOCX</span></div>
+    </div>
+    <input type="file" id="file-procuracao-doc" style="display:none" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" onchange="doUploadNew('procuracao', this, 'ua-procuracao', 'st-procuracao')" />
+    <div id="st-procuracao" style="display:none;font-size:12px;color:#2e7d32;margin-top:2px"><i class="ti ti-circle-check"></i> Arquivo enviado com sucesso</div>
+  </div>
+
+  <!-- 3. MEMORIAL DESCRITIVO -->
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-blueprint"></i> 3. Memorial Descritivo</div>
+    <p style="font-size:12px;color:#6b7280;margin-bottom:.75rem;line-height:1.6">Baixe o modelo, preencha com os dados do sistema fotovoltaico e faça o upload do documento preenchido.</p>
+    <a href="memorial-modelo.html" target="_blank" class="btn btn-outline btn-sm" style="margin-bottom:.75rem;display:inline-flex">
+      <i class="ti ti-download"></i> Baixar modelo
+    </a>
+    <label class="app-label" style="margin-top:.5rem">Memorial descritivo preenchido (upload)</label>
+    <div class="upload-area" id="ua-memorial" onclick="document.getElementById('file-memorial-doc').click()">
+      <div class="upload-icon"><i class="ti ti-blueprint"></i></div>
+      <div class="upload-lbl">Clique para enviar o memorial descritivo<br><span style="font-size:11px">PDF, JPG, PNG, DOC ou DOCX</span></div>
+    </div>
+    <input type="file" id="file-memorial-doc" style="display:none" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" onchange="doUploadNew('memorial', this, 'ua-memorial', 'st-memorial')" />
+    <div id="st-memorial" style="display:none;font-size:12px;color:#2e7d32;margin-top:2px"><i class="ti ti-circle-check"></i> Arquivo enviado com sucesso</div>
+  </div>
+
+  <!-- 4. DIAGRAMA UNIFILAR -->
+  <div class="app-card" style="border-color:#c8e6c9;background:#f1f8e9">
+    <div class="app-card-title" style="color:#2e7d32"><i class="ti ti-circuit-diode"></i> 4. Diagrama Unifilar</div>
+    <div style="display:flex;align-items:flex-start;gap:10px;padding:.65rem .85rem;background:rgba(46,125,50,.08);border-radius:8px;font-size:13px;color:#1b5e20;line-height:1.6">
+      <i class="ti ti-circle-check" style="font-size:20px;color:#2e7d32;flex-shrink:0;margin-top:1px"></i>
+      <span>Este documento será providenciado pela SolarHomolog. <strong>Nenhuma ação necessária.</strong></span>
+    </div>
+  </div>
+
+  <button class="btn btn-primary btn-block" style="margin-top:.25rem" onclick="go('screen-quote')">
+    <i class="ti ti-arrow-right"></i> Avançar para proposta
+  </button>`;
 }
 
-function renderDocItem(d) {
-  const done = uploadedDocs[d.id];
-  return `<div class="doc-item${done?' uploaded':''}" id="doc-${d.id}">
-    <div class="doc-icon"><i class="ti ${done?'ti-circle-check':d.icon}"></i></div>
-    <div class="doc-info">
-      <div class="doc-name">${d.name}</div>
-      <div class="doc-desc">${d.desc}</div>
-    </div>
-    <div style="text-align:right">
-      <div class="doc-status ${done?'ds-ok':'ds-pend'}" id="st-${d.id}">${done?'✓ Enviado':'Pendente'}</div>
-      <input type="file" id="file-${d.id}" style="display:none" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" onchange="doUpload('${d.id}', this)" />
-      <button class="up-btn" id="btn-${d.id}" onclick="document.getElementById('file-${d.id}').click()">${done?'Reenviar':'Enviar'}</button>
-    </div>
-  </div>`;
-}
-
-async function doUpload(id, input) {
+async function doUploadNew(id, input, areaId, statusId) {
   const file = input.files[0];
   if (!file) return;
 
-  const item = document.getElementById('doc-' + id);
-  const st   = document.getElementById('st-' + id);
-  const btn  = document.getElementById('btn-' + id);
+  const area = document.getElementById(areaId);
+  const st   = document.getElementById(statusId);
 
-  if (st)  { st.textContent = 'Enviando...'; st.className = 'doc-status ds-pend'; }
-  if (btn) { btn.disabled = true; btn.textContent = '...'; }
+  if (area) area.style.opacity = '.6';
 
   const formData = new FormData();
   formData.append('file', file);
@@ -433,18 +482,20 @@ async function doUpload(id, input) {
   try {
     const resp = await fetch('/api/upload', { method: 'POST', body: formData });
     const data = await resp.json();
-
     if (!resp.ok || !data.ok) throw new Error(data.error || 'Erro no servidor');
 
     if (!uploadedDocs[id]) { uploadedDocs[id] = true; totalUploaded++; }
-    if (item) { item.classList.add('uploaded'); item.querySelector('.doc-icon i').className = 'ti ti-circle-check'; }
-    if (st)  { st.textContent = '✓ Enviado'; st.className = 'doc-status ds-ok'; }
-    if (btn) { btn.disabled = false; btn.textContent = 'Reenviar'; }
-    if (id === 'conta') { const msg = document.getElementById('conta-msg'); if (msg) msg.style.display = 'block'; }
-
+    if (area) {
+      area.style.opacity = '';
+      area.classList.add('uploaded');
+      const icon = area.querySelector('.upload-icon i');
+      const lbl  = area.querySelector('.upload-lbl');
+      if (icon) icon.className = 'ti ti-circle-check';
+      if (lbl)  lbl.innerHTML = '<strong>' + file.name + '</strong>';
+    }
+    if (st) st.style.display = 'block';
   } catch (err) {
-    if (st)  { st.textContent = 'Erro ao enviar'; st.className = 'doc-status ds-pend'; }
-    if (btn) { btn.disabled = false; btn.textContent = 'Tentar novamente'; }
+    if (area) area.style.opacity = '';
     alert('Falha no upload: ' + err.message);
   } finally {
     input.value = '';

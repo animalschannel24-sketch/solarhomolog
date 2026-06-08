@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memorial Descritivo — SolarHomolog</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Times New Roman', serif; color: #000; background: #fff; font-size: 12pt; line-height: 1.8; }
+    .page { max-width: 700px; margin: 0 auto; padding: 3cm 2.5cm; }
+    h1 { text-align: center; font-size: 16pt; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin-bottom: .5rem; border-bottom: 2px solid #000; padding-bottom: .75rem; }
+    .subtitulo { text-align: center; font-size: 11pt; margin-bottom: 2rem; color: #333; }
+    h2 { font-size: 12pt; font-weight: bold; text-transform: uppercase; margin: 1.5rem 0 .75rem; border-left: 4px solid #1a3a2a; padding-left: .6rem; }
+    .campo-linha { margin: .6rem 0; }
+    .campo-label { font-weight: bold; display: block; font-size: 11pt; }
+    .linha { display: block; border-bottom: 1px solid #555; min-height: 22px; margin-top: 2px; }
+    .linha-dupla { min-height: 44px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+    table { width: 100%; border-collapse: collapse; margin: .75rem 0; font-size: 11pt; }
+    th { background: #1a3a2a; color: #fff; padding: 6px 10px; text-align: left; font-size: 10pt; }
+    td { border: 1px solid #ccc; padding: 6px 10px; min-height: 26px; }
+    td.label-col { font-weight: bold; background: #f5f5f5; width: 40%; }
+    .assinatura-bloco { margin-top: 3rem; }
+    .assinatura-linha { border-top: 1px solid #000; margin-bottom: .25rem; }
+    .print-btn { position: fixed; top: 1rem; right: 1rem; background: #1a3a2a; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 13px; cursor: pointer; font-family: sans-serif; }
+    .print-btn:hover { background: #255239; }
+    @media print {
+      .print-btn { display: none; }
+      .page { padding: 2cm; }
+    }
+    .logo-topo { text-align: center; margin-bottom: 2rem; }
+    .logo-topo span { font-family: sans-serif; font-size: 11pt; color: #1a3a2a; font-weight: 600; }
+    .nota { background: #f9f9f9; border-left: 3px solid #aaa; padding: .5rem .75rem; font-size: 10pt; color: #555; margin: .5rem 0; }
+  </style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+<div class="page">
+  <div class="logo-topo">
+    <span>☀ SolarHomolog — Homologação Fotovoltaica</span>
+  </div>
+
+  <h1>Memorial Descritivo</h1>
+  <div class="subtitulo">Sistema de Geração Fotovoltaica — Microgeração / Minigeração Distribuída</div>
+
+  <!-- 1. IDENTIFICAÇÃO DO SOLICITANTE -->
+  <h2>1. Identificação do Solicitante</h2>
+  <table>
+    <tr><td class="label-col">Nome / Razão Social</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">CPF / CNPJ</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Endereço da instalação</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Cidade / UF / CEP</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Número da UC</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Concessionária</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Telefone / WhatsApp</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">E-mail</td><td>&nbsp;</td></tr>
+  </table>
+
+  <!-- 2. DADOS DO SISTEMA FOTOVOLTAICO -->
+  <h2>2. Dados do Sistema Fotovoltaico</h2>
+  <table>
+    <tr><td class="label-col">Potência total instalada (kWp)</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Classe do sistema</td><td>( ) Microgeração ≤ 75 kWp &nbsp;&nbsp; ( ) Minigeração 75 kWp – 5 MWp</td></tr>
+    <tr><td class="label-col">Modalidade de conexão</td><td>( ) Monofásico &nbsp;&nbsp; ( ) Bifásico &nbsp;&nbsp; ( ) Trifásico</td></tr>
+    <tr><td class="label-col">Tensão de conexão</td><td>( ) 127/220 V &nbsp;&nbsp; ( ) 220/380 V</td></tr>
+    <tr><td class="label-col">Tipo de ramal</td><td>( ) Aéreo &nbsp;&nbsp; ( ) Subterrâneo</td></tr>
+    <tr><td class="label-col">Local de instalação dos módulos</td><td>( ) Telhado &nbsp;&nbsp; ( ) Solo &nbsp;&nbsp; ( ) Estrutura especial</td></tr>
+  </table>
+
+  <!-- 3. MÓDULOS FOTOVOLTAICOS -->
+  <h2>3. Módulos Fotovoltaicos</h2>
+  <table>
+    <tr><th>Item</th><th>Dado</th></tr>
+    <tr><td class="label-col">Fabricante / Marca</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Modelo</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Potência nominal por módulo (Wp)</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Quantidade de módulos</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Tensão de circuito aberto — Voc (V)</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Corrente de curto-circuito — Isc (A)</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Eficiência (%)</td><td>&nbsp;</td></tr>
+  </table>
+
+  <!-- 4. INVERSOR(ES) -->
+  <h2>4. Inversor(es) / Microinversor(es)</h2>
+  <table>
+    <tr><th>Item</th><th>Dado</th></tr>
+    <tr><td class="label-col">Fabricante / Marca</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Modelo</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Potência nominal CA (kW)</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Quantidade de inversores</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Tensão de saída CA (V)</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Corrente nominal de saída (A)</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Certificação INMETRO / ANEEL</td><td>&nbsp;</td></tr>
+  </table>
+
+  <!-- 5. QUADRO PADRÃO E PROTEÇÕES -->
+  <h2>5. Quadro Padrão e Proteções</h2>
+  <table>
+    <tr><td class="label-col">Disjuntor de interligação (A)</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Bitola do cabo de interligação (mm²)</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">DPS instalado</td><td>( ) Sim &nbsp;&nbsp; ( ) Não — será instalado antes da vistoria</td></tr>
+    <tr><td class="label-col">Classe do DPS</td><td>( ) Classe I &nbsp;&nbsp; ( ) Classe II &nbsp;&nbsp; ( ) Classe I+II</td></tr>
+    <tr><td class="label-col">Aterramento do sistema</td><td>( ) Existente &nbsp;&nbsp; ( ) Será implantado</td></tr>
+  </table>
+
+  <!-- 6. DESCRIÇÃO TÉCNICA DA INSTALAÇÃO -->
+  <h2>6. Descrição Técnica da Instalação</h2>
+  <div class="campo-linha">
+    <span class="campo-label">Disposição e inclinação dos módulos (ângulo, orientação, sombreamento):</span>
+    <span class="linha linha-dupla">&nbsp;</span>
+  </div>
+  <div class="campo-linha">
+    <span class="campo-label">Tipo de estrutura de fixação utilizada:</span>
+    <span class="linha">&nbsp;</span>
+  </div>
+  <div class="campo-linha">
+    <span class="campo-label">Proteções CC adotadas (fusíveis, disjuntores string, etc.):</span>
+    <span class="linha">&nbsp;</span>
+  </div>
+  <div class="campo-linha">
+    <span class="campo-label">Observações complementares:</span>
+    <span class="linha linha-dupla">&nbsp;</span>
+  </div>
+
+  <!-- 7. RESPONSÁVEL TÉCNICO -->
+  <h2>7. Responsável Técnico</h2>
+  <table>
+    <tr><td class="label-col">Nome do Engenheiro</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">CREA / CFT</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">N.º ART / RRT</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">Telefone</td><td>&nbsp;</td></tr>
+    <tr><td class="label-col">E-mail</td><td>&nbsp;</td></tr>
+  </table>
+
+  <!-- ASSINATURAS -->
+  <div class="grid2" style="margin-top:3rem">
+    <div>
+      <div style="height:3rem"></div>
+      <div class="assinatura-linha"></div>
+      <div style="font-size:11pt">Assinatura do Responsável Técnico</div>
+      <div style="font-size:10pt;color:#555">CREA/CFT: _______________</div>
+    </div>
+    <div>
+      <div style="height:3rem"></div>
+      <div class="assinatura-linha"></div>
+      <div style="font-size:11pt">Assinatura do Proprietário / Solicitante</div>
+    </div>
+  </div>
+
+  <div class="campo-linha" style="margin-top:1.5rem;text-align:right">
+    <span class="campo-label">Local e data:</span>
+    <span class="linha" style="max-width:300px;margin-left:auto">&nbsp;</span>
+  </div>
+
+  <p style="margin-top:2rem;font-size:9pt;color:#666;text-align:center">
+    Este modelo é fornecido pela SolarHomolog. Após preenchimento e assinatura, faça o upload no portal de homologação.
+    Conforme Lei 14.300/2022 e REN ANEEL 1.000/2021.
+  </p>
+</div>
+</body>
+</html>

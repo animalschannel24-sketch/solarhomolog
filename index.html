@@ -460,11 +460,13 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
     const dest = inp ? inp.value.trim() : '';
     if (!dest) { if (inp) inp.focus(); return; }
 
-    const btn = document.getElementById('vt-calc-btn');
-    const box = document.getElementById('vt-result');
+    const btn    = document.getElementById('vt-calc-btn');
+    const box    = document.getElementById('vt-result');
+    const errBox = document.getElementById('vt-error');
     btn.disabled = true;
     btn.textContent = 'Calculando…';
     box.style.display = 'none';
+    if (errBox) { errBox.style.display = 'none'; errBox.textContent = ''; }
 
     // reset PIX ao recalcular
     const pixBox = document.getElementById('vt-pix-box');
@@ -494,7 +496,7 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
       box.style.display = 'block';
     } catch (err) {
       console.error('[calcularVT] Erro:', err);
-      alert('Não foi possível calcular a distância.\n\nDetalhe: ' + err.message);
+      if (errBox) { errBox.textContent = 'Não foi possível calcular a distância: ' + err.message; errBox.style.display = 'block'; }
     } finally {
       btn.disabled = false;
       btn.textContent = 'Calcular';
@@ -704,8 +706,9 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
               onblur="setTimeout(vtHideSuggestions, 150)" />
             <div id="vt-suggestions" class="vt-suggestions"></div>
           </div>
-          <button id="vt-calc-btn" class="btn btn-primary" onclick="calcularVT()">Calcular</button>
+          <button type="button" id="vt-calc-btn" class="btn btn-primary" onclick="calcularVT()">Calcular</button>
         </div>
+        <div id="vt-error" style="display:none;background:#fff0f0;border:1px solid #f5a6a6;border-radius:8px;padding:9px 13px;font-size:12px;color:#c00;margin-top:.5rem"></div>
         <div class="calc-result" id="vt-result">
           <div class="calc-row"><span>Distância:</span><strong id="vt-r-km">—</strong></div>
           <div class="calc-row"><span>Deslocamento (R$ 1,50/km):</span><strong id="vt-r-desl">—</strong></div>

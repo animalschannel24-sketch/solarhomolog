@@ -153,14 +153,6 @@ body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--w
 .step-card h3 { font-size: 15px; font-weight: 600; margin-bottom: .4rem; }
 .step-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
-/* --- DIAGNÓSTICO HERO --- */
-.diag-box { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); border-radius: var(--radius-lg); padding: 2rem; max-width: 580px; margin: 0 auto; text-align: center; }
-.diag-items { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.5rem; }
-.diag-item { display: flex; align-items: center; gap: 8px; font-size: 13px; padding: 8px 12px; border-radius: 8px; }
-.diag-item.ok { background: rgba(232,245,233,.12); color: #a5d6a7; }
-.diag-item.warn { background: rgba(255,248,225,.1); color: #ffe082; }
-.diag-item.block { background: rgba(252,228,236,.1); color: #f48fb1; }
-@media (max-width: 500px) { .diag-items { grid-template-columns: 1fr; } }
 
 /* --- LEGISLAÇÃO GRID --- */
 .leg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
@@ -714,7 +706,6 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
       <nav class="nav-links">
         <a href="#como-funciona">Como funciona</a>
         <a href="#legislacao">Legislação</a>
-        <a href="#diagnostico">Diagnóstico UC</a>
         <a href="#contato">Contato</a>
       </nav>
     </div>
@@ -860,26 +851,6 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
     </div>
   </section>
 
-  <!-- DIAGNÓSTICO UC -->
-  <section class="section section-dark" id="diagnostico">
-    <div class="container">
-      <h2 class="section-title light">Diagnóstico da sua UC</h2>
-      <p class="section-sub light">Saiba antes de instalar se a sua unidade consumidora tem restrições para homologação</p>
-      <div class="diag-box">
-        <div class="diag-items">
-          <div class="diag-item ok"><i class="ti ti-check"></i> UC regular em nome do titular</div>
-          <div class="diag-item ok"><i class="ti ti-check"></i> Concessionária sem restrição na região</div>
-          <div class="diag-item warn"><i class="ti ti-alert-triangle"></i> CPFL / RGE — alto risco inversão de fluxo</div>
-          <div class="diag-item warn"><i class="ti ti-alert-triangle"></i> Sistema superdimensionado (>120% consumo)</div>
-          <div class="diag-item block"><i class="ti ti-x"></i> UC submedida ou ramal particular</div>
-          <div class="diag-item block"><i class="ti ti-x"></i> UC com débito em aberto</div>
-        </div>
-        <button class="btn btn-solar btn-lg" onclick="openApp('screen-diagnostico')">
-          <i class="ti ti-bolt"></i> Verificar minha UC agora
-        </button>
-      </div>
-    </div>
-  </section>
 
   <!-- LEGISLAÇÃO -->
   <section class="section" id="legislacao">
@@ -950,7 +921,6 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
         </div>
         <div>
           <div class="footer-title">Serviços</div>
-          <button class="footer-link" onclick="openApp('screen-diagnostico')">Diagnóstico de UC</button>
           <button class="footer-link" onclick="openApp('screen-legislacao')">Base de Legislação</button>
           <button class="footer-link" onclick="openApp('screen-welcome')">Processo de Homologação</button>
         </div>

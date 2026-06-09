@@ -29,21 +29,7 @@ function buildDiagScreen() {
     <label class="app-label">Número da UC</label>
     <input type="text" id="d-uc" class="app-input" placeholder="Ex.: 7010482930" />
     <label class="app-label">Concessionária *</label>
-    <select id="d-conc" class="app-select">
-      <option value="">— Selecione —</option>
-      <option value="enel_sp">ENEL SP</option>
-      <option value="enel_rj">ENEL RJ</option>
-      <option value="cemig">CEMIG (MG)</option>
-      <option value="cpfl">CPFL Paulista / Piratininga</option>
-      <option value="rge">RGE (RS)</option>
-      <option value="copel">COPEL (PR)</option>
-      <option value="celesc">CELESC (SC)</option>
-      <option value="light">Light (RJ)</option>
-      <option value="elektro">Elektro (SP/MS)</option>
-      <option value="coelba">COELBA (BA)</option>
-      <option value="energisa">Energisa</option>
-      <option value="outro">Outra</option>
-    </select>
+    ${buildConcSelect('d-conc','— Selecione —')}
     <div class="app-row2">
       <div>
         <label class="app-label">Consumo médio (kWh/mês)</label>

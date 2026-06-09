@@ -4,6 +4,66 @@
    Fluxo principal: login → cadastro → docs → proposta → pagamento → tracking
    ============================================ */
 
+// ── Concessionárias SP (ARSESP) ──────────────────────────────────────────────
+const CONCS_SP = [
+  { value: 'enel_sp',           label: 'Enel São Paulo',        color: '#E2001A' },
+  { value: 'cpfl_paulista',     label: 'CPFL Paulista',         color: '#005AA7' },
+  { value: 'cpfl_piratininga',  label: 'CPFL Piratininga',      color: '#005AA7' },
+  { value: 'cpfl_santa_cruz',   label: 'CPFL Santa Cruz',       color: '#005AA7' },
+  { value: 'edp_sp',            label: 'EDP São Paulo',         color: '#EE2E24' },
+  { value: 'energisa_ss',       label: 'Energisa Sul-Sudeste',  color: '#F7941D' },
+  { value: 'neoenergia_elektro', label: 'Neoenergia Elektro',   color: '#00A651' },
+  { value: 'outro',             label: 'Outra',                 color: '#9CA3AF' },
+];
+
+function buildConcSelect(inputId, placeholder) {
+  const opts = CONCS_SP.map(c =>
+    `<div class="conc-opt" onclick="pickConc('${inputId}','${c.value}','${encodeURIComponent(c.label)}','${c.color}')">` +
+      `<span class="conc-opt-dot" style="background:${c.color}"></span>${c.label}` +
+    `</div>`
+  ).join('');
+  return `<div class="conc-wrap" id="conc-wrap-${inputId}">` +
+    `<input type="hidden" id="${inputId}" value="">` +
+    `<button type="button" class="conc-btn" id="conc-btn-${inputId}" onclick="toggleConcDrop('${inputId}')">` +
+      `<span class="conc-btn-dot" id="conc-dot-${inputId}"></span>` +
+      `<span class="conc-btn-label" id="conc-lbl-${inputId}">${placeholder}</span>` +
+      `<i class="ti ti-chevron-down conc-btn-icon"></i>` +
+    `</button>` +
+    `<div class="conc-list" id="conc-list-${inputId}">${opts}</div>` +
+  `</div>`;
+}
+
+function toggleConcDrop(id) {
+  const list = document.getElementById('conc-list-' + id);
+  const btn  = document.getElementById('conc-btn-' + id);
+  if (!list) return;
+  const opening = !list.classList.contains('open');
+  document.querySelectorAll('.conc-list').forEach(l => l.classList.remove('open'));
+  document.querySelectorAll('.conc-btn').forEach(b => b.classList.remove('open'));
+  if (opening) { list.classList.add('open'); btn.classList.add('open'); }
+}
+
+function pickConc(id, value, labelEncoded, color) {
+  const label = decodeURIComponent(labelEncoded);
+  const hidden = document.getElementById(id);
+  if (hidden) hidden.value = value;
+  const lbl = document.getElementById('conc-lbl-' + id);
+  if (lbl) lbl.textContent = label;
+  const dot = document.getElementById('conc-dot-' + id);
+  if (dot) { dot.style.background = color; dot.style.display = 'inline-block'; }
+  const list = document.getElementById('conc-list-' + id);
+  const btn  = document.getElementById('conc-btn-' + id);
+  if (list) list.classList.remove('open');
+  if (btn)  btn.classList.remove('open');
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.conc-wrap')) {
+    document.querySelectorAll('.conc-list').forEach(l => l.classList.remove('open'));
+    document.querySelectorAll('.conc-btn').forEach(b => b.classList.remove('open'));
+  }
+});
+
 // ── Supabase Auth ────────────────────────────────────────────────────────────
 let _supabaseClient = null;
 
@@ -288,10 +348,7 @@ function screenCompany() {
   <div class="app-card">
     <div class="app-card-title"><i class="ti ti-bolt"></i>Dados da concessionária</div>
     <label class="app-label">Concessionária *</label>
-    <select id="conc-sel" class="app-select">
-      <option value="">Selecione</option>
-      ${['ENEL SP','ENEL RJ','CEMIG','COPEL','CELESC','CPFL Paulista','CPFL Piratininga','Light','Elektro','COELBA','CELPE','ENERGISA','Outra'].map(c=>`<option>${c}</option>`).join('')}
-    </select>
+    ${buildConcSelect('conc-sel','Selecione')}
     <label class="app-label">Número da instalação *</label>
     <input type="text" id="uc-inp" class="app-input" placeholder="Conforme conta de energia" />
     <label class="app-label">Número do medidor</label>

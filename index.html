@@ -479,20 +479,21 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
   let vtTotal = 0, vtKm = 0, _vtPixCode = '', vtPixId = null, vtPixPoller = null;
 
   async function calcularVT() {
-    const inp  = document.getElementById('vt-dest-input');
-    const dest = inp ? inp.value.trim() : '';
+    const inp    = document.getElementById('vt-dest-input');
+    const errBox = document.getElementById('vt-error');
+    const dest   = inp ? inp.value.trim() : '';
     if (!dest) {
-      if (inp) {
-        inp.focus();
-        inp.style.border = '2px solid #c87800';
-        setTimeout(() => { inp.style.border = ''; }, 1500);
+      if (inp) inp.focus();
+      if (errBox) {
+        errBox.textContent = 'Digite o endereço do imóvel para calcular o deslocamento.';
+        errBox.style.display = 'block';
+        setTimeout(() => { if (errBox) errBox.style.display = 'none'; }, 3000);
       }
       return;
     }
 
     const btn    = document.getElementById('vt-calc-btn');
     const box    = document.getElementById('vt-result');
-    const errBox = document.getElementById('vt-error');
     btn.disabled = true;
     btn.textContent = 'Calculando…';
     box.style.display = 'none';

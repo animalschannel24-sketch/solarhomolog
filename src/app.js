@@ -158,9 +158,6 @@ function screenWelcome() {
   <button class="btn btn-primary btn-block" style="margin-bottom:10px" onclick="go('screen-login')">
     <i class="ti ti-solar-panel"></i> Processo de Homologação
   </button>
-  <button class="btn btn-block" style="margin-bottom:10px" onclick="go('screen-diagnostico')">
-    <i class="ti ti-bolt"></i> Verificar minha UC antes de começar
-  </button>
   <button class="btn btn-block" onclick="go('screen-tracking')">
     <i class="ti ti-search"></i> Acompanhar processo existente
   </button>`;

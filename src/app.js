@@ -295,7 +295,7 @@ function screenCompany() {
       <option value="">Selecione</option>
       ${['ENEL SP','ENEL RJ','CEMIG','COPEL','CELESC','CPFL Paulista','CPFL Piratininga','Light','Elektro','COELBA','CELPE','ENERGISA','Outra'].map(c=>`<option>${c}</option>`).join('')}
     </select>
-    <label class="app-label">Número da instalação (UC) *</label>
+    <label class="app-label">Número da instalação *</label>
     <input type="text" id="uc-inp" class="app-input" placeholder="Conforme conta de energia" />
     <label class="app-label">Número do medidor</label>
     <input type="text" class="app-input" placeholder="Opcional" />
@@ -335,7 +335,7 @@ async function validateAndGoToDocs() {
     ['addr-cidade',  'Cidade'],
     ['addr-estado',  'Estado'],
     ['conc-sel',     'Concessionária'],
-    ['uc-inp',       'Número da instalação (UC)'],
+    ['uc-inp',       'Número da instalação'],
     ['cont-whats',   'WhatsApp'],
     ['cont-email',   'E-mail'],
   );

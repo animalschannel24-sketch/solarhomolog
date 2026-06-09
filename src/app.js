@@ -20,7 +20,7 @@ async function initSupabase() {
       cfg.anon_key,
       {
         auth: {
-          flowType: 'pkce',
+          flowType: 'implicit',
           detectSessionInUrl: true,
           autoRefreshToken: true,
           persistSession: true,
@@ -729,25 +729,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     overlay.addEventListener('click', (e) => { if (e.target === overlay) closeApp(); });
   }
 
-  // Detecta callback de OAuth (Google) ou magic link (e-mail)
+  // Detecta callback de OAuth (Google, implicit flow) ou magic link (e-mail)
   const hash = window.location.hash;
   const params = new URLSearchParams(window.location.search);
-  const isAuthCallback = hash.includes('access_token') ||
-                         hash.includes('error_code') ||
-                         params.has('code');
 
-  if (isAuthCallback) {
-    try {
-      const client = await initSupabase();
-      if (client) {
-        const { data: { session } } = await client.auth.getSession();
-        if (session) {
-          history.replaceState(null, '', window.location.pathname);
-          openApp('screen-company');
+  // Verifica erro OAuth retornado pela Supabase/provider no hash
+  if (hash.includes('error=') || hash.includes('error_code=')) {
+    const hashParams = new URLSearchParams(hash.replace(/^#/, ''));
+    const errDesc = hashParams.get('error_description') || hashParams.get('error') || 'Erro no login';
+    history.replaceState(null, '', window.location.pathname);
+    console.error('[Auth callback error]', errDesc);
+    alert('Erro ao fazer login: ' + decodeURIComponent(errDesc.replace(/\+/g, ' ')));
+  } else {
+    const isAuthCallback = hash.includes('access_token') || params.has('code');
+
+    if (isAuthCallback) {
+      try {
+        const client = await initSupabase();
+        if (client) {
+          const { data: { session } } = await client.auth.getSession();
+          if (session) {
+            history.replaceState(null, '', window.location.pathname);
+            openApp('screen-company');
+          }
         }
+      } catch (e) {
+        console.error('Auth callback error:', e);
       }
-    } catch (e) {
-      console.error('Auth callback error:', e);
     }
   }
 });

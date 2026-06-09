@@ -11,24 +11,56 @@ async function initSupabase() {
   if (_supabaseClient) return _supabaseClient;
   try {
     const resp = await fetch('/api/config');
-    if (!resp.ok) throw new Error('Config indisponível');
-    const { url, anon_key } = await resp.json();
-    _supabaseClient = window.supabase.createClient(url, anon_key);
+    if (!resp.ok) throw new Error('Config indisponível (HTTP ' + resp.status + ')');
+    const cfg = await resp.json();
+    if (cfg.error) throw new Error(cfg.error);
+    if (!cfg.url || !cfg.anon_key) throw new Error('Credenciais Supabase não configuradas no servidor');
+    _supabaseClient = window.supabase.createClient(
+      cfg.url.replace(/\/$/, ''),
+      cfg.anon_key,
+      {
+        auth: {
+          flowType: 'pkce',
+          detectSessionInUrl: true,
+          autoRefreshToken: true,
+          persistSession: true,
+        },
+      }
+    );
     return _supabaseClient;
   } catch (e) {
-    console.error('Supabase init error:', e);
+    console.error('[Supabase] init error:', e);
     return null;
   }
 }
 
 async function loginWithGoogle() {
+  const btn = document.querySelector('.soc-btn');
+  if (btn) btn.disabled = true;
+
   const client = await initSupabase();
-  if (!client) { alert('Serviço de autenticação indisponível. Tente novamente.'); return; }
-  const { error } = await client.auth.signInWithOAuth({
-    provider: 'google',
-    options: { redirectTo: window.location.origin + window.location.pathname },
-  });
-  if (error) alert('Erro ao iniciar login com Google: ' + error.message);
+  if (!client) {
+    if (btn) btn.disabled = false;
+    alert('Serviço de autenticação indisponível. Verifique sua conexão e tente novamente.');
+    return;
+  }
+
+  try {
+    const { error } = await client.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: window.location.origin + window.location.pathname,
+        queryParams: { prompt: 'select_account' },
+      },
+    });
+
+    if (error) throw error;
+    // SDK faz o redirect automaticamente (window.location.assign internamente)
+  } catch (err) {
+    if (btn) btn.disabled = false;
+    console.error('[Google OAuth]', err);
+    alert('Erro ao iniciar login com Google: ' + err.message);
+  }
 }
 
 // ── Abertura / fechamento do modal ──────────────────────────────────────────

@@ -465,6 +465,17 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
 .vt-sug-item:last-child { border-bottom: none; }
 .vt-sug-item:hover, .vt-sug-item.vt-active { background: #f0faf0; }
 
+/* --- CONCESSIONÁRIAS ATENDIDAS --- */
+.conc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+@media (max-width: 800px) { .conc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .conc-grid { grid-template-columns: 1fr 1fr; } }
+.conc-card {
+  background: #fff; border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,.07); border: 1px solid rgba(0,0,0,.06);
+}
+.conc-card-bar { height: 5px; }
+.conc-card-body { padding: .75rem 1rem; font-size: 13px; font-weight: 500; color: var(--text); }
+
 </style>
 
 <script>
@@ -813,6 +824,23 @@ mark { background: #fff176; border-radius: 2px; padding: 0 2px; }
         <div class="stat"><strong>R$ 800</strong><span>por 10 kW</span></div>
         <div class="stat-div"></div>
         <div class="stat"><strong>72h</strong><span>prazo médio</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCESSIONÁRIAS ATENDIDAS -->
+  <section class="section" id="concessionarias" style="padding:3.5rem 0">
+    <div class="container">
+      <h2 class="section-title">Concessionárias Atendidas</h2>
+      <p class="section-sub">Atuamos em todas as distribuidoras oficiais do Estado de São Paulo</p>
+      <div class="conc-grid">
+        <div class="conc-card"><div class="conc-card-bar" style="background:#E2001A"></div><div class="conc-card-body">Enel São Paulo</div></div>
+        <div class="conc-card"><div class="conc-card-bar" style="background:#005AA7"></div><div class="conc-card-body">CPFL Paulista</div></div>
+        <div class="conc-card"><div class="conc-card-bar" style="background:#005AA7"></div><div class="conc-card-body">CPFL Piratininga</div></div>
+        <div class="conc-card"><div class="conc-card-bar" style="background:#005AA7"></div><div class="conc-card-body">CPFL Santa Cruz</div></div>
+        <div class="conc-card"><div class="conc-card-bar" style="background:#EE2E24"></div><div class="conc-card-body">EDP São Paulo</div></div>
+        <div class="conc-card"><div class="conc-card-bar" style="background:#F7941D"></div><div class="conc-card-body">Energisa Sul-Sudeste</div></div>
+        <div class="conc-card"><div class="conc-card-bar" style="background:#00A651"></div><div class="conc-card-body">Neoenergia Elektro</div></div>
       </div>
     </div>
   </section>

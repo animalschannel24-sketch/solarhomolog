@@ -491,9 +491,24 @@ function screenDocs() {
     </div>
   </div>
 
-  <!-- 1. PROCURAÇÃO -->
+  <!-- 1. UC -->
   <div class="app-card">
-    <div class="app-card-title"><i class="ti ti-file-text"></i> 1. Procuração</div>
+    <div class="app-card-title"><i class="ti ti-bolt"></i> 1. Conta de Energia / UC</div>
+    <p style="font-size:12px;color:#6b7280;margin-bottom:.75rem;line-height:1.6">Envie o número da UC e uma foto da sua conta de energia. Nossa equipe fará a consulta junto à concessionária.</p>
+    <label class="app-label">Número da UC</label>
+    <input type="text" id="input-uc-numero" class="app-input" placeholder="Ex: 1234567890" style="margin-bottom:.75rem" />
+    <label class="app-label">Conta de energia (foto ou PDF)</label>
+    <div class="upload-area" id="ua-uc" onclick="document.getElementById('file-uc-doc').click()">
+      <div class="upload-icon"><i class="ti ti-bolt"></i></div>
+      <div class="upload-lbl">Clique para enviar a conta de energia<br><span style="font-size:11px">PDF, JPG ou PNG</span></div>
+    </div>
+    <input type="file" id="file-uc-doc" style="display:none" accept=".pdf,.jpg,.jpeg,.png" onchange="doUploadNew('uc', this, 'ua-uc', 'st-uc')" />
+    <div id="st-uc" style="display:none;font-size:12px;color:#2e7d32;margin-top:2px"><i class="ti ti-circle-check"></i> Arquivo enviado com sucesso</div>
+  </div>
+
+  <!-- 2. PROCURAÇÃO -->
+  <div class="app-card">
+    <div class="app-card-title"><i class="ti ti-file-text"></i> 2. Procuração</div>
     <p style="font-size:12px;color:#6b7280;margin-bottom:.75rem;line-height:1.6">Procuração autorizando a SolarHomolog (João Carlos Chaves Assessoria Ltda, CNPJ 48.979.472/0001-64) a realizar todos os atos necessários junto à concessionária para homologação do sistema fotovoltaico.</p>
     <a href="procuracao-modelo.html" target="_blank" class="btn btn-outline btn-sm" style="margin-bottom:.75rem;display:inline-flex">
       <i class="ti ti-download"></i> Baixar modelo
@@ -507,9 +522,9 @@ function screenDocs() {
     <div id="st-procuracao" style="display:none;font-size:12px;color:#2e7d32;margin-top:2px"><i class="ti ti-circle-check"></i> Arquivo enviado com sucesso</div>
   </div>
 
-  <!-- 2. MEMORIAL DESCRITIVO -->
+  <!-- 3. MEMORIAL DESCRITIVO -->
   <div class="app-card">
-    <div class="app-card-title"><i class="ti ti-blueprint"></i> 2. Memorial Descritivo</div>
+    <div class="app-card-title"><i class="ti ti-blueprint"></i> 3. Memorial Descritivo</div>
     <p style="font-size:12px;color:#6b7280;margin-bottom:.75rem;line-height:1.6">Baixe o modelo, preencha com os dados do sistema fotovoltaico e faça o upload do documento preenchido.</p>
     <a href="memorial-modelo.html" target="_blank" class="btn btn-outline btn-sm" style="margin-bottom:.75rem;display:inline-flex">
       <i class="ti ti-download"></i> Baixar modelo
@@ -523,9 +538,9 @@ function screenDocs() {
     <div id="st-memorial" style="display:none;font-size:12px;color:#2e7d32;margin-top:2px"><i class="ti ti-circle-check"></i> Arquivo enviado com sucesso</div>
   </div>
 
-  <!-- 3. DIAGRAMA UNIFILAR -->
+  <!-- 4. DIAGRAMA UNIFILAR -->
   <div class="app-card" style="border-color:#c8e6c9;background:#f1f8e9">
-    <div class="app-card-title" style="color:#2e7d32"><i class="ti ti-circuit-diode"></i> 3. Diagrama Unifilar</div>
+    <div class="app-card-title" style="color:#2e7d32"><i class="ti ti-circuit-diode"></i> 4. Diagrama Unifilar</div>
     <div style="display:flex;align-items:flex-start;gap:10px;padding:.65rem .85rem;background:rgba(46,125,50,.08);border-radius:8px;font-size:13px;color:#1b5e20;line-height:1.6">
       <i class="ti ti-circle-check" style="font-size:20px;color:#2e7d32;flex-shrink:0;margin-top:1px"></i>
       <span>Este documento será providenciado pela SolarHomolog. <strong>Nenhuma ação necessária.</strong></span>

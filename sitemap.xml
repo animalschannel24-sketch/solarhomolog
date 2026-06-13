@@ -50,6 +50,42 @@
   </url>
 
   <url>
+    <loc>https://solar.link-4you.com/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://solar.link-4you.com/blog/financiamento-energia-solar.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://solar.link-4you.com/blog/erros-comuns-instalacao-solar.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://solar.link-4you.com/blog/fio-b-energia-solar-2026.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://solar.link-4you.com/blog/calcular-tamanho-sistema-solar.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://solar.link-4you.com/blog/mitos-energia-solar.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://solar.link-4you.com/termos.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

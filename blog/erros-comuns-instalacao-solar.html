@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7 Erros Comuns na Instalação de Sistemas Solares (E Como Evitá-los) | Blog SolarHomolog</title>
+  <meta name="description" content="Dimensionamento errado, telhado frágil, fiação inadequada, homologação pulada. Conheça os 7 erros mais comuns em instalações solares e como evitar cada um." />
+  <link rel="icon" href="../logo.png" />
+  <link rel="canonical" href="https://solar.link-4you.com/blog/erros-comuns-instalacao-solar.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="7 Erros Comuns na Instalação de Sistemas Solares (E Como Evitá-los)" />
+  <meta property="og:description" content="Dimensionamento errado, telhado frágil, fiação inadequada, homologação pulada. Veja os 7 erros mais comuns em instalações solares e como evitar cada um." />
+  <meta property="og:image" content="https://solar.link-4you.com/logo.png" />
+  <meta property="og:url" content="https://solar.link-4you.com/blog/erros-comuns-instalacao-solar.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SolarHomolog" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "7 Erros Comuns na Instalação de Sistemas Solares (E Como Evitá-los)",
+    "description": "Dimensionamento errado, telhado frágil, fiação inadequada, homologação pulada. Os 7 erros mais comuns em instalações solares e como evitar cada um.",
+    "author": { "@type": "Organization", "name": "SolarHomolog" },
+    "publisher": { "@type": "Organization", "name": "SolarHomolog", "logo": { "@type": "ImageObject", "url": "https://solar.link-4you.com/logo.png" } },
+    "datePublished": "2026-06-13",
+    "url": "https://solar.link-4you.com/blog/erros-comuns-instalacao-solar.html"
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/icons/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-dark: #1a3a2a; --green-mid: #255239; --green-light: #e8f5e9;
+      --solar: #f5a623; --solar-dark: #e09410; --text: #1a1a1a;
+      --text-muted: #6b7280; --border: rgba(0,0,0,0.1); --bg: #f8faf8;
+      --white: #ffffff; --radius: 10px; --radius-lg: 14px;
+      --red: #ef4444; --red-light: #fef2f2; --red-border: #fecaca;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-sm { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* HEADER */
+    .header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: .85rem 1.5rem; display: flex; align-items: center; gap: 1.5rem; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-img { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; flex-shrink: 0; }
+    .logo-img.small { width: 30px; height: 30px; border-radius: 7px; }
+    .logo-name { font-size: 16px; font-weight: 600; color: var(--green-dark); }
+    .logo-sub { font-size: 11px; color: var(--text-muted); }
+    .nav-links { display: flex; gap: .25rem; margin-left: auto; }
+    .nav-links a { padding: 6px 12px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 7px; transition: .15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green-dark); background: var(--bg); }
+    @media (max-width: 700px) { .nav-links { display: none; } }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: .75rem 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .breadcrumb nav { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green-dark); }
+    .breadcrumb i { font-size: 12px; }
+
+    /* HERO */
+    .page-hero { background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%); color: #fff; padding: 3.5rem 1.5rem 3rem; }
+    .page-hero-meta { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .page-hero-cat { display: inline-block; background: rgba(245,166,35,.18); color: var(--solar); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; border: 1px solid rgba(245,166,35,.3); }
+    .page-hero-date { font-size: 12px; color: rgba(255,255,255,.5); }
+    .page-hero h1 { font-size: clamp(24px, 4vw, 38px); font-weight: 600; line-height: 1.25; margin-bottom: .75rem; }
+    .page-hero p { font-size: 16px; color: rgba(255,255,255,.75); max-width: 640px; }
+
+    /* ARTIGO */
+    .article-body { padding: 3rem 0 2rem; }
+    .article-body p { margin-bottom: 1rem; color: #374151; line-height: 1.8; font-size: 15px; }
+    .article-body strong { color: var(--green-dark); }
+
+    /* ERRO CARD */
+    .erro-list { display: flex; flex-direction: column; gap: 2rem; margin: 2rem 0; }
+    .erro-card { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+
+    /* Cabeçalho do erro */
+    .erro-header { background: var(--red-light); border-bottom: 1px solid var(--red-border); padding: 1.1rem 1.25rem; display: grid; grid-template-columns: 44px 1fr; gap: .85rem; align-items: flex-start; }
+    .erro-badge { width: 36px; height: 36px; border-radius: 50%; background: var(--red); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .erro-badge i { font-size: 18px; }
+    .erro-header-body { }
+    .erro-num-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #dc2626; margin-bottom: 2px; }
+    .erro-header-body h2 { font-size: 15px; font-weight: 600; color: #991b1b; line-height: 1.35; margin: 0; }
+
+    /* Corpo do erro (problema) */
+    .erro-problema { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); background: #fff; }
+    .erro-problema p { font-size: 14px; color: #374151; line-height: 1.8; margin: 0; }
+    .erro-problema p + p { margin-top: .5rem; }
+
+    /* Solução SolarHomolog */
+    .erro-solucao { padding: 1rem 1.25rem; background: var(--green-light); display: grid; grid-template-columns: 28px 1fr; gap: .75rem; align-items: flex-start; }
+    .erro-solucao-icon { color: #16a34a; font-size: 22px; margin-top: 1px; flex-shrink: 0; }
+    .erro-solucao-body { }
+    .erro-solucao-body strong { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #166534; display: block; margin-bottom: .3rem; }
+    .erro-solucao-body p { font-size: 14px; color: #1a4731; line-height: 1.75; margin: 0; }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%); padding: 3.5rem 1.5rem; text-align: center; color: #fff; }
+    .cta-section h2 { font-size: clamp(20px, 3.5vw, 28px); font-weight: 600; margin-bottom: .75rem; }
+    .cta-section p { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 1.75rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 600; background: #25d366; color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background .15s; }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+    .btn-ghost-white { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 500; background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.3); text-decoration: none; transition: background .15s; }
+    .btn-ghost-white:hover { background: rgba(255,255,255,.2); }
+
+    /* FOOTER */
+    .footer { background: #111d16; padding: 3rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+    .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+    .footer-link:hover { color: var(--solar); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../logo.png" class="logo-img" alt="SolarHomolog">
+        <div>
+          <div class="logo-name">SolarHomolog</div>
+          <div class="logo-sub">Homologação Fotovoltaica</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#como-funciona">Como funciona</a>
+        <a href="../index.html#legislacao">Legislação</a>
+        <a href="../index.html#contato">Contato</a>
+        <a href="index.html" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <a href="../index.html">SolarHomolog</a>
+        <i class="ti ti-chevron-right"></i>
+        <a href="index.html">Blog</a>
+        <i class="ti ti-chevron-right"></i>
+        <span>7 Erros Comuns na Instalação Solar</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="container-sm">
+      <div class="page-hero-meta">
+        <span class="page-hero-cat">Instalação</span>
+        <span class="page-hero-date">13 de junho de 2026</span>
+      </div>
+      <h1>7 Erros Comuns na Instalação de Sistemas Solares (E Como Evitá-los)</h1>
+      <p>A maioria dos problemas com sistemas solares não acontece depois da instalação — acontece antes. Veja o que pode dar errado e como uma equipe especializada evita cada um desses erros.</p>
+    </div>
+  </div>
+
+  <!-- ARTIGO -->
+  <div class="article-body">
+    <div class="container-sm">
+
+      <p>
+        O mercado solar brasileiro cresceu mais de 50 vezes na última década. Com esse crescimento vieram instaladores experientes — mas também vieram instalações mal feitas, sistemas subdimensionados, telhados comprometidos e projetos que nunca chegaram a ser homologados. O resultado: sistemas que não entregam o que prometeram e consumidores frustrados com um investimento que poderia ter sido excelente.
+      </p>
+      <p>
+        A boa notícia é que todos esses erros são evitáveis. A má notícia é que a maioria deles acontece antes mesmo de um único painel ser instalado — na fase de projeto e planejamento. Veja os sete erros mais comuns e o que fazemos para que nenhum deles apareça nos projetos que acompanhamos.
+      </p>
+
+      <div class="erro-list">
+
+        <!-- ERRO 1 -->
+        <div class="erro-card">
+          <div class="erro-header">
+            <div class="erro-badge"><i class="ti ti-map-pin-off"></i></div>
+            <div class="erro-header-body">
+              <div class="erro-num-label">Erro 1</div>
+              <h2>Pular a avaliação técnica do local</h2>
+            </div>
+          </div>
+          <div class="erro-problema">
+            <p>
+              A orientação do telhado, a inclinação das telhas, árvores no entorno, prédios vizinhos e até caixas d'água e antenas criam sombreamentos que afetam a geração de formas não óbvias. Em sistemas com <strong>inversor string</strong> — o modelo mais comum em residências — uma única célula sombreada pode reduzir a produção de toda uma sequência de painéis, não apenas do painel afetado.
+            </p>
+            <p>
+              Instaladores que fazem a visita técnica "no olho" e não modelam o sombreamento em software específico frequentemente entregam sistemas que geram 20% a 30% menos do que o prometido. O consumidor só descobre o problema meses depois, quando começa a comparar a geração real com a estimativa do contrato.
+            </p>
+          </div>
+          <div class="erro-solucao">
+            <i class="ti ti-check erro-solucao-icon"></i>
+            <div class="erro-solucao-body">
+              <strong>Como a SolarHomolog evita isso</strong>
+              <p>Todo projeto passa por análise de sombreamento com software de simulação (Helioscope ou PVsyst), usando dados de irradiação local do INPE e modelagem 3D do entorno do imóvel. O relatório de geração estimada é baseado nesses dados — não em médias genéricas de região.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ERRO 2 -->
+        <div class="erro-card">
+          <div class="erro-header">
+            <div class="erro-badge"><i class="ti ti-ruler-off"></i></div>
+            <div class="erro-header-body">
+              <div class="erro-num-label">Erro 2</div>
+              <h2>Dimensionamento incorreto do sistema</h2>
+            </div>
+          </div>
+          <div class="erro-problema">
+            <p>
+              Usar apenas a última fatura para calcular a potência necessária é um dos erros mais recorrentes. O consumo elétrico de uma residência varia ao longo do ano — às vezes em mais de 40% entre o mês de menor e o de maior consumo. Um dimensionamento baseado em um mês atípico (muito alto ou muito baixo) leva a um sistema que não equilibra a conta ou que sobredimensiona o investimento desnecessariamente.
+            </p>
+            <p>
+              O sobredimensionamento tem um custo além do financeiro: sistemas com potência muito acima do consumo do imóvel podem ter a homologação questionada pela concessionária, que limita a potência instalada com base no histórico de consumo declarado. Projetos nessa situação precisam ser revisados antes de receberem o parecer de acesso — atrasando meses o processo.
+            </p>
+          </div>
+          <div class="erro-solucao">
+            <i class="ti ti-check erro-solucao-icon"></i>
+            <div class="erro-solucao-body">
+              <strong>Como a SolarHomolog evita isso</strong>
+              <p>Analisamos as 12 faturas anteriores do cliente, calculamos a média anual e aplicamos a fórmula com Horas de Sol Pico específicas da cidade e Performance Ratio conservador (0,78). O resultado é um sistema dimensionado para cobrir o consumo real ao longo do ano — com margem calculada, não chutada.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ERRO 3 -->
+        <div class="erro-card">
+          <div class="erro-header">
+            <div class="erro-badge"><i class="ti ti-home-off"></i></div>
+            <div class="erro-header-body">
+              <div class="erro-num-label">Erro 3</div>
+              <h2>Ignorar o estado e a capacidade de carga do telhado</h2>
+            </div>
+          </div>
+          <div class="erro-problema">
+            <p>
+              Um sistema fotovoltaico residencial adiciona entre <strong>15 e 30 kg por metro quadrado</strong> à estrutura do telhado — considerando painéis, trilhos de fixação e cabeamentos. Telhados antigos, com madeiramento deteriorado, telhas frágeis ou estrutura subdimensionada podem não suportar esse peso adicional.
+            </p>
+            <p>
+              Os problemas não aparecem imediatamente: surgem meses depois, com rachaduras nas telhas, deformações na estrutura de madeira, infiltrações nas perfurações de fixação e, nos casos mais graves, risco de colapso parcial. A reforma estrutural posterior costuma custar mais do que teria custado o reforço preventivo — e exige retirar todos os painéis instalados.
+            </p>
+          </div>
+          <div class="erro-solucao">
+            <i class="ti ti-check erro-solucao-icon"></i>
+            <div class="erro-solucao-body">
+              <strong>Como a SolarHomolog evita isso</strong>
+              <p>A visita técnica inclui inspeção visual do madeiramento, avaliação do tipo e estado das telhas e verificação dos pontos de fixação. Quando identificamos estruturas que precisam de reforço antes da instalação, alertamos o cliente com antecedência — nunca instalamos sobre estruturas comprometidas.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ERRO 4 -->
+        <div class="erro-card">
+          <div class="erro-header">
+            <div class="erro-badge"><i class="ti ti-plug-off"></i></div>
+            <div class="erro-header-body">
+              <div class="erro-num-label">Erro 4</div>
+              <h2>Fiação e conexões mal executadas</h2>
+            </div>
+          </div>
+          <div class="erro-problema">
+            <p>
+              Cabos de bitola errada criam resistência elétrica excessiva no circuito, o que gera dois problemas simultâneos: <strong>perda de energia</strong> (que aquece o cabo em vez de chegar ao inversor) e <strong>risco de incêndio</strong> por superaquecimento. Conectores MC4 mal encaixados, sem a trava correta, têm o mesmo efeito — e são invisíveis ao olhar do consumidor.
+            </p>
+            <p>
+              Instalações improvisadas com cabos de uso doméstico (em vez dos cabos solares certificados para uso externo e UV), aterramento ausente ou incorreto e ausência de dispositivos de proteção como DPS (Dispositivo de Proteção contra Surtos) tornam o sistema elétrica e fisicamente vulnerável — especialmente durante tempestades e picos de tensão da rede.
+            </p>
+          </div>
+          <div class="erro-solucao">
+            <i class="ti ti-check erro-solucao-icon"></i>
+            <div class="erro-solucao-body">
+              <strong>Como a SolarHomolog evita isso</strong>
+              <p>Todo projeto especifica cabos solares certificados (norma ABNT NBR 16612), bitola calculada para cada trecho do circuito e conectores MC4 de fabricantes homologados. O projeto elétrico inclui aterramento conforme ABNT NBR 5410 e DPS obrigatório — tanto no lado CC (corrente contínua, painéis) quanto no lado CA (corrente alternada, após o inversor).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ERRO 5 -->
+        <div class="erro-card">
+          <div class="erro-header">
+            <div class="erro-badge"><i class="ti ti-file-off"></i></div>
+            <div class="erro-header-body">
+              <div class="erro-num-label">Erro 5</div>
+              <h2>Pular ou atrasar a homologação junto à concessionária</h2>
+            </div>
+          </div>
+          <div class="erro-problema">
+            <p>
+              Ligar um sistema fotovoltaico conectado à rede sem a autorização formal da concessionária é uma infração grave. A legislação brasileira — Resolução ANEEL 1.000/2021 e Lei 14.300/2022 — exige que o sistema seja devidamente registrado e tenha o Parecer de Acesso emitido antes de ser energizado em modo grid-tie.
+            </p>
+            <p>
+              Sistemas ligados irregularmente estão sujeitos a <strong>desconexão compulsória</strong> pela distribuidora, além de multas ao consumidor e ao instalador. Pior: a energia gerada e injetada na rede sem homologação não gera créditos — o consumidor "doa" energia para a concessionária sem nenhuma compensação. E quando a irregularidade é descoberta, o processo de regularização é mais lento e custoso do que teria sido a homologação original.
+            </p>
+          </div>
+          <div class="erro-solucao">
+            <i class="ti ti-check erro-solucao-icon"></i>
+            <div class="erro-solucao-body">
+              <strong>Como a SolarHomolog evita isso</strong>
+              <p>A homologação junto à concessionária é o nosso core business — não um passo opcional. Preparamos toda a documentação técnica exigida (memorial descritivo, diagrama unifilar, ART do engenheiro responsável), protocolamos o pedido e acompanhamos cada etapa do processo até a emissão do Parecer de Acesso e a troca do medidor bidirecional. Nenhum sistema ligamos à rede sem autorização formal.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ERRO 6 -->
+        <div class="erro-card">
+          <div class="erro-header">
+            <div class="erro-badge"><i class="ti ti-certificate-off"></i></div>
+            <div class="erro-header-body">
+              <div class="erro-num-label">Erro 6</div>
+              <h2>Escolher equipamentos sem procedência ou certificação</h2>
+            </div>
+          </div>
+          <div class="erro-problema">
+            <p>
+              O mercado solar brasileiro convive com a entrada de painéis e inversores de procedência duvidosa, com especificações falsificadas e sem certificação INMETRO. Esses produtos chegam até 30% mais baratos — e são comprados por instaladores que priorizam margem em vez de qualidade, sem transparência com o cliente sobre a diferença.
+            </p>
+            <p>
+              As consequências aparecem entre 1 e 3 anos após a instalação: <strong>degradação acelerada dos painéis</strong> (perdendo 5% a 10% de potência ao ano em vez dos 0,5% dos módulos Tier 1), falhas recorrentes no inversor, dificuldade em acionar a garantia de fabricantes sem representação local e — em casos extremos — risco de incêndio por inversores sem proteções adequadas. A "economia" inicial transforma-se em custo muito maior ao longo da vida útil do sistema.
+            </p>
+          </div>
+          <div class="erro-solucao">
+            <i class="ti ti-check erro-solucao-icon"></i>
+            <div class="erro-solucao-body">
+              <strong>Como a SolarHomolog evita isso</strong>
+              <p>Trabalhamos exclusivamente com painéis de fabricantes Tier 1 reconhecidos pelo Bloomberg NEF (Canadian Solar, Jinko, LONGi, Trina, JA Solar) e inversores com certificação INMETRO e representação oficial no Brasil. Todos os equipamentos especificados no projeto têm garantia de desempenho documentada e suporte técnico local acessível durante o período de garantia.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ERRO 7 -->
+        <div class="erro-card">
+          <div class="erro-header">
+            <div class="erro-badge"><i class="ti ti-tool-off"></i></div>
+            <div class="erro-header-body">
+              <div class="erro-num-label">Erro 7</div>
+              <h2>Não planejar a manutenção desde o início</h2>
+            </div>
+          </div>
+          <div class="erro-problema">
+            <p>
+              Energia solar não é "instale e esqueça". Sem manutenção adequada, a geração cai progressivamente de forma silenciosa — e o consumidor raramente percebe, porque continua vendo a conta de luz reduzida, sem comparar com o que o sistema deveria estar gerando.
+            </p>
+            <p>
+              Painéis sujos perdem de 5% a 25% de geração dependendo da região e da estação. Conexões que se oxidam com o tempo aumentam a resistência do circuito. Inversores sem inspeção periódica acumulam erros não tratados que reduzem a eficiência ou levam a falhas completas — geralmente fora do período de garantia, quando o reparo sai do bolso do consumidor. Um sistema de 4 kWp que gera 20% menos do que deveria representa uma perda anual de R$ 800 a R$ 1.200 em créditos de energia não gerados.
+            </p>
+          </div>
+          <div class="erro-solucao">
+            <i class="ti ti-check erro-solucao-icon"></i>
+            <div class="erro-solucao-body">
+              <strong>Como a SolarHomolog evita isso</strong>
+              <p>Entregamos junto com cada projeto um plano de manutenção preventiva com frequências adequadas à região do imóvel — limpeza a cada 3 a 12 meses e inspeção elétrica a cada 2 anos. Além disso, todos os sistemas que acompanhamos têm monitoramento remoto configurado no inversor, permitindo identificar quedas de geração antes que se tornem problemas maiores.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p>
+        A instalação solar é um investimento de longo prazo — 25 a 30 anos de vida útil esperada. Erros cometidos no projeto ou na execução não desaparecem com o tempo: se acumulam, se agravam e corroem o retorno que tornou o investimento atraente. A diferença entre um sistema que entrega o prometido por 25 anos e um que precisa de intervenções constantes está inteiramente nas decisões tomadas antes do primeiro painel ser instalado.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Quer um projeto sem erros, do início ao fim?</h2>
+      <p>Da avaliação técnica à homologação junto à concessionária — acompanhamos cada etapa para que seu sistema entregue o máximo durante toda a sua vida útil.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511992071648?text=Ol%C3%A1%21+Quero+um+projeto+solar+sem+erros%2C+com+homologa%C3%A7%C3%A3o+inclu%C3%ADda." class="btn-whatsapp" target="_blank" rel="noopener">
+          <i class="ti ti-brand-whatsapp"></i>
+          Falar pelo WhatsApp
+        </a>
+        <a href="../modelos/instalacao-sistema-solar.html" class="btn-ghost-white">
+          <i class="ti ti-solar-panel"></i>
+          Ver guia de instalação
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo" style="margin-bottom:.75rem;display:inline-flex">
+            <img src="../logo.png" class="logo-img small" alt="SolarHomolog">
+            <div>
+              <div class="logo-name" style="color:#fff">SolarHomolog</div>
+              <div class="logo-sub">Homologação Fotovoltaica</div>
+            </div>
+          </a>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">Especialistas em homologação de sistemas fotovoltaicos junto às concessionárias de energia elétrica do Brasil.</p>
+        </div>
+        <div>
+          <div class="footer-title">Serviços</div>
+          <a class="footer-link" href="../index.html#como-funciona">Processo de Homologação</a>
+          <a class="footer-link" href="../index.html#legislacao">Base de Legislação</a>
+        </div>
+        <div>
+          <div class="footer-title">Conteúdo</div>
+          <a class="footer-link" href="index.html">Blog</a>
+          <a class="footer-link" href="../modelos/processo-homologacao-solar.html">Homologação Solar</a>
+          <a class="footer-link" href="../modelos/instalacao-sistema-solar.html">Instalação Solar</a>
+          <a class="footer-link" href="../modelos/sistema-hibrido.html">Sistema Híbrido</a>
+          <a class="footer-link" href="../modelos/sistema-off-grid.html">Sistema Off-Grid</a>
+          <a class="footer-link" href="../modelos/manutencao-paineis-solares.html">Manutenção de Painéis</a>
+          <a class="footer-link" href="../modelos/monitoramento-sistema-solar.html">Monitoramento Solar</a>
+          <a class="footer-link" href="../modelos/equipamentos-sistema-solar.html">Equipamentos Solar</a>
+        </div>
+        <div>
+          <div class="footer-title">Legal</div>
+          <a class="footer-link" href="../termos.html">Termos de Uso</a>
+          <a class="footer-link" href="../privacidade.html">Política de Privacidade</a>
+          <a class="footer-link" href="../privacidade.html">LGPD</a>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <a class="footer-link" href="mailto:suporte@jccassessorialtda.com.br">suporte@jccassessorialtda.com.br</a>
+          <a class="footer-link" href="https://wa.me/5511992071648">WhatsApp (11) 99207-1648</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 SolarHomolog. Todos os direitos reservados.</span>
+        <span>Conforme Lei 14.300/2022 e REN ANEEL 1.000/2021</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

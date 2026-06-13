@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manutenção e Limpeza de Painéis Solares: Frequência, Custos e Cuidados | SolarHomolog</title>
+  <meta name="description" content="Sujeira reduz até 25% da geração solar. Saiba qual frequência de manutenção é ideal para sua região, o que inclui o serviço e como evitar danos permanentes." />
+  <link rel="icon" href="../logo.png" />
+  <link rel="canonical" href="https://solarhomolog.com.br/modelos/manutencao-paineis-solares.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Manutenção e Limpeza de Painéis Solares: Frequência, Custos e Cuidados" />
+  <meta property="og:description" content="Painéis sujos perdem até 25% de eficiência. Entenda a frequência ideal de manutenção por região, o que inclui o serviço e por que contratar um profissional." />
+  <meta property="og:image" content="https://solarhomolog.com.br/logo.png" />
+  <meta property="og:url" content="https://solarhomolog.com.br/modelos/manutencao-paineis-solares.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SolarHomolog" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Manutenção e Limpeza de Painéis Solares: Frequência, Custos e Cuidados",
+    "description": "Guia completo sobre manutenção preventiva de sistemas fotovoltaicos: frequência por região, riscos de negligência, hot spots e serviço profissional.",
+    "author": { "@type": "Organization", "name": "SolarHomolog" },
+    "publisher": { "@type": "Organization", "name": "SolarHomolog", "logo": { "@type": "ImageObject", "url": "https://solarhomolog.com.br/logo.png" } },
+    "datePublished": "2026-06-13",
+    "url": "https://solarhomolog.com.br/modelos/manutencao-paineis-solares.html"
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Posso limpar os painéis solares sozinho?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tecnicamente é possível, mas não é recomendado. Os riscos envolvem segurança (trabalho em altura em telhado molhado), uso de produtos químicos agressivos que danificam o revestimento antirreflexo das células, e escovas inadequadas que arranhando a superfície de vidro reduzem a eficiência de forma permanente. Um profissional usa equipamento de segurança, escova de cerdas macias com cabo extensível e água deionizada ou desmineralizada — sem detergentes que deixam resíduo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto tempo o painel aguenta sem limpeza?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende da região. Em áreas urbanas com poluição moderada, a perda de eficiência começa a ser perceptível após 3 a 4 meses sem limpeza (5–10%). Após 6 meses, a perda pode chegar a 15–20%. Em regiões com muita poeira, perto de estradas de terra ou obras, o impacto pode surgir em poucas semanas. Sem nenhuma manutenção por mais de 1 ano, há registros de perda de geração acima de 40–50%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual o sinal de que os painéis precisam de limpeza?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Os principais sinais são: queda visível na geração mensal comparada ao mesmo período do ano anterior (verificável no inversor ou app de monitoramento), camada visível de poeira, fuligem ou fezes de pássaro sobre os módulos, e leituras divergentes entre strings de painéis no monitoramento — o que pode indicar sombreamento por sujeira em módulos específicos. Hot spots detectados por câmera termográfica também sinalizam urgência na limpeza."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A manutenção inclui inspeção elétrica?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende do pacote contratado. A manutenção preventiva completa da SolarHomolog inclui limpeza dos módulos, inspeção visual dos painéis, verificação das fixações e estrutura metálica, checagem de cabos e conectores MC4 (corrosão, folgas, danos mecânicos), teste de continuidade das strings e leitura dos parâmetros do inversor. Uma inspeção elétrica aprofundada com equipamento termográfico e analisador de curva I-V é recomendada a cada 2 a 3 anos."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/icons/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1a3a2a;
+      --green-mid: #255239;
+      --green-light: #e8f5e9;
+      --solar: #f5a623;
+      --solar-dark: #e09410;
+      --text: #1a1a1a;
+      --text-muted: #6b7280;
+      --border: rgba(0,0,0,0.1);
+      --bg: #f8faf8;
+      --white: #ffffff;
+      --radius: 10px;
+      --radius-lg: 14px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-sm { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: var(--radius); font-size: 14px; font-weight: 500;
+      cursor: pointer; border: 1px solid var(--border); background: var(--white);
+      color: var(--text); transition: all .15s; font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn:hover { background: var(--bg); }
+    .btn-primary { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+    .btn-primary:hover { background: var(--green-mid); }
+    .btn-lg { padding: 13px 24px; font-size: 15px; }
+
+    /* HEADER */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: .85rem 1.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-img { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; flex-shrink: 0; }
+    .logo-img.small { width: 30px; height: 30px; border-radius: 7px; }
+    .logo-name { font-size: 16px; font-weight: 600; color: var(--green-dark); }
+    .logo-sub { font-size: 11px; color: var(--text-muted); }
+    .nav-links { display: flex; gap: .25rem; margin-left: auto; }
+    .nav-links a { padding: 6px 12px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 7px; transition: .15s; }
+    .nav-links a:hover { color: var(--green-dark); background: var(--bg); }
+    @media (max-width: 700px) { .nav-links { display: none; } }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: .75rem 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .breadcrumb nav { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green-dark); }
+    .breadcrumb i { font-size: 12px; }
+
+    /* HERO DA PÁGINA */
+    .page-hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      color: #fff; padding: 3.5rem 1.5rem 3rem;
+    }
+    .page-hero-badge {
+      display: inline-block; background: rgba(245,166,35,.18); color: var(--solar);
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+      border: 1px solid rgba(245,166,35,.3); margin-bottom: 1rem;
+    }
+    .page-hero h1 { font-size: clamp(24px, 4vw, 38px); font-weight: 600; line-height: 1.25; margin-bottom: .75rem; }
+    .page-hero p { font-size: 16px; color: rgba(255,255,255,.75); max-width: 640px; }
+
+    /* CONTEÚDO PRINCIPAL */
+    .article-body { padding: 3rem 0 2rem; }
+    .article-body h2 {
+      font-size: clamp(18px, 3vw, 24px); font-weight: 600; color: var(--green-dark);
+      margin: 2.5rem 0 .75rem; padding-bottom: .5rem;
+      border-bottom: 2px solid var(--green-light);
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 600; color: var(--text); margin: 1.5rem 0 .5rem; }
+    .article-body p { margin-bottom: 1rem; color: #374151; line-height: 1.75; }
+    .article-body ul, .article-body ol { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .article-body li { color: #374151; line-height: 1.75; margin-bottom: .3rem; }
+    .article-body strong { color: var(--green-dark); }
+
+    /* STAT CARDS */
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;
+    }
+    @media (max-width: 580px) { .stat-grid { grid-template-columns: 1fr; } }
+    .stat-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1.25rem; text-align: center;
+    }
+    .stat-card .stat-num { font-size: 32px; font-weight: 600; color: var(--solar-dark); line-height: 1; margin-bottom: .35rem; }
+    .stat-card .stat-label { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+    /* FREQUÊNCIA POR REGIÃO */
+    .freq-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .freq-card {
+      border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid;
+      position: relative; overflow: hidden;
+    }
+    .freq-card.alta { background: #fef2f2; border-color: #fecaca; }
+    .freq-card.media { background: #fff8e1; border-color: #fde68a; }
+    .freq-card.baixa { background: #f0fdf4; border-color: #bbf7d0; }
+    .freq-badge {
+      display: inline-block; padding: 2px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 600; margin-bottom: .6rem;
+    }
+    .freq-card.alta .freq-badge { background: #fecaca; color: #991b1b; }
+    .freq-card.media .freq-badge { background: #fde68a; color: #92400e; }
+    .freq-card.baixa .freq-badge { background: #bbf7d0; color: #166534; }
+    .freq-card h3 { font-size: 15px; font-weight: 600; margin-bottom: .4rem; }
+    .freq-card.alta h3 { color: #991b1b; }
+    .freq-card.media h3 { color: #92400e; }
+    .freq-card.baixa h3 { color: #166534; }
+    .freq-interval {
+      font-size: 22px; font-weight: 600; margin: .4rem 0;
+    }
+    .freq-card.alta .freq-interval { color: #dc2626; }
+    .freq-card.media .freq-interval { color: #d97706; }
+    .freq-card.baixa .freq-interval { color: #16a34a; }
+    .freq-card p { font-size: 12px; line-height: 1.6; margin: 0; }
+    .freq-card.alta p { color: #7f1d1d; }
+    .freq-card.media p { color: #78350f; }
+    .freq-card.baixa p { color: #14532d; }
+
+    /* CHECKLIST */
+    .checklist { list-style: none; padding: 0; margin: 1rem 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: .5rem 0; border-bottom: 1px solid var(--border);
+      font-size: 14px; color: #374151;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li i { color: var(--green-dark); margin-top: 2px; flex-shrink: 0; font-size: 16px; }
+
+    /* RISCO CARDS */
+    .risco-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .risco-card {
+      background: var(--white); border: 1px solid #fecaca; border-radius: var(--radius-lg);
+      padding: 1.25rem; border-top: 3px solid #ef4444;
+    }
+    .risco-card i { font-size: 26px; color: #ef4444; margin-bottom: .5rem; display: block; }
+    .risco-card h3 { font-size: 14px; font-weight: 600; color: #991b1b; margin-bottom: .4rem; }
+    .risco-card p { font-size: 13px; color: #7f1d1d; line-height: 1.6; margin: 0; }
+
+    /* SERVIÇO BOX */
+    .servico-box {
+      background: var(--green-dark); color: #fff; border-radius: var(--radius-lg);
+      padding: 2rem; margin: 2rem 0;
+      display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+    }
+    @media (max-width: 580px) { .servico-box { grid-template-columns: 1fr; } }
+    .servico-box-label {
+      font-size: 11px; font-weight: 600; color: var(--solar); text-transform: uppercase;
+      letter-spacing: .06em; margin-bottom: .5rem;
+    }
+    .servico-box h3 { font-size: 20px; font-weight: 600; margin-bottom: .75rem; }
+    .servico-box ul { padding-left: 1.2rem; }
+    .servico-box li { font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.8; }
+    .servico-price-block { text-align: center; flex-shrink: 0; }
+    .servico-price-label { font-size: 12px; color: rgba(255,255,255,.5); margin-bottom: .25rem; }
+    .servico-price { font-size: 38px; font-weight: 600; color: var(--solar); line-height: 1; }
+    .servico-price span { font-size: 14px; font-weight: 400; color: rgba(255,255,255,.6); display: block; margin-top: .25rem; }
+
+    /* VIDA ÚTIL TIMELINE */
+    .vitality-bar {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1.5rem; margin: 1.5rem 0;
+    }
+    .vitality-bar h3 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 1rem; }
+    .bar-row { display: flex; align-items: center; gap: 1rem; margin-bottom: .75rem; }
+    .bar-row:last-child { margin-bottom: 0; }
+    .bar-label { font-size: 13px; color: var(--text-muted); min-width: 130px; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 20px; background: rgba(0,0,0,.06); border-radius: 10px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 10px; display: flex; align-items: center; padding-left: .5rem; }
+    .bar-fill span { font-size: 11px; font-weight: 600; color: #fff; white-space: nowrap; }
+    .bar-green { background: #16a34a; }
+    .bar-yellow { background: #d97706; }
+    .bar-red { background: #dc2626; }
+
+    /* INFO / SOLAR BOX */
+    .info-box {
+      background: var(--green-light); border-left: 3px solid var(--green-dark);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem; margin: 1.5rem 0;
+      font-size: 14px; color: var(--green-dark); line-height: 1.7;
+    }
+    .info-box strong { display: block; margin-bottom: .3rem; }
+    .solar-box {
+      background: #fffbf0; border: 1px solid rgba(245,166,35,.4);
+      border-radius: var(--radius-lg); padding: 1.25rem; margin: 1.5rem 0;
+      font-size: 14px; color: #5c3e00; line-height: 1.7;
+    }
+    .solar-box strong { color: var(--solar-dark); display: block; margin-bottom: .3rem; }
+
+    /* ALERTA */
+    .alert-box {
+      background: #fef2f2; border: 1px solid #fecaca; border-radius: var(--radius-lg);
+      padding: 1.25rem; margin: 1.5rem 0;
+      font-size: 14px; color: #7f1d1d; line-height: 1.7;
+      display: flex; gap: .75rem; align-items: flex-start;
+    }
+    .alert-box i { color: #ef4444; font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+    /* FAQ */
+    .faq-section { padding: 3rem 0; background: var(--bg); }
+    .faq-section h2 { font-size: clamp(18px, 3vw, 24px); font-weight: 600; color: var(--green-dark); margin-bottom: 1.5rem; }
+    .faq-item {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      margin-bottom: .75rem; overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; text-align: left; padding: 1rem 1.25rem; background: none; border: none;
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; color: var(--text);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq-question:hover { background: var(--bg); }
+    .faq-question i { color: var(--text-muted); flex-shrink: 0; transition: transform .2s; }
+    .faq-answer { padding: 0 1.25rem 1rem; font-size: 14px; color: #374151; line-height: 1.75; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-question i { transform: rotate(180deg); }
+
+    /* CTA FINAL */
+    .cta-section {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      padding: 3.5rem 1.5rem; text-align: center; color: #fff;
+    }
+    .cta-section h2 { font-size: clamp(20px, 3.5vw, 30px); font-weight: 600; margin-bottom: .75rem; }
+    .cta-section p { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 1.75rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 600;
+      background: #25d366; color: #fff; border: none; cursor: pointer; text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+
+    /* FOOTER */
+    .footer { background: #111d16; padding: 3rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+    .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+    .footer-link:hover { color: var(--solar); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../logo.png" class="logo-img" alt="SolarHomolog">
+        <div>
+          <div class="logo-name">SolarHomolog</div>
+          <div class="logo-sub">Homologação Fotovoltaica</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#como-funciona">Como funciona</a>
+        <a href="../index.html#legislacao">Legislação</a>
+        <a href="../index.html#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <a href="../index.html">SolarHomolog</a>
+        <i class="ti ti-chevron-right"></i>
+        <span>Manutenção de Painéis Solares</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO DA PÁGINA -->
+  <div class="page-hero">
+    <div class="container-sm">
+      <div class="page-hero-badge">Guia Completo</div>
+      <h1>Manutenção e Limpeza de Painéis Solares: Frequência, Custos e Cuidados</h1>
+      <p>Um sistema sem manutenção pode perder até 25% da geração em poucos meses — e até 50% sem nenhum cuidado por mais de um ano. Saiba como proteger seu investimento.</p>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="article-body">
+    <div class="container-sm">
+
+      <h2>Por que a manutenção é essencial para sistemas solares</h2>
+      <p>
+        Painéis fotovoltaicos são equipamentos de longa duração — fabricantes garantem 25 a 30 anos de operação. Mas essa longevidade é diretamente condicionada a uma manutenção preventiva regular. Sem ela, dois problemas silenciosos corroem o retorno do seu investimento: a <strong>perda de eficiência por sujeira</strong> e a <strong>degradação acelerada por defeitos não detectados</strong>.
+      </p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-num">15–25%</div>
+          <div class="stat-label">de queda na geração com sujeira acumulada em 6 meses</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">até 50%</div>
+          <div class="stat-label">de perda em sistemas sem nenhuma manutenção por mais de 1 ano</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">25–30 anos</div>
+          <div class="stat-label">de vida útil garantida com manutenção adequada e regular</div>
+        </div>
+      </div>
+
+      <p>
+        A sujeira — poeira, fuligem, fezes de pássaros, folhas, poluição urbana e resíduos de construção — forma uma camada que bloqueia a incidência de luz solar sobre as células fotovoltaicas. O efeito não é uniforme: a sombra localizada causada por uma mancha de fezes de pombo, por exemplo, pode provocar o chamado <strong>efeito hot spot</strong> em um único módulo, aquecendo-o acima da temperatura de operação segura e degradando as células de forma permanente.
+      </p>
+      <p>
+        Diferente do que muitos acreditam, a chuva <strong>não substitui a limpeza profissional</strong>. A água da chuva deixa depósitos minerais (calcário) ao evaporar, e não tem pressão suficiente para remover crostas de sujeira aderida. Em muitas regiões, o período de seca concentra poeira que a chuva posterior não consegue dissolver completamente.
+      </p>
+
+      <h2>Frequência ideal de manutenção por região</h2>
+      <p>Não existe uma frequência única para todos os sistemas. O intervalo ideal depende do perfil de sujeira local:</p>
+
+      <div class="freq-grid">
+        <div class="freq-card alta">
+          <span class="freq-badge">Alta sujeira</span>
+          <h3>Rural / Poeira / Obras</h3>
+          <div class="freq-interval">3× ao ano</div>
+          <p>Estradas de terra, fazendas, sítios, regiões de cerrado seco, proximidade de obras ou granjas. A poeira fina adere ao vidro e exige limpeza a cada 4 meses.</p>
+        </div>
+        <div class="freq-card media">
+          <span class="freq-badge">Média sujeira</span>
+          <h3>Área Urbana / Industrial</h3>
+          <div class="freq-interval">2× ao ano</div>
+          <p>Cidades com poluição moderada, perto de avenidas movimentadas ou zonas industriais. Fuligem e partículas finas se acumulam progressivamente.</p>
+        </div>
+        <div class="freq-card baixa">
+          <span class="freq-badge">Baixa sujeira</span>
+          <h3>Litoral / Chuvas Frequentes</h3>
+          <div class="freq-interval">1× ao ano</div>
+          <p>Regiões com chuvas regulares e baixa concentração de poluentes. A manutenção anual garante inspeção estrutural e elétrica, mesmo com limpeza parcial pela chuva.</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>Dica prática:</strong>
+        Se o seu inversor ou app de monitoramento mostrar queda de geração superior a 10% em relação ao mesmo período do mês anterior — sem alteração climática evidente — é sinal de que os painéis precisam de limpeza, independentemente do intervalo programado.
+      </div>
+
+      <h2>O que inclui a manutenção preventiva completa</h2>
+      <p>
+        Manutenção preventiva vai muito além da limpeza dos módulos. Um serviço profissional completo cobre toda a cadeia do sistema:
+      </p>
+
+      <ul class="checklist">
+        <li>
+          <i class="ti ti-checks"></i>
+          <div><strong>Limpeza dos módulos fotovoltaicos</strong> — com escova de cerdas macias e água desmineralizada, sem detergentes que deixam resíduo e sem pressão excessiva que danifica o encapsulante das células.</div>
+        </li>
+        <li>
+          <i class="ti ti-checks"></i>
+          <div><strong>Inspeção visual dos painéis</strong> — verificação de microfissuras, delaminação, manchas escuras, bolhas no encapsulante e danos físicos causados por granizo ou impactos.</div>
+        </li>
+        <li>
+          <i class="ti ti-checks"></i>
+          <div><strong>Checagem de cabos e conectores MC4</strong> — inspeção de sinais de corrosão, oxidação, folgas mecânicas e danos no isolamento que podem causar arco elétrico.</div>
+        </li>
+        <li>
+          <i class="ti ti-checks"></i>
+          <div><strong>Verificação da estrutura de fixação</strong> — checagem de parafusos, trilhos, grampos e suportes metálicos para corrosão e afrouxamento por dilatação térmica.</div>
+        </li>
+        <li>
+          <i class="ti ti-checks"></i>
+          <div><strong>Leitura dos parâmetros do inversor</strong> — verificação de alarmes, registros de falha, tensão e corrente de operação de cada string para identificar módulos com desempenho abaixo do esperado.</div>
+        </li>
+        <li>
+          <i class="ti ti-checks"></i>
+          <div><strong>Limpeza da caixa de string e string box</strong> — remoção de poeira interna e inspeção dos fusíveis e disjuntores de proteção.</div>
+        </li>
+      </ul>
+
+      <h2>Os riscos de não fazer manutenção</h2>
+      <p>Negligenciar a manutenção não é apenas uma questão de eficiência — é também um risco de segurança:</p>
+
+      <div class="risco-grid">
+        <div class="risco-card">
+          <i class="ti ti-flame"></i>
+          <h3>Hot Spot e Risco de Incêndio</h3>
+          <p>Sombra localizada por sujeira ou defeito causa superaquecimento pontual na célula, que pode atingir mais de 150°C e danificar permanentemente o módulo — ou iniciar um incêndio no telhado.</p>
+        </div>
+        <div class="risco-card">
+          <i class="ti ti-bolt-off"></i>
+          <h3>Arco Elétrico em Cabos</h3>
+          <p>Conectores MC4 com corrosão ou folga mecânica podem gerar arco elétrico. Em sistemas de 48V DC ou superior, o arco é sustentado e extremamente perigoso — diferente da corrente alternada, que se auto-extingue.</p>
+        </div>
+        <div class="risco-card">
+          <i class="ti ti-chart-line-down"></i>
+          <h3>Degradação Acelerada</h3>
+          <p>Módulos operando fora da faixa de temperatura por tempo prolongado degradam as células acima da taxa normal de 0,5%/ano garantida pelo fabricante, comprometendo a garantia de desempenho.</p>
+        </div>
+        <div class="risco-card">
+          <i class="ti ti-receipt-off"></i>
+          <h3>Perda de Garantia</h3>
+          <p>Muitos fabricantes exigem comprovação de manutenção periódica para validar a garantia de produto de 10 a 12 anos. Danos causados por negligência — hot spots, delaminação por superaquecimento — podem ser recusados na garantia.</p>
+        </div>
+      </div>
+
+      <h2>Vida útil do sistema com e sem manutenção</h2>
+      <p>
+        A garantia de desempenho dos fabricantes (tipicamente 80% da potência nominal após 25 anos) é calculada assumindo condições normais de operação — o que inclui manutenção periódica. Veja como a manutenção impacta o desempenho ao longo do tempo:
+      </p>
+
+      <div class="vitality-bar">
+        <h3>Geração estimada ao longo dos anos (% da potência nominal)</h3>
+        <div class="bar-row">
+          <div class="bar-label">Ano 1 (novo)</div>
+          <div class="bar-track"><div class="bar-fill bar-green" style="width:100%"><span>100%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Ano 10 — com manutenção</div>
+          <div class="bar-track"><div class="bar-fill bar-green" style="width:94%"><span>~94%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Ano 10 — sem manutenção</div>
+          <div class="bar-track"><div class="bar-fill bar-yellow" style="width:72%"><span>~72%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Ano 25 — com manutenção</div>
+          <div class="bar-track"><div class="bar-fill bar-green" style="width:82%"><span>~82%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Ano 25 — sem manutenção</div>
+          <div class="bar-track"><div class="bar-fill bar-red" style="width:50%"><span>&lt;50%</span></div></div>
+        </div>
+      </div>
+
+      <h2>Por que contratar um profissional em vez de fazer sozinho</h2>
+      <p>
+        A limpeza dos painéis parece simples, mas envolve riscos e técnicas específicas que tornam o profissional a escolha mais segura e eficiente:
+      </p>
+
+      <h3>Segurança em altura</h3>
+      <p>
+        Trabalho em telhado molhado é uma das principais causas de acidentes domésticos graves no Brasil. Um profissional utiliza <strong>equipamento de proteção individual (EPI)</strong> completo — cinto de segurança, capacete, linha de vida — e tem treinamento em trabalho em altura conforme a NR-35. O telhado molhado durante a limpeza multiplica o risco de escorregamento.
+      </p>
+
+      <h3>Material certo para não danificar os módulos</h3>
+      <p>
+        O vidro temperado dos painéis é resistente, mas o <strong>revestimento antirreflexo</strong> (AR coating) aplicado sobre ele é sensível a:
+      </p>
+      <ul>
+        <li><strong>Detergentes e produtos químicos</strong> — deixam película que atrai mais sujeira e podem reagir com o encapsulante EVA</li>
+        <li><strong>Escovas com cerdas duras ou abrasivas</strong> — criam microrriscos no vidro que aumentam a reflexão e reduzem a transmissão de luz</li>
+        <li><strong>Água com alto teor de cálcio (água dura)</strong> — forma depósitos brancos (crostas calcárias) ao secar, piores do que a sujeira original</li>
+      </ul>
+      <p>
+        Profissionais utilizam <strong>água desmineralizada ou deionizada</strong> com condutividade abaixo de 100 µS/cm, escovas de cerdas macias específicas para painéis solares e, quando necessário, solução neutra biodegradável aprovada pelos fabricantes.
+      </p>
+
+      <div class="alert-box">
+        <i class="ti ti-alert-triangle"></i>
+        <div>
+          <strong>Atenção:</strong> Nunca utilize mangueira com jato direto de alta pressão sobre os painéis. A pressão pode infiltrar água nas bordas do laminado, comprometer o encapsulante e criar caminhos de corrosão para as células — dano irreversível não coberto por garantia.
+        </div>
+      </div>
+
+      <h2>Serviço de Manutenção SolarHomolog</h2>
+
+      <div class="servico-box">
+        <div>
+          <div class="servico-box-label">Serviço Profissional</div>
+          <h3>Manutenção Preventiva Completa</h3>
+          <ul>
+            <li>Limpeza com água desmineralizada e escova certificada</li>
+            <li>Inspeção visual de módulos, cabos e estrutura</li>
+            <li>Checagem de conectores MC4 e string box</li>
+            <li>Leitura e análise dos parâmetros do inversor</li>
+            <li>Relatório fotográfico com ocorrências identificadas</li>
+            <li>Recomendações técnicas pós-visita</li>
+          </ul>
+        </div>
+        <div class="servico-price-block">
+          <div class="servico-price-label">A partir de</div>
+          <div class="servico-price">R$ 180</div>
+          <span>por placa<br>(dimensão padrão)</span>
+        </div>
+      </div>
+
+      <div class="solar-box">
+        <strong>Incluso no serviço</strong>
+        O preço por placa cobre deslocamento, equipamentos e mão de obra para sistemas residenciais padrão (módulos de 400–600W, instalação em telhado com inclinação até 35°). Sistemas em estruturas especiais, alturas elevadas ou com mais de 20 módulos têm orçamento personalizado.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container-sm">
+      <h2>Perguntas Frequentes</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Posso limpar os painéis solares sozinho?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Tecnicamente é possível, mas não é recomendado. Os riscos envolvem segurança (trabalho em altura em telhado molhado), uso de produtos químicos agressivos que danificam o revestimento antirreflexo das células, e escovas inadequadas que, ao arranhar a superfície de vidro, reduzem a eficiência de forma permanente. Um profissional usa equipamento de segurança, escova de cerdas macias com cabo extensível e água deionizada ou desmineralizada — sem detergentes que deixam resíduo.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quanto tempo o painel aguenta sem limpeza?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Depende da região. Em áreas urbanas com poluição moderada, a perda de eficiência começa a ser perceptível após 3 a 4 meses sem limpeza (5–10%). Após 6 meses, a queda pode chegar a 15–20%. Em regiões com muita poeira, perto de estradas de terra ou obras, o impacto pode surgir em poucas semanas. Sem nenhuma manutenção por mais de 1 ano, há registros de perda de geração acima de 40–50%.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Qual o sinal de que os painéis precisam de limpeza?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Os principais sinais são: queda visível na geração mensal comparada ao mesmo período do ano anterior (verificável no inversor ou app de monitoramento), camada visível de poeira, fuligem ou fezes de pássaro sobre os módulos, e leituras divergentes entre strings de painéis — o que pode indicar sombreamento por sujeira em módulos específicos. Hot spots detectados por câmera termográfica também sinalizam urgência na limpeza e inspeção técnica.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          A manutenção inclui inspeção elétrica?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Sim. A manutenção preventiva completa da SolarHomolog inclui limpeza dos módulos, inspeção visual dos painéis, verificação das fixações e estrutura metálica, checagem de cabos e conectores MC4 (corrosão, folgas, danos mecânicos), teste de continuidade das strings e leitura dos parâmetros do inversor — tudo documentado em relatório fotográfico. Uma inspeção elétrica aprofundada com termografia infravermelha e analisador de curva I-V é recomendada a cada 2 a 3 anos e tem orçamento separado.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Agende a manutenção do seu sistema solar</h2>
+      <p>Não espere perder geração para agir. Nossos técnicos certificados realizam a manutenção completa com relatório fotográfico e laudo técnico.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511992071648?text=Ol%C3%A1%21+Gostaria+de+agendar+a+manuten%C3%A7%C3%A3o+do+meu+sistema+solar." class="btn-whatsapp" target="_blank" rel="noopener">
+          <i class="ti ti-brand-whatsapp"></i>
+          Agendar pelo WhatsApp
+        </a>
+        <a href="../index.html" class="btn btn-primary btn-lg">
+          <i class="ti ti-arrow-left"></i>
+          Voltar ao site
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo" style="margin-bottom:.75rem;display:inline-flex">
+            <img src="../logo.png" class="logo-img small" alt="SolarHomolog">
+            <div>
+              <div class="logo-name" style="color:#fff">SolarHomolog</div>
+              <div class="logo-sub">Homologação Fotovoltaica</div>
+            </div>
+          </a>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">Especialistas em homologação de sistemas fotovoltaicos junto às concessionárias de energia elétrica do Brasil.</p>
+        </div>
+        <div>
+          <div class="footer-title">Serviços</div>
+          <a class="footer-link" href="../index.html#como-funciona">Processo de Homologação</a>
+          <a class="footer-link" href="../index.html#legislacao">Base de Legislação</a>
+        </div>
+        <div>
+          <div class="footer-title">Conteúdo</div>
+          <a class="footer-link" href="sistema-off-grid.html">Sistema Off-Grid</a>
+          <a class="footer-link" href="sistema-hibrido.html">Sistema Híbrido</a>
+          <a class="footer-link" href="manutencao-paineis-solares.html">Manutenção de Painéis</a>
+        </div>
+        <div>
+          <div class="footer-title">Legal</div>
+          <a class="footer-link" href="../termos.html">Termos de Uso</a>
+          <a class="footer-link" href="../privacidade.html">Política de Privacidade</a>
+          <a class="footer-link" href="../privacidade.html">LGPD</a>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <a class="footer-link" href="mailto:suporte@jccassessorialtda.com.br">suporte@jccassessorialtda.com.br</a>
+          <a class="footer-link" href="https://wa.me/5511992071648">WhatsApp (11) 99207-1648</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 SolarHomolog. Todos os direitos reservados.</span>
+        <span>Conforme Lei 14.300/2022 e REN ANEEL 1.000/2021</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+      btn.setAttribute('aria-expanded', !isOpen);
+    }
+  </script>
+
+</body>
+</html>

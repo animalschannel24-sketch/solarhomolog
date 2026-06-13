@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Calcular o Tamanho Ideal do Seu Sistema Solar | Blog SolarHomolog</title>
+  <meta name="description" content="Aprenda a calcular quantos kWp você precisa: consumo, horas de sol pico, Performance Ratio e quantos painéis comprar — com fórmula e exemplo prático completo." />
+  <link rel="icon" href="../logo.png" />
+  <link rel="canonical" href="https://solar.link-4you.com/blog/calcular-tamanho-sistema-solar.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Como Calcular o Tamanho Ideal do Seu Sistema Solar" />
+  <meta property="og:description" content="Fórmula passo a passo para dimensionar seu sistema fotovoltaico: consumo, HSP, Performance Ratio e número de painéis — com exemplo real de 450 kWh/mês." />
+  <meta property="og:image" content="https://solar.link-4you.com/logo.png" />
+  <meta property="og:url" content="https://solar.link-4you.com/blog/calcular-tamanho-sistema-solar.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SolarHomolog" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Como Calcular o Tamanho Ideal do Seu Sistema Solar",
+    "description": "Fórmula passo a passo para dimensionar seu sistema fotovoltaico: consumo, HSP, Performance Ratio e número de painéis — com exemplo real de 450 kWh/mês.",
+    "author": { "@type": "Organization", "name": "SolarHomolog" },
+    "publisher": { "@type": "Organization", "name": "SolarHomolog", "logo": { "@type": "ImageObject", "url": "https://solar.link-4you.com/logo.png" } },
+    "datePublished": "2026-06-13",
+    "url": "https://solar.link-4you.com/blog/calcular-tamanho-sistema-solar.html"
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/icons/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-dark: #1a3a2a; --green-mid: #255239; --green-light: #e8f5e9;
+      --solar: #f5a623; --solar-dark: #e09410; --text: #1a1a1a;
+      --text-muted: #6b7280; --border: rgba(0,0,0,0.1); --bg: #f8faf8;
+      --white: #ffffff; --radius: 10px; --radius-lg: 14px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-sm { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* HEADER */
+    .header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: .85rem 1.5rem; display: flex; align-items: center; gap: 1.5rem; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-img { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; flex-shrink: 0; }
+    .logo-img.small { width: 30px; height: 30px; border-radius: 7px; }
+    .logo-name { font-size: 16px; font-weight: 600; color: var(--green-dark); }
+    .logo-sub { font-size: 11px; color: var(--text-muted); }
+    .nav-links { display: flex; gap: .25rem; margin-left: auto; }
+    .nav-links a { padding: 6px 12px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 7px; transition: .15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green-dark); background: var(--bg); }
+    @media (max-width: 700px) { .nav-links { display: none; } }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: .75rem 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .breadcrumb nav { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green-dark); }
+    .breadcrumb i { font-size: 12px; }
+
+    /* HERO */
+    .page-hero { background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%); color: #fff; padding: 3.5rem 1.5rem 3rem; }
+    .page-hero-meta { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .page-hero-cat { display: inline-block; background: rgba(245,166,35,.18); color: var(--solar); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; border: 1px solid rgba(245,166,35,.3); }
+    .page-hero-date { font-size: 12px; color: rgba(255,255,255,.5); }
+    .page-hero h1 { font-size: clamp(24px, 4vw, 38px); font-weight: 600; line-height: 1.25; margin-bottom: .75rem; }
+    .page-hero p { font-size: 16px; color: rgba(255,255,255,.75); max-width: 640px; }
+
+    /* ARTIGO */
+    .article-body { padding: 3rem 0 2rem; }
+    .article-body p { margin-bottom: 1rem; color: #374151; line-height: 1.8; font-size: 15px; }
+    .article-body strong { color: var(--green-dark); }
+    .article-body a { color: var(--green-mid); }
+
+    /* PASSOS */
+    .step-list { display: flex; flex-direction: column; gap: 1.75rem; margin: 2rem 0; }
+    .step-card { display: grid; grid-template-columns: 52px 1fr; gap: 1rem; align-items: flex-start; }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--green-dark); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+    }
+    .step-body h2 { font-size: 16px; font-weight: 600; color: var(--green-dark); margin-bottom: .4rem; line-height: 1.35; }
+    .step-body p { font-size: 14px; color: #374151; line-height: 1.8; margin: 0; }
+    .step-body p + p { margin-top: .5rem; }
+    .step-body .note { margin-top: .6rem; background: var(--green-light); border-left: 3px solid var(--green-mid); padding: .6rem .85rem; border-radius: 0 var(--radius) var(--radius) 0; font-size: 13px; color: var(--green-dark); }
+
+    /* TABELA HSP */
+    .hsp-table { width: 100%; border-collapse: collapse; margin: .75rem 0; font-size: 13px; }
+    .hsp-table th { background: var(--green-dark); color: #fff; padding: 8px 12px; text-align: left; font-weight: 600; }
+    .hsp-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); color: #374151; }
+    .hsp-table tr:nth-child(even) td { background: var(--bg); }
+
+    /* CAIXA FÓRMULA */
+    .formula-box {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      border-radius: var(--radius-lg); padding: 1.75rem; margin: 2rem 0; color: #fff; text-align: center;
+    }
+    .formula-box h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--solar); margin-bottom: 1rem; }
+    .formula-expr {
+      font-size: clamp(14px, 2.5vw, 18px); font-weight: 600; line-height: 1.7;
+      background: rgba(255,255,255,.1); border-radius: var(--radius); padding: 1rem 1.25rem;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+    .formula-expr span { color: var(--solar); }
+    .formula-legend { margin-top: .85rem; font-size: 12px; color: rgba(255,255,255,.65); line-height: 1.7; }
+
+    /* EXEMPLO PRÁTICO */
+    .exemplo-box {
+      border: 2px solid var(--solar); border-radius: var(--radius-lg); overflow: hidden; margin: 1.5rem 0;
+    }
+    .exemplo-header {
+      background: var(--solar); padding: .6rem 1.1rem;
+      display: flex; align-items: center; gap: .5rem;
+      font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: .04em;
+    }
+    .exemplo-body { padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: .5rem; }
+    .exemplo-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 14px; padding: .35rem 0; border-bottom: 1px solid var(--border); }
+    .exemplo-row:last-child { border-bottom: none; font-weight: 700; font-size: 15px; color: var(--green-dark); }
+    .exemplo-label { color: var(--text-muted); }
+    .exemplo-val { font-weight: 600; color: var(--text); }
+    .exemplo-row:last-child .exemplo-val { color: var(--green-dark); font-size: 17px; }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%); padding: 3.5rem 1.5rem; text-align: center; color: #fff; }
+    .cta-section h2 { font-size: clamp(20px, 3.5vw, 28px); font-weight: 600; margin-bottom: .75rem; }
+    .cta-section p { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 1.75rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 600; background: #25d366; color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background .15s; }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+    .btn-ghost-white { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 500; background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.3); text-decoration: none; transition: background .15s; }
+    .btn-ghost-white:hover { background: rgba(255,255,255,.2); }
+
+    /* FOOTER */
+    .footer { background: #111d16; padding: 3rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+    .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+    .footer-link:hover { color: var(--solar); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../logo.png" class="logo-img" alt="SolarHomolog">
+        <div>
+          <div class="logo-name">SolarHomolog</div>
+          <div class="logo-sub">Homologação Fotovoltaica</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#como-funciona">Como funciona</a>
+        <a href="../index.html#legislacao">Legislação</a>
+        <a href="../index.html#contato">Contato</a>
+        <a href="index.html" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <a href="../index.html">SolarHomolog</a>
+        <i class="ti ti-chevron-right"></i>
+        <a href="index.html">Blog</a>
+        <i class="ti ti-chevron-right"></i>
+        <span>Como Calcular o Tamanho do Sistema Solar</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="container-sm">
+      <div class="page-hero-meta">
+        <span class="page-hero-cat">Dimensionamento</span>
+        <span class="page-hero-date">13 de junho de 2026</span>
+      </div>
+      <h1>Como Calcular o Tamanho Ideal do Seu Sistema Solar</h1>
+      <p>Fórmula passo a passo, exemplo real com 450 kWh/mês e tudo que você precisa saber antes de comprar qualquer painel.</p>
+    </div>
+  </div>
+
+  <!-- ARTIGO -->
+  <div class="article-body">
+    <div class="container-sm">
+
+      <p>
+        O erro mais comum em projetos solares residenciais não é escolher o painel errado nem contratar um instalador ruim. É <strong>dimensionar o sistema incorretamente desde o início</strong>. Um sistema subdimensionado não cobre sua conta de energia e gera frustração. Um sistema sobredimensionado desperdiça investimento — e ainda pode causar problemas na homologação junto à concessionária por excesso de potência injetada.
+      </p>
+      <p>
+        O bom dimensionamento começa com um cálculo simples, mas que exige atenção a cada variável. Veja como fazer isso passo a passo.
+      </p>
+
+      <!-- FÓRMULA DESTAQUE -->
+      <div class="formula-box">
+        <h3>A fórmula resumida</h3>
+        <div class="formula-expr">
+          <span>Potência (kWp)</span> = Consumo diário (kWh) ÷ HSP ÷ PR
+        </div>
+        <div class="formula-legend">
+          HSP = Horas de Sol Pico da sua região &nbsp;|&nbsp; PR = Performance Ratio (eficiência real do sistema, tipicamente 0,75–0,80)
+        </div>
+      </div>
+
+      <div class="step-list">
+
+        <!-- PASSO 1 -->
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h2>Levante seu consumo médio mensal</h2>
+            <p>
+              Reúna as faturas de energia elétrica dos últimos 12 meses e some todos os valores de consumo em kWh. Divida o total por 12 para obter a <strong>média mensal</strong>.
+            </p>
+            <p>
+              Não use apenas a última fatura — o consumo varia bastante entre verão e inverno, especialmente se você usa ar-condicionado. A média anual é mais representativa do seu perfil real.
+            </p>
+            <div class="note">
+              <strong>Dica importante:</strong> considere o mês de <em>maior</em> consumo como referência para não subdimensionar. Se sua média é 350 kWh mas no verão chega a 480 kWh, pense no sistema capaz de cobrir os picos — ou aceite que nos meses mais quentes ainda haverá parte da conta a pagar.
+            </div>
+          </div>
+        </div>
+
+        <!-- PASSO 2 -->
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h2>Calcule o consumo diário</h2>
+            <p>
+              Divida o consumo mensal (em kWh) por <strong>30 dias</strong>. Esse é o número que a geração solar precisa cobrir diariamente em média.
+            </p>
+            <p>
+              Exemplo: consumo mensal de 450 kWh ÷ 30 = <strong>15 kWh/dia</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- PASSO 3 -->
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h2>Identifique as Horas de Sol Pico (HSP) da sua região</h2>
+            <p>
+              HSP é a quantidade de horas por dia em que a irradiação solar equivale a 1.000 W/m² — o padrão de teste dos painéis. No Brasil, esse valor varia bastante de acordo com a latitude e o clima local:
+            </p>
+            <table class="hsp-table">
+              <thead>
+                <tr><th>Região</th><th>HSP média (h/dia)</th><th>Exemplos de cidades</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Nordeste</td><td>5,5 – 6,0</td><td>Fortaleza, Natal, Recife, Salvador</td></tr>
+                <tr><td>Centro-Oeste</td><td>5,0 – 5,5</td><td>Brasília, Cuiabá, Campo Grande</td></tr>
+                <tr><td>Sudeste</td><td>4,8 – 5,5</td><td>São Paulo, Rio de Janeiro, BH</td></tr>
+                <tr><td>Norte</td><td>4,5 – 5,2</td><td>Manaus, Belém, Porto Velho</td></tr>
+                <tr><td>Sul</td><td>4,0 – 4,8</td><td>Curitiba, Porto Alegre, Florianópolis</td></tr>
+              </tbody>
+            </table>
+            <div class="note">
+              Para valores precisos da sua cidade, consulte o <strong>Atlas Solarimétrico do Brasil</strong> (CEPEL/Eletrobras) ou o banco de dados do INPE — os dados variam por micro-região e altitude.
+            </div>
+          </div>
+        </div>
+
+        <!-- PASSO 4 -->
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h2>Aplique a fórmula com o Performance Ratio</h2>
+            <p>
+              Nenhum sistema solar opera com 100% da eficiência nominal dos painéis. Há perdas por cabeamento, temperatura, sujeira, sombreamento parcial, rendimento do inversor e tolerâncias de fabricação. Essas perdas são agrupadas em um fator chamado <strong>Performance Ratio (PR)</strong>.
+            </p>
+            <p>
+              Para projetos residenciais bem instalados no Brasil, o PR fica entre <strong>0,75 e 0,80</strong>. Use 0,78 como valor conservador e confiável para a maioria dos casos.
+            </p>
+            <p>A fórmula completa é:</p>
+            <div class="note" style="font-size:14px; font-weight:600;">
+              Potência (kWp) = Consumo diário (kWh) ÷ HSP ÷ PR
+            </div>
+          </div>
+        </div>
+
+        <!-- PASSO 5 -->
+        <div class="step-card">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h2>Exemplo prático completo</h2>
+            <p>Veja o cálculo para uma residência real com consumo de 450 kWh/mês em São Paulo (HSP 5,0 h/dia) e PR de 0,78:</p>
+
+            <div class="exemplo-box">
+              <div class="exemplo-header"><i class="ti ti-calculator"></i> Cálculo passo a passo</div>
+              <div class="exemplo-body">
+                <div class="exemplo-row">
+                  <span class="exemplo-label">Consumo mensal</span>
+                  <span class="exemplo-val">450 kWh/mês</span>
+                </div>
+                <div class="exemplo-row">
+                  <span class="exemplo-label">Consumo diário (÷ 30)</span>
+                  <span class="exemplo-val">15,0 kWh/dia</span>
+                </div>
+                <div class="exemplo-row">
+                  <span class="exemplo-label">HSP da região (São Paulo)</span>
+                  <span class="exemplo-val">5,0 h/dia</span>
+                </div>
+                <div class="exemplo-row">
+                  <span class="exemplo-label">Performance Ratio</span>
+                  <span class="exemplo-val">0,78</span>
+                </div>
+                <div class="exemplo-row">
+                  <span class="exemplo-label">Potência necessária (15 ÷ 5,0 ÷ 0,78)</span>
+                  <span class="exemplo-val">≈ 3,85 kWp</span>
+                </div>
+                <div class="exemplo-row" style="border-top: 2px solid var(--solar); margin-top:.25rem; padding-top:.6rem;">
+                  <span class="exemplo-label">Potência do projeto (arredondado)</span>
+                  <span class="exemplo-val">4,0 kWp</span>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              O resultado de 3,85 kWp é arredondado para <strong>4,0 kWp</strong> — valor que coincide com múltiplos de painéis disponíveis no mercado e garante uma margem de segurança.
+            </p>
+          </div>
+        </div>
+
+        <!-- PASSO 6 -->
+        <div class="step-card">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h2>Quantos painéis você precisa?</h2>
+            <p>
+              Com a potência total em mãos, divida pelo valor nominal de cada painel para saber quantas placas seu projeto vai precisar. O mercado residencial no Brasil converge para painéis de <strong>500 W a 600 W</strong> nos projetos atuais.
+            </p>
+            <p>
+              Usando painéis de 550 W (0,55 kWp) no exemplo acima:
+            </p>
+            <div class="note" style="font-size:14px;">
+              4,0 kWp ÷ 0,55 kWp/painel = <strong>7,27 → arredondar para 8 painéis</strong> (4,4 kWp instalados)
+            </div>
+            <p style="margin-top:.6rem;">
+              Sempre arredonde para <strong>cima</strong>. Fracionar painéis é inviável, e a pequena folga extra na potência instalada compensa dias com menos sol, sujeira acumulada e a degradação natural ao longo dos anos.
+            </p>
+          </div>
+        </div>
+
+        <!-- PASSO 7 -->
+        <div class="step-card">
+          <div class="step-num">7</div>
+          <div class="step-body">
+            <h2>Considere expansões futuras</h2>
+            <p>
+              O consumo de energia de uma residência raramente é estático. Se você planeja adquirir um <strong>carro elétrico</strong> nos próximos anos, instalar uma piscina com bomba, adicionar ar-condicionado em novos cômodos ou se a família vai crescer, projete o sistema com <strong>10% a 20% a mais de capacidade</strong>.
+            </p>
+            <p>
+              Adicionar painéis depois da homologação é possível, mas exige um novo processo junto à concessionária, com novos custos e prazos. Planejar com margem desde o início é sempre mais econômico — e evita surpresas regulatórias, já que existe um limite de potência para micro e minigeração (75 kW e 5 MW, respectivamente, pela REN ANEEL 1.000/2021).
+            </p>
+            <div class="note">
+              <strong>Carro elétrico:</strong> um veículo com autonomia de 300 km e eficiência de 6 km/kWh percorre 15.000 km/ano consumindo ~2.500 kWh extras — o equivalente a adicionar ~1,5 kWp ao projeto para zerar esse custo.
+            </div>
+          </div>
+        </div>
+
+        <!-- PASSO 8 -->
+        <div class="step-card">
+          <div class="step-num">8</div>
+          <div class="step-body">
+            <h2>Por que vale ter uma empresa especializada para esse cálculo</h2>
+            <p>
+              A fórmula acima dá um ponto de partida sólido — mas o dimensionamento profissional vai além das contas básicas. Uma empresa especializada analisa variáveis que o cálculo simplificado não captura:
+            </p>
+            <p>
+              <strong>Sombreamento real do telhado:</strong> vizinhos, árvores, caixas d'água e antenas criam sombras que afetam a geração de formas não lineares — especialmente em sistemas com inversor string, onde uma célula sombreada compromete toda a série.
+            </p>
+            <p>
+              <strong>Orientação e inclinação exatas:</strong> o ângulo e a direção do telhado impactam diretamente a geração — e precisam ser inseridos com precisão nos softwares de simulação (PVsyst, Helioscope) para que o cálculo de retorno seja confiável.
+            </p>
+            <p>
+              <strong>Erros custam caro nos dois sentidos:</strong> um sistema <em>subdimensionado</em> não cobre a conta e gera frustração com o investimento. Um sistema <em>sobredimensionado</em> além do ponto de equilíbrio desperdiça capital — e pode ser reprovado na homologação se a potência instalada exceder o permitido pela concessionária para a classe tarifária do imóvel.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <p>
+        Feito o dimensionamento correto, o próximo passo é a instalação e, logo em seguida, a homologação junto à concessionária — etapa obrigatória para que você passe a compensar a energia injetada na rede. É esse processo que transforma painéis no telhado em créditos na conta de luz.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Quer um cálculo profissional gratuito?</h2>
+      <p>Nossa equipe analisa seu consumo, telhado e região para dimensionar o sistema ideal — sem custo e sem compromisso.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511992071648?text=Ol%C3%A1%21+Quero+um+c%C3%A1lculo+profissional+gratuito+para+dimensionar+meu+sistema+solar." class="btn-whatsapp" target="_blank" rel="noopener">
+          <i class="ti ti-brand-whatsapp"></i>
+          Calcular pelo WhatsApp
+        </a>
+        <a href="../modelos/instalacao-sistema-solar.html" class="btn-ghost-white">
+          <i class="ti ti-solar-panel"></i>
+          Ver guia de instalação
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo" style="margin-bottom:.75rem;display:inline-flex">
+            <img src="../logo.png" class="logo-img small" alt="SolarHomolog">
+            <div>
+              <div class="logo-name" style="color:#fff">SolarHomolog</div>
+              <div class="logo-sub">Homologação Fotovoltaica</div>
+            </div>
+          </a>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">Especialistas em homologação de sistemas fotovoltaicos junto às concessionárias de energia elétrica do Brasil.</p>
+        </div>
+        <div>
+          <div class="footer-title">Serviços</div>
+          <a class="footer-link" href="../index.html#como-funciona">Processo de Homologação</a>
+          <a class="footer-link" href="../index.html#legislacao">Base de Legislação</a>
+        </div>
+        <div>
+          <div class="footer-title">Conteúdo</div>
+          <a class="footer-link" href="index.html">Blog</a>
+          <a class="footer-link" href="../modelos/processo-homologacao-solar.html">Homologação Solar</a>
+          <a class="footer-link" href="../modelos/instalacao-sistema-solar.html">Instalação Solar</a>
+          <a class="footer-link" href="../modelos/sistema-hibrido.html">Sistema Híbrido</a>
+          <a class="footer-link" href="../modelos/sistema-off-grid.html">Sistema Off-Grid</a>
+          <a class="footer-link" href="../modelos/manutencao-paineis-solares.html">Manutenção de Painéis</a>
+          <a class="footer-link" href="../modelos/monitoramento-sistema-solar.html">Monitoramento Solar</a>
+          <a class="footer-link" href="../modelos/equipamentos-sistema-solar.html">Equipamentos Solar</a>
+        </div>
+        <div>
+          <div class="footer-title">Legal</div>
+          <a class="footer-link" href="../termos.html">Termos de Uso</a>
+          <a class="footer-link" href="../privacidade.html">Política de Privacidade</a>
+          <a class="footer-link" href="../privacidade.html">LGPD</a>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <a class="footer-link" href="mailto:suporte@jccassessorialtda.com.br">suporte@jccassessorialtda.com.br</a>
+          <a class="footer-link" href="https://wa.me/5511992071648">WhatsApp (11) 99207-1648</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 SolarHomolog. Todos os direitos reservados.</span>
+        <span>Conforme Lei 14.300/2022 e REN ANEEL 1.000/2021</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipamentos do Sistema Solar: Painéis, Inversores e Cabos | SolarHomolog</title>
+  <meta name="description" content="Conheça cada componente do sistema solar fotovoltaico: painéis monocristalinos, tipos de inversor, cabeamento, DPS e por que equipamentos Tier 1 fazem diferença." />
+  <link rel="icon" href="../logo.png" />
+  <link rel="canonical" href="https://solarhomolog.com.br/modelos/equipamentos-sistema-solar.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Equipamentos do Sistema Solar: Painéis, Inversores e Cabos" />
+  <meta property="og:description" content="Guia completo dos componentes fotovoltaicos: painéis Tier 1, 3 tipos de inversor, estrutura por tipo de telhado, cabeamento, DPS e aterramento obrigatório." />
+  <meta property="og:image" content="https://solarhomolog.com.br/logo.png" />
+  <meta property="og:url" content="https://solarhomolog.com.br/modelos/equipamentos-sistema-solar.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SolarHomolog" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Equipamentos do Sistema Solar: Painéis, Inversores e Cabos",
+    "description": "Guia completo dos componentes de um sistema fotovoltaico: painéis monocristalinos vs policristalinos, 3 tipos de inversor, estrutura de fixação, cabeamento e proteções.",
+    "author": { "@type": "Organization", "name": "SolarHomolog" },
+    "publisher": { "@type": "Organization", "name": "SolarHomolog", "logo": { "@type": "ImageObject", "url": "https://solarhomolog.com.br/logo.png" } },
+    "datePublished": "2026-06-13",
+    "url": "https://solarhomolog.com.br/modelos/equipamentos-sistema-solar.html"
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qual a diferença entre inversor string e microinversor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O inversor string é um único equipamento que processa toda a geração de um grupo (string) de painéis em série. É mais barato e dominante no mercado residencial, mas se um painel do grupo for sombreado, a geração de toda a string cai junto. O microinversor é instalado individualmente em cada painel, fazendo a conversão CC/CA painel a painel — isso elimina o efeito de sombreamento parcial e permite monitoramento individual de cada módulo. O microinversor custa mais, mas é a melhor escolha para telhados com sombra parcial em horários de pico solar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto tempo dura um painel solar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Os fabricantes Tier 1 oferecem garantia de produto de 10 a 12 anos (contra defeitos de fabricação) e garantia de desempenho de 25 a 30 anos — assegurando que o painel manterá pelo menos 80% da potência nominal após 25 anos. Na prática, estudos de campo mostram que painéis monocristalinos bem instalados continuam operando após 30 anos com degradação mínima. A vida útil real supera amplamente a vida útil garantida, tornando o painel o componente mais durável do sistema."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O que é DPS e por que é obrigatório?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DPS é o Dispositivo de Proteção contra Surtos — equipamento que absorve picos de tensão causados por descargas atmosféricas (raios) e transitórios da rede elétrica, protegendo o inversor e os painéis de danos irreversíveis. A ABNT NBR 16690 exige o uso de DPS em sistemas fotovoltaicos, e sua ausência pode invalidar a garantia dos equipamentos em caso de sinistro por surto. Nos sistemas conectados à rede, são necessários DPS tanto no lado CC (entre painéis e inversor) quanto no lado CA (entre inversor e rede)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Posso usar equipamentos de qualquer marca no meu sistema solar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tecnicamente sim, mas na prática a procedência e a certificação dos equipamentos importam muito. Inversores e painéis devem ter certificação INMETRO para uso no Brasil — equipamentos sem certificação não são aceitos no processo de homologação junto à concessionária. Além disso, equipamentos de marcas sem suporte nacional representam risco: se o inversor falhar fora da garantia, pode ser impossível encontrar peças ou assistência técnica. Equipamentos Tier 1 têm garantia real executável, suporte técnico local e são aceitos por todas as concessionárias."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/icons/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1a3a2a;
+      --green-mid: #255239;
+      --green-light: #e8f5e9;
+      --solar: #f5a623;
+      --solar-dark: #e09410;
+      --text: #1a1a1a;
+      --text-muted: #6b7280;
+      --border: rgba(0,0,0,0.1);
+      --bg: #f8faf8;
+      --white: #ffffff;
+      --radius: 10px;
+      --radius-lg: 14px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-sm { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: var(--radius); font-size: 14px; font-weight: 500;
+      cursor: pointer; border: 1px solid var(--border); background: var(--white);
+      color: var(--text); transition: all .15s; font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn:hover { background: var(--bg); }
+    .btn-primary { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+    .btn-primary:hover { background: var(--green-mid); }
+    .btn-lg { padding: 13px 24px; font-size: 15px; }
+
+    /* HEADER */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: .85rem 1.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-img { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; flex-shrink: 0; }
+    .logo-img.small { width: 30px; height: 30px; border-radius: 7px; }
+    .logo-name { font-size: 16px; font-weight: 600; color: var(--green-dark); }
+    .logo-sub { font-size: 11px; color: var(--text-muted); }
+    .nav-links { display: flex; gap: .25rem; margin-left: auto; }
+    .nav-links a { padding: 6px 12px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 7px; transition: .15s; }
+    .nav-links a:hover { color: var(--green-dark); background: var(--bg); }
+    @media (max-width: 700px) { .nav-links { display: none; } }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: .75rem 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .breadcrumb nav { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green-dark); }
+    .breadcrumb i { font-size: 12px; }
+
+    /* HERO */
+    .page-hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      color: #fff; padding: 3.5rem 1.5rem 3rem;
+    }
+    .page-hero-badge {
+      display: inline-block; background: rgba(245,166,35,.18); color: var(--solar);
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+      border: 1px solid rgba(245,166,35,.3); margin-bottom: 1rem;
+    }
+    .page-hero h1 { font-size: clamp(24px, 4vw, 38px); font-weight: 600; line-height: 1.25; margin-bottom: .75rem; }
+    .page-hero p { font-size: 16px; color: rgba(255,255,255,.75); max-width: 640px; }
+
+    /* CONTEÚDO */
+    .article-body { padding: 3rem 0 2rem; }
+    .article-body h2 {
+      font-size: clamp(18px, 3vw, 24px); font-weight: 600; color: var(--green-dark);
+      margin: 2.5rem 0 .75rem; padding-bottom: .5rem;
+      border-bottom: 2px solid var(--green-light);
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 600; color: var(--text); margin: 1.5rem 0 .5rem; }
+    .article-body p { margin-bottom: 1rem; color: #374151; line-height: 1.75; }
+    .article-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .article-body li { color: #374151; line-height: 1.75; margin-bottom: .3rem; }
+    .article-body strong { color: var(--green-dark); }
+
+    /* COMPARATIVO PAINÉIS */
+    .painel-compare {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;
+    }
+    @media (max-width: 520px) { .painel-compare { grid-template-columns: 1fr; } }
+    .painel-card {
+      border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid;
+    }
+    .painel-card.mono { background: #f0fdf4; border-color: #bbf7d0; }
+    .painel-card.poli { background: var(--bg); border-color: var(--border); }
+    .painel-card-badge {
+      display: inline-block; padding: 2px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 700; margin-bottom: .6rem;
+    }
+    .painel-card.mono .painel-card-badge { background: #bbf7d0; color: #166534; }
+    .painel-card.poli .painel-card-badge { background: #dbeafe; color: #1d4ed8; }
+    .painel-card h3 { font-size: 15px; font-weight: 600; margin-bottom: .5rem; }
+    .painel-card.mono h3 { color: #166534; }
+    .painel-card.poli h3 { color: #1d4ed8; }
+    .painel-spec { display: flex; justify-content: space-between; font-size: 13px; padding: .3rem 0; border-bottom: 1px solid rgba(0,0,0,.06); }
+    .painel-spec:last-child { border-bottom: none; }
+    .painel-spec .label { color: var(--text-muted); }
+    .painel-spec .value { font-weight: 600; color: var(--text); }
+
+    /* MARCAS TIER 1 */
+    .tier1-grid {
+      display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0;
+    }
+    .tier1-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--green-dark); color: #fff;
+      padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
+    }
+    .tier1-badge i { color: var(--solar); font-size: 14px; }
+
+    /* INVERSORES */
+    .inversor-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .inversor-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1.25rem; display: flex; flex-direction: column; gap: .5rem;
+      position: relative; overflow: hidden;
+    }
+    .inversor-card.popular::after {
+      content: 'Mais comum'; position: absolute; top: 12px; right: -22px;
+      background: var(--solar); color: #1a1a00; font-size: 10px; font-weight: 700;
+      padding: 2px 28px; transform: rotate(35deg);
+    }
+    .inversor-card i { font-size: 28px; color: var(--solar); }
+    .inversor-card h3 { font-size: 15px; font-weight: 600; color: var(--green-dark); margin: 0; }
+    .inversor-card p { font-size: 13px; color: #374151; line-height: 1.6; margin: 0; flex: 1; }
+    .inversor-marcas { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+    .inversor-pros { list-style: none; padding: 0; margin: .4rem 0 0; }
+    .inversor-pros li { font-size: 12px; color: #166534; display: flex; align-items: center; gap: 5px; }
+    .inversor-pros i { font-size: 13px; color: #16a34a; }
+    .inversor-cons { font-size: 12px; color: #7f1d1d; display: flex; align-items: center; gap: 5px; margin-top: .2rem; }
+    .inversor-cons i { font-size: 13px; color: #ef4444; }
+
+    /* ESTRUTURA TELHADO */
+    .telhado-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: .75rem; margin: 1.5rem 0;
+    }
+    .telhado-item {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: .9rem; text-align: center;
+    }
+    .telhado-item i { font-size: 28px; color: var(--green-dark); display: block; margin-bottom: .4rem; }
+    .telhado-item h3 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: .25rem; }
+    .telhado-item p { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
+    /* PROTEÇÕES */
+    .protecoes-list { display: flex; flex-direction: column; gap: .75rem; margin: 1.5rem 0; }
+    .protecao-item {
+      display: grid; grid-template-columns: 44px 1fr; gap: 1rem; align-items: flex-start;
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: .9rem;
+    }
+    .protecao-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--green-dark); color: var(--solar);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    .protecao-item h3 { font-size: 14px; font-weight: 600; color: var(--green-dark); margin: 0 0 .2rem; }
+    .protecao-item p { font-size: 13px; color: #374151; line-height: 1.6; margin: 0; }
+
+    /* TIER 1 vs SEM PROCEDÊNCIA */
+    .tier-compare {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;
+    }
+    @media (max-width: 520px) { .tier-compare { grid-template-columns: 1fr; } }
+    .tier-card { border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid; }
+    .tier-card.bom { background: #f0fdf4; border-color: #bbf7d0; }
+    .tier-card.ruim { background: #fef2f2; border-color: #fecaca; }
+    .tier-card h3 { font-size: 14px; font-weight: 600; margin-bottom: .65rem; }
+    .tier-card.bom h3 { color: #166534; }
+    .tier-card.ruim h3 { color: #991b1b; }
+    .tier-card ul { list-style: none; padding: 0; }
+    .tier-card li { font-size: 13px; padding: .25rem 0; display: flex; align-items: flex-start; gap: 7px; line-height: 1.5; }
+    .tier-card.bom li { color: #166534; }
+    .tier-card.ruim li { color: #991b1b; }
+    .tier-card i { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+    /* QUADRO PADRÃO */
+    .quadro-box {
+      background: #fffbf0; border: 1px solid rgba(245,166,35,.4);
+      border-radius: var(--radius-lg); padding: 1.25rem; margin: 1.5rem 0;
+      display: flex; gap: .75rem; align-items: flex-start;
+    }
+    .quadro-box i { color: var(--solar-dark); font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+    .quadro-box h3 { font-size: 14px; font-weight: 600; color: var(--solar-dark); margin-bottom: .35rem; }
+    .quadro-box p { font-size: 13px; color: #5c3e00; line-height: 1.7; margin: 0; }
+
+    /* INFO / ALERT BOX */
+    .info-box {
+      background: var(--green-light); border-left: 3px solid var(--green-dark);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem; margin: 1.5rem 0;
+      font-size: 14px; color: var(--green-dark); line-height: 1.7;
+    }
+    .info-box strong { display: block; margin-bottom: .3rem; }
+    .alert-box {
+      background: #fef2f2; border: 1px solid #fecaca; border-radius: var(--radius-lg);
+      padding: 1rem 1.25rem; margin: 1.5rem 0;
+      font-size: 14px; color: #7f1d1d; line-height: 1.7;
+      display: flex; gap: .75rem; align-items: flex-start;
+    }
+    .alert-box i { color: #ef4444; font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+    /* FAQ */
+    .faq-section { padding: 3rem 0; background: var(--bg); }
+    .faq-section h2 { font-size: clamp(18px, 3vw, 24px); font-weight: 600; color: var(--green-dark); margin-bottom: 1.5rem; }
+    .faq-item {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      margin-bottom: .75rem; overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; text-align: left; padding: 1rem 1.25rem; background: none; border: none;
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; color: var(--text);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq-question:hover { background: var(--bg); }
+    .faq-question i { color: var(--text-muted); flex-shrink: 0; transition: transform .2s; }
+    .faq-answer { padding: 0 1.25rem 1rem; font-size: 14px; color: #374151; line-height: 1.75; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-question i { transform: rotate(180deg); }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      padding: 3.5rem 1.5rem; text-align: center; color: #fff;
+    }
+    .cta-section h2 { font-size: clamp(20px, 3.5vw, 30px); font-weight: 600; margin-bottom: .75rem; }
+    .cta-section p { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 1.75rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 600;
+      background: #25d366; color: #fff; border: none; cursor: pointer; text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+
+    /* FOOTER */
+    .footer { background: #111d16; padding: 3rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+    .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+    .footer-link:hover { color: var(--solar); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../logo.png" class="logo-img" alt="SolarHomolog">
+        <div>
+          <div class="logo-name">SolarHomolog</div>
+          <div class="logo-sub">Homologação Fotovoltaica</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#como-funciona">Como funciona</a>
+        <a href="../index.html#legislacao">Legislação</a>
+        <a href="../index.html#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <a href="../index.html">SolarHomolog</a>
+        <i class="ti ti-chevron-right"></i>
+        <span>Equipamentos do Sistema Solar</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="container-sm">
+      <div class="page-hero-badge">Guia Completo</div>
+      <h1>Equipamentos do Sistema Solar: Painéis, Inversores e Cabos</h1>
+      <p>Entenda o papel de cada componente do sistema fotovoltaico — e por que a escolha de equipamentos certificados e de marcas reconhecidas impacta diretamente na durabilidade, na geração e na homologação do sistema.</p>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <div class="article-body">
+    <div class="container-sm">
+
+      <h2>Painéis solares (módulos fotovoltaicos)</h2>
+      <p>
+        O painel solar — tecnicamente chamado de módulo fotovoltaico — é o componente responsável por converter a luz solar em eletricidade por meio do efeito fotovoltaico. É formado por células de silício encapsuladas entre vidro temperado e uma camada protetora traseira, com moldura de alumínio que garante a rigidez estrutural e facilita a fixação na estrutura do telhado.
+      </p>
+
+      <h3>Monocristalino vs. policristalino</h3>
+      <p>
+        As duas tecnologias dominantes diferem na pureza do silício usado nas células — o que impacta diretamente a eficiência e o comportamento em condições adversas de luz:
+      </p>
+
+      <div class="painel-compare">
+        <div class="painel-card mono">
+          <span class="painel-card-badge">Monocristalino</span>
+          <h3>Padrão atual do mercado</h3>
+          <div class="painel-spec"><span class="label">Eficiência</span><span class="value">20–23%</span></div>
+          <div class="painel-spec"><span class="label">Aparência</span><span class="value">Células uniformes pretas</span></div>
+          <div class="painel-spec"><span class="label">Desempenho com nublado</span><span class="value">Superior</span></div>
+          <div class="painel-spec"><span class="label">Coeficiente de temperatura</span><span class="value">Melhor</span></div>
+          <div class="painel-spec"><span class="label">Custo relativo</span><span class="value">Médio-alto</span></div>
+          <div class="painel-spec"><span class="label">Garantia de desempenho</span><span class="value">25–30 anos</span></div>
+        </div>
+        <div class="painel-card poli">
+          <span class="painel-card-badge">Policristalino</span>
+          <h3>Tecnologia em declínio</h3>
+          <div class="painel-spec"><span class="label">Eficiência</span><span class="value">16–18%</span></div>
+          <div class="painel-spec"><span class="label">Aparência</span><span class="value">Células azuladas</span></div>
+          <div class="painel-spec"><span class="label">Desempenho com nublado</span><span class="value">Inferior</span></div>
+          <div class="painel-spec"><span class="label">Coeficiente de temperatura</span><span class="value">Inferior</span></div>
+          <div class="painel-spec"><span class="label">Custo relativo</span><span class="value">Baixo</span></div>
+          <div class="painel-spec"><span class="label">Garantia de desempenho</span><span class="value">25 anos</span></div>
+        </div>
+      </div>
+
+      <p>
+        O mercado brasileiro migrou quase completamente para os painéis monocristalinos, especialmente a tecnologia <strong>PERC</strong> (Passivated Emitter and Rear Cell) e sua evolução <strong>TOPCon</strong>, que alcançam eficiências acima de 22%. A diferença de preço em relação ao policristalino caiu significativamente — hoje não há razão técnica ou econômica para especificar painéis policristalinos em projetos novos.
+      </p>
+
+      <h3>Marcas Tier 1 certificadas</h3>
+      <p>
+        A classificação Tier 1 da Bloomberg NEF identifica fabricantes com capacidade produtiva comprovada, balanço financeiro sólido e presença nos mercados mais exigentes do mundo — garantindo que a empresa existirá para honrar a garantia de 25 anos. As principais marcas disponíveis no Brasil:
+      </p>
+      <div class="tier1-grid">
+        <span class="tier1-badge"><i class="ti ti-rosette-discount-check"></i> Canadian Solar</span>
+        <span class="tier1-badge"><i class="ti ti-rosette-discount-check"></i> Jinko Solar</span>
+        <span class="tier1-badge"><i class="ti ti-rosette-discount-check"></i> Trina Solar</span>
+        <span class="tier1-badge"><i class="ti ti-rosette-discount-check"></i> LONGi Solar</span>
+        <span class="tier1-badge"><i class="ti ti-rosette-discount-check"></i> BYD Solar</span>
+        <span class="tier1-badge"><i class="ti ti-rosette-discount-check"></i> JA Solar</span>
+      </div>
+
+      <h2>Inversores: o cérebro do sistema</h2>
+      <p>
+        O inversor é responsável por converter a corrente contínua (CC) gerada pelos painéis em corrente alternada (CA) compatível com a rede elétrica doméstica. Além da conversão, os inversores modernos executam o rastreamento do ponto de máxima potência (MPPT), a proteção anti-ilhamento e o monitoramento do sistema. Existem três arquiteturas principais:
+      </p>
+
+      <div class="inversor-grid">
+        <div class="inversor-card popular">
+          <i class="ti ti-cpu"></i>
+          <h3>Inversor String</h3>
+          <p>Um único inversor centralizado processa a geração de toda uma string (grupo de painéis em série). Domina o mercado residencial pela relação custo-benefício e facilidade de manutenção.</p>
+          <div class="inversor-marcas">Growatt · Sungrow · Fronius · SMA · Deye</div>
+          <ul class="inversor-pros">
+            <li><i class="ti ti-check"></i> Menor custo por kWp</li>
+            <li><i class="ti ti-check"></i> Fácil manutenção e substituição</li>
+            <li><i class="ti ti-check"></i> Monitoramento centralizado</li>
+          </ul>
+          <div class="inversor-cons"><i class="ti ti-x"></i> Sombra em 1 painel afeta a string inteira</div>
+        </div>
+
+        <div class="inversor-card">
+          <i class="ti ti-circuit-diode"></i>
+          <h3>Microinversor</h3>
+          <p>Cada painel recebe seu próprio microinversor, fazendo a conversão CC/CA individualmente. Elimina o efeito de sombreamento parcial e permite monitoramento painel a painel.</p>
+          <div class="inversor-marcas">Enphase IQ · APsystems · Hoymiles</div>
+          <ul class="inversor-pros">
+            <li><i class="ti ti-check"></i> Ideal para telhados com sombra parcial</li>
+            <li><i class="ti ti-check"></i> Monitoramento por módulo individual</li>
+            <li><i class="ti ti-check"></i> Falha de um não afeta os outros</li>
+          </ul>
+          <div class="inversor-cons"><i class="ti ti-x"></i> Custo por kWp mais elevado</div>
+        </div>
+
+        <div class="inversor-card">
+          <i class="ti ti-battery-charging"></i>
+          <h3>Inversor Híbrido</h3>
+          <p>Gerencia simultaneamente painéis, baterias e rede elétrica. Permite armazenar o excedente solar para uso noturno e garante autonomia durante quedas de energia.</p>
+          <div class="inversor-marcas">Deye · Growatt · SolarEdge · Sungrow · Solax</div>
+          <ul class="inversor-pros">
+            <li><i class="ti ti-check"></i> Funciona com e sem rede (UPS)</li>
+            <li><i class="ti ti-check"></i> Maximiza o autoconsumo</li>
+            <li><i class="ti ti-check"></i> Suporte a grid zero</li>
+          </ul>
+          <div class="inversor-cons"><i class="ti ti-x"></i> Custo mais alto — exige baterias</div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>Inversores com otimizadores de potência</strong>
+        Entre o inversor string puro e o microinversor existe uma solução intermediária: o inversor string combinado com otimizadores de potência instalados em cada painel (SolarEdge, Tigo). Os otimizadores eliminam o efeito de sombra na string mantendo o custo abaixo do microinversor — e permitem monitoramento por painel via app.
+      </div>
+
+      <h2>Estrutura de fixação</h2>
+      <p>
+        A estrutura metálica é responsável por sustentar os painéis no telhado com segurança, na inclinação adequada e com resistência ao vento. O tipo de estrutura depende diretamente do tipo de telhado:
+      </p>
+
+      <div class="telhado-grid">
+        <div class="telhado-item">
+          <i class="ti ti-building"></i>
+          <h3>Telha cerâmica</h3>
+          <p>Ganchos de aço inox fixados nas ripas do telhado com trilhos de alumínio. Mais comum no Brasil.</p>
+        </div>
+        <div class="telhado-item">
+          <i class="ti ti-building-factory"></i>
+          <h3>Telha metálica</h3>
+          <p>Grampos de fixação específicos para o perfil da telha (trapezoidal, colonial, zipada). Instalação mais rápida.</p>
+        </div>
+        <div class="telhado-item">
+          <i class="ti ti-building-skyscraper"></i>
+          <h3>Laje / flat</h3>
+          <p>Estrutura com lastros de concreto ou fixação química. Inclinação definida pela própria estrutura (10–25°).</p>
+        </div>
+        <div class="telhado-item">
+          <i class="ti ti-home-2"></i>
+          <h3>Fibrocimento</h3>
+          <p>Fixação com parafusos passantes e vedação específica. Avaliação estrutural prévia obrigatória.</p>
+        </div>
+      </div>
+
+      <p>
+        Todos os perfis, trilhos e parafusos devem ser de <strong>alumínio anodizado ou aço inoxidável</strong> — materiais que resistem à corrosão por décadas. Estruturas de aço galvanizado comum apresentam oxidação prematura, especialmente em regiões litorâneas com alta salinidade no ar.
+      </p>
+
+      <h2>Cabeamento e proteções elétricas</h2>
+
+      <div class="protecoes-list">
+        <div class="protecao-item">
+          <div class="protecao-icon"><i class="ti ti-plug"></i></div>
+          <div>
+            <h3>Cabos solares CC (dupla isolação)</h3>
+            <p>Cabos específicos para aplicações fotovoltaicas, com isolação dupla resistente a UV, temperatura e intempéries — certificados pela norma IEC 62930. Não podem ser substituídos por cabos elétricos convencionais, que degradam rapidamente sob exposição solar direta.</p>
+          </div>
+        </div>
+        <div class="protecao-item">
+          <div class="protecao-icon"><i class="ti ti-box"></i></div>
+          <div>
+            <h3>String box (caixa de junção CC)</h3>
+            <p>Caixa que centraliza as conexões das strings de painéis antes do inversor. Contém fusíveis por string para proteção individual, disjuntor CC geral e o DPS do lado corrente contínua. Obrigatória em sistemas com mais de uma string.</p>
+          </div>
+        </div>
+        <div class="protecao-item">
+          <div class="protecao-icon"><i class="ti ti-zap"></i></div>
+          <div>
+            <h3>DPS — Dispositivo de Proteção contra Surtos</h3>
+            <p>Equipamento que desvia picos de tensão causados por descargas atmosféricas (raios) e transitórios da rede para o terra, antes que atinjam o inversor ou os painéis. Exigido pela ABNT NBR 16690 tanto no lado CC (entre painéis e inversor) quanto no lado CA (entre inversor e quadro elétrico). Sua ausência pode invalidar a garantia dos equipamentos em caso de sinistro.</p>
+          </div>
+        </div>
+        <div class="protecao-item">
+          <div class="protecao-icon"><i class="ti ti-switch"></i></div>
+          <div>
+            <h3>Disjuntores CA</h3>
+            <p>Disjuntores dedicados para o circuito do inversor no quadro de distribuição elétrica. Dimensionados para a corrente máxima de saída do inversor e com curva de disparo adequada (normalmente curva C ou D). Protegem o cabeamento CA contra sobrecarga e curto-circuito.</p>
+          </div>
+        </div>
+        <div class="protecao-item">
+          <div class="protecao-icon"><i class="ti ti-arrow-down-circle"></i></div>
+          <div>
+            <h3>Sistema de aterramento (SPDA fotovoltaico)</h3>
+            <p>Todo o sistema fotovoltaico — estrutura metálica, molduras dos painéis, carcaça do inversor e string box — deve ser conectado ao aterramento elétrico do imóvel. A ABNT NBR 16690 exige o aterramento específico do sistema fotovoltaico como requisito de segurança contra choques elétricos e proteção contra descargas atmosféricas. Sistemas sem aterramento adequado não passam na vistoria da concessionária.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Quadro padrão de entrada</h2>
+
+      <div class="quadro-box">
+        <i class="ti ti-alert-circle"></i>
+        <div>
+          <h3>Responsabilidade do proprietário — verificar antes da instalação</h3>
+          <p>
+            O Quadro Padrão (QP) é o ponto de entrega de energia da concessionária ao imóvel — inclui o medidor, o disjuntor geral e a entrada de serviço. Para conectar um sistema solar, o QP precisa estar em conformidade com as normas vigentes e com capacidade adequada para o inversor especificado. Adequações no QP — como troca do disjuntor de entrada, atualização do aterramento ou substituição do medidor antigo — são <strong>responsabilidade e custo do proprietário</strong>, não da concessionária nem do instalador solar. A visita técnica prévia identifica se há necessidade de adequação antes do início do projeto.
+          </p>
+        </div>
+      </div>
+
+      <h2>Equipamentos Tier 1 vs. sem procedência: a diferença que importa</h2>
+      <p>
+        O mercado solar tem oferta abundante de equipamentos de baixo custo, muitos sem certificação INMETRO, sem suporte nacional e com garantias que raramente são honradas. A escolha entre equipamentos Tier 1 e equipamentos sem procedência não é apenas financeira — é uma decisão de risco:
+      </p>
+
+      <div class="tier-compare">
+        <div class="tier-card bom">
+          <h3>Equipamentos Tier 1 certificados</h3>
+          <ul>
+            <li><i class="ti ti-check"></i> Certificação INMETRO obrigatória para homologação</li>
+            <li><i class="ti ti-check"></i> Garantia de produto executável (empresa existe em 10 anos)</li>
+            <li><i class="ti ti-check"></i> Suporte técnico nacional disponível</li>
+            <li><i class="ti ti-check"></i> Degradação dentro dos parâmetros garantidos</li>
+            <li><i class="ti ti-check"></i> Aceitos por todas as concessionárias</li>
+            <li><i class="ti ti-check"></i> Sinistros cobertos pelo seguro</li>
+          </ul>
+        </div>
+        <div class="tier-card ruim">
+          <h3>Equipamentos sem procedência</h3>
+          <ul>
+            <li><i class="ti ti-x"></i> Sem certificação — reprovados na homologação</li>
+            <li><i class="ti ti-x"></i> Garantia inócua se a empresa fechar</li>
+            <li><i class="ti ti-x"></i> Sem peças ou assistência técnica local</li>
+            <li><i class="ti ti-x"></i> Degradação acelerada e não rastreável</li>
+            <li><i class="ti ti-x"></i> Podem ser recusados pela concessionária</li>
+            <li><i class="ti ti-x"></i> Sinistros podem ser recusados pelo seguro</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert-box">
+        <i class="ti ti-alert-triangle"></i>
+        <div>
+          <strong>Atenção na hora de comparar orçamentos:</strong> propostas com preço muito abaixo da média de mercado quase sempre utilizam equipamentos sem certificação ou marcas sem suporte nacional. Peça sempre a especificação técnica completa — modelo e marca do painel, do inversor e da estrutura — e verifique se possuem certificação INMETRO e garantia executável no Brasil.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container-sm">
+      <h2>Perguntas Frequentes</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Qual a diferença entre inversor string e microinversor?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          O inversor string é um único equipamento que processa toda a geração de um grupo de painéis em série. É mais barato e dominante no mercado residencial, mas se um painel do grupo for sombreado, a geração de toda a string cai junto. O microinversor é instalado individualmente em cada painel — a conversão CC/CA é feita por módulo, eliminando o efeito de sombreamento parcial e permitindo monitoramento individual. O microinversor custa mais, mas é a melhor escolha para telhados com sombra parcial em horários de pico solar.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quanto tempo dura um painel solar?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Os fabricantes Tier 1 oferecem garantia de produto de 10 a 12 anos (contra defeitos de fabricação) e garantia de desempenho de 25 a 30 anos — assegurando que o painel manterá pelo menos 80% da potência nominal após 25 anos de operação. Na prática, estudos de campo mostram que painéis monocristalinos bem instalados e com manutenção adequada continuam operando após 30 anos com degradação mínima. O painel é o componente mais durável do sistema — muito mais duradouro que o inversor, que tem vida útil típica de 10 a 15 anos.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          O que é DPS e por que é obrigatório?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          DPS é o Dispositivo de Proteção contra Surtos — equipamento que absorve picos de tensão causados por raios e transitórios da rede elétrica, protegendo o inversor e os painéis. A ABNT NBR 16690 exige o uso de DPS em sistemas fotovoltaicos, e sua ausência pode invalidar a garantia dos equipamentos em caso de sinistro por surto. São necessários DPS tanto no lado CC (entre painéis e inversor) quanto no lado CA (entre inversor e quadro elétrico). O DPS é um componente de baixo custo com alto impacto na proteção do investimento.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Posso usar equipamentos de qualquer marca no meu sistema solar?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Tecnicamente sim, mas na prática a procedência e a certificação importam muito. Inversores e painéis devem ter certificação INMETRO para uso no Brasil — equipamentos sem certificação não são aceitos no processo de homologação junto à concessionária, inviabilizando a aprovação do sistema. Além disso, marcas sem suporte nacional representam risco real: se o inversor falhar fora da garantia, pode ser impossível encontrar peças ou assistência técnica. Equipamentos Tier 1 têm garantia executável, suporte técnico local e são aceitos por todas as concessionárias do país.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Quer saber quais equipamentos são ideais para seu projeto?</h2>
+      <p>Nossa equipe especifica os componentes certos para o seu consumo, telhado e concessionária — garantindo eficiência máxima e aprovação na homologação.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511992071648?text=Ol%C3%A1%21+Gostaria+de+saber+quais+equipamentos+s%C3%A3o+ideais+para+meu+projeto+solar." class="btn-whatsapp" target="_blank" rel="noopener">
+          <i class="ti ti-brand-whatsapp"></i>
+          Falar pelo WhatsApp
+        </a>
+        <a href="../index.html" class="btn btn-primary btn-lg">
+          <i class="ti ti-arrow-left"></i>
+          Voltar ao site
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo" style="margin-bottom:.75rem;display:inline-flex">
+            <img src="../logo.png" class="logo-img small" alt="SolarHomolog">
+            <div>
+              <div class="logo-name" style="color:#fff">SolarHomolog</div>
+              <div class="logo-sub">Homologação Fotovoltaica</div>
+            </div>
+          </a>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">Especialistas em homologação de sistemas fotovoltaicos junto às concessionárias de energia elétrica do Brasil.</p>
+        </div>
+        <div>
+          <div class="footer-title">Serviços</div>
+          <a class="footer-link" href="../index.html#como-funciona">Processo de Homologação</a>
+          <a class="footer-link" href="../index.html#legislacao">Base de Legislação</a>
+        </div>
+        <div>
+          <div class="footer-title">Conteúdo</div>
+          <a class="footer-link" href="processo-homologacao-solar.html">Homologação Solar</a>
+          <a class="footer-link" href="instalacao-sistema-solar.html">Instalação Solar</a>
+          <a class="footer-link" href="sistema-hibrido.html">Sistema Híbrido</a>
+          <a class="footer-link" href="sistema-off-grid.html">Sistema Off-Grid</a>
+          <a class="footer-link" href="manutencao-paineis-solares.html">Manutenção de Painéis</a>
+          <a class="footer-link" href="monitoramento-sistema-solar.html">Monitoramento Solar</a>
+          <a class="footer-link" href="equipamentos-sistema-solar.html">Equipamentos Solar</a>
+        </div>
+        <div>
+          <div class="footer-title">Legal</div>
+          <a class="footer-link" href="../termos.html">Termos de Uso</a>
+          <a class="footer-link" href="../privacidade.html">Política de Privacidade</a>
+          <a class="footer-link" href="../privacidade.html">LGPD</a>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <a class="footer-link" href="mailto:suporte@jccassessorialtda.com.br">suporte@jccassessorialtda.com.br</a>
+          <a class="footer-link" href="https://wa.me/5511992071648">WhatsApp (11) 99207-1648</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 SolarHomolog. Todos os direitos reservados.</span>
+        <span>Conforme Lei 14.300/2022 e REN ANEEL 1.000/2021</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+      btn.setAttribute('aria-expanded', !isOpen);
+    }
+  </script>
+
+</body>
+</html>

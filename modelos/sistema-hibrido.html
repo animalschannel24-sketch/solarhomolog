@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema Solar Híbrido: Como Funciona, Vantagens e Custos | SolarHomolog</title>
+  <meta name="description" content="Sistema solar híbrido combina painéis, baterias e rede elétrica para reduzir até 90% da conta de energia. Veja custos, vantagens e quando vale a pena instalar." />
+  <link rel="icon" href="../logo.png" />
+  <link rel="canonical" href="https://solarhomolog.com.br/modelos/sistema-hibrido.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sistema Solar Híbrido: Como Funciona, Vantagens e Custos" />
+  <meta property="og:description" content="Entenda como o sistema solar híbrido gerencia painéis, baterias e rede elétrica para reduzir até 90% da conta de energia e proteger contra quedas de luz." />
+  <meta property="og:image" content="https://solarhomolog.com.br/logo.png" />
+  <meta property="og:url" content="https://solarhomolog.com.br/modelos/sistema-hibrido.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SolarHomolog" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Sistema Solar Híbrido: Como Funciona, Vantagens e Custos",
+    "description": "Guia completo sobre sistemas solares híbridos: inversor híbrido, gestão de três fontes de energia, custos, incentivos da Lei 15.269/2025 e quando instalar.",
+    "author": { "@type": "Organization", "name": "SolarHomolog" },
+    "publisher": { "@type": "Organization", "name": "SolarHomolog", "logo": { "@type": "ImageObject", "url": "https://solarhomolog.com.br/logo.png" } },
+    "datePublished": "2026-06-13",
+    "url": "https://solarhomolog.com.br/modelos/sistema-hibrido.html"
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quanto dura a bateria de um sistema solar híbrido?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Baterias de lítio LiFePO4 — as mais usadas em sistemas híbridos residenciais — têm garantia de 6.000 ciclos completos de carga e descarga, o que equivale a mais de 16 anos de uso diário. Na prática, considerando que raramente são descarregadas 100% ao dia, a vida útil real costuma superar 10 a 15 anos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual a diferença entre sistema híbrido e off-grid?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O sistema off-grid é totalmente independente da rede elétrica — funciona apenas com painéis e baterias, sem conexão à distribuidora. O sistema híbrido mantém a conexão à rede elétrica como fonte de backup: usa os painéis e as baterias prioritariamente, mas recorre à rede quando a geração e o armazenamento são insuficientes. O híbrido também exporta excedentes para a rede e acumula créditos de energia."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Sistema solar híbrido precisa de homologação na concessionária?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. Por estar conectado à rede elétrica da distribuidora, o sistema híbrido é classificado como microgeração ou minigeração distribuída e está sujeito ao processo de homologação previsto na REN ANEEL 1.000/2021 e na Lei 14.300/2022. O processo envolve solicitação de acesso, vistoria técnica e instalação do medidor bidirecional pela concessionária."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vale a pena adicionar bateria a um sistema on-grid já instalado?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende. Se o objetivo é ter autonomia durante quedas de energia, a resposta é sim — a bateria garante continuidade no fornecimento mesmo com a rede desligada. Se o objetivo é apenas reduzir a conta de energia, o on-grid puro já cumpre essa função com menor custo. O retrofit de baterias em sistemas on-grid existentes é possível com inversores híbridos compatíveis, mas pode exigir substituição do inversor atual."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/icons/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1a3a2a;
+      --green-mid: #255239;
+      --green-light: #e8f5e9;
+      --solar: #f5a623;
+      --solar-dark: #e09410;
+      --text: #1a1a1a;
+      --text-muted: #6b7280;
+      --border: rgba(0,0,0,0.1);
+      --bg: #f8faf8;
+      --white: #ffffff;
+      --radius: 10px;
+      --radius-lg: 14px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-sm { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: var(--radius); font-size: 14px; font-weight: 500;
+      cursor: pointer; border: 1px solid var(--border); background: var(--white);
+      color: var(--text); transition: all .15s; font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn:hover { background: var(--bg); }
+    .btn-primary { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+    .btn-primary:hover { background: var(--green-mid); }
+    .btn-lg { padding: 13px 24px; font-size: 15px; }
+
+    /* HEADER */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: .85rem 1.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-img { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; flex-shrink: 0; }
+    .logo-img.small { width: 30px; height: 30px; border-radius: 7px; }
+    .logo-name { font-size: 16px; font-weight: 600; color: var(--green-dark); }
+    .logo-sub { font-size: 11px; color: var(--text-muted); }
+    .nav-links { display: flex; gap: .25rem; margin-left: auto; }
+    .nav-links a { padding: 6px 12px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 7px; transition: .15s; }
+    .nav-links a:hover { color: var(--green-dark); background: var(--bg); }
+    @media (max-width: 700px) { .nav-links { display: none; } }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: .75rem 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .breadcrumb nav { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green-dark); }
+    .breadcrumb i { font-size: 12px; }
+
+    /* HERO DA PÁGINA */
+    .page-hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      color: #fff; padding: 3.5rem 1.5rem 3rem;
+    }
+    .page-hero-badge {
+      display: inline-block; background: rgba(245,166,35,.18); color: var(--solar);
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+      border: 1px solid rgba(245,166,35,.3); margin-bottom: 1rem;
+    }
+    .page-hero h1 { font-size: clamp(24px, 4vw, 38px); font-weight: 600; line-height: 1.25; margin-bottom: .75rem; }
+    .page-hero p { font-size: 16px; color: rgba(255,255,255,.75); max-width: 640px; }
+
+    /* CONTEÚDO PRINCIPAL */
+    .article-body { padding: 3rem 0 2rem; }
+    .article-body h2 {
+      font-size: clamp(18px, 3vw, 24px); font-weight: 600; color: var(--green-dark);
+      margin: 2.5rem 0 .75rem; padding-bottom: .5rem;
+      border-bottom: 2px solid var(--green-light);
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 600; color: var(--text); margin: 1.5rem 0 .5rem; }
+    .article-body p { margin-bottom: 1rem; color: #374151; line-height: 1.75; }
+    .article-body ul, .article-body ol { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .article-body li { color: #374151; line-height: 1.75; margin-bottom: .3rem; }
+    .article-body strong { color: var(--green-dark); }
+
+    /* CARDS DE COMPONENTES */
+    .component-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .component-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1.25rem; display: flex; flex-direction: column; gap: .5rem;
+    }
+    .component-icon { font-size: 28px; color: var(--solar); }
+    .component-card h3 { font-size: 14px; font-weight: 600; color: var(--green-dark); margin: 0; }
+    .component-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* DIAGRAMA DE FLUXO */
+    .flow-diagram {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap; margin: 2rem 0;
+    }
+    .flow-node {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem; text-align: center; min-width: 110px;
+    }
+    .flow-node.primary { border-color: var(--solar); background: #fffbf0; }
+    .flow-node i { font-size: 26px; color: var(--solar); display: block; margin-bottom: .35rem; }
+    .flow-node span { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.3; display: block; }
+    .flow-arrow {
+      font-size: 20px; color: var(--text-muted); padding: 0 .4rem; flex-shrink: 0;
+    }
+
+    /* COMPARAÇÃO */
+    .compare-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;
+    }
+    @media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+    .compare-card {
+      border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem;
+      background: var(--white);
+    }
+    .compare-card.destaque { border-color: var(--solar); background: #fffbf0; }
+    .compare-badge {
+      display: inline-block; padding: 2px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 600; margin-bottom: .6rem;
+    }
+    .badge-hybrid { background: #fff8e1; color: #e65100; }
+    .badge-on { background: #e3f0fb; color: #0c447c; }
+    .badge-off { background: var(--green-light); color: var(--green-dark); }
+    .compare-card h3 { font-size: 15px; font-weight: 600; margin-bottom: .5rem; color: var(--text); }
+    .compare-card ul { padding-left: 1.2rem; font-size: 13px; color: var(--text-muted); }
+    .compare-card li { margin-bottom: .3rem; }
+
+    /* VANTAGENS / DESVANTAGENS */
+    .pros-cons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    @media (max-width: 560px) { .pros-cons-grid { grid-template-columns: 1fr; } }
+    .pros-card, .cons-card { border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid; }
+    .pros-card { background: #f0fdf4; border-color: #bbf7d0; }
+    .cons-card { background: #fef2f2; border-color: #fecaca; }
+    .pros-card h3 { color: #166534; font-size: 14px; font-weight: 600; margin-bottom: .75rem; }
+    .cons-card h3 { color: #991b1b; font-size: 14px; font-weight: 600; margin-bottom: .75rem; }
+    .pros-card li { color: #166534; font-size: 13px; }
+    .cons-card li { color: #991b1b; font-size: 13px; }
+
+    /* CASE BOX */
+    .case-box {
+      background: var(--green-dark); color: #fff; border-radius: var(--radius-lg);
+      padding: 1.75rem; margin: 2rem 0;
+    }
+    .case-box-label {
+      font-size: 11px; font-weight: 600; color: var(--solar); text-transform: uppercase;
+      letter-spacing: .06em; margin-bottom: .6rem;
+    }
+    .case-box h3 { font-size: 17px; font-weight: 600; margin-bottom: .75rem; }
+    .case-box p { font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.75; margin-bottom: .6rem; }
+    .case-box p:last-child { margin-bottom: 0; }
+    .case-box strong { color: var(--solar); }
+
+    /* LEI BOX */
+    .lei-box {
+      background: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius-lg);
+      padding: 1.25rem; margin: 1.5rem 0;
+    }
+    .lei-box-title { font-size: 12px; font-weight: 600; color: #1e40af; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
+    .lei-box p { font-size: 14px; color: #1e3a8a; line-height: 1.7; margin: 0; }
+
+    /* INFO BOX */
+    .info-box {
+      background: var(--green-light); border-left: 3px solid var(--green-dark);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem; margin: 1.5rem 0;
+      font-size: 14px; color: var(--green-dark); line-height: 1.7;
+    }
+    .info-box strong { display: block; margin-bottom: .3rem; }
+
+    /* SOLAR BOX */
+    .solar-box {
+      background: #fffbf0; border: 1px solid rgba(245,166,35,.4);
+      border-radius: var(--radius-lg); padding: 1.25rem; margin: 1.5rem 0;
+      font-size: 14px; color: #5c3e00; line-height: 1.7;
+    }
+    .solar-box strong { color: var(--solar-dark); display: block; margin-bottom: .3rem; }
+
+    /* TABELA */
+    .cost-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 14px; }
+    .cost-table thead { background: var(--green-dark); color: #fff; }
+    .cost-table th { padding: .75rem 1rem; text-align: left; font-weight: 500; font-size: 13px; }
+    .cost-table td { padding: .65rem 1rem; border-bottom: 1px solid var(--border); color: #374151; }
+    .cost-table tbody tr:last-child td { border-bottom: none; }
+    .cost-table tbody tr:nth-child(even) { background: var(--bg); }
+    .cost-solar { color: var(--solar-dark); font-weight: 600; }
+
+    /* FAQ */
+    .faq-section { padding: 3rem 0; background: var(--bg); }
+    .faq-section h2 { font-size: clamp(18px, 3vw, 24px); font-weight: 600; color: var(--green-dark); margin-bottom: 1.5rem; }
+    .faq-item {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      margin-bottom: .75rem; overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; text-align: left; padding: 1rem 1.25rem; background: none; border: none;
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; color: var(--text);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq-question:hover { background: var(--bg); }
+    .faq-question i { color: var(--text-muted); flex-shrink: 0; transition: transform .2s; }
+    .faq-answer { padding: 0 1.25rem 1rem; font-size: 14px; color: #374151; line-height: 1.75; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-question i { transform: rotate(180deg); }
+
+    /* CTA FINAL */
+    .cta-section {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      padding: 3.5rem 1.5rem; text-align: center; color: #fff;
+    }
+    .cta-section h2 { font-size: clamp(20px, 3.5vw, 30px); font-weight: 600; margin-bottom: .75rem; }
+    .cta-section p { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 1.75rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 600;
+      background: #25d366; color: #fff; border: none; cursor: pointer; text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+
+    /* FOOTER */
+    .footer { background: #111d16; padding: 3rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+    .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+    .footer-link:hover { color: var(--solar); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../logo.png" class="logo-img" alt="SolarHomolog">
+        <div>
+          <div class="logo-name">SolarHomolog</div>
+          <div class="logo-sub">Homologação Fotovoltaica</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#como-funciona">Como funciona</a>
+        <a href="../index.html#legislacao">Legislação</a>
+        <a href="../index.html#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <a href="../index.html">SolarHomolog</a>
+        <i class="ti ti-chevron-right"></i>
+        <span>Sistema Solar Híbrido</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO DA PÁGINA -->
+  <div class="page-hero">
+    <div class="container-sm">
+      <div class="page-hero-badge">Guia Completo</div>
+      <h1>Sistema Solar Híbrido: Como Funciona, Vantagens e Custos</h1>
+      <p>O sistema híbrido combina o melhor dos dois mundos — geração solar, armazenamento em baterias e conexão à rede — para reduzir até 90% da conta de energia sem abrir mão da segurança do fornecimento.</p>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="article-body">
+    <div class="container-sm">
+
+      <h2>O que é um sistema solar híbrido?</h2>
+      <p>
+        Um sistema solar <strong>híbrido</strong> é uma configuração fotovoltaica que opera simultaneamente com três fontes de energia: os painéis solares, um banco de baterias e a rede elétrica da concessionária. O coração do sistema é o <strong>inversor híbrido</strong>, um equipamento que gerencia de forma automática e inteligente o fluxo entre essas três fontes — priorizando sempre a solar, usando as baterias como reserva e recorrendo à rede apenas quando necessário.
+      </p>
+      <p>
+        Na prática, isso significa que durante o dia a casa é abastecida pelos painéis. O excedente de geração carrega as baterias. À noite ou em dias nublados, o sistema usa a energia armazenada nas baterias. Só quando baterias e painéis não são suficientes — em picos de consumo muito altos ou após dias consecutivos sem sol — a rede elétrica da concessionária entra em operação.
+      </p>
+      <p>
+        O resultado é uma redução de <strong>até 90% na conta de energia</strong>, aliada à continuidade no fornecimento mesmo durante quedas de luz. É o modelo mais completo e resiliente disponível no mercado solar residencial.
+      </p>
+
+      <h2>Como o inversor híbrido gerencia as três fontes</h2>
+      <p>Entender o fluxo de energia é simples quando visualizamos o papel de cada componente:</p>
+
+      <div class="flow-diagram">
+        <div class="flow-node primary">
+          <i class="ti ti-solar-panel"></i>
+          <span>Painéis Solares</span>
+        </div>
+        <div class="flow-arrow"><i class="ti ti-arrow-right"></i></div>
+        <div class="flow-node primary">
+          <i class="ti ti-cpu"></i>
+          <span>Inversor Híbrido</span>
+        </div>
+        <div class="flow-arrow"><i class="ti ti-arrows-split-2"></i></div>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <div class="flow-node">
+            <i class="ti ti-battery-charging"></i>
+            <span>Baterias</span>
+          </div>
+          <div class="flow-node">
+            <i class="ti ti-home"></i>
+            <span>Cargas da Casa</span>
+          </div>
+          <div class="flow-node">
+            <i class="ti ti-building"></i>
+            <span>Rede Elétrica</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-grid">
+        <div class="component-card">
+          <div class="component-icon"><i class="ti ti-solar-panel"></i></div>
+          <h3>Painéis Fotovoltaicos</h3>
+          <p>Fonte primária de geração. Potência dimensionada para cobrir o consumo diário e ainda carregar as baterias.</p>
+        </div>
+        <div class="component-card">
+          <div class="component-icon"><i class="ti ti-cpu"></i></div>
+          <h3>Inversor Híbrido</h3>
+          <p>O cérebro do sistema. Gerencia automaticamente os três fluxos de energia com base em programação e prioridades definidas.</p>
+        </div>
+        <div class="component-card">
+          <div class="component-icon"><i class="ti ti-battery-charging"></i></div>
+          <h3>Baterias LiFePO4</h3>
+          <p>Armazenam o excedente solar para uso à noite. Lítio ferro-fosfato oferece 6.000 ciclos de vida e alta segurança química.</p>
+        </div>
+        <div class="component-card">
+          <div class="component-icon"><i class="ti ti-building"></i></div>
+          <h3>Rede como Backup</h3>
+          <p>A conexão à rede permanece ativa como seguro energético e para exportar excedentes, gerando créditos no SCEE.</p>
+        </div>
+      </div>
+
+      <h3>Modo grid zero: superar o limite de inversão de fluxo</h3>
+      <p>
+        Muitas concessionárias brasileiras impõem um <strong>limite de inversão de fluxo</strong> — ou seja, um teto para a potência que o sistema pode injetar na rede. Em alguns casos, esse limite é zero (proibição total de exportação), o que inviabiliza o aproveitamento máximo de um sistema on-grid convencional.
+      </p>
+      <p>
+        O inversor híbrido resolve esse problema com a função <strong>grid zero</strong>: quando a potência dos painéis supera o consumo instantâneo da casa e não há mais capacidade nas baterias, o inversor reduz automaticamente a geração para evitar qualquer exportação — cumprindo as regras da concessionária sem desperdiçar o investimento no sistema. Essa funcionalidade é especialmente relevante em condomínios, comércios e indústrias com restrições contratuais de injeção.
+      </p>
+
+      <h2>Durabilidade: 6.000 ciclos e mais de 10 anos</h2>
+      <p>
+        A durabilidade das baterias é a principal dúvida de quem avalia um sistema híbrido. A resposta depende diretamente da tecnologia escolhida:
+      </p>
+
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Tecnologia</th>
+            <th>Ciclos de vida</th>
+            <th>Vida útil estimada</th>
+            <th>Custo relativo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>LiFePO4 (lítio ferro-fosfato)</strong></td>
+            <td>6.000+ ciclos</td>
+            <td>10–16 anos</td>
+            <td class="cost-solar">Alto</td>
+          </tr>
+          <tr>
+            <td>Lítio NMC (íon-lítio convencional)</td>
+            <td>2.000–3.000 ciclos</td>
+            <td>5–8 anos</td>
+            <td>Médio-alto</td>
+          </tr>
+          <tr>
+            <td>Chumbo-ácido gel</td>
+            <td>800–1.200 ciclos</td>
+            <td>3–5 anos</td>
+            <td>Médio</td>
+          </tr>
+          <tr>
+            <td>Chumbo-ácido estacionário</td>
+            <td>500–800 ciclos</td>
+            <td>2–4 anos</td>
+            <td>Baixo</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="solar-box">
+        <strong>Por que o mercado migrou para LiFePO4</strong>
+        Apesar do custo inicial mais alto, baterias LiFePO4 entregam o menor custo por kWh armazenado ao longo da vida útil. Com 6.000 ciclos e garantia de 10 anos da maioria dos fabricantes, elas eliminam a necessidade de substituição que onera os sistemas com baterias de chumbo.
+      </div>
+
+      <h2>Comparativo: híbrido, on-grid e off-grid</h2>
+
+      <div class="compare-grid">
+        <div class="compare-card destaque">
+          <span class="compare-badge badge-hybrid">Híbrido</span>
+          <h3>Máxima Resiliência</h3>
+          <ul>
+            <li>Painéis + baterias + rede</li>
+            <li>Funciona na queda de energia</li>
+            <li>Gera créditos SCEE</li>
+            <li>Grid zero disponível</li>
+            <li>Precisa de homologação</li>
+            <li>Maior custo inicial</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <span class="compare-badge badge-on">On-Grid</span>
+          <h3>Melhor Custo-Benefício</h3>
+          <ul>
+            <li>Painéis + rede</li>
+            <li>Para na queda de energia</li>
+            <li>Gera créditos SCEE</li>
+            <li>Sem autonomia em blackout</li>
+            <li>Precisa de homologação</li>
+            <li>Menor custo inicial</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <span class="compare-badge badge-off">Off-Grid</span>
+          <h3>Total Independência</h3>
+          <ul>
+            <li>Painéis + baterias</li>
+            <li>Funciona sem a rede</li>
+            <li>Não gera créditos SCEE</li>
+            <li>Ideal para áreas remotas</li>
+            <li>Não precisa de homologação</li>
+            <li>Custo alto (baterias maiores)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Quando o sistema híbrido vale a pena?</h2>
+      <p>O híbrido se justifica quando há mais de uma necessidade simultânea que o on-grid convencional não resolve:</p>
+      <ul>
+        <li><strong>Regiões com frequentes quedas de energia:</strong> O sistema mantém a casa funcionando durante blackouts, usando as baterias como UPS de grande capacidade.</li>
+        <li><strong>Mitigar o impacto do Fio B:</strong> Com a revisão tarifária que aumentou a parcela do Fio B nas tarifas de energia, o autoconsumo máximo (via baterias à noite) reduz a energia comprada da rede ao mínimo possível.</li>
+        <li><strong>Home office e equipamentos sensíveis:</strong> Servidores, equipamentos médicos, computadores e sistemas de segurança que não podem ser interrompidos se beneficiam da continuidade garantida pelo híbrido.</li>
+        <li><strong>Limite de injeção na rede:</strong> Quando a concessionária impõe restrição de exportação, o híbrido com grid zero aproveita 100% da geração solar sem infringir as regras do contrato.</li>
+        <li><strong>Alto consumo noturno:</strong> Residências ou negócios que consomem mais à noite do que durante o dia — bares, restaurantes, indústrias em turno noturno — aproveitam melhor as baterias do que um sistema on-grid puro.</li>
+      </ul>
+
+      <h2>Incentivos da Lei 15.269/2025</h2>
+
+      <div class="lei-box">
+        <div class="lei-box-title">Lei 15.269/2025 — Novo Marco Regulatório</div>
+        <p>
+          Publicada em 2025, a Lei 15.269 ampliou os incentivos para sistemas de armazenamento de energia, incluindo os componentes de sistemas híbridos. Entre os benefícios:
+          <strong>isenção de ICMS</strong> sobre baterias e inversores híbridos em estados signatários do convênio CONFAZ, e
+          <strong>redução da TUSD</strong> (Tarifa de Uso do Sistema de Distribuição) para unidades consumidoras com sistemas de armazenamento registrados.
+          O benefício da TUSD reduzida se aplica à parcela de energia que o consumidor eventualmente retira da rede, barateando o custo do backup elétrico.
+        </p>
+      </div>
+
+      <p>
+        Os incentivos variam por estado — alguns já implementaram o convênio CONFAZ integralmente, outros ainda estão em processo de regulamentação local. Consulte um especialista para verificar quais benefícios se aplicam à sua região antes de dimensionar o sistema.
+      </p>
+
+      <h2>Case prático: residência com restrição de injeção e consumo noturno alto</h2>
+
+      <div class="case-box">
+        <div class="case-box-label">Caso de Aplicação Real</div>
+        <h3>Sobrado em condomínio fechado — São Paulo</h3>
+        <p>
+          <strong>Situação:</strong> Residência de 250 m², consumo médio de 800 kWh/mês, com concentração de uso à noite (ar-condicionado, home theater, escritório). A concessionária local havia limitado a injeção de energia a <strong>zero kW</strong> para unidades do condomínio, inviabilizando o on-grid convencional.
+        </p>
+        <p>
+          <strong>Solução:</strong> Sistema híbrido de 10 kWp com inversor híbrido e banco de baterias LiFePO4 de 20 kWh. Configuração grid zero ativada no inversor para cumprir a restrição da concessionária. Durante o dia, os painéis abastecem 100% da casa e carregam as baterias. À noite, as baterias suprem até 70% do consumo noturno. A rede entra apenas nos picos.
+        </p>
+        <p>
+          <strong>Resultado:</strong> Redução de <strong>82% na conta de energia</strong> e autonomia de 6 horas durante quedas de energia — sem nenhum conflito com as regras da concessionária. Payback estimado em 6 anos com a vida útil das baterias garantida por 10 anos.
+        </p>
+      </div>
+
+      <h2>Custos médios de sistemas híbridos</h2>
+      <p>Os valores incluem painéis, inversor híbrido, banco de baterias LiFePO4 e instalação. Kits com baterias de chumbo-gel são 30–40% mais baratos, mas com vida útil significativamente menor.</p>
+
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Sistema</th>
+            <th>Potência solar</th>
+            <th>Banco de baterias</th>
+            <th>Custo médio (R$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Básico</strong></td>
+            <td>3–5 kWp</td>
+            <td>5–10 kWh LiFePO4</td>
+            <td class="cost-solar">R$ 35.000 – R$ 55.000</td>
+          </tr>
+          <tr>
+            <td><strong>Intermediário</strong></td>
+            <td>6–10 kWp</td>
+            <td>10–20 kWh LiFePO4</td>
+            <td class="cost-solar">R$ 60.000 – R$ 100.000</td>
+          </tr>
+          <tr>
+            <td><strong>Avançado</strong></td>
+            <td>12–20 kWp</td>
+            <td>20–40 kWh LiFePO4</td>
+            <td class="cost-solar">R$ 110.000 – R$ 180.000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box">
+        <strong>Sobre o payback do sistema híbrido</strong>
+        O retorno do investimento varia de 5 a 9 anos dependendo da tarifa local, do perfil de consumo e do tamanho do sistema. Com a escalada das tarifas de energia elétrica nos últimos anos e os incentivos da Lei 15.269/2025, muitos projetos estão alcançando payback abaixo de 7 anos mesmo com o custo das baterias.
+      </div>
+
+      <h2>Vantagens e desvantagens</h2>
+
+      <div class="pros-cons-grid">
+        <div class="pros-card">
+          <h3>Vantagens</h3>
+          <ul>
+            <li>Funciona durante quedas de energia</li>
+            <li>Redução de até 90% na conta de luz</li>
+            <li>Gera créditos SCEE pelo excedente solar</li>
+            <li>Suporte a grid zero para restrições da concessionária</li>
+            <li>Baterias LiFePO4 com 10–16 anos de vida útil</li>
+            <li>Proteção contra aumentos tarifários</li>
+            <li>Incentivos fiscais da Lei 15.269/2025</li>
+          </ul>
+        </div>
+        <div class="cons-card">
+          <h3>Desvantagens</h3>
+          <ul>
+            <li>Maior custo inicial do mercado solar</li>
+            <li>Exige homologação na concessionária</li>
+            <li>Processo de homologação pode levar 30–120 dias</li>
+            <li>Instalação mais complexa que on-grid puro</li>
+            <li>Autonomia limitada em longos períodos sem sol</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container-sm">
+      <h2>Perguntas Frequentes</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quanto dura a bateria de um sistema solar híbrido?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Baterias de lítio LiFePO4 — as mais usadas em sistemas híbridos residenciais — têm garantia de 6.000 ciclos completos de carga e descarga, o que equivale a mais de 16 anos de uso diário. Na prática, como raramente são descarregadas 100% ao dia, a vida útil real costuma superar 10 a 15 anos. Baterias de chumbo-gel, mais baratas, duram de 3 a 5 anos e exigem reposição.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Qual a diferença entre sistema híbrido e off-grid?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          O sistema off-grid é totalmente independente da rede elétrica — funciona apenas com painéis e baterias, sem nenhuma conexão à distribuidora. Ideal para áreas remotas sem acesso à rede e não exige homologação. O sistema híbrido mantém a conexão à rede como backup: usa painéis e baterias prioritariamente, mas recorre à rede quando necessário. O híbrido também exporta excedentes para acumular créditos de energia no SCEE e exige homologação na concessionária.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Sistema solar híbrido precisa de homologação na concessionária?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Sim. Por estar conectado à rede elétrica da distribuidora, o sistema híbrido é classificado como microgeração ou minigeração distribuída e está sujeito ao processo de homologação previsto na REN ANEEL 1.000/2021 e na Lei 14.300/2022. O processo envolve pedido de acesso, vistoria técnica da concessionária e instalação do medidor bidirecional. O prazo pode variar de 30 a 120 dias conforme a distribuidora e a região.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Vale a pena adicionar bateria a um sistema on-grid já instalado?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Depende do objetivo. Se a prioridade é ter autonomia durante quedas de energia, a adição de baterias faz sentido — elas garantem continuidade no fornecimento mesmo com a rede desligada. Se o objetivo é apenas reduzir a conta de energia, o on-grid puro já cumpre essa função com menor custo. O retrofit de baterias em sistemas on-grid existentes é tecnicamente possível, mas geralmente exige a substituição do inversor atual por um modelo híbrido compatível, o que adiciona custo ao projeto.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>O sistema híbrido é ideal para o seu imóvel?</h2>
+      <p>Fale com nossos especialistas. Avaliamos sua situação — concessionária, consumo, perfil de uso e restrições de injeção — para indicar a solução solar mais vantajosa.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511992071648?text=Ol%C3%A1%21+Gostaria+de+saber+se+o+sistema+solar+h%C3%ADbrido+%C3%A9+ideal+para+meu+im%C3%B3vel." class="btn-whatsapp" target="_blank" rel="noopener">
+          <i class="ti ti-brand-whatsapp"></i>
+          Falar pelo WhatsApp
+        </a>
+        <a href="../index.html" class="btn btn-primary btn-lg">
+          <i class="ti ti-arrow-left"></i>
+          Voltar ao site
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo" style="margin-bottom:.75rem;display:inline-flex">
+            <img src="../logo.png" class="logo-img small" alt="SolarHomolog">
+            <div>
+              <div class="logo-name" style="color:#fff">SolarHomolog</div>
+              <div class="logo-sub">Homologação Fotovoltaica</div>
+            </div>
+          </a>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">Especialistas em homologação de sistemas fotovoltaicos junto às concessionárias de energia elétrica do Brasil.</p>
+        </div>
+        <div>
+          <div class="footer-title">Serviços</div>
+          <a class="footer-link" href="../index.html#como-funciona">Processo de Homologação</a>
+          <a class="footer-link" href="../index.html#legislacao">Base de Legislação</a>
+        </div>
+        <div>
+          <div class="footer-title">Conteúdo</div>
+          <a class="footer-link" href="sistema-off-grid.html">Sistema Off-Grid</a>
+          <a class="footer-link" href="sistema-hibrido.html">Sistema Híbrido</a>
+        </div>
+        <div>
+          <div class="footer-title">Legal</div>
+          <a class="footer-link" href="../termos.html">Termos de Uso</a>
+          <a class="footer-link" href="../privacidade.html">Política de Privacidade</a>
+          <a class="footer-link" href="../privacidade.html">LGPD</a>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <a class="footer-link" href="mailto:suporte@jccassessorialtda.com.br">suporte@jccassessorialtda.com.br</a>
+          <a class="footer-link" href="https://wa.me/5511992071648">WhatsApp (11) 99207-1648</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 SolarHomolog. Todos os direitos reservados.</span>
+        <span>Conforme Lei 14.300/2022 e REN ANEEL 1.000/2021</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+      btn.setAttribute('aria-expanded', !isOpen);
+    }
+  </script>
+
+</body>
+</html>

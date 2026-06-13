@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homologação de Sistema Solar: O Que É, Prazos e Como Funciona | SolarHomolog</title>
+  <meta name="description" content="A homologação é obrigatória por lei para ligar seu sistema solar à rede. Entenda as etapas, prazos legais e como evitar atrasos com assessoria especializada." />
+  <link rel="icon" href="../logo.png" />
+  <link rel="canonical" href="https://solarhomolog.com.br/modelos/processo-homologacao-solar.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Homologação de Sistema Solar: O Que É, Prazos e Como Funciona" />
+  <meta property="og:description" content="Entenda a homologação solar obrigatória pela Lei 14.300/2022: 7 etapas, prazos legais de 15 a 30 dias e por que assessoria especializada evita rejeições." />
+  <meta property="og:image" content="https://solarhomolog.com.br/logo.png" />
+  <meta property="og:url" content="https://solarhomolog.com.br/modelos/processo-homologacao-solar.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SolarHomolog" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Homologação de Sistema Solar: O Que É, Prazos e Como Funciona",
+    "description": "Guia completo do processo de homologação fotovoltaica: 7 etapas, documentação exigida, prazos legais e comparativo com o processo nos EUA.",
+    "author": { "@type": "Organization", "name": "SolarHomolog" },
+    "publisher": { "@type": "Organization", "name": "SolarHomolog", "logo": { "@type": "ImageObject", "url": "https://solarhomolog.com.br/logo.png" } },
+    "datePublished": "2026-06-13",
+    "url": "https://solarhomolog.com.br/modelos/processo-homologacao-solar.html"
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Posso usar o sistema solar antes de concluir a homologação?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não é recomendado. Ligar um sistema fotovoltaico à rede elétrica sem o Parecer de Acesso da concessionária é considerado conexão não autorizada — passível de desligamento compulsório e multa. O sistema pode operar em modo off-grid (ilha) enquanto aguarda a homologação, mas sem injetar energia na rede. Somente após a troca do medidor bidirecional pela concessionária o sistema está legalmente habilitado para compensar energia."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto tempo demora a homologação solar no Brasil?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A REN ANEEL 1.000/2021 estipula prazos máximos: 15 dias úteis para microgeração (até 75 kW) quando não há necessidade de obras na rede, e 30 dias para minigeração (75 kW a 5 MW) ou quando é necessário estudo de impacto na rede. Na prática, algumas concessionárias cumprem o prazo; outras operam próximas ao limite. O prazo começa a correr a partir da entrega da documentação completa e aceita — documentação incompleta reinicia o prazo do zero."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O que é o Parecer de Acesso?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O Parecer de Acesso (PA) é o documento emitido pela concessionária que autoriza formalmente a conexão do sistema fotovoltaico à rede elétrica. Ele é equivalente ao 'Permission to Operate' (PTO) utilizado internacionalmente. O PA pode ser favorável (sistema aprovado para conexão), favorável com condicionantes (aprovado mediante adequações técnicas) ou desfavorável (reprovado por inviabilidade técnica da rede no ponto de conexão). Com o PA favorável, o instalador pode concluir a conexão e a concessionária agenda a troca do medidor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O que acontece se a concessionária recusar minha solicitação?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A recusa pode ser por documentação incompleta (a mais comum e a mais fácil de resolver), inadequação técnica do projeto (necessidade de ajustes no inversor, na proteção ou no diagrama) ou inviabilidade técnica da rede no ponto de conexão (rara, mas possível em áreas com rede saturada). Nos dois primeiros casos, a solicitação pode ser reapresentada com as correções. No terceiro caso, a concessionária é obrigada a apresentar um plano de adequação da rede. Uma assessoria especializada reduz drasticamente a chance de recusa por documentação ou projeto."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/icons/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1a3a2a;
+      --green-mid: #255239;
+      --green-light: #e8f5e9;
+      --solar: #f5a623;
+      --solar-dark: #e09410;
+      --text: #1a1a1a;
+      --text-muted: #6b7280;
+      --border: rgba(0,0,0,0.1);
+      --bg: #f8faf8;
+      --white: #ffffff;
+      --radius: 10px;
+      --radius-lg: 14px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-sm { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: var(--radius); font-size: 14px; font-weight: 500;
+      cursor: pointer; border: 1px solid var(--border); background: var(--white);
+      color: var(--text); transition: all .15s; font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn:hover { background: var(--bg); }
+    .btn-primary { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+    .btn-primary:hover { background: var(--green-mid); }
+    .btn-solar { background: var(--solar); color: #1a1a00; border-color: var(--solar); font-weight: 600; }
+    .btn-solar:hover { background: var(--solar-dark); }
+    .btn-lg { padding: 13px 24px; font-size: 15px; }
+
+    /* HEADER */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: .85rem 1.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-img { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; flex-shrink: 0; }
+    .logo-img.small { width: 30px; height: 30px; border-radius: 7px; }
+    .logo-name { font-size: 16px; font-weight: 600; color: var(--green-dark); }
+    .logo-sub { font-size: 11px; color: var(--text-muted); }
+    .nav-links { display: flex; gap: .25rem; margin-left: auto; }
+    .nav-links a { padding: 6px 12px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 7px; transition: .15s; }
+    .nav-links a:hover { color: var(--green-dark); background: var(--bg); }
+    @media (max-width: 700px) { .nav-links { display: none; } }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: .75rem 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .breadcrumb nav { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green-dark); }
+    .breadcrumb i { font-size: 12px; }
+
+    /* HERO DA PÁGINA */
+    .page-hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      color: #fff; padding: 3.5rem 1.5rem 3rem;
+    }
+    .page-hero-badge {
+      display: inline-block; background: rgba(245,166,35,.18); color: var(--solar);
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+      border: 1px solid rgba(245,166,35,.3); margin-bottom: 1rem;
+    }
+    .page-hero h1 { font-size: clamp(24px, 4vw, 38px); font-weight: 600; line-height: 1.25; margin-bottom: .75rem; }
+    .page-hero p { font-size: 16px; color: rgba(255,255,255,.75); max-width: 640px; }
+    .hero-lei-pills { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .lei-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px; padding: 4px 12px; font-size: 12px; color: rgba(255,255,255,.85);
+    }
+    .lei-pill i { color: var(--solar); font-size: 13px; }
+
+    /* CONTEÚDO PRINCIPAL */
+    .article-body { padding: 3rem 0 2rem; }
+    .article-body h2 {
+      font-size: clamp(18px, 3vw, 24px); font-weight: 600; color: var(--green-dark);
+      margin: 2.5rem 0 .75rem; padding-bottom: .5rem;
+      border-bottom: 2px solid var(--green-light);
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 600; color: var(--text); margin: 1.5rem 0 .5rem; }
+    .article-body p { margin-bottom: 1rem; color: #374151; line-height: 1.75; }
+    .article-body ul, .article-body ol { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .article-body li { color: #374151; line-height: 1.75; margin-bottom: .3rem; }
+    .article-body strong { color: var(--green-dark); }
+
+    /* DEFINIÇÃO DESTAQUE */
+    .definition-box {
+      background: var(--green-dark); color: #fff; border-radius: var(--radius-lg);
+      padding: 1.75rem; margin: 1.5rem 0;
+      display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: flex-start;
+    }
+    @media (max-width: 500px) { .definition-box { grid-template-columns: 1fr; } }
+    .definition-icon { font-size: 40px; color: var(--solar); }
+    .definition-box h3 { font-size: 16px; font-weight: 600; margin-bottom: .5rem; }
+    .definition-box p { font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.75; margin: 0; }
+    .definition-box p + p { margin-top: .5rem; }
+
+    /* ETAPAS */
+    .steps-list { display: flex; flex-direction: column; gap: 0; margin: 1.5rem 0; position: relative; }
+    .steps-list::before {
+      content: ''; position: absolute; left: 19px; top: 24px; bottom: 24px;
+      width: 2px; background: var(--green-light);
+    }
+    .step-item {
+      display: grid; grid-template-columns: 40px 1fr; gap: 1.25rem;
+      padding: 0 0 1.5rem; position: relative;
+    }
+    .step-item:last-child { padding-bottom: 0; }
+    .step-dot {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--green-dark); color: var(--solar);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 600; flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .step-body { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.25rem; }
+    .step-body h3 { font-size: 14px; font-weight: 600; color: var(--green-dark); margin: 0 0 .35rem; }
+    .step-body p { font-size: 13px; color: #374151; line-height: 1.7; margin: 0 0 .5rem; }
+    .step-body p:last-child { margin-bottom: 0; }
+    .step-doc-list { list-style: none; padding: 0; margin: .5rem 0 0; display: flex; flex-direction: column; gap: .25rem; }
+    .step-doc-list li { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+    .step-doc-list i { color: var(--solar-dark); font-size: 13px; flex-shrink: 0; }
+    .step-tag {
+      display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;
+      background: rgba(245,166,35,.15); color: var(--solar-dark); border: 1px solid rgba(245,166,35,.3);
+      margin-top: .4rem;
+    }
+
+    /* PRAZOS */
+    .prazo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    @media (max-width: 500px) { .prazo-grid { grid-template-columns: 1fr; } }
+    .prazo-card {
+      border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid; text-align: center;
+    }
+    .prazo-card.micro { background: #f0fdf4; border-color: #bbf7d0; }
+    .prazo-card.mini { background: #fff8e1; border-color: #fde68a; }
+    .prazo-card .prazo-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .4rem; }
+    .prazo-card.micro .prazo-label { color: #166534; }
+    .prazo-card.mini .prazo-label { color: #92400e; }
+    .prazo-card .prazo-type { font-size: 15px; font-weight: 600; margin-bottom: .6rem; }
+    .prazo-card.micro .prazo-type { color: #166534; }
+    .prazo-card.mini .prazo-type { color: #92400e; }
+    .prazo-card .prazo-num { font-size: 36px; font-weight: 600; line-height: 1; }
+    .prazo-card.micro .prazo-num { color: #16a34a; }
+    .prazo-card.mini .prazo-num { color: #d97706; }
+    .prazo-card .prazo-unit { font-size: 12px; color: var(--text-muted); margin-top: .25rem; }
+    .prazo-card .prazo-cond { font-size: 11px; color: var(--text-muted); margin-top: .5rem; line-height: 1.5; }
+
+    /* COMPARATIVO INTERNACIONAL */
+    .intl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    @media (max-width: 500px) { .intl-grid { grid-template-columns: 1fr; } }
+    .intl-card {
+      border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid var(--border);
+      background: var(--white);
+    }
+    .intl-card.brasil { border-top: 3px solid #009c3b; }
+    .intl-card.usa { border-top: 3px solid #3b4fcf; }
+    .intl-flag { font-size: 28px; margin-bottom: .5rem; }
+    .intl-card h3 { font-size: 14px; font-weight: 600; margin-bottom: .5rem; color: var(--text); }
+    .intl-card ul { padding-left: 1.2rem; font-size: 13px; color: var(--text-muted); }
+    .intl-card li { margin-bottom: .3rem; }
+    .intl-card .intl-highlight { font-size: 13px; font-weight: 600; color: var(--green-dark); margin-top: .6rem; }
+
+    /* RISCOS */
+    .risco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .risco-card {
+      background: var(--white); border: 1px solid #fecaca; border-radius: var(--radius-lg);
+      padding: 1.25rem; border-top: 3px solid #ef4444;
+    }
+    .risco-card i { font-size: 26px; color: #ef4444; margin-bottom: .5rem; display: block; }
+    .risco-card h3 { font-size: 14px; font-weight: 600; color: #991b1b; margin-bottom: .4rem; }
+    .risco-card p { font-size: 13px; color: #7f1d1d; line-height: 1.6; margin: 0; }
+
+    /* ASSESSORIA BOX */
+    .assessoria-box {
+      background: #fffbf0; border: 1px solid rgba(245,166,35,.4);
+      border-radius: var(--radius-lg); padding: 1.5rem; margin: 2rem 0;
+    }
+    .assessoria-box h3 { font-size: 16px; font-weight: 600; color: var(--solar-dark); margin-bottom: .75rem; }
+    .assessoria-list { list-style: none; padding: 0; }
+    .assessoria-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: #5c3e00; padding: .45rem 0;
+      border-bottom: 1px solid rgba(245,166,35,.2); line-height: 1.6;
+    }
+    .assessoria-list li:last-child { border-bottom: none; }
+    .assessoria-list i { color: var(--solar-dark); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+    /* INFO BOX */
+    .info-box {
+      background: var(--green-light); border-left: 3px solid var(--green-dark);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem; margin: 1.5rem 0;
+      font-size: 14px; color: var(--green-dark); line-height: 1.7;
+    }
+    .info-box strong { display: block; margin-bottom: .3rem; }
+
+    /* ALERTA */
+    .alert-box {
+      background: #fef2f2; border: 1px solid #fecaca; border-radius: var(--radius-lg);
+      padding: 1.25rem; margin: 1.5rem 0;
+      font-size: 14px; color: #7f1d1d; line-height: 1.7;
+      display: flex; gap: .75rem; align-items: flex-start;
+    }
+    .alert-box i { color: #ef4444; font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+    /* FAQ */
+    .faq-section { padding: 3rem 0; background: var(--bg); }
+    .faq-section h2 { font-size: clamp(18px, 3vw, 24px); font-weight: 600; color: var(--green-dark); margin-bottom: 1.5rem; }
+    .faq-item {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      margin-bottom: .75rem; overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; text-align: left; padding: 1rem 1.25rem; background: none; border: none;
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; color: var(--text);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq-question:hover { background: var(--bg); }
+    .faq-question i { color: var(--text-muted); flex-shrink: 0; transition: transform .2s; }
+    .faq-answer { padding: 0 1.25rem 1rem; font-size: 14px; color: #374151; line-height: 1.75; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-question i { transform: rotate(180deg); }
+
+    /* CTA FINAL */
+    .cta-section {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      padding: 3.5rem 1.5rem; text-align: center; color: #fff;
+    }
+    .cta-section h2 { font-size: clamp(20px, 3.5vw, 30px); font-weight: 600; margin-bottom: .75rem; }
+    .cta-section p { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 1.75rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 600;
+      background: #25d366; color: #fff; border: none; cursor: pointer; text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+    .btn-cta-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 600;
+      background: var(--solar); color: #1a1a00; border: none; cursor: pointer; text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-cta-primary:hover { background: var(--solar-dark); }
+
+    /* FOOTER */
+    .footer { background: #111d16; padding: 3rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+    .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+    .footer-link:hover { color: var(--solar); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../logo.png" class="logo-img" alt="SolarHomolog">
+        <div>
+          <div class="logo-name">SolarHomolog</div>
+          <div class="logo-sub">Homologação Fotovoltaica</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#como-funciona">Como funciona</a>
+        <a href="../index.html#legislacao">Legislação</a>
+        <a href="../index.html#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <a href="../index.html">SolarHomolog</a>
+        <i class="ti ti-chevron-right"></i>
+        <span>Processo de Homologação Solar</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO DA PÁGINA -->
+  <div class="page-hero">
+    <div class="container-sm">
+      <div class="page-hero-badge">Serviço Principal</div>
+      <h1>Homologação de Sistema Solar: O Que É, Prazos e Como Funciona</h1>
+      <p>A homologação é a autorização legal que permite conectar seu sistema fotovoltaico à rede elétrica. Sem ela, o sistema não pode operar legalmente — e a conta não é compensada.</p>
+      <div class="hero-lei-pills">
+        <span class="lei-pill"><i class="ti ti-file-certificate"></i> Lei 14.300/2022</span>
+        <span class="lei-pill"><i class="ti ti-file-certificate"></i> REN ANEEL 1.000/2021</span>
+        <span class="lei-pill"><i class="ti ti-shield-check"></i> Obrigatória para on-grid e híbrido</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="article-body">
+    <div class="container-sm">
+
+      <h2>O que é a homologação de energia solar?</h2>
+
+      <div class="definition-box">
+        <div class="definition-icon"><i class="ti ti-plug-connected"></i></div>
+        <div>
+          <h3>Homologação = autorização para conectar à rede</h3>
+          <p>
+            A homologação fotovoltaica é o processo formal pelo qual a concessionária de energia autoriza a conexão de um sistema solar à sua rede elétrica de distribuição. É o equivalente brasileiro ao <strong>Permission to Operate (PTO)</strong> utilizado internacionalmente — especialmente nos Estados Unidos —, o documento que oficializa que o sistema foi avaliado, aprovado tecnicamente e está apto a injetar energia na rede de forma segura.
+          </p>
+          <p>
+            Sem essa autorização, o inversor não pode ser ligado em modo grid-tie: conectar um sistema à rede sem homologação é uma infração sujeita a desligamento compulsório e multa pela ANEEL.
+          </p>
+        </div>
+      </div>
+
+      <h2>Por que a homologação é obrigatória?</h2>
+      <p>
+        A obrigatoriedade está estabelecida em duas normas complementares que formam o marco regulatório atual da energia solar distribuída no Brasil:
+      </p>
+      <ul>
+        <li>
+          <strong>Lei 14.300/2022 — Marco Legal da Geração Distribuída:</strong> regulamenta o Sistema de Compensação de Energia Elétrica (SCEE) e estabelece os direitos e deveres dos consumidores-geradores, incluindo o processo de acesso à rede para sistemas fotovoltaicos de até 5 MW.
+        </li>
+        <li>
+          <strong>REN ANEEL 1.000/2021 — Resolução Normativa:</strong> detalha os procedimentos técnicos e administrativos para acesso de microgeração (até 75 kW) e minigeração (75 kW a 5 MW) distribuída à rede elétrica, incluindo prazos máximos para as concessionárias, documentação exigida e critérios de análise técnica.
+        </li>
+      </ul>
+      <p>
+        A lógica regulatória é simples: quando um sistema fotovoltaico injeta energia na rede, ele afeta diretamente a operação do sistema de distribuição local — tensão, proteção, qualidade de energia. A concessionária precisa avaliar se a rede no ponto de conexão comporta essa injeção sem comprometer os demais usuários. A homologação é exatamente esse processo de avaliação e aprovação.
+      </p>
+
+      <div class="info-box">
+        <strong>Quem não precisa de homologação?</strong>
+        Sistemas <strong>off-grid</strong> (sem conexão à rede elétrica) estão inteiramente dispensados da homologação — por não injetarem energia na rede, não há impacto na distribuidora. Se você tem um sistema de painéis + baterias sem conexão à concessionária, não há nenhuma obrigação regulatória com a distribuidora.
+      </div>
+
+      <h2>As 7 etapas do processo de homologação</h2>
+
+      <div class="steps-list">
+
+        <div class="step-item">
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <h3>Reunião e organização da documentação</h3>
+            <p>A primeira etapa é preparar todo o conjunto documental exigido pela concessionária. A lista varia por distribuidora, mas o núcleo obrigatório inclui:</p>
+            <ul class="step-doc-list">
+              <li><i class="ti ti-file-text"></i> Requerimento de acesso assinado pelo titular da UC</li>
+              <li><i class="ti ti-file-text"></i> Procuração com poderes específicos (se representado por assessoria)</li>
+              <li><i class="ti ti-file-text"></i> Projeto técnico com memorial descritivo</li>
+              <li><i class="ti ti-file-text"></i> Diagrama unifilar e diagrama de string</li>
+              <li><i class="ti ti-file-text"></i> ART (Anotação de Responsabilidade Técnica) assinada por engenheiro CREA</li>
+              <li><i class="ti ti-file-text"></i> Especificações técnicas dos equipamentos (datasheets do inversor e dos módulos)</li>
+              <li><i class="ti ti-file-text"></i> Comprovante de propriedade ou autorização do imóvel</li>
+            </ul>
+            <span class="step-tag">Prazo: 2–5 dias úteis</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <h3>Protocolo junto à concessionária</h3>
+            <p>
+              O conjunto documental é protocolado no canal oficial da distribuidora — que pode ser portal web, agência física ou e-mail, dependendo de cada concessionária. A data do protocolo marca o início oficial do prazo legal de análise. Documentação incompleta ou rejeitada reinicia o prazo do zero — por isso a qualidade da preparação na etapa anterior é decisiva.
+            </p>
+            <span class="step-tag">Prazo: 1 dia útil</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <h3>Análise técnica pela concessionária</h3>
+            <p>
+              A distribuidora avalia o projeto sob duas perspectivas: (a) <strong>adequação documental</strong> — verificação de que todos os documentos estão completos, assinados e corretos; e (b) <strong>compatibilidade técnica da rede</strong> — análise de inversão de fluxo no alimentador, capacidade do transformador local, nível de curto-circuito e conformidade do inversor com as normas de qualidade de energia (IEC 61727, ABNT NBR 16149).
+            </p>
+            <p>
+              Se for identificada a necessidade de estudo de impacto na rede (comum em sistemas maiores ou em alimentadores já com alta penetração solar), o prazo de análise é estendido para 30 dias.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <h3>Emissão do Parecer de Acesso (PA)</h3>
+            <p>
+              Concluída a análise, a concessionária emite o <strong>Parecer de Acesso</strong> — o documento que formaliza a decisão. O PA pode ser:
+            </p>
+            <ul class="step-doc-list">
+              <li><i class="ti ti-check"></i> <strong>Favorável:</strong> sistema aprovado para conexão, sem condições adicionais</li>
+              <li><i class="ti ti-adjustments"></i> <strong>Favorável com condicionantes:</strong> aprovado, mas com exigências técnicas específicas a cumprir</li>
+              <li><i class="ti ti-x"></i> <strong>Desfavorável:</strong> reprovado — por documentação, projeto ou inviabilidade técnica da rede</li>
+            </ul>
+            <p>Com o PA favorável em mãos, o instalador está autorizado a concluir a conexão elétrica do sistema.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-dot">5</div>
+          <div class="step-body">
+            <h3>Vistoria técnica (quando necessária)</h3>
+            <p>
+              Algumas concessionárias exigem vistoria in loco antes da emissão do PA — especialmente para sistemas maiores (acima de 10 kWp) ou em situações onde a análise técnica identificou pontos que precisam de verificação física. A vistoria é realizada por técnicos da distribuidora que confirmam a conformidade da instalação com o projeto protocolado.
+            </p>
+            <span class="step-tag">Prazo: variável por concessionária</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-dot">6</div>
+          <div class="step-body">
+            <h3>Troca do medidor pelo bidirecional</h3>
+            <p>
+              Com o PA aprovado e a instalação concluída, a concessionária agenda e realiza a substituição do medidor de energia convencional pelo <strong>medidor bidirecional</strong> — equipamento que registra tanto a energia consumida da rede quanto a energia injetada na rede pelo sistema solar. Essa troca é feita e custeada pela própria distribuidora, sem custo para o consumidor-gerador.
+            </p>
+            <span class="step-tag">Prazo: 7–30 dias após aprovação</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-dot">7</div>
+          <div class="step-body">
+            <h3>Liberação para operar — sistema ativo</h3>
+            <p>
+              Instalado o medidor bidirecional, a concessionária emite a confirmação de operação. A partir desse momento o sistema está <strong>legalmente habilitado</strong>: o inversor é ligado em modo grid-tie, a energia gerada começa a ser injetada na rede e os créditos de compensação (SCEE) passam a ser contabilizados na conta mensal. O processo está completo.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <h2>Prazos legais definidos pela ANEEL</h2>
+      <p>
+        A REN ANEEL 1.000/2021 estabelece prazos máximos que as distribuidoras são obrigadas a cumprir. O descumprimento sujeita a concessionária a multas regulatórias — o que na prática pressiona as distribuidoras a respeitar os limites.
+      </p>
+
+      <div class="prazo-grid">
+        <div class="prazo-card micro">
+          <div class="prazo-label">Microgeração distribuída</div>
+          <div class="prazo-type">Até 75 kW · sem obras na rede</div>
+          <div class="prazo-num">15</div>
+          <div class="prazo-unit">dias úteis</div>
+          <div class="prazo-cond">Para sistemas residenciais e pequenos comerciais sem necessidade de adequação da rede local</div>
+        </div>
+        <div class="prazo-card mini">
+          <div class="prazo-label">Minigeração / estudo de rede</div>
+          <div class="prazo-type">75 kW a 5 MW · ou com estudo de rede</div>
+          <div class="prazo-num">30</div>
+          <div class="prazo-unit">dias úteis</div>
+          <div class="prazo-cond">Para sistemas maiores ou quando a análise técnica exige estudo de impacto no alimentador</div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>Importante sobre os prazos:</strong>
+        O prazo começa a contar apenas a partir do protocolo com documentação <strong>completa e aceita</strong>. Se a concessionária identificar documentação incompleta ou incorreta e emitir uma notificação de complementação, o prazo é suspenso até a reapresentação — e reinicia do zero com a nova entrega. Esse é o principal motivo de atrasos: documentação mal preparada.
+      </div>
+
+      <h2>Comparativo internacional: Brasil vs. Estados Unidos</h2>
+      <p>
+        O Brasil não está sozinho na burocracia da conexão solar — o processo existe em todos os países com redes elétricas estruturadas. A comparação com os EUA é especialmente relevante porque o mercado americano é o maior do mundo e serve de referência técnica global.
+      </p>
+
+      <div class="intl-grid">
+        <div class="intl-card brasil">
+          <div class="intl-flag">🇧🇷</div>
+          <h3>Brasil — Homologação ANEEL</h3>
+          <ul>
+            <li>Prazo legal: 15–30 dias úteis</li>
+            <li>Regulado pela REN 1.000/2021</li>
+            <li>Prazos definidos em lei federal</li>
+            <li>Multa para concessionária em caso de descumprimento</li>
+            <li>Processo unificado por categoria (micro/mini)</li>
+          </ul>
+          <div class="intl-highlight">Prazo máximo legal: 30 dias úteis (~42 dias corridos)</div>
+        </div>
+        <div class="intl-card usa">
+          <div class="intl-flag">🇺🇸</div>
+          <h3>EUA — Interconnection / PTO</h3>
+          <ul>
+            <li>Prazo médio: 25 a 64 dias corridos (NREL)</li>
+            <li>Regulado por cada estado (PUC estadual)</li>
+            <li>Sem prazo federal único — varia por utility</li>
+            <li>Algumas utilities levam mais de 90 dias</li>
+            <li>Processo pode envolver Fast Track ou estudos detalhados</li>
+          </ul>
+          <div class="intl-highlight">Prazo médio nacional: ~40 dias corridos (NREL, 2023)</div>
+        </div>
+      </div>
+
+      <p>
+        Na prática, o marco regulatório brasileiro é um dos mais bem estruturados do mundo em termos de prazos definidos em lei. O desafio está na execução: algumas distribuidoras — especialmente em estados com menor infraestrutura digital — ainda operam próximas ao limite, tornando a assessoria especializada um diferencial relevante para agilizar o processo.
+      </p>
+
+      <h2>Riscos de operar sem homologação</h2>
+      <p>
+        Alguns instaladores podem sugerir ligar o sistema antes da conclusão da homologação. Os riscos são reais e vão além de uma simples irregularidade:
+      </p>
+
+      <div class="risco-grid">
+        <div class="risco-card">
+          <i class="ti ti-plug-x"></i>
+          <h3>Desligamento compulsório</h3>
+          <p>A concessionária tem o direito de desligar qualquer sistema conectado à rede sem autorização. O religamento só ocorre após conclusão regular da homologação.</p>
+        </div>
+        <div class="risco-card">
+          <i class="ti ti-receipt-tax"></i>
+          <h3>Multa regulatória</h3>
+          <p>A conexão não autorizada à rede elétrica é uma infração sujeita a autuação pela ANEEL, com valores que variam conforme a potência do sistema e o tempo de operação irregular.</p>
+        </div>
+        <div class="risco-card">
+          <i class="ti ti-shield-x"></i>
+          <h3>Problemas com seguro</h3>
+          <p>Em caso de sinistro (incêndio, dano elétrico, curto-circuito) em um sistema não homologado, a seguradora pode recusar a cobertura por operação em desconformidade com normas legais.</p>
+        </div>
+        <div class="risco-card">
+          <i class="ti ti-coin-off"></i>
+          <h3>Créditos não contabilizados</h3>
+          <p>Sem o medidor bidirecional instalado, toda a energia injetada na rede é perdida — sem compensação na conta de luz. Cada dia sem homologação é geração desperdiçada.</p>
+        </div>
+      </div>
+
+      <h2>Por que contratar assessoria especializada</h2>
+      <p>
+        A homologação é burocrática, mas é um processo com regras claras. O que diferencia uma tramitação rápida de uma lenta é, quase sempre, a qualidade da documentação apresentada e o conhecimento dos requisitos específicos de cada concessionária.
+      </p>
+
+      <div class="assessoria-box">
+        <h3>O que a SolarHomolog faz pelo seu processo</h3>
+        <ul class="assessoria-list">
+          <li>
+            <i class="ti ti-file-check"></i>
+            <div><strong>Prepara a documentação completa desde o início</strong> — projeto técnico, memorial descritivo, diagrama unifilar e ART dentro das especificações exatas de cada distribuidora, eliminando o risco de rejeição por documentação incompleta.</div>
+          </li>
+          <li>
+            <i class="ti ti-building-bank"></i>
+            <div><strong>Conhece os requisitos de cada concessionária</strong> — cada distribuidora tem formulários, padrões de projeto e fluxos diferentes. Esse conhecimento acumulado evita os erros mais comuns que atrasam o processo.</div>
+          </li>
+          <li>
+            <i class="ti ti-headset"></i>
+            <div><strong>Acompanha o protocolo e responde a exigências</strong> — monitoramos o andamento do processo e respondemos a qualquer solicitação de complementação com agilidade, sem que o cliente precise interagir com a concessionária.</div>
+          </li>
+          <li>
+            <i class="ti ti-calendar-check"></i>
+            <div><strong>Agenda e coordena vistorias</strong> — quando a concessionária exige vistoria, coordenamos o agendamento com o instalador e a distribuidora para que não haja atrasos por falta de disponibilidade.</div>
+          </li>
+          <li>
+            <i class="ti ti-report"></i>
+            <div><strong>Entrega relatório completo ao final</strong> — ao concluir a homologação, o cliente recebe toda a documentação do processo organizada: PA, confirmação de operação, diagrama aprovado e registro da instalação junto à ANEEL.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="alert-box">
+        <i class="ti ti-alert-triangle"></i>
+        <div>
+          <strong>Atenção ao escolher quem fará a homologação:</strong> Certifique-se de que o profissional ou empresa tem experiência comprovada com a sua concessionária específica. Os erros mais comuns — e que geram mais atrasos — acontecem justamente por desconhecimento dos requisitos locais da distribuidora.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container-sm">
+      <h2>Perguntas Frequentes</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Posso usar o sistema solar antes de concluir a homologação?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Não é recomendado. Ligar um sistema fotovoltaico à rede elétrica sem o Parecer de Acesso da concessionária é considerado conexão não autorizada — passível de desligamento compulsório e multa. O sistema pode operar em modo off-grid (ilha) enquanto aguarda a homologação, mas sem injetar energia na rede. Somente após a troca do medidor bidirecional pela concessionária o sistema está legalmente habilitado para compensar energia.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quanto tempo demora a homologação solar no Brasil?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          A REN ANEEL 1.000/2021 estipula prazos máximos: 15 dias úteis para microgeração (até 75 kW) quando não há necessidade de obras na rede, e 30 dias úteis para minigeração (75 kW a 5 MW) ou quando é necessário estudo de impacto na rede. Na prática, algumas concessionárias cumprem o prazo; outras operam próximas ao limite. O prazo começa a correr a partir da entrega da documentação completa e aceita — documentação incompleta reinicia o prazo do zero.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          O que é o Parecer de Acesso?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          O Parecer de Acesso (PA) é o documento emitido pela concessionária que autoriza formalmente a conexão do sistema fotovoltaico à rede elétrica — o equivalente ao "Permission to Operate" (PTO) utilizado internacionalmente. O PA pode ser favorável (sistema aprovado para conexão), favorável com condicionantes (aprovado mediante adequações técnicas) ou desfavorável (reprovado por documentação, projeto ou inviabilidade técnica da rede no ponto de conexão). Com o PA favorável, o instalador pode concluir a conexão e a concessionária agenda a troca do medidor.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          O que acontece se a concessionária recusar minha solicitação?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          A recusa pode ter três origens: documentação incompleta (a mais comum e a mais fácil de resolver — basta corrigir e reprotocolar), inadequação técnica do projeto (necessidade de ajustes no inversor, na proteção ou no diagrama unifilar) ou inviabilidade técnica da rede no ponto de conexão (rara, mas possível em áreas com rede saturada). Nos dois primeiros casos a solicitação pode ser reapresentada com as correções. No terceiro caso, a concessionária é obrigada a apresentar um plano de adequação da rede. Uma assessoria especializada reduz drasticamente a chance de recusa por documentação ou projeto.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Inicie seu Processo de Homologação agora</h2>
+      <p>Nossa equipe cuida de toda a burocracia — do projeto técnico ao medidor bidirecional — para que você só precise ligar o sistema e começar a economizar.</p>
+      <div class="cta-actions">
+        <button class="btn-cta-primary btn-lg" onclick="window.parent && window.parent.openApp ? window.parent.openApp('screen-welcome') : window.location.href='../index.html'">
+          <i class="ti ti-solar-panel"></i>
+          Iniciar Homologação
+        </button>
+        <a href="https://wa.me/5511992071648?text=Ol%C3%A1%21+Gostaria+de+iniciar+o+processo+de+homologa%C3%A7%C3%A3o+do+meu+sistema+solar." class="btn-whatsapp" target="_blank" rel="noopener">
+          <i class="ti ti-brand-whatsapp"></i>
+          Falar pelo WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo" style="margin-bottom:.75rem;display:inline-flex">
+            <img src="../logo.png" class="logo-img small" alt="SolarHomolog">
+            <div>
+              <div class="logo-name" style="color:#fff">SolarHomolog</div>
+              <div class="logo-sub">Homologação Fotovoltaica</div>
+            </div>
+          </a>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">Especialistas em homologação de sistemas fotovoltaicos junto às concessionárias de energia elétrica do Brasil.</p>
+        </div>
+        <div>
+          <div class="footer-title">Serviços</div>
+          <a class="footer-link" href="../index.html#como-funciona">Processo de Homologação</a>
+          <a class="footer-link" href="../index.html#legislacao">Base de Legislação</a>
+        </div>
+        <div>
+          <div class="footer-title">Conteúdo</div>
+          <a class="footer-link" href="processo-homologacao-solar.html">Homologação Solar</a>
+          <a class="footer-link" href="instalacao-sistema-solar.html">Instalação Solar</a>
+          <a class="footer-link" href="sistema-hibrido.html">Sistema Híbrido</a>
+          <a class="footer-link" href="sistema-off-grid.html">Sistema Off-Grid</a>
+          <a class="footer-link" href="manutencao-paineis-solares.html">Manutenção de Painéis</a>
+        </div>
+        <div>
+          <div class="footer-title">Legal</div>
+          <a class="footer-link" href="../termos.html">Termos de Uso</a>
+          <a class="footer-link" href="../privacidade.html">Política de Privacidade</a>
+          <a class="footer-link" href="../privacidade.html">LGPD</a>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <a class="footer-link" href="mailto:suporte@jccassessorialtda.com.br">suporte@jccassessorialtda.com.br</a>
+          <a class="footer-link" href="https://wa.me/5511992071648">WhatsApp (11) 99207-1648</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 SolarHomolog. Todos os direitos reservados.</span>
+        <span>Conforme Lei 14.300/2022 e REN ANEEL 1.000/2021</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+      btn.setAttribute('aria-expanded', !isOpen);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instalação de Sistema Solar Fotovoltaico: Etapas, Prazos e Custos | SolarHomolog</title>
+  <meta name="description" content="Saiba todas as etapas da instalação solar: do levantamento de consumo à homologação. Payback médio de 4,8 anos e até 95% de redução na conta de energia." />
+  <link rel="icon" href="../logo.png" />
+  <link rel="canonical" href="https://solarhomolog.com.br/modelos/instalacao-sistema-solar.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Instalação de Sistema Solar Fotovoltaico: Etapas, Prazos e Custos" />
+  <meta property="og:description" content="Guia completo das 5 etapas da instalação solar: levantamento, visita técnica, projeto, homologação e obra. Custos reais e payback de 4,8 anos." />
+  <meta property="og:image" content="https://solarhomolog.com.br/logo.png" />
+  <meta property="og:url" content="https://solarhomolog.com.br/modelos/instalacao-sistema-solar.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SolarHomolog" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Instalação de Sistema Solar Fotovoltaico: Etapas, Prazos e Custos",
+    "description": "Guia completo das 5 etapas da instalação solar: levantamento de consumo, visita técnica, projeto, homologação e instalação física.",
+    "author": { "@type": "Organization", "name": "SolarHomolog" },
+    "publisher": { "@type": "Organization", "name": "SolarHomolog", "logo": { "@type": "ImageObject", "url": "https://solarhomolog.com.br/logo.png" } },
+    "datePublished": "2026-06-13",
+    "url": "https://solarhomolog.com.br/modelos/instalacao-sistema-solar.html"
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quanto tempo leva todo o processo de instalação solar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O prazo total varia de 45 a 90 dias, dependendo da concessionária. A instalação física do sistema residencial leva de 3 a 10 dias. A etapa mais longa é a homologação junto à distribuidora de energia, que pode levar de 15 a 60 dias — algumas concessionárias demoram mais. A SolarHomolog acompanha todo o processo burocrático para agilizar ao máximo a aprovação."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Preciso de homologação para instalar energia solar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim, para sistemas conectados à rede (on-grid e híbridos). A homologação é obrigatória pela REN ANEEL 1.000/2021 e pela Lei 14.300/2022 (Marco Legal da Energia Solar). Sem ela, o sistema não pode ser ligado legalmente e a concessionária não instala o medidor bidirecional necessário para compensar a energia injetada. Sistemas off-grid, por não se conectarem à rede, estão dispensados de homologação."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual o melhor tipo de telhado para energia solar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O telhado ideal tem inclinação entre 10° e 25°, orientação voltada para o norte geográfico (face norte no hemisfério sul) e ausência de sombreamento por árvores, caixas d'água ou construções vizinhas entre 9h e 15h. Telhas cerâmicas, metálicas, de fibrocimento e lajes são compatíveis. Telhas de amianto (eternit antiga) exigem avaliação prévia de condições estruturais. Telhados com orientação leste-oeste perdem até 20% de geração em relação ao norte ideal, mas ainda são economicamente viáveis."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como saber quantas placas solares preciso?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O dimensionamento correto parte do consumo mensal em kWh — informado nas últimas 12 faturas de energia. A média mensal é dividida pela irradiação solar local (que varia de 4,2 a 5,8 horas de sol pleno/dia dependendo da região) para calcular a potência necessária do sistema. Uma regra prática: para cada 100 kWh de consumo mensal, são necessários aproximadamente 0,8 a 1,0 kWp de potência instalada. Um técnico qualificado faz esse cálculo com precisão durante a visita técnica."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/icons/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1a3a2a;
+      --green-mid: #255239;
+      --green-light: #e8f5e9;
+      --solar: #f5a623;
+      --solar-dark: #e09410;
+      --text: #1a1a1a;
+      --text-muted: #6b7280;
+      --border: rgba(0,0,0,0.1);
+      --bg: #f8faf8;
+      --white: #ffffff;
+      --radius: 10px;
+      --radius-lg: 14px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-sm { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; border-radius: var(--radius); font-size: 14px; font-weight: 500;
+      cursor: pointer; border: 1px solid var(--border); background: var(--white);
+      color: var(--text); transition: all .15s; font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn:hover { background: var(--bg); }
+    .btn-primary { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+    .btn-primary:hover { background: var(--green-mid); }
+    .btn-outline { border-color: var(--green-dark); color: var(--green-dark); }
+    .btn-outline:hover { background: var(--green-light); }
+    .btn-lg { padding: 13px 24px; font-size: 15px; }
+
+    /* HEADER */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto; padding: .85rem 1.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-img { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; flex-shrink: 0; }
+    .logo-img.small { width: 30px; height: 30px; border-radius: 7px; }
+    .logo-name { font-size: 16px; font-weight: 600; color: var(--green-dark); }
+    .logo-sub { font-size: 11px; color: var(--text-muted); }
+    .nav-links { display: flex; gap: .25rem; margin-left: auto; }
+    .nav-links a { padding: 6px 12px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 7px; transition: .15s; }
+    .nav-links a:hover { color: var(--green-dark); background: var(--bg); }
+    @media (max-width: 700px) { .nav-links { display: none; } }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: .75rem 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .breadcrumb nav { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green-dark); }
+    .breadcrumb i { font-size: 12px; }
+
+    /* HERO DA PÁGINA */
+    .page-hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      color: #fff; padding: 3.5rem 1.5rem 3rem;
+    }
+    .page-hero-badge {
+      display: inline-block; background: rgba(245,166,35,.18); color: var(--solar);
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+      border: 1px solid rgba(245,166,35,.3); margin-bottom: 1rem;
+    }
+    .page-hero h1 { font-size: clamp(24px, 4vw, 38px); font-weight: 600; line-height: 1.25; margin-bottom: .75rem; }
+    .page-hero p { font-size: 16px; color: rgba(255,255,255,.75); max-width: 640px; }
+    .hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.75rem; }
+    .hero-stat strong { display: block; font-size: 24px; font-weight: 600; color: var(--solar); }
+    .hero-stat span { font-size: 12px; color: rgba(255,255,255,.55); }
+
+    /* CONTEÚDO PRINCIPAL */
+    .article-body { padding: 3rem 0 2rem; }
+    .article-body h2 {
+      font-size: clamp(18px, 3vw, 24px); font-weight: 600; color: var(--green-dark);
+      margin: 2.5rem 0 .75rem; padding-bottom: .5rem;
+      border-bottom: 2px solid var(--green-light);
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 600; color: var(--text); margin: 1.5rem 0 .5rem; }
+    .article-body p { margin-bottom: 1rem; color: #374151; line-height: 1.75; }
+    .article-body ul, .article-body ol { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .article-body li { color: #374151; line-height: 1.75; margin-bottom: .3rem; }
+    .article-body strong { color: var(--green-dark); }
+
+    /* ETAPAS */
+    .steps-list { display: flex; flex-direction: column; gap: 1.25rem; margin: 1.5rem 0; }
+    .step-item {
+      display: grid; grid-template-columns: 56px 1fr; gap: 1.25rem; align-items: flex-start;
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1.25rem;
+    }
+    .step-num-badge {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--green-dark); color: var(--solar);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 600; flex-shrink: 0;
+    }
+    .step-content h3 { font-size: 15px; font-weight: 600; color: var(--green-dark); margin: 0 0 .4rem; }
+    .step-content p { font-size: 13px; color: #374151; line-height: 1.7; margin: 0 0 .5rem; }
+    .step-tag {
+      display: inline-block; padding: 2px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 600;
+      background: rgba(245,166,35,.15); color: var(--solar-dark);
+      border: 1px solid rgba(245,166,35,.3);
+    }
+
+    /* CUSTOS GRID */
+    .cost-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin: 1.5rem 0;
+    }
+    .cost-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1.25rem; text-align: center;
+    }
+    .cost-card.destaque { border-color: var(--solar); background: #fffbf0; }
+    .cost-card-label { font-size: 12px; color: var(--text-muted); margin-bottom: .35rem; }
+    .cost-card-power { font-size: 13px; font-weight: 600; color: var(--green-dark); margin-bottom: .5rem; }
+    .cost-card-value { font-size: 22px; font-weight: 600; color: var(--solar-dark); line-height: 1.1; }
+    .cost-card-detail { font-size: 11px; color: var(--text-muted); margin-top: .35rem; }
+
+    /* TELHADO ORIENTAÇÃO */
+    .telhado-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;
+    }
+    @media (max-width: 560px) { .telhado-grid { grid-template-columns: 1fr; } }
+    .telhado-card {
+      border-radius: var(--radius-lg); padding: 1.25rem; border: 1px solid;
+    }
+    .telhado-card.ideal { background: #f0fdf4; border-color: #bbf7d0; }
+    .telhado-card.ok { background: #fff8e1; border-color: #fde68a; }
+    .telhado-card h3 { font-size: 14px; font-weight: 600; margin-bottom: .5rem; }
+    .telhado-card.ideal h3 { color: #166534; }
+    .telhado-card.ok h3 { color: #92400e; }
+    .telhado-card ul { padding-left: 1.2rem; font-size: 13px; }
+    .telhado-card.ideal li { color: #166534; }
+    .telhado-card.ok li { color: #78350f; }
+
+    /* ECONOMIA BOX */
+    .economia-box {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+      background: var(--green-dark); color: #fff; border-radius: var(--radius-lg);
+      padding: 2rem; margin: 2rem 0; align-items: center;
+    }
+    @media (max-width: 560px) { .economia-box { grid-template-columns: 1fr; } }
+    .economia-box h3 { font-size: 18px; font-weight: 600; margin-bottom: .75rem; }
+    .economia-box p { font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: .5rem; }
+    .economia-box p:last-child { margin-bottom: 0; }
+    .economia-nums { display: flex; flex-direction: column; gap: 1rem; }
+    .economia-num-row { background: rgba(255,255,255,.08); border-radius: var(--radius); padding: 1rem; text-align: center; }
+    .economia-num-row .num { font-size: 32px; font-weight: 600; color: var(--solar); line-height: 1; }
+    .economia-num-row .lbl { font-size: 12px; color: rgba(255,255,255,.55); margin-top: .25rem; }
+
+    /* AMBIENTAL */
+    .ambiental-box {
+      background: var(--green-light); border: 1px solid #a7d7a9; border-radius: var(--radius-lg);
+      padding: 1.5rem; margin: 1.5rem 0;
+      display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: center;
+    }
+    @media (max-width: 480px) { .ambiental-box { grid-template-columns: 1fr; } }
+    .ambiental-icon { font-size: 48px; color: var(--green-dark); text-align: center; }
+    .ambiental-box h3 { font-size: 15px; font-weight: 600; color: var(--green-dark); margin-bottom: .4rem; }
+    .ambiental-box p { font-size: 13px; color: #2d5a3e; line-height: 1.7; margin: 0; }
+
+    /* ESPECIALISTA BOX */
+    .especialista-box {
+      background: #fffbf0; border: 1px solid rgba(245,166,35,.4);
+      border-radius: var(--radius-lg); padding: 1.5rem; margin: 2rem 0;
+    }
+    .especialista-box h3 { font-size: 16px; font-weight: 600; color: var(--solar-dark); margin-bottom: .75rem; }
+    .especialista-list { list-style: none; padding: 0; }
+    .especialista-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: #5c3e00; padding: .4rem 0;
+      border-bottom: 1px solid rgba(245,166,35,.2); line-height: 1.6;
+    }
+    .especialista-list li:last-child { border-bottom: none; }
+    .especialista-list i { color: var(--solar-dark); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+    /* INFO BOX */
+    .info-box {
+      background: var(--green-light); border-left: 3px solid var(--green-dark);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem; margin: 1.5rem 0;
+      font-size: 14px; color: var(--green-dark); line-height: 1.7;
+    }
+    .info-box strong { display: block; margin-bottom: .3rem; }
+
+    /* FAQ */
+    .faq-section { padding: 3rem 0; background: var(--bg); }
+    .faq-section h2 { font-size: clamp(18px, 3vw, 24px); font-weight: 600; color: var(--green-dark); margin-bottom: 1.5rem; }
+    .faq-item {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      margin-bottom: .75rem; overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; text-align: left; padding: 1rem 1.25rem; background: none; border: none;
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; color: var(--text);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq-question:hover { background: var(--bg); }
+    .faq-question i { color: var(--text-muted); flex-shrink: 0; transition: transform .2s; }
+    .faq-answer { padding: 0 1.25rem 1rem; font-size: 14px; color: #374151; line-height: 1.75; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-question i { transform: rotate(180deg); }
+
+    /* CTA FINAL */
+    .cta-section {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%);
+      padding: 3.5rem 1.5rem; text-align: center; color: #fff;
+    }
+    .cta-section h2 { font-size: clamp(20px, 3.5vw, 30px); font-weight: 600; margin-bottom: .75rem; }
+    .cta-section p { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 1.75rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 600;
+      background: #25d366; color: #fff; border: none; cursor: pointer; text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+    .btn-ghost-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 500;
+      background: rgba(255,255,255,.12); color: #fff;
+      border: 1px solid rgba(255,255,255,.3); text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-ghost-white:hover { background: rgba(255,255,255,.2); }
+
+    /* FOOTER */
+    .footer { background: #111d16; padding: 3rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+    .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+    .footer-link:hover { color: var(--solar); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../logo.png" class="logo-img" alt="SolarHomolog">
+        <div>
+          <div class="logo-name">SolarHomolog</div>
+          <div class="logo-sub">Homologação Fotovoltaica</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#como-funciona">Como funciona</a>
+        <a href="../index.html#legislacao">Legislação</a>
+        <a href="../index.html#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <a href="../index.html">SolarHomolog</a>
+        <i class="ti ti-chevron-right"></i>
+        <span>Instalação de Sistema Solar</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO DA PÁGINA -->
+  <div class="page-hero">
+    <div class="container-sm">
+      <div class="page-hero-badge">Guia Completo</div>
+      <h1>Instalação de Sistema Solar Fotovoltaico: Etapas, Prazos e Custos</h1>
+      <p>Do primeiro contato à energia gerando na sua conta — entenda cada etapa do processo, quanto tempo leva e o que esperar em termos de economia.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>até 95%</strong>
+          <span>de redução na conta de energia</span>
+        </div>
+        <div class="hero-stat">
+          <strong>4,8 anos</strong>
+          <span>de payback médio no Brasil</span>
+        </div>
+        <div class="hero-stat">
+          <strong>25–30 anos</strong>
+          <span>de vida útil do sistema</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="article-body">
+    <div class="container-sm">
+
+      <h2>As 5 etapas da instalação de energia solar</h2>
+      <p>
+        A instalação de um sistema fotovoltaico é um processo estruturado que vai muito além de colocar painéis no telhado. Cada etapa tem sua função e impacta diretamente a eficiência, a segurança e a legalidade do sistema. Entender o caminho completo evita surpresas e ajuda a planejar o investimento com clareza.
+      </p>
+
+      <div class="steps-list">
+
+        <div class="step-item">
+          <div class="step-num-badge">1</div>
+          <div class="step-content">
+            <h3>Levantamento de consumo via faturas</h3>
+            <p>
+              O ponto de partida é analisar as últimas 12 faturas de energia elétrica para identificar o consumo médio mensal em kWh. Esse histórico anual é fundamental porque captura a sazonalidade do consumo — verões com ar-condicionado, meses com mais uso de chuveiro elétrico — e garante que o sistema seja dimensionado para cobrir o consumo real ao longo do ano inteiro, não apenas de um mês atípico. Também são analisados: tarifa atual, modalidade tarifária (convencional ou branca) e se há potencial de migração para tarifa mais vantajosa após a instalação solar.
+            </p>
+            <span class="step-tag">Prazo: 1–2 dias</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num-badge">2</div>
+          <div class="step-content">
+            <h3>Visita técnica e análise do telhado</h3>
+            <p>
+              Um engenheiro ou técnico qualificado visita o imóvel para avaliar as condições físicas do telhado: orientação solar (norte, sul, leste, oeste), inclinação, tipo de telha, área disponível, estado estrutural e, principalmente, sombreamento. Árvores, caixas d'água, chaminés e construções vizinhas que projetam sombra sobre o telhado entre 9h e 15h podem reduzir significativamente a geração. Nessa etapa também é verificada a capacidade do padrão de entrada elétrica e o quadro de distribuição para adequações necessárias.
+            </p>
+            <span class="step-tag">Prazo: agendamento em 3–7 dias</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num-badge">3</div>
+          <div class="step-content">
+            <h3>Projeto técnico e dimensionamento</h3>
+            <p>
+              Com base no consumo e nas condições do telhado, o engenheiro responsável elabora o projeto técnico completo: cálculo de potência do sistema (kWp), quantidade e posicionamento dos módulos, especificação do inversor, memorial descritivo, diagrama unifilar e diagrama de string. O projeto precisa seguir as normas ABNT NBR 16690 (instalações fotovoltaicas) e ABNT NBR 5410 (instalações de baixa tensão), além dos requisitos específicos de cada concessionária para garantir aprovação na etapa seguinte.
+            </p>
+            <span class="step-tag">Prazo: 5–10 dias</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num-badge">4</div>
+          <div class="step-content">
+            <h3>Homologação junto à concessionária</h3>
+            <p>
+              O projeto técnico é protocolado junto à distribuidora de energia para obtenção do Parecer de Acesso (PA) — a autorização formal para conectar o sistema à rede. A concessionária analisa o projeto, pode solicitar adequações e, após aprovação, agenda a vistoria técnica para instalar o medidor bidirecional. Este é o principal gargalo do processo: o prazo legal é de 30 dias, mas algumas distribuidoras levam de 45 a 60 dias. A SolarHomolog acompanha todo esse processo, protocolando, respondendo a exigências e monitorando o andamento para agilizar a aprovação.
+            </p>
+            <span class="step-tag">Prazo: 15–60 dias (varia por concessionária)</span>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num-badge">5</div>
+          <div class="step-content">
+            <h3>Instalação física do sistema</h3>
+            <p>
+              Com o Parecer de Acesso em mãos, a equipe de instalação realiza a obra: fixação da estrutura metálica no telhado, montagem dos painéis, cabeamento DC e AC, instalação do inversor, conexão do string box e integração com o quadro elétrico. Após a obra, a concessionária realiza a vistoria final e substitui o medidor pelo bidirecional, habilitando a compensação de energia pelo SCEE. A partir desse momento o sistema está legalmente operacional e toda a energia gerada começa a ser compensada na conta.
+            </p>
+            <span class="step-tag">Prazo: 3 a 10 dias (residencial)</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="info-box">
+        <strong>Prazo total realista:</strong>
+        Considerando todas as etapas, o prazo do primeiro contato até o sistema em operação varia de <strong>45 a 90 dias</strong>. A etapa mais longa é sempre a homologação junto à concessionária. Uma empresa experiente no processo burocrático reduz significativamente as chances de retrabalho e pedidos de complementação que atrasam a aprovação.
+      </div>
+
+      <h2>Quanto custa instalar um sistema solar?</h2>
+      <p>
+        O custo de um sistema fotovoltaico residencial varia principalmente pela potência necessária, que depende do consumo mensal. Os valores abaixo são referências de mercado para sistemas on-grid completos (painéis + inversor + estrutura + cabeamento + instalação):
+      </p>
+
+      <div class="cost-grid">
+        <div class="cost-card">
+          <div class="cost-card-label">Consumo até 200 kWh/mês</div>
+          <div class="cost-card-power">2–3 kWp</div>
+          <div class="cost-card-value">R$ 10.000<br>a R$ 15.000</div>
+          <div class="cost-card-detail">4–8 painéis</div>
+        </div>
+        <div class="cost-card destaque">
+          <div class="cost-card-label">Consumo 300–500 kWh/mês</div>
+          <div class="cost-card-power">4–6 kWp</div>
+          <div class="cost-card-value">R$ 16.000<br>a R$ 22.000</div>
+          <div class="cost-card-detail">10–15 painéis · mais comum</div>
+        </div>
+        <div class="cost-card">
+          <div class="cost-card-label">Consumo 600–900 kWh/mês</div>
+          <div class="cost-card-power">7–10 kWp</div>
+          <div class="cost-card-value">R$ 23.000<br>a R$ 30.000</div>
+          <div class="cost-card-detail">16–24 painéis</div>
+        </div>
+      </div>
+
+      <p>
+        Esses valores incluem equipamentos, mão de obra e gerenciamento de projeto, mas <strong>não incluem adequações no padrão de entrada elétrica</strong> (quando necessário) nem o processo de homologação junto à concessionária — que é um serviço separado por envolver etapas burocráticas com prazos independentes da instalação física.
+      </p>
+
+      <h2>Economia e retorno do investimento</h2>
+
+      <div class="economia-box">
+        <div>
+          <h3>O que você pode economizar</h3>
+          <p>
+            Um sistema bem dimensionado pode eliminar até <strong>95% da conta de energia</strong> — o 5% restante corresponde à taxa mínima de disponibilidade que a concessionária cobra mesmo com geração solar. Na prática, a maioria dos sistemas residenciais reduz a conta entre 70% e 90%, dependendo do perfil de consumo e da geração local.
+          </p>
+          <p>
+            O <strong>payback médio no Brasil</strong> está em torno de 4,8 anos para sistemas residenciais, segundo dados do setor. Com a vida útil dos painéis de 25 a 30 anos e a garantia de desempenho de 80% da potência nominal após 25 anos, o período de geração líquida (após o retorno do investimento) pode chegar a <strong>20 anos ou mais</strong>.
+          </p>
+        </div>
+        <div class="economia-nums">
+          <div class="economia-num-row">
+            <div class="num">até 95%</div>
+            <div class="lbl">redução na conta de luz</div>
+          </div>
+          <div class="economia-num-row">
+            <div class="num">4,8 anos</div>
+            <div class="lbl">payback médio residencial</div>
+          </div>
+          <div class="economia-num-row">
+            <div class="num">20+ anos</div>
+            <div class="lbl">de geração após o retorno</div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Orientação ideal do telhado para máxima geração</h2>
+      <p>
+        A orientação e a inclinação do telhado são fatores determinantes na eficiência do sistema. No Brasil, que está no hemisfério sul, o sol percorre o céu pelo norte — por isso a face norte é sempre a mais produtiva.
+      </p>
+
+      <div class="telhado-grid">
+        <div class="telhado-card ideal">
+          <h3>Configuração ideal</h3>
+          <ul>
+            <li>Orientação: face <strong>norte</strong> geográfico</li>
+            <li>Inclinação: <strong>10° a 25°</strong></li>
+            <li>Sem sombreamento das 9h às 15h</li>
+            <li>Estrutura em bom estado</li>
+            <li>Telha cerâmica, metálica ou laje</li>
+          </ul>
+        </div>
+        <div class="telhado-card ok">
+          <h3>Configuração aceitável</h3>
+          <ul>
+            <li>Orientação: leste ou oeste (-15 a 20%)</li>
+            <li>Inclinação: até 35° ou a partir de 5°</li>
+            <li>Sombreamento parcial (fora do horário solar)</li>
+            <li>Telhado flat com estrutura elevada</li>
+            <li>Face sul (menor eficiência, exige mais painéis)</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>
+        Telhados com orientação leste-oeste perdem em média 15 a 20% de geração em relação ao norte ideal, mas ainda são economicamente viáveis — o sistema é dimensionado com mais painéis para compensar. Telhados voltados para o sul têm redução maior e exigem análise técnica detalhada antes de qualquer decisão.
+      </p>
+
+      <h2>Benefícios ambientais do sistema fotovoltaico</h2>
+
+      <div class="ambiental-box">
+        <div class="ambiental-icon"><i class="ti ti-leaf"></i></div>
+        <div>
+          <h3>Cada kWp instalado evita ~0,5 tonelada de CO₂ por ano</h3>
+          <p>
+            Um sistema residencial típico de 5 kWp gera em torno de 7.000 kWh por ano e evita a emissão de aproximadamente <strong>2,5 toneladas de CO₂</strong> anualmente — equivalente a retirar um carro de passeio de circulação por um ano. Ao longo de 25 anos de vida útil, o mesmo sistema evita mais de <strong>60 toneladas de CO₂</strong>, sem nenhuma emissão durante a geração (ao contrário de usinas termelétricas). A energia solar fotovoltaica é uma das fontes com menor pegada de carbono por kWh ao longo de todo o ciclo de vida do equipamento.
+          </p>
+        </div>
+      </div>
+
+      <h2>Por que contratar uma empresa especializada</h2>
+      <p>
+        A escolha do instalador é tão importante quanto a escolha dos equipamentos. Erros no dimensionamento, no projeto técnico ou na homologação podem resultar em geração abaixo do esperado, reprovação pela concessionária e até riscos de segurança.
+      </p>
+
+      <div class="especialista-box">
+        <h3>O que uma empresa especializada garante</h3>
+        <ul class="especialista-list">
+          <li>
+            <i class="ti ti-certificate"></i>
+            <div><strong>Projeto assinado por engenheiro habilitado (CREA)</strong> — requisito obrigatório para aprovação na concessionária. Projetos sem ART (Anotação de Responsabilidade Técnica) são sumariamente reprovados.</div>
+          </li>
+          <li>
+            <i class="ti ti-file-check"></i>
+            <div><strong>Conhecimento dos requisitos específicos de cada distribuidora</strong> — cada concessionária tem seus próprios formulários, exigências técnicas e fluxos de aprovação. Erros na documentação geram pedidos de complementação que atrasam em semanas o processo.</div>
+          </li>
+          <li>
+            <i class="ti ti-shield-check"></i>
+            <div><strong>Instalação conforme ABNT NBR 16690 e NR-10</strong> — normas que regulamentam a segurança em instalações fotovoltaicas e em trabalhos com eletricidade. Instalações fora de norma não são seguradas e podem anular garantias dos equipamentos.</div>
+          </li>
+          <li>
+            <i class="ti ti-clock"></i>
+            <div><strong>Acompanhamento da homologação do início ao fim</strong> — incluindo resposta a exigências, reagendamento de vistorias e comunicação com a concessionária, sem que o cliente precise intervir.</div>
+          </li>
+          <li>
+            <i class="ti ti-tool"></i>
+            <div><strong>Garantia de execução e suporte pós-instalação</strong> — um instalador sério oferece garantia sobre a mão de obra e permanece disponível para suporte técnico após a conclusão da obra.</div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container-sm">
+      <h2>Perguntas Frequentes</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quanto tempo leva todo o processo de instalação solar?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          O prazo total varia de 45 a 90 dias, dependendo da concessionária. A instalação física do sistema residencial leva de 3 a 10 dias úteis. A etapa mais longa é a homologação junto à distribuidora de energia, que pode levar de 15 a 60 dias — algumas concessionárias operam no limite máximo previsto em regulamento. A SolarHomolog acompanha todo o processo burocrático para agilizar ao máximo a aprovação e responder rapidamente a qualquer exigência de complementação.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Preciso de homologação para instalar energia solar?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          Sim, para sistemas conectados à rede (on-grid e híbridos). A homologação é obrigatória pela REN ANEEL 1.000/2021 e pela Lei 14.300/2022 (Marco Legal da Energia Solar). Sem ela, o sistema não pode ser ligado legalmente à rede e a concessionária não instala o medidor bidirecional necessário para compensar a energia injetada pelo SCEE. Sistemas off-grid, por não se conectarem à rede elétrica, estão dispensados do processo de homologação.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Qual o melhor tipo de telhado para energia solar?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          O telhado ideal tem inclinação entre 10° e 25°, orientação voltada para o norte geográfico (hemisfério sul) e ausência de sombreamento entre 9h e 15h. Telhas cerâmicas, metálicas, de fibrocimento e lajes são todas compatíveis. Telhados com orientação leste-oeste perdem até 20% de geração em relação ao norte ideal, mas ainda são economicamente viáveis — o sistema é dimensionado com mais painéis para compensar. Telhas de amianto exigem avaliação estrutural prévia antes da instalação.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Como saber quantas placas solares preciso?
+          <i class="ti ti-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          O dimensionamento correto parte do consumo mensal em kWh — informado nas últimas 12 faturas de energia. Como regra prática: para cada 100 kWh de consumo mensal, são necessários aproximadamente 0,8 a 1,0 kWp de potência instalada. Esse valor é ajustado pela irradiação solar local (que varia de 4,2 a 5,8 horas de sol pleno por dia dependendo da região) e pelas características do telhado. Um técnico qualificado faz esse cálculo com precisão durante a visita técnica, gerando o projeto dimensionado para cobrir exatamente o seu perfil de consumo.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Solicite seu orçamento de instalação</h2>
+      <p>Nossa equipe analisa seu consumo, avalia o telhado e apresenta um projeto completo — da instalação à homologação junto à concessionária.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511992071648?text=Ol%C3%A1%21+Gostaria+de+solicitar+um+or%C3%A7amento+para+instala%C3%A7%C3%A3o+de+energia+solar." class="btn-whatsapp" target="_blank" rel="noopener">
+          <i class="ti ti-brand-whatsapp"></i>
+          Solicitar orçamento pelo WhatsApp
+        </a>
+        <a href="../index.html" class="btn-ghost-white">
+          <i class="ti ti-arrow-left"></i>
+          Voltar ao site
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo" style="margin-bottom:.75rem;display:inline-flex">
+            <img src="../logo.png" class="logo-img small" alt="SolarHomolog">
+            <div>
+              <div class="logo-name" style="color:#fff">SolarHomolog</div>
+              <div class="logo-sub">Homologação Fotovoltaica</div>
+            </div>
+          </a>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">Especialistas em homologação de sistemas fotovoltaicos junto às concessionárias de energia elétrica do Brasil.</p>
+        </div>
+        <div>
+          <div class="footer-title">Serviços</div>
+          <a class="footer-link" href="../index.html#como-funciona">Processo de Homologação</a>
+          <a class="footer-link" href="../index.html#legislacao">Base de Legislação</a>
+        </div>
+        <div>
+          <div class="footer-title">Conteúdo</div>
+          <a class="footer-link" href="sistema-off-grid.html">Sistema Off-Grid</a>
+          <a class="footer-link" href="sistema-hibrido.html">Sistema Híbrido</a>
+          <a class="footer-link" href="manutencao-paineis-solares.html">Manutenção de Painéis</a>
+          <a class="footer-link" href="instalacao-sistema-solar.html">Instalação Solar</a>
+        </div>
+        <div>
+          <div class="footer-title">Legal</div>
+          <a class="footer-link" href="../termos.html">Termos de Uso</a>
+          <a class="footer-link" href="../privacidade.html">Política de Privacidade</a>
+          <a class="footer-link" href="../privacidade.html">LGPD</a>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <a class="footer-link" href="mailto:suporte@jccassessorialtda.com.br">suporte@jccassessorialtda.com.br</a>
+          <a class="footer-link" href="https://wa.me/5511992071648">WhatsApp (11) 99207-1648</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 SolarHomolog. Todos os direitos reservados.</span>
+        <span>Conforme Lei 14.300/2022 e REN ANEEL 1.000/2021</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+      btn.setAttribute('aria-expanded', !isOpen);
+    }
+  </script>
+
+</body>
+</html>

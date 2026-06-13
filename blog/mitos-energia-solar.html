@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7 Mitos Sobre Energia Solar Que Você Precisa Parar de Acreditar | Blog SolarHomolog</title>
+  <meta name="description" content="Painéis não funcionam em nublado? Sistema dura pouco? Energia solar é cara? Desmontamos os 7 mitos mais comuns sobre energia solar com dados e explicações técnicas." />
+  <link rel="icon" href="../logo.png" />
+  <link rel="canonical" href="https://solar.link-4you.com/blog/mitos-energia-solar.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="7 Mitos Sobre Energia Solar Que Você Precisa Parar de Acreditar" />
+  <meta property="og:description" content="Desmontamos os 7 mitos mais comuns sobre energia solar fotovoltaica — com dados reais, explicações técnicas e o que você perde por acreditar neles." />
+  <meta property="og:image" content="https://solar.link-4you.com/logo.png" />
+  <meta property="og:url" content="https://solar.link-4you.com/blog/mitos-energia-solar.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="SolarHomolog" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "7 Mitos Sobre Energia Solar Que Você Precisa Parar de Acreditar",
+    "description": "Desmontamos os 7 mitos mais comuns sobre energia solar fotovoltaica com dados reais e explicações técnicas.",
+    "author": { "@type": "Organization", "name": "SolarHomolog" },
+    "publisher": { "@type": "Organization", "name": "SolarHomolog", "logo": { "@type": "ImageObject", "url": "https://solar.link-4you.com/logo.png" } },
+    "datePublished": "2026-06-13",
+    "url": "https://solar.link-4you.com/blog/mitos-energia-solar.html"
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/icons/tabler-icons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-dark: #1a3a2a; --green-mid: #255239; --green-light: #e8f5e9;
+      --solar: #f5a623; --solar-dark: #e09410; --text: #1a1a1a;
+      --text-muted: #6b7280; --border: rgba(0,0,0,0.1); --bg: #f8faf8;
+      --white: #ffffff; --radius: 10px; --radius-lg: 14px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-sm { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: var(--radius); font-size: 14px; font-weight: 500; cursor: pointer; border: 1px solid var(--border); background: var(--white); color: var(--text); transition: all .15s; font-family: 'Inter', sans-serif; text-decoration: none; }
+    .btn:hover { background: var(--bg); }
+    .btn-primary { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+    .btn-primary:hover { background: var(--green-mid); }
+    .btn-lg { padding: 13px 24px; font-size: 15px; }
+
+    /* HEADER */
+    .header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: .85rem 1.5rem; display: flex; align-items: center; gap: 1.5rem; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-img { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; flex-shrink: 0; }
+    .logo-img.small { width: 30px; height: 30px; border-radius: 7px; }
+    .logo-name { font-size: 16px; font-weight: 600; color: var(--green-dark); }
+    .logo-sub { font-size: 11px; color: var(--text-muted); }
+    .nav-links { display: flex; gap: .25rem; margin-left: auto; }
+    .nav-links a { padding: 6px 12px; font-size: 14px; color: var(--text-muted); text-decoration: none; border-radius: 7px; transition: .15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green-dark); background: var(--bg); }
+    @media (max-width: 700px) { .nav-links { display: none; } }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: .75rem 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .breadcrumb nav { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--green-dark); }
+    .breadcrumb i { font-size: 12px; }
+
+    /* HERO */
+    .page-hero { background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%); color: #fff; padding: 3.5rem 1.5rem 3rem; }
+    .page-hero-meta { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .page-hero-cat { display: inline-block; background: rgba(245,166,35,.18); color: var(--solar); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; border: 1px solid rgba(245,166,35,.3); }
+    .page-hero-date { font-size: 12px; color: rgba(255,255,255,.5); }
+    .page-hero h1 { font-size: clamp(24px, 4vw, 38px); font-weight: 600; line-height: 1.25; margin-bottom: .75rem; }
+    .page-hero p { font-size: 16px; color: rgba(255,255,255,.75); max-width: 640px; }
+
+    /* ARTIGO */
+    .article-body { padding: 3rem 0 2rem; }
+    .article-body p { margin-bottom: 1rem; color: #374151; line-height: 1.8; font-size: 15px; }
+    .article-body strong { color: var(--green-dark); }
+    .article-body a { color: var(--green-mid); }
+
+    /* MITO CARD */
+    .mito-list { display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
+    .mito-card { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
+    .mito-header {
+      display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 1rem;
+      padding: 1.1rem 1.25rem; background: #fef2f2; border-bottom: 1px solid #fecaca;
+    }
+    .mito-num {
+      width: 40px; height: 40px; border-radius: 50%; background: #ef4444; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; flex-shrink: 0;
+    }
+    .mito-header h2 { font-size: 15px; font-weight: 600; color: #991b1b; line-height: 1.35; margin: 0; }
+    .mito-header h2 span { font-size: 11px; font-weight: 500; color: #dc2626; text-transform: uppercase; letter-spacing: .04em; display: block; margin-bottom: .15rem; }
+    .mito-verdade {
+      padding: 1.1rem 1.25rem; background: var(--white);
+      display: grid; grid-template-columns: 28px 1fr; gap: .75rem; align-items: flex-start;
+    }
+    .mito-verdade-icon { color: #16a34a; font-size: 22px; margin-top: 2px; flex-shrink: 0; }
+    .mito-verdade-body h3 { font-size: 13px; font-weight: 700; color: #166534; text-transform: uppercase; letter-spacing: .04em; margin-bottom: .35rem; }
+    .mito-verdade-body p { font-size: 14px; color: #374151; line-height: 1.75; margin: 0; }
+    .mito-verdade-body p + p { margin-top: .5rem; }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--green-dark) 0%, #2d5a3e 100%); padding: 3.5rem 1.5rem; text-align: center; color: #fff; }
+    .cta-section h2 { font-size: clamp(20px, 3.5vw, 28px); font-weight: 600; margin-bottom: .75rem; }
+    .cta-section p { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 1.75rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-whatsapp { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 600; background: #25d366; color: #fff; border: none; cursor: pointer; text-decoration: none; transition: background .15s; }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+    .btn-ghost-white { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: var(--radius); font-size: 15px; font-weight: 500; background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.3); text-decoration: none; transition: background .15s; }
+    .btn-ghost-white:hover { background: rgba(255,255,255,.2); }
+
+    /* FOOTER */
+    .footer { background: #111d16; padding: 3rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+    .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+    .footer-link:hover { color: var(--solar); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,.3); flex-wrap: wrap; gap: .5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../logo.png" class="logo-img" alt="SolarHomolog">
+        <div>
+          <div class="logo-name">SolarHomolog</div>
+          <div class="logo-sub">Homologação Fotovoltaica</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html#como-funciona">Como funciona</a>
+        <a href="../index.html#legislacao">Legislação</a>
+        <a href="../index.html#contato">Contato</a>
+        <a href="index.html" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <a href="../index.html">SolarHomolog</a>
+        <i class="ti ti-chevron-right"></i>
+        <a href="index.html">Blog</a>
+        <i class="ti ti-chevron-right"></i>
+        <span>7 Mitos Sobre Energia Solar</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="container-sm">
+      <div class="page-hero-meta">
+        <span class="page-hero-cat">Educação Solar</span>
+        <span class="page-hero-date">13 de junho de 2026</span>
+      </div>
+      <h1>7 Mitos Sobre Energia Solar Que Você Precisa Parar de Acreditar</h1>
+      <p>Desinformação sobre energia solar custa caro — seja em decisões adiadas ou em expectativas equivocadas. Vamos à realidade.</p>
+    </div>
+  </div>
+
+  <!-- ARTIGO -->
+  <div class="article-body">
+    <div class="container-sm">
+
+      <p>
+        A energia solar fotovoltaica é hoje a fonte de eletricidade com menor custo de geração do mundo — e o Brasil, com uma das maiores irradiações solares do planeta, está entre os mercados com maior potencial. Mesmo assim, uma série de mitos persistentes ainda faz com que muitas pessoas adiem ou desistam de instalar um sistema que poderia reduzir drasticamente sua conta de energia.
+      </p>
+      <p>
+        Listamos os sete equívocos mais comuns sobre energia solar — e a explicação técnica por trás de cada um.
+      </p>
+
+      <div class="mito-list">
+
+        <!-- MITO 1 -->
+        <div class="mito-card">
+          <div class="mito-header">
+            <div class="mito-num">1</div>
+            <h2><span>Mito</span>"Painéis solares não funcionam em dias nublados ou em regiões mais frias"</h2>
+          </div>
+          <div class="mito-verdade">
+            <i class="ti ti-check mito-verdade-icon"></i>
+            <div class="mito-verdade-body">
+              <h3>A verdade</h3>
+              <p>
+                Painéis fotovoltaicos funcionam com <strong>luz, não com calor</strong>. A confusão é compreensível — o sol forte costuma vir acompanhado de dias quentes — mas a conversão de energia acontece pela incidência de fótons sobre as células de silício, não pela temperatura.
+              </p>
+              <p>
+                Em dias nublados, a geração cai, mas não para. Dependendo da espessura das nuvens, o sistema pode gerar entre 20% e 60% da potência de um dia de sol pleno. E há um dado contra-intuitivo importante: painéis solares são <strong>mais eficientes em temperaturas baixas</strong>. O coeficiente de temperatura dos módulos monocristalinos indica que a eficiência cai cerca de 0,3% a 0,4% para cada grau Celsius acima de 25°C — ou seja, em dias muito quentes, o sistema gera menos do que em dias frios e ensolarados.
+              </p>
+              <p>
+                Alemanha e Países Baixos — países com irradiação solar muito inferior à do Brasil — estão entre os maiores mercados solares do mundo. Isso diz tudo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MITO 2 -->
+        <div class="mito-card">
+          <div class="mito-header">
+            <div class="mito-num">2</div>
+            <h2><span>Mito</span>"Painéis solares têm vida útil curta"</h2>
+          </div>
+          <div class="mito-verdade">
+            <i class="ti ti-check mito-verdade-icon"></i>
+            <div class="mito-verdade-body">
+              <h3>A verdade</h3>
+              <p>
+                Os fabricantes Tier 1 oferecem <strong>garantia de desempenho de 25 a 30 anos</strong>, assegurando que o painel manterá pelo menos 80% da potência nominal após esse período. Na prática, estudos de campo com painéis instalados nas décadas de 1980 e 1990 mostram que módulos de silício cristalino bem instalados continuam operando com degradação mínima após 30 e até 40 anos.
+              </p>
+              <p>
+                O painel solar é de longe o componente mais durável do sistema fotovoltaico — muito mais duradouro que o inversor, que tem vida útil de 10 a 15 anos e geralmente precisa ser substituído uma vez ao longo da vida do sistema. Não há partes móveis nos painéis, não há fluidos, não há desgaste mecânico. O único processo é a lenta degradação do silício e do encapsulante, que ocorre em taxas de 0,3% a 0,5% ao ano.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MITO 3 -->
+        <div class="mito-card">
+          <div class="mito-header">
+            <div class="mito-num">3</div>
+            <h2><span>Mito</span>"Sistema solar exige manutenção constante e cara"</h2>
+          </div>
+          <div class="mito-verdade">
+            <i class="ti ti-check mito-verdade-icon"></i>
+            <div class="mito-verdade-body">
+              <h3>A verdade</h3>
+              <p>
+                Sistemas fotovoltaicos têm uma das <strong>menores taxas de falha</strong> entre equipamentos eletroeletrônicos — estudos do setor apontam taxas de falha crítica abaixo de 0,05% ao ano para painéis de marcas consolidadas. Não há partes móveis, não há peças de desgaste rápido, não há lubrificação necessária.
+              </p>
+              <p>
+                A manutenção se resume a: <strong>limpeza periódica dos painéis</strong> (a cada 3 a 12 meses, dependendo da região e do nível de sujeira local) e uma inspeção elétrica a cada 2 a 3 anos. O custo anual de manutenção de um sistema residencial típico fica entre 0,5% e 1% do valor do investimento — valor muito inferior à economia gerada pela redução da conta de luz.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MITO 4 -->
+        <div class="mito-card">
+          <div class="mito-header">
+            <div class="mito-num">4</div>
+            <h2><span>Mito</span>"Energia solar ainda é cara demais para valer a pena"</h2>
+          </div>
+          <div class="mito-verdade">
+            <i class="ti ti-check mito-verdade-icon"></i>
+            <div class="mito-verdade-body">
+              <h3>A verdade</h3>
+              <p>
+                O custo dos painéis solares caiu mais de <strong>90% entre 2010 e 2024</strong> — a mais rápida queda de preços já registrada em tecnologia energética. O que em 2010 custava R$ 15 por watt hoje custa menos de R$ 1 por watt para módulos monocristalinos de alta eficiência.
+              </p>
+              <p>
+                Um sistema residencial completo no Brasil custa hoje entre R$ 10.000 e R$ 30.000 dependendo da potência, com <strong>payback médio de 4 a 8 anos</strong> e vida útil de 25 a 30 anos — resultando em 17 a 25 anos de geração com custo próximo de zero após o retorno do investimento. Com a isenção de ICMS sobre a energia solar em todos os estados e a Lei 14.300/2022 garantindo o sistema de compensação por 25 anos a partir da data de conexão, o ambiente regulatório nunca foi tão favorável.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MITO 5 -->
+        <div class="mito-card">
+          <div class="mito-header">
+            <div class="mito-num">5</div>
+            <h2><span>Mito</span>"Painéis solares são tóxicos e prejudicam o meio ambiente"</h2>
+          </div>
+          <div class="mito-verdade">
+            <i class="ti ti-check mito-verdade-icon"></i>
+            <div class="mito-verdade-body">
+              <h3>A verdade</h3>
+              <p>
+                Por composição, um painel solar monocristalino é formado em sua maioria por <strong>vidro temperado (~65%) e alumínio (~20%)</strong> — materiais amplamente recicláveis. As células de silício representam menos de 5% da massa total. O encapsulante EVA e o backsheet de plástico são os únicos componentes com reciclagem mais complexa.
+              </p>
+              <p>
+                Do ponto de vista do ciclo de vida, um painel solar se paga em termos de carbono em 1 a 4 anos — após esse período, cada kWh gerado representa energia efetivamente limpa. Ao longo de 25 anos de operação, um sistema de 5 kWp evita a emissão de aproximadamente 60 toneladas de CO₂. A Resolução CONAMA 401 e as normas ABNT para descarte de painéis estão em desenvolvimento no Brasil, mas os módulos de silício cristalino não contêm cádmio, chumbo ou outros metais pesados em quantidade relevante.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MITO 6 -->
+        <div class="mito-card">
+          <div class="mito-header">
+            <div class="mito-num">6</div>
+            <h2><span>Mito</span>"Energia solar só funciona bem em telhados voltados para o norte"</h2>
+          </div>
+          <div class="mito-verdade">
+            <i class="ti ti-check mito-verdade-icon"></i>
+            <div class="mito-verdade-body">
+              <h3>A verdade</h3>
+              <p>
+                A orientação norte é de fato a ideal no hemisfério sul — ela maximiza a geração por capturar o sol durante mais horas do dia. Mas telhados com outras orientações continuam sendo economicamente viáveis. Telhados voltados para <strong>leste ou oeste</strong> perdem em média 15% a 20% de geração em relação ao norte ideal, mas esse diferencial é facilmente compensado com alguns painéis a mais no projeto.
+              </p>
+              <p>
+                Telhados com orientação <strong>leste-oeste</strong> têm inclusive uma vantagem interessante: distribuem a geração de forma mais equilibrada ao longo do dia, com pico pela manhã (leste) e à tarde (oeste) — o que pode ser favorável para perfis de consumo que evitam o horário de pico. Até telhados voltados para o sul, os menos eficientes, podem ser viáveis em regiões com alta irradiação como o Nordeste brasileiro.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MITO 7 -->
+        <div class="mito-card">
+          <div class="mito-header">
+            <div class="mito-num">7</div>
+            <h2><span>Mito</span>"Em caso de falta de luz, meu sistema solar continua funcionando normalmente"</h2>
+          </div>
+          <div class="mito-verdade">
+            <i class="ti ti-check mito-verdade-icon"></i>
+            <div class="mito-verdade-body">
+              <h3>A verdade</h3>
+              <p>
+                Este é o mito mais perigoso porque gera expectativas que o sistema simplesmente não cumpre — e a decepção vem na primeira queda de energia. <strong>Sistemas on-grid convencionais desligam automaticamente quando a rede elétrica cai</strong> — e isso é por design, não por defeito.
+              </p>
+              <p>
+                A razão é a proteção anti-ilhamento: se o inversor continuasse injetando energia na rede durante uma queda, os técnicos da concessionária que trabalhassem nos cabos poderiam sofrer choques elétricos. Por isso, todos os inversores grid-tie são obrigados a se desligar quando detectam ausência de rede.
+              </p>
+              <p>
+                A solução para quem quer continuar com energia durante blackouts são os <strong>sistemas híbridos com banco de baterias</strong>: eles armazenam energia durante o dia e, ao detectar a queda da rede, isolam o circuito da casa e continuam fornecendo eletricidade com energia solar + baterias. É um investimento maior, mas é a única forma de garantir continuidade real durante interrupções.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p>
+        Conhecer a realidade por trás desses mitos não é apenas uma questão de curiosidade técnica — é o que separa uma boa decisão de investimento de uma oportunidade perdida. O Brasil tem mais de 300 dias de sol por ano na maior parte do território e tarifas de energia entre as mais altas do mundo. As condições para energia solar nunca foram tão favoráveis.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Quer saber se a energia solar é viável para você?</h2>
+      <p>Nossa equipe analisa seu consumo, telhado e concessionária para apresentar um projeto real — com estimativa de economia e payback personalizado.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511992071648?text=Ol%C3%A1%21+Li+sobre+os+mitos+da+energia+solar+e+quero+saber+se+%C3%A9+vi%C3%A1vel+para+o+meu+im%C3%B3vel." class="btn-whatsapp" target="_blank" rel="noopener">
+          <i class="ti ti-brand-whatsapp"></i>
+          Falar pelo WhatsApp
+        </a>
+        <a href="../modelos/instalacao-sistema-solar.html" class="btn-ghost-white">
+          <i class="ti ti-solar-panel"></i>
+          Ver guia de instalação
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo" style="margin-bottom:.75rem;display:inline-flex">
+            <img src="../logo.png" class="logo-img small" alt="SolarHomolog">
+            <div>
+              <div class="logo-name" style="color:#fff">SolarHomolog</div>
+              <div class="logo-sub">Homologação Fotovoltaica</div>
+            </div>
+          </a>
+          <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">Especialistas em homologação de sistemas fotovoltaicos junto às concessionárias de energia elétrica do Brasil.</p>
+        </div>
+        <div>
+          <div class="footer-title">Serviços</div>
+          <a class="footer-link" href="../index.html#como-funciona">Processo de Homologação</a>
+          <a class="footer-link" href="../index.html#legislacao">Base de Legislação</a>
+        </div>
+        <div>
+          <div class="footer-title">Conteúdo</div>
+          <a class="footer-link" href="index.html">Blog</a>
+          <a class="footer-link" href="../modelos/processo-homologacao-solar.html">Homologação Solar</a>
+          <a class="footer-link" href="../modelos/instalacao-sistema-solar.html">Instalação Solar</a>
+          <a class="footer-link" href="../modelos/sistema-hibrido.html">Sistema Híbrido</a>
+          <a class="footer-link" href="../modelos/sistema-off-grid.html">Sistema Off-Grid</a>
+          <a class="footer-link" href="../modelos/manutencao-paineis-solares.html">Manutenção de Painéis</a>
+          <a class="footer-link" href="../modelos/monitoramento-sistema-solar.html">Monitoramento Solar</a>
+          <a class="footer-link" href="../modelos/equipamentos-sistema-solar.html">Equipamentos Solar</a>
+        </div>
+        <div>
+          <div class="footer-title">Legal</div>
+          <a class="footer-link" href="../termos.html">Termos de Uso</a>
+          <a class="footer-link" href="../privacidade.html">Política de Privacidade</a>
+          <a class="footer-link" href="../privacidade.html">LGPD</a>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <a class="footer-link" href="mailto:suporte@jccassessorialtda.com.br">suporte@jccassessorialtda.com.br</a>
+          <a class="footer-link" href="https://wa.me/5511992071648">WhatsApp (11) 99207-1648</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 SolarHomolog. Todos os direitos reservados.</span>
+        <span>Conforme Lei 14.300/2022 e REN ANEEL 1.000/2021</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
